@@ -1,11 +1,14 @@
 country,iso2,iso3,lat,long,flag,LocID,VarID,Variant,Time,PopMale,PopFemale,PopTotal,PopDensity
 Zimbabwe,ZW,ZWE,-20.0,30.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/zw.png,716,2,Medium,2019,6983.353,7662.12,14645.473,37.858000000000004
 Zambia,ZM,ZMB,-15.0,30.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/zm.png,894,2,Medium,2019,8843.214,9017.82,17861.034,24.026
+Yemen,YE,YEM,15.0,48.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/ye.png,887,2,Medium,2019,14692.284,14469.638,29161.922000000002,55.233999999999995
 Western Sahara,EH,ESH,24.5,-13.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/eh.png,732,2,Medium,2019,304.755,277.703,582.4580000000001,2.19
 Uzbekistan,UZ,UZB,41.0,64.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/uz.png,860,2,Medium,2019,16450.116,16531.599,32981.715,77.531
 Uruguay,UY,URY,-33.0,-56.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/uy.png,858,2,Medium,2019,1671.889,1789.842,3461.7309999999998,19.779
 Ukraine,UA,UKR,49.0,32.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/ua.png,804,2,Medium,2019,20379.023,23614.62,43993.643,75.94
 Uganda,UG,UGA,1.0,32.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/ug.png,800,2,Medium,2019,21807.166,22462.421000000002,44269.587,221.558
+US,US,USA,38.0,-97.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/us.png,1111,2,Medium,2019,164409.733,167972.987,332382.72,36.295
+United Kingdom,GB,GBR,54.0,-2.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png,826,2,Medium,2019,33351.435,34178.726,67530.161,279.131
 Turks and Caicos Islands,TC,TCA,21.75,-71.5833,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/tc.png,796,2,Medium,2019,,,38.194,40.204
 Turkey,TR,TUR,39.0,35.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/tr.png,792,2,Medium,2019,41173.709,42255.898,83429.607,108.402
 Tunisia,TN,TUN,34.0,9.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/tn.png,788,2,Medium,2019,5797.98,5896.741,11694.721000000001,75.275
@@ -20,7 +23,7 @@ Suriname,SR,SUR,4.0,-56.0,https://raw.githubusercontent.com/NovelCOVID/API/maste
 Sudan,SD,SDN,15.0,30.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/sd.png,729,2,Medium,2019,21387.956000000002,21425.281000000003,42813.237,24.256
 Sri Lanka,LK,LKA,7.0,81.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/lk.png,144,2,Medium,2019,10233.415,11090.319,21323.734,340.037
 Spain,ES,ESP,40.0,-4.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/es.png,724,2,Medium,2019,22960.647999999997,23776.134,46736.782,93.698
-South Sudan,,,0.0,0.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/unknow.png,728,2,Medium,2019,5536.53,5525.584,11062.114,18.105999999999998
+South Sudan,SS,SSD,6.8769,31.3069,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/ss.png,728,2,Medium,2019,5536.53,5525.584,11062.114,18.105999999999998
 South Africa,ZA,ZAF,-29.0,24.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/za.png,710,2,Medium,2019,28859.302000000003,29698.965,58558.267,48.272
 Somalia,SO,SOM,10.0,49.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/so.png,706,2,Medium,2019,7700.196,7742.71,15442.906,24.616
 Slovenia,SI,SVN,46.0,15.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/si.png,705,2,Medium,2019,1034.684,1043.97,2078.654,103.21
@@ -31,6 +34,7 @@ Seychelles,SC,SYC,-4.5833,55.6667,https://raw.githubusercontent.com/NovelCOVID/A
 Serbia,RS,SRB,44.0,21.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/rs.png,688,2,Medium,2019,4297.444,4474.784000000001,8772.228000000001,100.3
 Senegal,SN,SEN,14.0,-14.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/sn.png,686,2,Medium,2019,7946.433000000001,8349.929,16296.362,84.64299999999999
 Saudi Arabia,SA,SAU,25.0,45.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/sa.png,682,2,Medium,2019,19783.532,14484.997,34268.529,15.940999999999999
+Sao Tome and Principe,ST,STP,1.0,7.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/st.png,678,2,Medium,2019,107.611,107.43700000000001,215.048,224.00799999999998
 San Marino,SM,SMR,43.7667,12.4167,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/sm.png,674,2,Medium,2019,,,33.864000000000004,564.4
 Saint Vincent and the Grenadines,VC,VCT,13.25,-61.2,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/vc.png,670,2,Medium,2019,56.097,54.496,110.59299999999999,283.572
 Saint Lucia,LC,LCA,13.8833,-61.1333,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/lc.png,662,2,Medium,2019,90.021,92.774,182.795,299.664
@@ -157,6 +161,7 @@ Bulgaria,BG,BGR,43.0,25.0,https://raw.githubusercontent.com/NovelCOVID/API/maste
 British Virgin Islands,VG,VGB,18.5,-64.5,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/vg.png,92,2,Medium,2019,,,30.033,200.22
 Brazil,BR,BRA,-10.0,-55.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png,76,2,Medium,2019,103733.16,107316.359,211049.51899999997,25.250999999999998
 Botswana,BW,BWA,-22.0,24.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/bw.png,72,2,Medium,2019,1114.116,1189.587,2303.703,4.065
+Bolivia,BO,BOL,-17.0,-65.0,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/bo.png,68,2,Medium,2019,5779.611,5733.491,11513.101999999999,10.628
 Bhutan,BT,BTN,27.5,90.5,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/bt.png,64,2,Medium,2019,405.032,358.06199999999995,763.0939999999999,20.02
 Bermuda,BM,BMU,32.3333,-64.75,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/bm.png,60,2,Medium,2019,,,62.508,1250.16
 Benin,BJ,BEN,9.5,2.25,https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/bj.png,204,2,Medium,2019,5891.255999999999,5909.895,11801.151000000002,104.65700000000001
