@@ -16,7 +16,7 @@ import datetime
 # In[2]:
 
 
-df = pd.read_csv('data/corona19_world_data.csv', sep=',')
+df = pd.read_csv('../data/corona19_world_data.csv', sep=',')
 df['date'] = df['date'].astype('datetime64[ns]')
 
 today = str(df.date.max().date())
@@ -106,7 +106,7 @@ ax1.legend()
 ax2.legend()
 ax3.legend()
 ax4.legend()
-fig.savefig('analysis/world_cases_deaths.png')
+fig.savefig('../analysis/world_cases_deaths.png')
 
 
 # #### Cases and deaths per million 
@@ -145,7 +145,7 @@ ax2.legend()
 ax3.legend()
 ax4.legend()
 
-fig.savefig('analysis/world_cases_deaths_million.png')
+fig.savefig('../analysis/world_cases_deaths_million.png')
 
 
 # #### Active cases, world overview, % recoveries and lethality
@@ -193,7 +193,7 @@ ax1.legend()
 ax2.legend()
 ax3.legend()
 ax4.legend()
-fig.savefig('analysis/world_active_cases_percentages.png')
+fig.savefig('../analysis/world_active_cases_percentages.png')
 
 
 # ---------------------
@@ -243,7 +243,7 @@ ax2.legend()
 ax3.legend()
 ax4.legend()
 
-fig.savefig('analysis/brazil_number_million_variation.png')
+fig.savefig('../analysis/brazil_number_million_variation.png')
 
 
 # #### Moving averages (last 7 days)
@@ -281,7 +281,7 @@ ax1.legend()
 ax2.legend()
 # ax4.legend()
 
-fig.savefig('analysis/brazil_movingAvg.png')
+fig.savefig('../analysis/brazil_movingAvg.png')
 
 
 # ### Generating the markdown file
@@ -289,14 +289,14 @@ fig.savefig('analysis/brazil_movingAvg.png')
 # In[12]:
 
 
-f = open('analysis/README.md', 'w')
+f = open('../analysis/README.md', 'w')
 
 readme = '# **Analysis and monitoring**\n'
 readme += 'These analysis are related to the Covid19 pandemic data up to **' + today + '**.\n\n'
 readme += 'As there are many countries to have all of their data plotted together, I selected a few of them plus Brazil to be compared with:'
-readme += str(monitoredCountries) + '.\n'
+readme += str(monitoredCountries) + '.\n\n'
 readme += 'Some countries are not in UN dataset, so we can not analyse them by population. They can be found at the end of the *[data_engineering.ipynb](../data_engineering.ipynb)*.\n'
-readme += '*Tip: you can set yourself at the analysis notebook which countries you prefer to compare*\n\n'
+readme += '\n*Tip: you can set yourself at the analysis notebook which countries you prefer to compare*\n\n'
 readme += '## Top 5 deadliest countries + Brazil\n'
 readme += df_top_deaths.to_markdown()
 # readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")

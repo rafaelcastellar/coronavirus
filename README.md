@@ -40,11 +40,11 @@ These are data fetched to produce the datasets used by this analisys:
 ### Notebooks
 Here are my jupyter-notebooks used to build this study:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/countries_data_aggregator.ipynb) *[countries_data_aggregator.ipynb](countries_data_aggregator.ipynb)*: the aggregator of all countries data.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/countries_data_aggregator.ipynb) *[countries_data_aggregator.ipynb](notebooks/countries_data_aggregator.ipynb)*: the aggregator of all countries data.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/data_engineering.ipynb) *[data_engineering.ipynb](data_engineering.ipynb)*: data and feature engineering for the main dataset.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/data_engineering.ipynb) *[data_engineering.ipynb](notebooks/data_engineering.ipynb)*: data and feature engineering for the main dataset.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/analysis.ipynb) *[analysis.ipynb](analysis.ipynb)*: all the analises and charts about the world and brazilian pandemic.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/analysis.ipynb) *[analysis.ipynb](notebooks/analysis.ipynb)*: all the analises and charts about the world and brazilian pandemic.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/prediction.ipynb) *[prediction.ipynb](prediction.ipynb)*: all prediction of world and brazilian pandemic using [Facebook-Prophet](https://facebook.github.io/prophet/docs/quick_start.html).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/prediction.ipynb) *[prediction.ipynb](notebooks/prediction.ipynb)*: all prediction of world and brazilian pandemic using [Facebook-Prophet](https://facebook.github.io/prophet/docs/quick_start.html).
 

@@ -19,7 +19,7 @@ import json, requests
 # df = pd.read_json('https://covidapi.info/api/v1/country/BRA')
 # df = pd.read_json('https://api.covid19api.com/dayone/country/brazil/status/confirmed')
 #https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#cc76052f-6601-4645-80e5-ca7aaa36f8ef
-df_countries = pd.read_csv('data/world_countries_2019.csv')
+df_countries = pd.read_csv('../data/world_countries_2019.csv')
 
 df = pd.DataFrame()
 url = "https://pomber.github.io/covid19/timeseries.json"
@@ -54,7 +54,7 @@ for country in countries:
         dic.append(row)
         i += 1 
 df = pd.DataFrame.from_dict(dic)
-df.tail()
+df[df['country']=='Brazil'].tail()
 
 
 # #### Feature engineering
@@ -125,7 +125,7 @@ df.tail()
 # In[5]:
 
 
-df.to_csv('data/corona19_world_data.csv', index = False)
+df.to_csv('../data/corona19_world_data.csv', index = False)
 
 
 # In[6]:

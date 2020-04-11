@@ -16,7 +16,7 @@ import datetime
 # In[2]:
 
 
-df = pd.read_csv('data/corona19_world_data.csv', sep=',')
+df = pd.read_csv('../data/corona19_world_data.csv', sep=',')
 df['date'] = df['date'].astype('datetime64[ns]')
 
 today = str(df.date.max().date())
@@ -24,7 +24,7 @@ tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
 dayAfterTomorrow = str(df.date.max().date() + datetime.timedelta(days=2))
 yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
 
-df.tail()
+df[df['country']=='Brazil'].tail()
 
 
 # In[3]:
@@ -63,9 +63,9 @@ for country in predictedCountries:
     df_deaths.rename(columns={'death_day':'y'}, inplace =True)
     
     # fiting the model and making prediction
-    m_cases = Prophet(yearly_seasonality=False, daily_seasonality=False, interval_width=0.95)
+    m_cases = Prophet(yearly_seasonality=False, daily_seasonality=False, interval_width=0.95, growth='linear')
     m_cases.fit(df_cases)
-    m_deaths = Prophet(yearly_seasonality=False, daily_seasonality=False, interval_width=0.95)
+    m_deaths = Prophet(yearly_seasonality=False, daily_seasonality=False, interval_width=0.95, growth='linear')
     m_deaths.fit(df_deaths)
     
     future_cases = m_cases.make_future_dataframe(periods=daysToPredict, freq='D', include_history=False)
@@ -75,9 +75,9 @@ for country in predictedCountries:
     forecast_deaths = m_deaths.predict(future_deaths)
     if country == 'Brazil':
         fig = m_cases.plot_components(forecast_cases)
-        fig.savefig('predictions/brazil_prophet_cases.png')
+        fig.savefig('../predictions/brazil_prophet_cases.png')
         fig = m_deaths.plot_components(forecast_deaths)
-        fig.savefig('predictions/brazil_prophet_deaths.png')
+        fig.savefig('../predictions/brazil_prophet_deaths.png')
         
     p = forecast_cases.loc[:,['ds','yhat']]
     p.rename(columns={'yhat': 'y'}, inplace= True)
@@ -94,11 +94,11 @@ for country in predictedCountries:
     t['death_day'] = s['y'].astype('int32')
     t['deaths'] = t['death_day'].cumsum().astype('int32')
     t['country'] = country
-    t['predicted?'] = t['ds'] >= today # para separar o que é previsão (True) do que é dado real (False)
+    t['predicted?'] = t['ds'] > today # para separar o que é previsão (True) do que é dado real (False)
     df_prediction = df_prediction.append(t)
     
-df_prediction.to_csv('predictions/worldPredicion_' + today + '.csv', index = False)
-df_prediction.tail(10)
+df_prediction.to_csv('../predictions/worldPredicion_' + today + '.csv', index = False)
+df_prediction.tail(15)
 
 
 # In[6]:
@@ -149,7 +149,7 @@ ax3.grid()
 ax3.axvline(x=corte, ymin=0, ymax=0.9, color = 'red', label = 'prediction')
 ax3.legend()
 
-plt.savefig('predictions/brazil_predictions.png')
+plt.savefig('../predictions/brazil_predictions.png')
 
 
 # ### Generating the markdown file
@@ -157,7 +157,7 @@ plt.savefig('predictions/brazil_predictions.png')
 # In[9]:
 
 
-f = open('predictions/README.md', 'w')
+f = open('../predictions/README.md', 'w')
 
 readme = '# **Predictions**\n'
 readme += "For experience, I'm running simple predictions over the cases and deaths per day. As they are time-series, I'm using [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) that is also designed for this kind of prediction in a very simpler way. "
@@ -171,8 +171,9 @@ readme += '## The prediction\n'
 readme += "As Facebook Prophet predicts time-series data and it is running the prediction over cases per day and deaths per day. After that, I compute theirs cumulatives.It is predicting for the next 10 days.\n"
 readme += 'By the end, a CSV file containing all the predicted data is generated.\n\n'
 
-readme += "#### The Brazil's prediction for the next 10 days\n"
-readme += df_prediction[df_prediction['country']=='Brazil'].tail(10).to_markdown()
+readme += "#### The Brazil's last 5 days and predicted next 10 days\n"
+readme += "*predicted? = True* means the line is a prediction; *=False* means they are real numbers.\n"
+readme += df_prediction[df_prediction['country']=='Brazil'].tail(15).to_markdown()
 
 readme += "\n\n #### The predicted Brazil's cumulative curves\n"
 readme += "The prediction are over the daily data, so, here they were cumulated and plotted with the actual data:\n"
