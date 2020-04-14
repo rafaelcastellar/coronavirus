@@ -1,7 +1,7 @@
 # **Predictions**
 For experience, I'm running simple predictions over the cases and deaths per day. As they are time-series, I'm using [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) that is also designed for this kind of prediction in a very simpler way. It works well for most of the time; sometimes there is a huge leap and it takes sometime more data to be understood.
 
-These predictions were made with Covid19 pandemic data from **2020-04-12**.
+These predictions were made with Covid19 pandemic data from **2020-04-13**.
 
 As there are many countries to have their data predicted in a row, I selected a few of them plus Brazil to be predicted:
 ['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'China', 'France'].
@@ -16,21 +16,21 @@ By the end, a CSV file containing all the predicted data is generated.
 *predicted? = True* means the line is a prediction; *=False* means they are real numbers.
 |    | country   | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:----------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 42 | Brazil    | 2020-04-08 00:00:00 |       2136 |         133 |   16170 |      819 | False        |
 | 43 | Brazil    | 2020-04-09 00:00:00 |       1922 |         131 |   18092 |      950 | False        |
 | 44 | Brazil    | 2020-04-10 00:00:00 |       1546 |         107 |   19638 |     1057 | False        |
 | 45 | Brazil    | 2020-04-11 00:00:00 |       1089 |          67 |   20727 |     1124 | False        |
 | 46 | Brazil    | 2020-04-12 00:00:00 |       1465 |          99 |   22192 |     1223 | False        |
-| 47 | Brazil    | 2020-04-13 00:00:00 |       1232 |          75 |   23424 |     1298 | True         |
-| 48 | Brazil    | 2020-04-14 00:00:00 |       1513 |          87 |   24937 |     1385 | True         |
-| 49 | Brazil    | 2020-04-15 00:00:00 |       1588 |          92 |   26525 |     1477 | True         |
-| 50 | Brazil    | 2020-04-16 00:00:00 |       1616 |          99 |   28141 |     1576 | True         |
-| 51 | Brazil    | 2020-04-17 00:00:00 |       1537 |          88 |   29678 |     1664 | True         |
-| 52 | Brazil    | 2020-04-18 00:00:00 |       1514 |          90 |   31192 |     1754 | True         |
-| 53 | Brazil    | 2020-04-19 00:00:00 |       1517 |          90 |   32709 |     1844 | True         |
-| 54 | Brazil    | 2020-04-20 00:00:00 |       1500 |          92 |   34209 |     1936 | True         |
-| 55 | Brazil    | 2020-04-21 00:00:00 |       1781 |         103 |   35990 |     2039 | True         |
-| 56 | Brazil    | 2020-04-22 00:00:00 |       1856 |         108 |   37846 |     2147 | True         |
+| 47 | Brazil    | 2020-04-13 00:00:00 |       1238 |         105 |   23430 |     1328 | False        |
+| 48 | Brazil    | 2020-04-14 00:00:00 |       1513 |          88 |   24943 |     1416 | True         |
+| 49 | Brazil    | 2020-04-15 00:00:00 |       1588 |          94 |   26531 |     1510 | True         |
+| 50 | Brazil    | 2020-04-16 00:00:00 |       1617 |         101 |   28148 |     1611 | True         |
+| 51 | Brazil    | 2020-04-17 00:00:00 |       1537 |          90 |   29685 |     1701 | True         |
+| 52 | Brazil    | 2020-04-18 00:00:00 |       1515 |          92 |   31200 |     1793 | True         |
+| 53 | Brazil    | 2020-04-19 00:00:00 |       1518 |          92 |   32718 |     1885 | True         |
+| 54 | Brazil    | 2020-04-20 00:00:00 |       1501 |          98 |   34219 |     1983 | True         |
+| 55 | Brazil    | 2020-04-21 00:00:00 |       1781 |         105 |   36000 |     2088 | True         |
+| 56 | Brazil    | 2020-04-22 00:00:00 |       1856 |         111 |   37856 |     2199 | True         |
+| 57 | Brazil    | 2020-04-23 00:00:00 |       1885 |         118 |   39741 |     2317 | True         |
 
  #### The predicted Brazil's cumulative curves
 The prediction are over the daily data, so, here they were cumulated and plotted with the actual data:
@@ -46,21 +46,21 @@ Facebook's Prophet automatically generates charts about the behaviour of the ana
 **Tomorrow**
 |    | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 47 | Brazil         | 2020-04-13 00:00:00 |       1232 |          75 |   23424 |     1298 | True         |
-| 73 | Italy          | 2020-04-13 00:00:00 |       5320 |         750 |  161683 |    20649 | True         |
-| 73 | United Kingdom | 2020-04-13 00:00:00 |       5862 |         904 |   91068 |    11533 | True         |
-| 72 | Spain          | 2020-04-13 00:00:00 |       6751 |         730 |  173582 |    17939 | True         |
-| 82 | US             | 2020-04-13 00:00:00 |      37260 |        2011 |  592573 |    24031 | True         |
-| 82 | China          | 2020-04-13 00:00:00 |       -759 |           4 |   82375 |     3347 | True         |
-| 80 | France         | 2020-04-13 00:00:00 |       5863 |         843 |  139533 |    15255 | True         |
+| 48 | Brazil         | 2020-04-14 00:00:00 |       1513 |          88 |   24943 |     1416 | True         |
+| 74 | Italy          | 2020-04-14 00:00:00 |       5178 |         764 |  164694 |    21229 | True         |
+| 74 | United Kingdom | 2020-04-14 00:00:00 |       5769 |         505 |   95339 |    11852 | True         |
+| 73 | Spain          | 2020-04-14 00:00:00 |       6469 |         715 |  176568 |    18471 | True         |
+| 83 | US             | 2020-04-14 00:00:00 |      42180 |        2061 |  724799 |    25590 | True         |
+| 83 | China          | 2020-04-14 00:00:00 |       -526 |           1 |   82687 |     3346 | True         |
+| 81 | France         | 2020-04-14 00:00:00 |       6471 |         884 |  144346 |    15870 | True         |
 
  **The day after tomorrow** 
 |    | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 48 | Brazil         | 2020-04-14 00:00:00 |       1513 |          87 |   24937 |     1385 | True         |
-| 74 | Italy          | 2020-04-14 00:00:00 |       5272 |         771 |  166955 |    21420 | True         |
-| 74 | United Kingdom | 2020-04-14 00:00:00 |       6056 |         986 |   97124 |    12519 | True         |
-| 73 | Spain          | 2020-04-14 00:00:00 |       6615 |         724 |  180197 |    18663 | True         |
-| 83 | US             | 2020-04-14 00:00:00 |      38555 |        2187 |  631128 |    26218 | True         |
-| 83 | China          | 2020-04-14 00:00:00 |       -547 |           1 |   81828 |     3348 | True         |
-| 81 | France         | 2020-04-14 00:00:00 |       6538 |         919 |  146071 |    16174 | True         |
+| 49 | Brazil         | 2020-04-15 00:00:00 |       1588 |          94 |   26531 |     1510 | True         |
+| 75 | Italy          | 2020-04-15 00:00:00 |       5544 |         757 |  170238 |    21986 | True         |
+| 75 | United Kingdom | 2020-04-15 00:00:00 |       6235 |         536 |  101574 |    12388 | True         |
+| 74 | Spain          | 2020-04-15 00:00:00 |       7114 |         763 |  183682 |    19234 | True         |
+| 84 | US             | 2020-04-15 00:00:00 |      43616 |        2130 |  768415 |    27720 | True         |
+| 84 | China          | 2020-04-15 00:00:00 |      -1146 |         -18 |   81541 |     3328 | True         |
+| 82 | France         | 2020-04-15 00:00:00 |       5676 |         817 |  150022 |    16687 | True         |

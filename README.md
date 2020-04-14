@@ -5,7 +5,7 @@ Since the virus had arrived here in Brazil, I started some analysis over the con
 As this content content may be useful for someone else than me and my friends, I decided to share it here. If so, I'll be glad to help.
 I will update it in a daily base around 7am in Brazil (or 4am UTC).
 
-I would like to thank Pomber [(https://github.com/pomber/covid19)] who provides an updated JSON with worldwide covid-19 pandemic which is the principal incoming data for this content. I also would like to thank the [ebwinters](https://github.com/NovelCOVID/API/commits?author=ebwinters) and the guys from [https://github.com/novelcovid/api](https://github.com/novelcovid/api) project, which provides GEO-data from all the contries.
+I would like to thank Pomber [https://github.com/pomber/covid19](https://github.com/pomber/covid1) who provides an updated JSON with worldwide covid-19 data from [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19), which is the principal incoming data for this content from. I also would like to thank the [ebwinters](https://github.com/NovelCOVID/API/commits?author=ebwinters) and the guys from [https://github.com/novelcovid/api](https://github.com/novelcovid/api) project, which provides GEO-data from all the contries.
 I encourge you to visit his project to get known about this data.
 
 ## Analysis
