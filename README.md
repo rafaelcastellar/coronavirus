@@ -27,7 +27,7 @@ These are data fetched to produce the datasets used by this analisys:
 
 ### Dataset
 * **[world_countries_2019.csv](data/world_countries_2019.csv)**: a consolidated dataset from ebinters and UN data, which is used to normalize some pandemic indicadors by countries total population
-* **[corona19_world_data.csv](data/corona19_world_data.csv)**: the main dataset used by this study. It is made from Pomber's JSON and enriched with the following features which are derivate to cases, deaths and recoveries, although, to simplify I will use just *case's* :
+* **[world_corona19_data.csv](data/world_corona19_data.csv)**: the main dataset used by this study. It is made from Pomber's JSON and enriched with the following features which are derivate to cases, deaths and recoveries, although, to simplify I will use just *case's* :
     * *day*: number of the day since the first case of contamination
     * *cases*: cumulative number of cases since day 0
     * *case_day*: number of the cases recorded in a specific day

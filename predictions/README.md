@@ -4,7 +4,7 @@ For experience, I'm running simple predictions over the cases and deaths per day
 These predictions were made with Covid19 pandemic data from **2020-04-13**.
 
 As there are many countries to have their data predicted in a row, I selected a few of them plus Brazil to be predicted:
-['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'China', 'France'].
+['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'Belgium', 'France'].
 ***Tip**: you can set yourself at the *[prediction.ipynb](../prediction.ipynb)* notebook which countries you prefer to predict*
 
 
@@ -50,8 +50,8 @@ Facebook's Prophet automatically generates charts about the behaviour of the ana
 | 74 | Italy          | 2020-04-14 00:00:00 |       5178 |         764 |  164694 |    21229 | True         |
 | 74 | United Kingdom | 2020-04-14 00:00:00 |       5769 |         505 |   95339 |    11852 | True         |
 | 73 | Spain          | 2020-04-14 00:00:00 |       6469 |         715 |  176568 |    18471 | True         |
-| 83 | US             | 2020-04-14 00:00:00 |      42180 |        2061 |  724799 |    25590 | True         |
-| 83 | China          | 2020-04-14 00:00:00 |       -526 |           1 |   82687 |     3346 | True         |
+| 83 | US             | 2020-04-14 00:00:00 |      36879 |        2061 |  617498 |    25590 | True         |
+| 70 | Belgium        | 2020-04-14 00:00:00 |       1513 |         302 |   32102 |     4205 | True         |
 | 81 | France         | 2020-04-14 00:00:00 |       6471 |         884 |  144346 |    15870 | True         |
 
  **The day after tomorrow** 
@@ -61,6 +61,6 @@ Facebook's Prophet automatically generates charts about the behaviour of the ana
 | 75 | Italy          | 2020-04-15 00:00:00 |       5544 |         757 |  170238 |    21986 | True         |
 | 75 | United Kingdom | 2020-04-15 00:00:00 |       6235 |         536 |  101574 |    12388 | True         |
 | 74 | Spain          | 2020-04-15 00:00:00 |       7114 |         763 |  183682 |    19234 | True         |
-| 84 | US             | 2020-04-15 00:00:00 |      43616 |        2130 |  768415 |    27720 | True         |
-| 84 | China          | 2020-04-15 00:00:00 |      -1146 |         -18 |   81541 |     3328 | True         |
+| 84 | US             | 2020-04-15 00:00:00 |      38000 |        2130 |  655498 |    27720 | True         |
+| 71 | Belgium        | 2020-04-15 00:00:00 |       1564 |         284 |   33666 |     4489 | True         |
 | 82 | France         | 2020-04-15 00:00:00 |       5676 |         817 |  150022 |    16687 | True         |
