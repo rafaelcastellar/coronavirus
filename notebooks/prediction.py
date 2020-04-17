@@ -16,7 +16,7 @@ import datetime
 # In[2]:
 
 
-df = pd.read_csv('../data/corona19_world_data.csv', sep=',')
+df = pd.read_csv('../data/world_corona19_data.csv', sep=',')
 df['date'] = df['date'].astype('datetime64[ns]')
 
 today = str(df.date.max().date())
@@ -43,7 +43,7 @@ countries
 
 
 #inform the countries for predictions
-predictedCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'China', 'France']
+predictedCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'Belgium', 'France']
 
 
 # In[5]:
@@ -194,6 +194,27 @@ readme += df_prediction.loc[df_prediction['ds']==dayAfterTomorrow].to_markdown()
 f.write(readme)
 f.close()
 print('Predictions done!')
+
+
+# In[10]:
+
+
+# from fbprophet.diagnostics import cross_validation
+# df_cv = cross_validation(m_cases, period='1 days', horizon = '10 days')
+# df_cv.head()
+
+# # Python
+# from fbprophet.diagnostics import performance_metrics
+# df_p = performance_metrics(df_cv)
+# df_p.head()
+
+
+# In[11]:
+
+
+# from fbprophet.diagnostics import performance_metrics
+# df_p = performance_metrics(df_cv)
+# df_p.head()
 
 
 # In[ ]:

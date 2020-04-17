@@ -10,6 +10,7 @@ from pandas.io.json import json_normalize
 import json, requests
 
 
+# ### World data engineering
 # #### Fetching worldwide data
 
 # In[2]:
@@ -54,7 +55,7 @@ for country in countries:
         dic.append(row)
         i += 1 
 df = pd.DataFrame.from_dict(dic)
-df[df['country']=='Brazil'].tail()
+df[df['country']=='France'].tail()
 
 
 # #### Feature engineering
@@ -120,18 +121,18 @@ df['recovery_day'] = df['recovery_day'].astype('int')
 df.tail()
 
 
-# #### Gravando CSV
+# #### Saving CSV
 
 # In[5]:
 
 
-df.to_csv('../data/corona19_world_data.csv', index = False)
+df.to_csv('../data/world_corona19_data.csv', index = False)
 
 
 # In[6]:
 
 
-df[df['country']=='Brazil'].tail()
+df[df['country']=='France'].tail()
 
 
 # #### countries not located in UN dataset
@@ -144,6 +145,76 @@ for country in countries:
         print(country)
 # df[df['pais'] == pais].tail()
 # df_countries[df_countries['Location']==pais]['PopTotal']
+
+
+# ### Brazil data engineering
+
+# In[8]:
+
+
+df = pd.read_csv('../data/gov_brazil_corona19_data.csv', sep=';')
+df.rename(columns={'regiao': 'region', 'estado':'state', 'data':'date','casosNovos': 'case_day', 'casosAcumulados':'cases', 'obitosNovos':'death_day','obitosAcumulados':'deaths'}, inplace= True)
+
+df.tail()
+
+
+# #### Feature engineering
+
+# In[9]:
+
+
+states = df.state.unique()
+df.drop(df[df['cases'] == 0 ].index, axis=0, inplace= True)
+
+for state in states:
+    qtdeDays = len(df[df.state == state])+1
+    df.loc[df.state == state, 'day'] = (np.arange(1,qtdeDays,1))
+#     df.drop(df[case].index, inplace=True)
+    # valores diários
+    df.loc[df.state == state, 'case_day'] = df[df.state == state]['cases'].diff()    
+    df.loc[df.state == state, 'death_day'] = df[df.state == state]['deaths'].diff()
+#     df.loc[df.state == state, 'recovery_day'] = df[df.state == state]['recoveries'].diff()
+
+    # % daily variations
+    df.loc[df.state == state, '%var_case_day'] = ((df[df.state == state]['case_day'] - df[df.state == state]['case_day'].shift()) / df[df.state == state]['case_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+    df.loc[df.state == state, '%var_death_day'] = ((df[df.state == state]['death_day'] - df[df.state == state]['death_day'].shift()) / df[df.state == state]['death_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+#     df.loc[df.state == state, '%var_recovery_day'] = ((df[df.state == state]['recovery_day'] - df[df.state == state]['recovery_day'].shift()) / df[df.state == state]['recovery_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+    
+    # Igualo o valor da primeira linha igual ao primeiro número do acumulado, pois se o acumulado começa em 1 o primeiro diff fica igual a 0
+    df.loc[(df.state == state) & (df.day == 1), 'case_day']= df.loc[(df.state == state) & (df.day==1), 'cases']
+    df.loc[(df.state == state) & (df.day == 1), 'death_day']= df.loc[(df.state == state) & (df.day==1), 'deaths']
+    
+    # moving averages (from last 7 days)
+    df.loc[df.state == state, 'avg7_cases'] = df[df.state == state]['case_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+    df.loc[df.state == state, 'avg7_deaths'] = df[df.state == state]['death_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+    df.loc[df.state == state, 'perc_death'] = (df[df.state == state]['deaths']/df[df.state == state]['cases']*100).round(2) 
+    df.loc[df.state == state, 'avg7_perc_death'] = df[df.state == state]['perc_death'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+
+df['perc_death'] = (df['deaths']/df['cases'] * 100).round(2)
+# df['perc_recovery'] = (df['recoveries']/df['cases'] * 100).round(2)
+# df['active_cases'] = df['cases'] - df['recoveries'] - df['deaths']
+
+df.fillna(0, inplace=True)
+
+df['day'] = df['day'].astype('int')
+df['case_day'] = df['case_day'].astype('int')
+df['death_day'] = df['death_day'].astype('int')
+# df['recovery_day'] = df['recovery_day'].astype('int')
+
+df.tail()
+
+
+# In[10]:
+
+
+df.to_csv('../data/brazil_corona19_data.csv', index = False)
+
+
+# In[11]:
+
+
+# df[df['country']=='Belgium']
+print('Data engineering done!')
 
 
 # In[ ]:

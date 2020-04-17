@@ -1,19 +1,19 @@
-[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="40"  /> English version](README_EN.md)
+[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="40"  /> Versão em português](README_WORLD.md)
 
-# **Análises e monitoramento**
+# **Analysis and monitoring**
 
-### Letalidade dos estados brasileiros
-O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.
+### Lethality of the brazilian states
+The lethality level shown in this map is defined from the moving average of the last 7 days of each state lethality.
 <iframe src="brazilMap.html" width=100% height=600></iframe>
 
-Estas análises são relativas aos dados da pandemia Covid19 no Brasil até a data de **2020-04-15**.
+These analysis are related to Brazil Convid19 pandemic data up to **2020-04-15**.
 
-Como existem muitos estados, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionados os 10 mais mortais:['PI' 'PB' 'SE' 'PE' 'SP' 'AL' 'RJ' 'MA' 'AM' 'PA'].
+As there are too many states to have their data plotted together, were selected the 10 deadliest:['PI' 'PB' 'SE' 'PE' 'SP' 'AL' 'RJ' 'MA' 'AM' 'PA'].
 
 
-***Dica**: você pode alterar você mesmo neste notebook quais estados você prefere comparar.*
+***Tip**: you can yourself select in this notebook which states you prefer to compare.*
 
-## Top 10 estados mais letais do Brasil
+## Top 10 deadliest states of Brazil
 |    | state   | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |---:|:--------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
 |  1 | PI      | 2020-04-15 00:00:00 |    27 |         17 |      75 |           0 |        8 |            6 |             0 |             15.25 |        10.67 |
@@ -28,7 +28,7 @@ Como existem muitos estados, colocar em um único gráfico todos seus dados torn
 | 10 | PA      | 2020-04-15 00:00:00 |    28 |         61 |     384 |           2 |       21 |           31 |             2 |              5.18 |         5.47 |
 
 
- ## Top 10 estados mais transmissíveis do Brasil
+ ## Top 10 most transmissible states of Brazil
 |    | state   | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |---:|:--------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
 |  1 | SP      | 2020-04-15 00:00:00 |    50 |       1672 |   11043 |          83 |      778 |          619 |            50 |              6.84 |         7.05 |
@@ -42,7 +42,7 @@ Como existem muitos estados, colocar em um único gráfico todos seus dados torn
 |  9 | BA      | 2020-04-15 00:00:00 |    41 |         48 |     807 |           5 |       27 |           44 |             1 |              3.18 |         3.35 |
 | 10 | MG      | 2020-04-15 00:00:00 |    39 |         19 |     903 |           3 |       30 |           41 |             2 |              2.67 |         3.32 |
 ----------------------
-## Casos e mortes
+## Cases and deaths
 ![](brazilian_states_cases_deaths.png)
 
- [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](README_WORLD.md#brazils-analysis)
+ [Comparison of Brazil and among some other contries around the world can be found here.](README_WORLD_EN.md#brazils-analysis)

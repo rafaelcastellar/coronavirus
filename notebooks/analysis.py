@@ -16,7 +16,7 @@ import datetime
 # In[2]:
 
 
-df = pd.read_csv('../data/corona19_world_data.csv', sep=',')
+df = pd.read_csv('../data/world_corona19_data.csv', sep=',')
 df['date'] = df['date'].astype('datetime64[ns]')
 
 today = str(df.date.max().date())
@@ -42,7 +42,7 @@ countries
 
 
 cols = ['country','day','date','cases','case_day','deaths','death_day', 'cases_million',  'deaths_million', 'avg7_cases_million', 'avg7_deaths_million', 'avg7_recoveries_million']
-df_top_deaths = df[df['date']==yesterday].sort_values('avg7_deaths_million', ascending = False)
+df_top_deaths = df[df['date']==today].sort_values('avg7_deaths_million', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
@@ -55,7 +55,7 @@ df_top_deaths
 # In[5]:
 
 
-df_top_cases = df[df['date']==yesterday].sort_values('avg7_cases_million', ascending = False)
+df_top_cases = df[df['date']==today].sort_values('avg7_cases_million', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -69,7 +69,7 @@ df_top_cases
 
 
 #inform the countries you want to analise
-monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'China', 'France',]
+monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France', 'Belgium',]
 
 
 # #### Cases and deaths 
@@ -101,6 +101,10 @@ for country in monitoredCountries:
     ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
     ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
+#     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
+#     ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
+#     ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
+#     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
 
 ax1.legend()
 ax2.legend()
@@ -286,12 +290,54 @@ fig.savefig('../analysis/brazil_movingAvg.png')
 
 # ### Generating the markdown file
 
-# In[12]:
+# In[14]:
 
 
-f = open('../analysis/README.md', 'w')
+f = open('../analysis/README_WORLD.md', 'w')
 
-readme = '# **Analysis and monitoring**\n'
+readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="40"  /> English version](README_WORLD_EN.md)'
+readme += '\n\n #**Análises e monitoramento**\n'
+readme += 'Estas análises são relativas aos dados da pandemia Covid19 até a data de **' + today + '**.\n\n'
+readme += 'Como existem muitos países, colocar em um gráfico todos seus dados tornaria a leitura e compreensão inviáveis, selecionei os seguintes países mais o Brasil para serem comparados entre si:'
+readme += str(monitoredCountries) + '.\n\n'
+readme += 'Alguns países não estão no *dataset* da ONU, então não conseguimos analisá-los por sua populações. Estes podem ser encontrados fim do notebook *[data_engineering.ipynb](../data_engineering.ipynb)*.\n'
+readme += '\n***Dica**: você pode alterar você mesmo neste notebook quais países você prefere comparar.*\n\n'
+readme += '## Top 5 países mais letais + Brasil\n'
+readme += df_top_deaths.to_markdown()
+# readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
+readme += '\n\n\n ## Top 5 países mais transmissíveis + Brasil\n'
+readme += df_top_cases.to_markdown()
+#tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
+
+readme += '\n----------------------\n'
+readme += '## Análises mundiais\n'
+readme += '### Casos e mortes\n'
+readme += '![](world_cases_deaths.png)'
+
+readme += '\n\n ### Casos e mortes por milhão\n'
+readme += 'Milhão de população noramilza os números de modo que a comparação entre países fica mais adequada. Como podemos ver, os primeiros gráficos nos mostram quão agressivo é a pandemia na Itália e Espanha.\n'
+readme += '![](world_cases_deaths_million.png)'
+
+readme += '\n\n ### Casos ativos, uma visão mundial, % de recuperações e letalidade\n'
+readme += '![](world_active_cases_percentages.png)'
+
+readme += '\n----------------------\n'
+readme += '## Análises do Brasil\n'
+readme += '\n\n ### Casos, mortes e recuperações\n'
+readme += '![](brazil_number_million_variation.png)'
+
+readme += '\n\n ### Médias móveis dos últimos 7 dias\n'
+readme += '![](brazil_movingAvg.png)'
+
+f.write(readme)
+f.close()
+
+###########################################
+
+f = open('../analysis/README_WORLD_EN.md', 'w')
+readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="40"  /> Versão em português](README_WORLD.md)'
+
+readme += '\n\n #**Analysis and monitoring**\n'
 readme += 'These analysis are related to the Covid19 pandemic data up to **' + today + '**.\n\n'
 readme += 'As there are many countries to have all of their data plotted together, I selected a few of them plus Brazil to be compared with:'
 readme += str(monitoredCountries) + '.\n\n'
@@ -326,7 +372,7 @@ readme += '![](brazil_movingAvg.png)'
 
 f.write(readme)
 f.close()
-print('Analysis done!')
+print('World analysis done!')
 
 
 # In[ ]:

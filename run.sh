@@ -8,7 +8,9 @@ cd notebooks
 python countries_data_aggregator.py
 python data_engineering.py
 python analysis.py
+python brazlian_analysis.py
 python prediction.py
+# python brazlian_prediction.py
 
 cd ..
 git add .
