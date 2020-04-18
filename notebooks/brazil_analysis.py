@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[187]:
+# In[1]:
 
 
 #https://github.com/pomber/covid19
 import numpy as np
 import pandas as pd
-import folium, html
+import folium, html, json
 import matplotlib.pyplot as plt
 import datetime
 
 
-# In[406]:
+# In[2]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -26,19 +26,19 @@ yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
 df.tail()
 
 
-# In[451]:
+# In[3]:
 
 
 df_brasil = pd.merge(df[df['date']==today], df_estados, how='inner', on=None, left_on='state', 
                  right_on='sigla_estado', left_index=False, right_index=False, sort=False)   
 
-df_brasil = df_brasil[df_brasil['date']==today][['id_estado','avg7_perc_death','sigla_estado','nome_estado','cases','deaths','perc_death']]
+df_brasil = df_brasil[df_brasil['date']==today][['id_estado','avg7_perc_death','avg7_cases','sigla_estado','nome_estado','cases','deaths','perc_death']]
 df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_on no folium
 
 df_brasil.tail()
 
 
-# In[410]:
+# In[4]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -51,15 +51,27 @@ for state in state_geo['features']:
 df_estados.tail()
 
 
-# In[472]:
+# In[5]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
 m = folium.Map(location=[-15.75, -47.95], zoom_start=4)
 
+# folium.Choropleth(
+#     geo_data=state_geo,
+#     name='Contaminações',
+#     data=df_brasil,
+#     columns=['id_estado', 'avg7_cases'],
+#     key_on='feature.properties.codarea',
+#     fill_color='PuBu',#'YlGn',
+#     fill_opacity=0.7,
+#     line_opacity=0.3,
+#     legend_name='media movel de casos (7 ultimos dias)'
+# ).add_to(m)
+
 folium.Choropleth(
     geo_data=state_geo,
-    name='choropleth',
+    name='Letalidade',
     data=df_brasil,
     columns=['id_estado', 'avg7_perc_death'],
     key_on='feature.properties.codarea',
@@ -67,7 +79,7 @@ folium.Choropleth(
 #     ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
     fill_opacity=0.7,
     line_opacity=0.3,
-    legend_name='% letalidade (media movel 7 ultimos dias)'
+    legend_name= '% letalidade (media movel 7 ultimos dias)'
 ).add_to(m)
 
 for key,estado in df_estados.iterrows():
@@ -84,7 +96,6 @@ for key,estado in df_estados.iterrows():
         color='#727b7d',
         fill=True,
         fill_color='#727b7d',
-        
         tooltip=detalhes,
         icon=folium.Icon(color='blue',
              icon_color='black',
@@ -103,7 +114,7 @@ m
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[168]:
+# In[6]:
 
 
 cols = ['state', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
@@ -117,7 +128,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[169]:
+# In[7]:
 
 
 df_top_cases = df[df['date']==today].sort_values('avg7_cases', ascending = False)
@@ -132,7 +143,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[379]:
+# In[8]:
 
 
 #inform the countries you want to analise
@@ -140,7 +151,7 @@ monitoredStates = df_top_deaths['state'].head(10).to_numpy()
 monitoredStates
 
 
-# In[380]:
+# In[9]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -181,19 +192,20 @@ fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 # ### Generating the markdown file
 
-# In[475]:
+# In[10]:
 
 
 f = open('../analysis/README.md', 'w')
 
-readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="40"  /> English version](README_EN.md)'
-readme += '\n\n#**Análises e monitoramento**\n'
+readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="30"  /> English version](README_EN.md)'
+readme += '\n\n# **Análises e monitoramento**\n'
 
-readme += '\n###Letalidade dos estados brasileiros\n'
+readme += '\n### Letalidade dos estados brasileiros\n'
 readme += 'O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.\n'
-readme += '<<insertHTML:[brazilMap.html]'
+readme += '<img src="brazilMap.png" width="100%"  />'
+# readme += '[![Clique aqui para o mapa atualizado](brazilMap.png)](brazilMap.html)'
 
-readme += 'Estas análises são relativas aos dados da pandemia Covid19 no Brasil até a data de **' + today + '**.\n\n'
+readme += '\n\nEstas análises são relativas aos dados da pandemia Covid19 no Brasil até a data de **' + today + '**.\n\n'
 readme += 'Como existem muitos estados, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionados os 10 mais mortais:'
 readme += str(monitoredStates) + '.\n\n'
 readme += '\n***Dica**: você pode alterar você mesmo neste notebook quais estados você prefere comparar.*\n\n'
@@ -208,7 +220,7 @@ readme += '\n----------------------\n'
 readme += '## Casos e mortes\n'
 readme += '![](brazilian_states_cases_deaths.png)'
 
-readme += '\n\n [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](README_WORLD.md#brazils-analysis)'
+readme += '\n\n [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](README_WORLD.md#an%C3%A1lises-do-brasil)'
 
 
 f.write(readme)
@@ -217,22 +229,23 @@ f.close()
 ###########################################
 
 f = open('../analysis/README_EN.md', 'w')
-readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="40"  /> Versão em português](README_WORLD.md)'
+readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="30"  /> Versão em português](README_WORLD.md)'
 
-readme += '\n\n#**Analysis and monitoring**\n'
+readme += '\n\n# **Analysis and monitoring**\n'
 
-readme += '\n###Lethality of the brazilian states\n'
+readme += '\n### Lethality of the brazilian states\n'
 readme += 'The lethality level shown in this map is defined from the moving average of the last 7 days of each state lethality.\n'
-readme += '<<insertHTML:[brazilMap.html]'
+readme += '<img src="brazilMap.png" width="100%"  />'
+# readme += '[![Click here for updated map](brazilMap.png)](brazilMap.html)'
 
-readme += 'These analysis are related to Brazil Convid19 pandemic data up to **' + today + '**.\n\n'
+readme += '\n\nThese analysis are related to Brazil Convid19 pandemic data up to **' + today + '**.\n\n'
 readme += 'As there are too many states to have their data plotted together, were selected the 10 deadliest:'
 readme += str(monitoredStates) + '.\n\n'
 readme += '\n***Tip**: you can yourself select in this notebook which states you prefer to compare.*\n\n'
-readme += '## Top 5 deadliest states of Brazil\n'
+readme += '## Top 10 deadliest states of Brazil\n'
 readme += df_top_deaths.to_markdown()
 # readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top 5 most transmissible states of Brazil\n'
+readme += '\n\n\n ## Top 10 most transmissible states of Brazil\n'
 readme += df_top_cases.to_markdown()
 #tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
 
@@ -241,14 +254,7 @@ readme += '## Cases and deaths\n'
 readme += '![](brazilian_states_cases_deaths.png)'
 
 readme += '\n\n [Comparison of Brazil and among some other contries around the world can be found here.](README_WORLD_EN.md#brazils-analysis)'
-
 f.write(readme)
 f.close()
 print('Brazilian analysis done!')
-
-
-# In[ ]:
-
-
-
 

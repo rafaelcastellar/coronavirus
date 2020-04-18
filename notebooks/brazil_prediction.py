@@ -16,7 +16,7 @@ import datetime
 # In[2]:
 
 
-df = pd.read_csv('../data/world_corona19_data.csv', sep=',')
+df = pd.read_csv('../data/brazil_corona19_data.csv', sep=',')
 df['date'] = df['date'].astype('datetime64[ns]')
 
 today = str(df.date.max().date())
@@ -24,42 +24,40 @@ tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
 dayAfterTomorrow = str(df.date.max().date() + datetime.timedelta(days=2))
 yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
 
-df[df['country']=='Brazil'].tail()
+df[df['state']=='SP'].tail()
 
 
 # In[3]:
 
 
-countries = df['country'].unique()
-countries
+states = df['state'].unique()
+states
 
 
 # ----------------------------
-# ### Predicting cases and death for a selected country
-
-# #### selecting a country for prediction
+# ### Predicting cases and deaths for a selected stated
 
 # In[4]:
 
 
-#inform the countries for predictions
-predictedCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'Belgium', 'France']
+#inform the states for predictions
+predictedStates = ['PI', 'CE', 'MG', 'RJ', 'SP', 'PR',]
 
 
 # In[5]:
 
 
-df_prediction = pd.DataFrame(columns=['country','ds', 'case_day', 'death_day', 'cases', 'deaths'])
+df_prediction = pd.DataFrame(columns=['state','ds', 'case_day', 'death_day', 'cases', 'deaths'])
 daysToPredict = 10
 
-for country in predictedCountries:
+for state in predictedStates:
     # preparing dataset for predictions
-    df_country = df.loc[df['country'] == country][['date','country','case_day','death_day']]
-    df_country.rename(columns={'date': 'ds'}, inplace= True)
-    df_cases = df_country.loc[:,['ds','case_day']]
+    df_state = df.loc[df['state'] == state][['date','state','case_day','death_day']]
+    df_state.rename(columns={'date': 'ds'}, inplace= True)
+    df_cases = df_state.loc[:,['ds','case_day']]
     df_cases.rename(columns={'case_day':'y'}, inplace =True)
 
-    df_deaths = df_country.loc[:,['ds','death_day']]
+    df_deaths = df_state.loc[:,['ds','death_day']]
     df_deaths.rename(columns={'death_day':'y'}, inplace =True)
     
     # fiting the model and making prediction
@@ -73,11 +71,11 @@ for country in predictedCountries:
     
     forecast_cases = m_cases.predict(future_cases)
     forecast_deaths = m_deaths.predict(future_deaths)
-    if country == 'Brazil':
+    if state == 'SP':
         fig = m_cases.plot_components(forecast_cases)
-        fig.savefig('../predictions/brazil_prophet_cases.png')
+        fig.savefig('../predictions/saoPaulo_prophet_cases.png')
         fig = m_deaths.plot_components(forecast_deaths)
-        fig.savefig('../predictions/brazil_prophet_deaths.png')
+        fig.savefig('../predictions/saoPaulo_prophet_deaths.png')
         
     p = forecast_cases.loc[:,['ds','yhat']]
     p.rename(columns={'yhat': 'y'}, inplace= True)
@@ -93,11 +91,11 @@ for country in predictedCountries:
     t['cases'] = t['case_day'].cumsum().astype('int32')
     t['death_day'] = s['y'].astype('int32')
     t['deaths'] = t['death_day'].cumsum().astype('int32')
-    t['country'] = country
+    t['state'] = state
     t['predicted?'] = t['ds'] > today # para separar o que é previsão (True) do que é dado real (False)
     df_prediction = df_prediction.append(t)
     
-df_prediction.to_csv('../predictions/worldPredicion_' + today + '.csv', index = False)
+df_prediction.to_csv('../predictions/brazilPredicion_' + today + '.csv', index = False)
 df_prediction.tail(15)
 
 
@@ -116,14 +114,14 @@ df_prediction.loc[df_prediction['ds']==dayAfterTomorrow]
 # In[8]:
 
 
-df_br = df_prediction.loc[df_prediction['country']=='Brazil']
+df_br = df_prediction.loc[df_prediction['state']=='SP']
 df_br.reset_index(0, inplace=True)
 
 x = df_br.index
 corte = df_br.loc[df_br.ds == str(today)].index[0]+1
 
 fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(10,10))
-fig.suptitle('Predicted for ' + df_br.country[0] + ' on ' + today + ' day('+ str(corte) +') ' + ' for the next ' + str(daysToPredict) + ' days')
+fig.suptitle('Predicted for ' + df_br.state[0] + ' on ' + today + ' day('+ str(corte) +') ' + ' for the next ' + str(daysToPredict) + ' days')
 fig.subplots_adjust(hspace = 0.5)
 ax1.set_title('cumulative')
 ax1.plot(x, df_br['cases'], label = 'cases')#, linewidths = 0.01)
@@ -149,7 +147,7 @@ ax3.grid()
 ax3.axvline(x=corte, ymin=0, ymax=0.9, color = 'red', label = 'prediction')
 ax3.legend()
 
-plt.savefig('../predictions/brazil_predictions.png')
+plt.savefig('../predictions/saoPaulo_predictions.png')
 
 
 # ### Generating the markdown file
@@ -157,35 +155,35 @@ plt.savefig('../predictions/brazil_predictions.png')
 # In[9]:
 
 
-f = open('../predictions/README_WORLD.md', 'w')
+f = open('../predictions/README.md', 'w')
 
 readme = '# **Predições**\n'
 readme += "Para experiência, estou fazendo predições simples sobre a quantidade de casos e mortes diárias. Como são séries temporais (*time-series*), estou usando [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) que também é desenhado para este tipo de predição de uma maneira bem mais simples. "
 readme += "Isso funciona muito bem na maioria das vezes; porém, algumas vezes há um grande salto entre os números que impactam no desempenho do modelo e leva um tempo (medições) para ser absorvido e compreendidos.\n\n"
-readme += 'Essas predições foram feitas com os dados mundiais da pandemia Covid19 até **' + today + '**.\n\n'
-readme += "Como há muitos paises para terem seus dados submetidos ao modelo de predição de uma só vez, selecionei alguns mais o Brasil:\n"
-readme += str(predictedCountries) + '.\n'
-readme += '***Dica**: você mesmo pode definir no notebook *[prediction.ipynb](../prediction.ipynb)* quais países você prefere fazer a predição.*\n\n\n'
+readme += 'Essas predições foram feitas com os dados da pandemia Covid19 no Brasil até **' + today + '**.\n\n'
+readme += "Como há muitos estados para terem seus dados submetidos ao modelo de predição de uma só vez, selecionei alguns que estão em destaque neste momento:\n"
+readme += str(predictedStates) + '.\n'
+readme += '***Dica**: você mesmo pode definir no notebook *[prediction.ipynb](../prediction.ipynb)* quais estados você prefere fazer a predição.*\n\n\n'
 
 readme += '## A predição\n'
 readme += "As predições estão sendo realizadas sobre os dados diários de casos e de mortes."
 readme += " Em seguida, os dados previstos são acumulados para que tenhamos a projeção acumulada. Estão sendo previstos os próximos " + str(daysToPredict) + " dias.\n"
 readme += 'Ao ffim, é gerado o arquivo CSV contendo todas as previsões.\n\n'
 
-readme += "#### Os últimos 5 dias da pandemia no Brasil e os próximos " + str(daysToPredict) + " dias previstos\n"
+readme += "#### Os últimos 5 dias da pandemia em São Paulo e os próximos " + str(daysToPredict) + " dias previstos\n"
 readme += "*predicted? = True* significa que são dados de predição; *=False* significa que são dados reais.\n"
-readme += df_prediction[df_prediction['country']=='Brazil'].tail(15).to_markdown()
+readme += df_prediction[df_prediction['state']=='SP'].tail(15).to_markdown()
 
-readme += "\n\n #### As curvas acumuladas previstas para o Brasil\n"
+readme += "\n\n #### As curvas acumuladas previstas para São Paulo\n"
 readme += '![](brazil_predictions.png)'
 
-readme += "\n\n O Facebook Prophet gera automaticamente gráficos do comportamento sazonal dos dados, o que provê boas informações visuais. Aqui estão sobre as predições do Brasil:\n"
+readme += "\n\n O Facebook Prophet gera automaticamente gráficos do comportamento sazonal dos dados, o que provê boas informações visuais. Aqui estão sobre as predições de São Paulo:\n"
 readme += "### Casos\n"
 readme += '![](brazil_prophet_cases.png)\n\n '
 readme += "### Mortes\n"
 readme += '![](brazil_prophet_deaths.png)\n'
 
-readme += "#### Finalmente, as predições para os países selecionados para:\n"
+readme += "#### Finalmente, as predições para os demais estados selecionados para:\n"
 readme += '**Para amanhã**\n'
 readme += df_prediction.loc[df_prediction['ds']==tomorrow].to_markdown()
 readme += '\n\n **Para depois e amanhã** \n'
@@ -194,34 +192,34 @@ readme += df_prediction.loc[df_prediction['ds']==dayAfterTomorrow].to_markdown()
 f.write(readme)
 f.close()
 
-f = open('../predictions/README_WORLD_EN.md', 'w')
+f = open('../predictions/README_EN.md', 'w')
 
 readme = '# **Predictions**\n'
 readme += "For experience, I'm running simple predictions over the cases and deaths per day. As they are time-series, I'm using [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) that is also designed for this kind of prediction in a very simpler way. "
 readme += "It works well for most of the time; sometimes there is a huge leap and it takes more time and more data to be understood.\n\n"
 readme += 'These predictions were made with Covid19 pandemic data from **' + today + '**.\n\n'
-readme += "As there are many countries to have their data predicted in a row, I selected a few of them plus Brazil to be predicted:\n"
-readme += str(predictedCountries) + '.\n'
-readme += '***Tip**: you can set yourself at the *[prediction.ipynb](../prediction.ipynb)* notebook which countries you prefer to predict*\n\n\n'
+readme += "As there are many states to have their data predicted in a row, I selected a few of them plus São Paulo to be predicted:\n"
+readme += str(predictedStates) + '.\n'
+readme += '***Tip**: you can set yourself at the *[prediction.ipynb](../prediction.ipynb)* notebook which states you prefer to predict*\n\n\n'
 
 readme += '## The prediction\n'
 readme += "As Facebook Prophet predicts time-series data and it is running the prediction over cases per day and deaths per day. After that, I compute theirs cumulatives.It is predicting for the next " + str(daysToPredict) + " days.\n"
 readme += 'By the end, a CSV file containing all the predicted data is generated.\n\n'
 
-readme += "#### The Brazil's last 5 days and next predicted " + str(daysToPredict) + " days\n"
+readme += "#### The São Paulo's last 5 days and next predicted " + str(daysToPredict) + " days\n"
 readme += "*predicted? = True* means the line is a prediction; *=False* means they are real numbers.\n"
-readme += df_prediction[df_prediction['country']=='Brazil'].tail(15).to_markdown()
+readme += df_prediction[df_prediction['state']=='SP'].tail(15).to_markdown()
 
-readme += "\n\n #### The predicted Brazil's cumulative curves\n"
+readme += "\n\n #### The predicted São Paulo's cumulative curves\n"
 readme += '![](brazil_predictions.png)'
 
-readme += "\n\nFacebook's Prophet automatically generates charts about the behaviour of the analysed and predicted data. That has a good visual information. Here are for the Brazil's prediction:\n"
+readme += "\n\nFacebook's Prophet automatically generates charts about the behaviour of the analysed and predicted data. That has a good visual information. Here are for the São Paulo's prediction:\n"
 readme += "### Cases\n"
 readme += '![](brazil_prophet_cases.png)\n\n '
 readme += "### Deaths\n"
 readme += '![](brazil_prophet_deaths.png)\n'
 
-readme += "#### Finally, the predictions for selected countries for:\n"
+readme += "#### Finally, the predictions for selected states for:\n"
 readme += '**Tomorrow**\n'
 readme += df_prediction.loc[df_prediction['ds']==tomorrow].to_markdown()
 readme += '\n\n **The day after tomorrow** \n'

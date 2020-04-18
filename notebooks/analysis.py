@@ -290,13 +290,13 @@ fig.savefig('../analysis/brazil_movingAvg.png')
 
 # ### Generating the markdown file
 
-# In[14]:
+# In[12]:
 
 
 f = open('../analysis/README_WORLD.md', 'w')
 
-readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="40"  /> English version](README_WORLD_EN.md)'
-readme += '\n\n #**Análises e monitoramento**\n'
+readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="30"  /> English version](README_WORLD_EN.md)'
+readme += '\n\n# **Análises e monitoramento**\n'
 readme += 'Estas análises são relativas aos dados da pandemia Covid19 até a data de **' + today + '**.\n\n'
 readme += 'Como existem muitos países, colocar em um gráfico todos seus dados tornaria a leitura e compreensão inviáveis, selecionei os seguintes países mais o Brasil para serem comparados entre si:'
 readme += str(monitoredCountries) + '.\n\n'
@@ -335,9 +335,9 @@ f.close()
 ###########################################
 
 f = open('../analysis/README_WORLD_EN.md', 'w')
-readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="40"  /> Versão em português](README_WORLD.md)'
+readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="30"  /> Versão em português](README_WORLD.md)'
 
-readme += '\n\n #**Analysis and monitoring**\n'
+readme += '\n\n# **Analysis and monitoring**\n'
 readme += 'These analysis are related to the Covid19 pandemic data up to **' + today + '**.\n\n'
 readme += 'As there are many countries to have all of their data plotted together, I selected a few of them plus Brazil to be compared with:'
 readme += str(monitoredCountries) + '.\n\n'

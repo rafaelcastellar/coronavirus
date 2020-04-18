@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[11]:
+# In[1]:
 
 
 #https://population.un.org/wpp/Download/Standard/CSV/
@@ -15,7 +15,7 @@ import requests
 # ## World - Countries aggretation
 # ### Fetching countries geo-data from corona.lmao.ninja's API
 
-# In[17]:
+# In[2]:
 
 
 url = "https://corona.lmao.ninja/v2/countries?sort=country"
@@ -46,7 +46,7 @@ df.tail()
 # ### Fecthing countries data from UN's API
 # #### 2019 data
 
-# In[18]:
+# In[3]:
 
 
 df_un= pd.read_csv('../data/WPP2019_TotalPopulationBySex.csv')
@@ -54,7 +54,7 @@ df_un = df_un[df_un['Time']==2019]
 df_un.tail()
 
 
-# In[19]:
+# In[4]:
 
 
 # normalizing unmatchables country names
@@ -68,7 +68,7 @@ df_un.loc[df_un['Location']=='France']
 
 # #### Merging both dataframes and saving to csv
 
-# In[20]:
+# In[5]:
 
 
 df_countries = pd.merge(df, df_un, how='inner', on=None, left_on='country', 
@@ -78,13 +78,13 @@ df_countries.drop(['_id', 'Location', 'MidPeriod'], axis=1, inplace=True)
 df_countries.tail()
 
 
-# In[21]:
+# In[6]:
 
 
 df_countries.to_csv('../data/world_countries_2019.csv',  index = False)
 
 
-# In[22]:
+# In[7]:
 
 
 df_un['Location'].unique()
@@ -93,7 +93,7 @@ df_un['Location'].unique()
 # ## Brazil - States aggretation
 # ### Fetching states geo-data from IBGE's API
 
-# In[23]:
+# In[8]:
 
 
 #https://servicodados.ibge.gov.br/api/docs/localidades
@@ -126,7 +126,7 @@ df_estados.head()
 df_estados.to_csv('../data/brazilian_states.csv',  index = False)
 
 
-# In[24]:
+# In[9]:
 
 
 print('Countries aggregation done!')

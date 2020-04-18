@@ -1,19 +1,19 @@
-# **Predições**
-Para experiência, estou fazendo predições simples sobre a quantidade de casos e mortes diárias. Como são séries temporais (*time-series*), estou usando [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) que também é desenhado para este tipo de predição de uma maneira bem mais simples. Isso funciona muito bem na maioria das vezes; porém, algumas vezes há um grande salto entre os números que impactam no desempenho do modelo e leva um tempo (medições) para ser absorvido e compreendidos.
+# **Predictions**
+For experience, I'm running simple predictions over the cases and deaths per day. As they are time-series, I'm using [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) that is also designed for this kind of prediction in a very simpler way. It works well for most of the time; sometimes there is a huge leap and it takes more time and more data to be understood.
 
-Essas predições foram feitas com os dados da pandemia Covid19 no Brasil até **2020-04-17**.
+These predictions were made with Covid19 pandemic data from **2020-04-17**.
 
-Como há muitos estados para terem seus dados submetidos ao modelo de predição de uma só vez, selecionei alguns que estão em destaque neste momento:
+As there are many states to have their data predicted in a row, I selected a few of them plus São Paulo to be predicted:
 ['PI', 'CE', 'MG', 'RJ', 'SP', 'PR'].
-***Dica**: você mesmo pode definir no notebook *[prediction.ipynb](../prediction.ipynb)* quais estados você prefere fazer a predição.*
+***Tip**: you can set yourself at the *[prediction.ipynb](../prediction.ipynb)* notebook which states you prefer to predict*
 
 
-## A predição
-As predições estão sendo realizadas sobre os dados diários de casos e de mortes. Em seguida, os dados previstos são acumulados para que tenhamos a projeção acumulada. Estão sendo previstos os próximos 10 dias.
-Ao ffim, é gerado o arquivo CSV contendo todas as previsões.
+## The prediction
+As Facebook Prophet predicts time-series data and it is running the prediction over cases per day and deaths per day. After that, I compute theirs cumulatives.It is predicting for the next 10 days.
+By the end, a CSV file containing all the predicted data is generated.
 
-#### Os últimos 5 dias da pandemia em São Paulo e os próximos 10 dias previstos
-*predicted? = True* significa que são dados de predição; *=False* significa que são dados reais.
+#### The São Paulo's last 5 days and next predicted 10 days
+*predicted? = True* means the line is a prediction; *=False* means they are real numbers.
 |    | state   | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:--------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
 | 47 | SP      | 2020-04-13 00:00:00 |        140 |          20 |    8895 |      608 | False        |
@@ -32,17 +32,17 @@ Ao ffim, é gerado o arquivo CSV contendo todas as previsões.
 | 60 | SP      | 2020-04-26 00:00:00 |        716 |          55 |   19536 |     1434 | True         |
 | 61 | SP      | 2020-04-27 00:00:00 |        687 |          56 |   20223 |     1490 | True         |
 
- #### As curvas acumuladas previstas para São Paulo
+ #### The predicted São Paulo's cumulative curves
 ![](brazil_predictions.png)
 
- O Facebook Prophet gera automaticamente gráficos do comportamento sazonal dos dados, o que provê boas informações visuais. Aqui estão sobre as predições de São Paulo:
-### Casos
+Facebook's Prophet automatically generates charts about the behaviour of the analysed and predicted data. That has a good visual information. Here are for the São Paulo's prediction:
+### Cases
 ![](brazil_prophet_cases.png)
 
- ### Mortes
+ ### Deaths
 ![](brazil_prophet_deaths.png)
-#### Finalmente, as predições para os demais estados selecionados para:
-**Para amanhã**
+#### Finally, the predictions for selected states for:
+**Tomorrow**
 |    | state   | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:--------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
 | 29 | PI      | 2020-04-18 00:00:00 |          6 |           0 |     108 |        8 | True         |
@@ -52,7 +52,7 @@ Ao ffim, é gerado o arquivo CSV contendo todas as previsões.
 | 52 | SP      | 2020-04-18 00:00:00 |        609 |          48 |   13450 |      976 | True         |
 | 37 | PR      | 2020-04-18 00:00:00 |         58 |           2 |     932 |       44 | True         |
 
- **Para depois e amanhã** 
+ **The day after tomorrow** 
 |    | state   | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:--------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
 | 30 | PI      | 2020-04-19 00:00:00 |          7 |           0 |     115 |        8 | True         |
