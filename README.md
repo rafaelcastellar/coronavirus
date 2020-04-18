@@ -17,7 +17,7 @@ Eu o atualizo diariamente por volta das 07h da manhã (horário de Brasília)
 ## Análises do Mundo
 [Análises da pandemia pelo mundo comparando com o Brasil encontram-se aqui.](analysis/README_WORLD.md).
 
-## Predições do Brasil (em construção)
+## Predições do Brasil
 [Aqui estão detalhes das predições para os próximos dias dos estados do Brasil](predictions/README.md).
 
 ## Predições do Mundo

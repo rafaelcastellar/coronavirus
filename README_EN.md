@@ -18,7 +18,7 @@ I will update it in a daily base around 7am in Brazil (or 4am UTC).
 ## World's analysis
 [The analysis over pandemic data over some countries and Brazil can be found here](analysis/README_WORLD_EN.md).
 
-## Brazil's prediction (under construction)
+## Brazil's prediction
 [The detailed pandemic prediction for the states of Brazil can be found here](predictions/README_EN.md).
 
 ## World's prediction
