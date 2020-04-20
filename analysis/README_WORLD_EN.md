@@ -1,7 +1,7 @@
 [<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="30"  /> Versão em português](README_WORLD.md)
 
 # **Analysis and monitoring**
-These analysis are related to the Covid19 pandemic data up to **2020-04-17**.
+These analysis are related to the Covid19 pandemic data up to **2020-04-19**.
 
 As there are many countries to have all of their data plotted together, I selected a few of them plus Brazil to be compared with:['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'France', 'Belgium'].
 
@@ -10,25 +10,25 @@ Some countries are not in UN dataset, so we can not analyse them by population. 
 *Tip: you can set yourself at the analysis notebook which countries you prefer to compare*
 
 ## Top 5 deadliest countries + Brazil
-|     | country    |   day | date                |   cases |   case_day |   deaths |   death_day |   cases_million |   deaths_million |   avg7_cases_million |   avg7_deaths_million |   avg7_recoveries_million |
-|----:|:-----------|------:|:--------------------|--------:|-----------:|---------:|------------:|----------------:|-----------------:|---------------------:|----------------------:|--------------------------:|
-|   1 | Belgium    |    74 | 2020-04-17 00:00:00 |   36138 |       1329 |     5163 |         306 |           115.2 |             26.5 |                  117 |                    26 |                        29 |
-|   2 | San Marino |    51 | 2020-04-17 00:00:00 |     435 |          9 |       39 |           1 |           265.8 |             29.5 |                  383 |                    21 |                        29 |
-|   3 | Andorra    |    47 | 2020-04-17 00:00:00 |     696 |         23 |       35 |           2 |           298.1 |             25.9 |                  175 |                    16 |                       222 |
-|   4 | France     |    85 | 2020-04-17 00:00:00 |  149130 |       2039 |    18703 |         762 |            31.3 |             11.7 |                  125 |                    12 |                        21 |
-|   5 | Spain      |    77 | 2020-04-17 00:00:00 |  190839 |       5891 |    20002 |         687 |           126   |             14.7 |                   99 |                    11 |                        58 |
-| 140 | Brazil     |    52 | 2020-04-17 00:00:00 |   33682 |       3257 |     2141 |         217 |            15.4 |              1   |                    9 |                     0 |                         9 |
+|     | country        |   day | date                |   cases |   case_day |   deaths |   death_day |   cases_million |   deaths_million |   avg7_cases_million |   avg7_deaths_million |   avg7_recoveries_million |
+|----:|:---------------|------:|:--------------------|--------:|-----------:|---------:|------------:|----------------:|-----------------:|---------------------:|----------------------:|--------------------------:|
+|   1 | Belgium        |    76 | 2020-04-19 00:00:00 |   38496 |       1313 |     5683 |         230 |           113.8 |             19.9 |                  109 |                    25 |                        28 |
+|   2 | San Marino     |    53 | 2020-04-19 00:00:00 |     461 |          6 |       39 |           0 |           177.2 |              0   |                  442 |                    16 |                        29 |
+|   3 | Andorra        |    49 | 2020-04-19 00:00:00 |     713 |          9 |       36 |           1 |           116.7 |             13   |                  138 |                    12 |                       198 |
+|   4 | France         |    87 | 2020-04-19 00:00:00 |  154097 |       4948 |    19744 |         399 |            76   |              6.1 |                   71 |                    11 |                        21 |
+|   5 | United Kingdom |    80 | 2020-04-19 00:00:00 |  121172 |       5858 |    16095 |         597 |            86.7 |              8.8 |                   76 |                    11 |                         0 |
+| 141 | Brazil         |    54 | 2020-04-19 00:00:00 |   38654 |       1996 |     2462 |         108 |             9.5 |              0.5 |                   11 |                     0 |                        14 |
 
 
  ## Top 5 most transmissible countries + Brazil
 |    | country    |   day | date                |   cases |   case_day |   deaths |   death_day |   cases_million |   deaths_million |   avg7_cases_million |   avg7_deaths_million |   avg7_recoveries_million |
 |---:|:-----------|------:|:--------------------|--------:|-----------:|---------:|------------:|----------------:|-----------------:|---------------------:|----------------------:|--------------------------:|
-|  1 | San Marino |    51 | 2020-04-17 00:00:00 |     435 |          9 |       39 |           1 |           265.8 |             29.5 |                  383 |                    21 |                        29 |
-|  2 | Andorra    |    47 | 2020-04-17 00:00:00 |     696 |         23 |       35 |           2 |           298.1 |             25.9 |                  175 |                    16 |                       222 |
-|  3 | Ireland    |    49 | 2020-04-17 00:00:00 |   13980 |        709 |      530 |          44 |           145.2 |              9   |                  172 |                     7 |                         1 |
-|  4 | France     |    85 | 2020-04-17 00:00:00 |  149130 |       2039 |    18703 |         762 |            31.3 |             11.7 |                  125 |                    12 |                        21 |
-|  5 | Belgium    |    74 | 2020-04-17 00:00:00 |   36138 |       1329 |     5163 |         306 |           115.2 |             26.5 |                  117 |                    26 |                        29 |
-| 50 | Brazil     |    52 | 2020-04-17 00:00:00 |   33682 |       3257 |     2141 |         217 |            15.4 |              1   |                    9 |                     0 |                         9 |
+|  1 | San Marino |    53 | 2020-04-19 00:00:00 |     461 |          6 |       39 |           0 |           177.2 |              0   |                  442 |                    16 |                        29 |
+|  2 | Ireland    |    51 | 2020-04-19 00:00:00 |   15251 |        493 |      610 |          39 |           101   |              8   |                  163 |                     8 |                         1 |
+|  3 | Andorra    |    49 | 2020-04-19 00:00:00 |     713 |          9 |       36 |           1 |           116.7 |             13   |                  138 |                    12 |                       198 |
+|  4 | Qatar      |    51 | 2020-04-19 00:00:00 |    5448 |        440 |        8 |           0 |           155.4 |              0   |                  124 |                     0 |                        12 |
+|  5 | Belgium    |    76 | 2020-04-19 00:00:00 |   38496 |       1313 |     5683 |         230 |           113.8 |             19.9 |                  109 |                    25 |                        28 |
+| 45 | Brazil     |    54 | 2020-04-19 00:00:00 |   38654 |       1996 |     2462 |         108 |             9.5 |              0.5 |                   11 |                     0 |                        14 |
 ----------------------
 ## World' analysis
 ### Cases and deaths
