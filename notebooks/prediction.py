@@ -5,6 +5,7 @@
 
 
 #https://github.com/pomber/covid19
+print('Initializing world\'s analysis!')
 import numpy as np
 import pandas as pd
 from fbprophet import Prophet
@@ -97,7 +98,7 @@ for country in predictedCountries:
     t['predicted?'] = t['ds'] > today # para separar o que é previsão (True) do que é dado real (False)
     df_prediction = df_prediction.append(t)
     
-df_prediction.to_csv('../predictions/worldPredicion_' + today + '.csv', index = False)
+df_prediction.to_csv('../predictions/worldPrediction_' + today + '.csv', index = False)
 df_prediction.tail(15)
 
 
@@ -229,7 +230,7 @@ readme += df_prediction.loc[df_prediction['ds']==dayAfterTomorrow].to_markdown()
 
 f.write(readme)
 f.close()
-print('Predictions done!')
+print('World\'s predictions done!')
 
 
 # In[10]:

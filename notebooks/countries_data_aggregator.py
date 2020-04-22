@@ -6,7 +6,7 @@
 
 #https://population.un.org/wpp/Download/Standard/CSV/
 #https://github.com/novelcovid/api
-
+print('Initializing country/state data aggregator!')
 import pandas as pd
 import json
 import requests

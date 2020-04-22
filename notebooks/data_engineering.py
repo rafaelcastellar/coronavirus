@@ -4,6 +4,7 @@
 # In[1]:
 
 
+print('Initializing data engineering!')
 import pandas as pd
 import numpy as np
 from pandas.io.json import json_normalize

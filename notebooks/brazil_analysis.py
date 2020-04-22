@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 #https://github.com/pomber/covid19
+print('Initializing brazilian analysis!')
 import numpy as np
 import pandas as pd
 import folium, html, json
@@ -12,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[3]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -26,7 +27,7 @@ yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
 df.tail()
 
 
-# In[3]:
+# In[4]:
 
 
 df_brasil = pd.merge(df[df['date']==today], df_estados, how='inner', on=None, left_on='state', 
@@ -38,7 +39,7 @@ df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_
 df_brasil.tail()
 
 
-# In[4]:
+# In[5]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -51,7 +52,7 @@ for state in state_geo['features']:
 df_estados.tail()
 
 
-# In[5]:
+# In[6]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -114,7 +115,7 @@ m
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[6]:
+# In[7]:
 
 
 cols = ['state', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
@@ -128,7 +129,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[7]:
+# In[8]:
 
 
 df_top_cases = df[df['date']==today].sort_values('avg7_cases', ascending = False)
@@ -143,7 +144,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[8]:
+# In[9]:
 
 
 #inform the countries you want to analise
@@ -151,7 +152,7 @@ monitoredStates = df_top_deaths['state'].head(10).to_numpy()
 monitoredStates
 
 
-# In[9]:
+# In[10]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -192,7 +193,7 @@ fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 # ### Generating the markdown file
 
-# In[10]:
+# In[11]:
 
 
 f = open('../analysis/README.md', 'w')
@@ -257,4 +258,10 @@ readme += '\n\n [Comparison of Brazil and among some other contries around the w
 f.write(readme)
 f.close()
 print('Brazilian analysis done!')
+
+
+# In[ ]:
+
+
+
 
