@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
 print('Initializing data engineering!')
@@ -14,7 +14,7 @@ import json, requests
 # ### World data engineering
 # #### Fetching worldwide data
 
-# In[3]:
+# In[2]:
 
 
 # df = pd.read_json('https://pomber.github.io/covid19/timeseries.json')
@@ -32,7 +32,7 @@ j = json.loads(req.text)
 
 # #### Fetching countries's pandemic data from Pomber's JSON to a dataframe 
 
-# In[4]:
+# In[3]:
 
 
 # Loading countries names to dict
@@ -61,7 +61,7 @@ df[df['country']=='France'].tail()
 
 # #### Feature engineering
 
-# In[5]:
+# In[4]:
 
 
 for country in countries:
@@ -124,13 +124,13 @@ df.tail()
 
 # #### Saving CSV
 
-# In[8]:
+# In[5]:
 
 
 df.to_csv('../data/world_corona19_data.csv', index = False)
 
 
-# In[9]:
+# In[6]:
 
 
 df[df['country']=='France'].tail()
@@ -138,7 +138,7 @@ df[df['country']=='France'].tail()
 
 # #### countries not located in UN dataset
 
-# In[10]:
+# In[7]:
 
 
 for country in countries:
@@ -150,7 +150,7 @@ for country in countries:
 
 # ### Brazil data engineering
 
-# In[14]:
+# In[8]:
 
 
 df = pd.read_csv('../data/gov_brazil_corona19_data.csv', sep=';')
@@ -162,7 +162,7 @@ df.tail()
 
 # #### Feature engineering
 
-# In[16]:
+# In[9]:
 
 
 states = df.state.unique()

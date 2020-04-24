@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[47]:
+# In[7]:
 
 
 #https://github.com/pomber/covid19
@@ -13,21 +13,21 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[48]:
+# In[18]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
 df_estados = pd.read_csv('../data/brazilian_states.csv')
 df['date'] = df['date'].astype('datetime64[ns]')
 
-today = (df.date.max())
+today = str(df.date.max().date())
 tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
 yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
 
 df.tail()
 
 
-# In[49]:
+# In[19]:
 
 
 df_brasil = pd.merge(df[df['date']==today], df_estados, how='inner', on=None, left_on='state', 
@@ -39,7 +39,7 @@ df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_
 df_brasil.tail()
 
 
-# In[50]:
+# In[20]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -52,7 +52,7 @@ for state in state_geo['features']:
 df_estados.tail()
 
 
-# In[45]:
+# In[21]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -115,7 +115,7 @@ m
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[46]:
+# In[22]:
 
 
 cols = ['state', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
@@ -129,7 +129,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[8]:
+# In[23]:
 
 
 df_top_cases = df[df['date']==today].sort_values('avg7_cases', ascending = False)
@@ -144,7 +144,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[9]:
+# In[24]:
 
 
 #inform the countries you want to analise
@@ -152,7 +152,7 @@ monitoredStates = df_top_deaths['state'].head(10).to_numpy()
 monitoredStates
 
 
-# In[10]:
+# In[25]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -193,7 +193,7 @@ fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 # ### Generating the markdown file
 
-# In[11]:
+# In[26]:
 
 
 f = open('../analysis/README.md', 'w')
@@ -260,7 +260,7 @@ f.close()
 print('Brazilian analysis done!')
 
 
-# In[67]:
+# In[27]:
 
 
 # df[df['state']=='SP'][['date','death_day']]
