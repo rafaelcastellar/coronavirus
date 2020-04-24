@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 print('Initializing data engineering!')
@@ -14,7 +14,7 @@ import json, requests
 # ### World data engineering
 # #### Fetching worldwide data
 
-# In[2]:
+# In[3]:
 
 
 # df = pd.read_json('https://pomber.github.io/covid19/timeseries.json')
@@ -32,7 +32,7 @@ j = json.loads(req.text)
 
 # #### Fetching countries's pandemic data from Pomber's JSON to a dataframe 
 
-# In[3]:
+# In[4]:
 
 
 # Loading countries names to dict
@@ -61,7 +61,7 @@ df[df['country']=='France'].tail()
 
 # #### Feature engineering
 
-# In[4]:
+# In[5]:
 
 
 for country in countries:
@@ -124,13 +124,13 @@ df.tail()
 
 # #### Saving CSV
 
-# In[5]:
+# In[8]:
 
 
 df.to_csv('../data/world_corona19_data.csv', index = False)
 
 
-# In[6]:
+# In[9]:
 
 
 df[df['country']=='France'].tail()
@@ -138,7 +138,7 @@ df[df['country']=='France'].tail()
 
 # #### countries not located in UN dataset
 
-# In[7]:
+# In[10]:
 
 
 for country in countries:
@@ -150,18 +150,25 @@ for country in countries:
 
 # ### Brazil data engineering
 
-# In[8]:
+# In[14]:
 
 
 df = pd.read_csv('../data/gov_brazil_corona19_data.csv', sep=';')
 df.rename(columns={'regiao': 'region', 'estado':'state', 'data':'date','casosNovos': 'case_day', 'casosAcumulados':'cases', 'obitosNovos':'death_day','obitosAcumulados':'deaths'}, inplace= True)
+df['date'] = df['date'].astype('datetime64[ns]')
 
 df.tail()
 
 
+# In[15]:
+
+
+df.dtypes
+
+
 # #### Feature engineering
 
-# In[9]:
+# In[16]:
 
 
 states = df.state.unique()
@@ -205,13 +212,13 @@ df['death_day'] = df['death_day'].astype('int')
 df.tail()
 
 
-# In[10]:
+# In[17]:
 
 
 df.to_csv('../data/brazil_corona19_data.csv', index = False)
 
 
-# In[11]:
+# In[18]:
 
 
 # df[df['country']=='Belgium']
