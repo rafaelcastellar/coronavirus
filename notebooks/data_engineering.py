@@ -160,12 +160,6 @@ df['date'] = df['date'].astype('datetime64[ns]')
 df.tail()
 
 
-# In[15]:
-
-
-df.dtypes
-
-
 # #### Feature engineering
 
 # In[16]:

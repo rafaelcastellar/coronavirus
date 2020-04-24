@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[47]:
 
 
 #https://github.com/pomber/covid19
@@ -13,21 +13,21 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[3]:
+# In[48]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
 df_estados = pd.read_csv('../data/brazilian_states.csv')
 df['date'] = df['date'].astype('datetime64[ns]')
 
-today = str(df.date.max().date())
+today = (df.date.max())
 tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
 yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
 
 df.tail()
 
 
-# In[4]:
+# In[49]:
 
 
 df_brasil = pd.merge(df[df['date']==today], df_estados, how='inner', on=None, left_on='state', 
@@ -39,7 +39,7 @@ df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_
 df_brasil.tail()
 
 
-# In[5]:
+# In[50]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -52,7 +52,7 @@ for state in state_geo['features']:
 df_estados.tail()
 
 
-# In[6]:
+# In[45]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -115,7 +115,7 @@ m
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[7]:
+# In[46]:
 
 
 cols = ['state', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
@@ -258,6 +258,12 @@ readme += '\n\n [Comparison of Brazil and among some other contries around the w
 f.write(readme)
 f.close()
 print('Brazilian analysis done!')
+
+
+# In[67]:
+
+
+# df[df['state']=='SP'][['date','death_day']]
 
 
 # In[ ]:
