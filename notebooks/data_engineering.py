@@ -7,6 +7,7 @@
 print('Initializing data engineering!')
 import pandas as pd
 import numpy as np
+import datetime
 from pandas.io.json import json_normalize
 import json, requests
 
@@ -206,13 +207,81 @@ df['death_day'] = df['death_day'].astype('int')
 df.tail()
 
 
-# In[17]:
+# In[10]:
 
 
 df.to_csv('../data/brazil_corona19_data.csv', index = False)
 
 
-# In[18]:
+# ### São Paulo data engineering
+
+# In[15]:
+
+
+df = pd.read_csv('https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv', sep=';')
+df.rename(columns={'munic': 'city', 'casos': 'cases','obitos':'deaths'}, inplace= True)
+df['date'] = pd.to_datetime(dict(year=2020, month=df.mes, day=df.dia))
+df.fillna(0, inplace = True)
+df.drop(['dia','mes'], inplace=True, axis=1)
+
+df = df[~df['city'].isin(['ignorado','outro estado', 'total geral', 'outro pais'])] 
+
+df.tail()
+
+
+# #### Feature engineering
+
+# In[12]:
+
+
+cities = df.city.unique()
+df.drop(df[df['cases'] == 0 ].index, axis=0, inplace= True)
+
+for city in cities:
+    qtdeDays = len(df[df.city == city])+1
+    df.loc[df.city == city, 'day'] = (np.arange(1,qtdeDays,1))
+#     df.drop(df[case].index, inplace=True)
+    # valores diários
+    df.loc[df.city == city, 'case_day'] = df[df.city == city]['cases'].diff()    
+    df.loc[df.city == city, 'death_day'] = df[df.city == city]['deaths'].diff()
+#     df.loc[df.city == city, 'recovery_day'] = df[df.city == city]['recoveries'].diff()
+
+    # % daily variations
+    df.loc[df.city == city, '%var_case_day'] = ((df[df.city == city]['case_day'] - df[df.city == city]['case_day'].shift()) / df[df.city == city]['case_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+    df.loc[df.city == city, '%var_death_day'] = ((df[df.city == city]['death_day'] - df[df.city == city]['death_day'].shift()) / df[df.city == city]['death_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+#     df.loc[df.city == city, '%var_recovery_day'] = ((df[df.city == city]['recovery_day'] - df[df.city == city]['recovery_day'].shift()) / df[df.city == city]['recovery_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+    
+    # Igualo o valor da primeira linha igual ao primeiro número do acumulado, pois se o acumulado começa em 1 o primeiro diff fica igual a 0
+    df.loc[(df.city == city) & (df.day == 1), 'case_day']= df.loc[(df.city == city) & (df.day==1), 'cases']
+    df.loc[(df.city == city) & (df.day == 1), 'death_day']= df.loc[(df.city == city) & (df.day==1), 'deaths']
+    
+    # moving averages (from last 7 days)
+    df.loc[df.city == city, 'avg7_cases'] = df[df.city == city]['case_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+    df.loc[df.city == city, 'avg7_deaths'] = df[df.city == city]['death_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+    df.loc[df.city == city, 'perc_death'] = (df[df.city == city]['deaths']/df[df.city == city]['cases']*100).round(2) 
+    df.loc[df.city == city, 'avg7_perc_death'] = df[df.city == city]['perc_death'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+
+df['perc_death'] = (df['deaths']/df['cases'] * 100).round(2)
+# df['perc_recovery'] = (df['recoveries']/df['cases'] * 100).round(2)
+# df['active_cases'] = df['cases'] - df['recoveries'] - df['deaths']
+
+df.fillna(0, inplace=True)
+
+df['day'] = df['day'].astype('int')
+df['case_day'] = df['case_day'].astype('int')
+df['death_day'] = df['death_day'].astype('int')
+# df['recovery_day'] = df['recovery_day'].astype('int')
+
+df.tail()
+
+
+# In[13]:
+
+
+df.to_csv('../data/saoPaulo_corona19_data.csv', index = False)
+
+
+# In[14]:
 
 
 # df[df['country']=='Belgium']

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[1]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[18]:
+# In[2]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -23,11 +23,12 @@ df['date'] = df['date'].astype('datetime64[ns]')
 today = str(df.date.max().date())
 tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
 yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
+qtdeMonitored = 10
 
 df.tail()
 
 
-# In[19]:
+# In[3]:
 
 
 df_brasil = pd.merge(df[df['date']==today], df_estados, how='inner', on=None, left_on='state', 
@@ -39,7 +40,7 @@ df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_
 df_brasil.tail()
 
 
-# In[20]:
+# In[4]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -52,11 +53,11 @@ for state in state_geo['features']:
 df_estados.tail()
 
 
-# In[21]:
+# In[5]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
-m = folium.Map(location=[-15.75, -47.95], zoom_start=4)
+m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
 
 # folium.Choropleth(
 #     geo_data=state_geo,
@@ -83,39 +84,81 @@ folium.Choropleth(
     legend_name= '% letalidade (media movel 7 ultimos dias)'
 ).add_to(m)
 
-for key,estado in df_estados.iterrows():
-    dados = df_brasil[df_brasil['sigla_estado']==estado.sigla_estado]
-    detalhes = '<center><b>'+dados.nome_estado.values[0] + ' (' + dados.sigla_estado.values[0] + ')</b></center>\n'
-    detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
-    detalhes += ', letalidade: ' + str(dados.perc_death.values[0]) + '%'
-#     detalhes = udetalhes
+# for key,estado in df_estados.iterrows():
+#     dados = df_brasil[df_brasil['sigla_estado']==estado.sigla_estado]
+#     detalhes = '<center><b>'+dados.nome_estado.values[0] + ' (' + dados.sigla_estado.values[0] + ')</b></center>\n'
+#     detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
+#     detalhes += ', letalidade: ' + str(dados.perc_death.values[0]) + '%'
+# #     detalhes = udetalhes
     
-    folium.CircleMarker(
-        location=[estado.lat,estado.lon],
-        radius=5,
-#         popup=detalhes,
-        color='#727b7d',
-        fill=True,
-        fill_color='#727b7d',
-        tooltip=detalhes,
-        icon=folium.Icon(color='blue',
-             icon_color='black',
-             icon='info-sign',
-             prefix='es')
-    ).add_to(m)
+#     folium.CircleMarker(
+#         location=[estado.lat,estado.lon],
+#         radius=5,
+# #         popup=detalhes,
+#         color='#727b7d',
+#         fill=True,
+#         fill_color='#727b7d',
+#         tooltip=detalhes,
+#         icon=folium.Icon(color='blue',
+#              icon_color='black',
+#              icon='info-sign',
+#              prefix='es')
+#     ).add_to(m)
 
 folium.LayerControl().add_to(m)
 
-m.save('../analysis/brazilMap.html')
+m.save('../analysis/maps/brazilMapDeaths.html')
 m
+
+
+# In[6]:
+
+
+m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
+folium.Choropleth(
+    geo_data=state_geo,
+    name='Contaminações',
+    data=df_brasil,
+    columns=['id_estado', 'avg7_cases'],
+    key_on='feature.properties.codarea',
+    fill_color='RdPu',#'YlGn',
+    fill_opacity=0.7,
+    line_opacity=0.3,
+    legend_name='media movel de casos (7 ultimos dias)'
+).add_to(m)
+folium.LayerControl().add_to(m)
+
+m.save('../analysis/maps/brazilMapCases.html')
+m
+
+
+# In[8]:
+
+
+import imgkit
+print('Gerando imagens dos mapas do Brasil')
+options = {
+    'format': 'png',
+#     'crop-h': '3',
+#     'crop-w': '3',
+#     'crop-x': '3',
+#     'crop-y': '3',
+    'width':'300',
+    'encoding': "UTF-8",
+    'custom-header' : [
+        ('Accept-Encoding', 'gzip')
+    ],
+}
+imgkit.from_file('../analysis/maps/brazilMapDeathsContainer.html', '../analysis/maps/brazilMapDeaths.png', options=options)
+imgkit.from_file('../analysis/maps/brazilMapCasesContainer.html', '../analysis/maps/brazilMapCases.png', options=options)
 
 
 # ----------------------------
 # ### Brasil - Analysis and monitoring
 
-# #### Top 5 deadliest countries + Brazil
+# #### Top 5 deadliest states 
 
-# In[22]:
+# In[9]:
 
 
 cols = ['state', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
@@ -123,20 +166,20 @@ df_top_deaths = df[df['date']==today].sort_values('avg7_perc_death', ascending =
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
-df_top_deaths = df_top_deaths[cols].head(10)
+df_top_deaths = df_top_deaths[cols].head(qtdeMonitored)
 df_top_deaths
 
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[23]:
+# In[10]:
 
 
 df_top_cases = df[df['date']==today].sort_values('avg7_cases', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
-df_top_cases = df_top_cases[cols].head(10)
+df_top_cases = df_top_cases[cols].head(qtdeMonitored)
 df_top_cases
 
 
@@ -144,15 +187,15 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[24]:
+# In[11]:
 
 
 #inform the countries you want to analise
-monitoredStates = df_top_deaths['state'].head(10).to_numpy()
+monitoredStates = df_top_deaths['state'].head(qtdeMonitored).to_numpy()
 monitoredStates
 
 
-# In[25]:
+# In[12]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -193,7 +236,7 @@ fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 # ### Generating the markdown file
 
-# In[26]:
+# In[13]:
 
 
 f = open('../analysis/README.md', 'w')
@@ -203,17 +246,21 @@ readme += '\n\n# **Análises e monitoramento**\n'
 
 readme += '\n### Letalidade dos estados brasileiros\n'
 readme += 'O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.\n'
-readme += '<img src="brazilMap.png" width="100%"  />'
+readme += '<img src="maps/brazilMapDeaths.png" width="100%"  />'
+
+readme += '\n### Transmissão dos estados brasileiros\n'
+readme += 'O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada estado.\n'
+readme += '<img src="maps/brazilMapCases.png" width="100%"  />'
 # readme += '[![Clique aqui para o mapa atualizado](brazilMap.png)](brazilMap.html)'
 
 readme += '\n\nEstas análises são relativas aos dados da pandemia Covid19 no Brasil até a data de **' + today + '**.\n\n'
-readme += 'Como existem muitos estados, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionados os 10 mais mortais:'
+readme += 'Como existem muitos estados, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionados os ' + str(qtdeMonitored) + ' mais mortais:'
 readme += str(monitoredStates) + '.\n\n'
-readme += '\n***Dica**: você pode alterar você mesmo neste notebook quais estados você prefere comparar.*\n\n'
-readme += '## Top 10 estados mais letais do Brasil\n'
+readme += '\n***Dica**: você mesmo pode alterar neste notebook quais estados você prefere comparar.*\n\n'
+readme += '## Top ' + str(qtdeMonitored) + ' estados mais letais do Brasil\n'
 readme += df_top_deaths.to_markdown()
 # readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top 10 estados mais transmissíveis do Brasil\n'
+readme += '\n\n\n ## Top ' + str(qtdeMonitored) + ' estados mais transmissíveis do Brasil\n'
 readme += df_top_cases.to_markdown()
 #tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
 
@@ -236,17 +283,22 @@ readme += '\n\n# **Analysis and monitoring**\n'
 
 readme += '\n### Lethality of the brazilian states\n'
 readme += 'The lethality level shown in this map is defined from the moving average of the last 7 days of each state lethality.\n'
-readme += '<img src="brazilMap.png" width="100%"  />'
+readme += '<img src="brazilMapDeaths.png" width="100%"  />'
 # readme += '[![Click here for updated map](brazilMap.png)](brazilMap.html)'
 
+readme += '\n### Transmission of the brazilian states\n'
+readme += 'O level of transmission on the map is defined from the moving average of the last 7 days of the cumulative cases of each state.\n'
+readme += '<img src="maps/brazilMapCases.png" width="100%"  />'
+# readme += '[![Clique aqui para o mapa atualizado](brazilMap.png)](brazilMap.html)'
+
 readme += '\n\nThese analysis are related to Brazil Convid19 pandemic data up to **' + today + '**.\n\n'
-readme += 'As there are too many states to have their data plotted together, were selected the 10 deadliest:'
+readme += 'As there are too many states to have their data plotted together, were selected the ' + str(qtdeMonitored) + ' deadliest:'
 readme += str(monitoredStates) + '.\n\n'
 readme += '\n***Tip**: you can yourself select in this notebook which states you prefer to compare.*\n\n'
-readme += '## Top 10 deadliest states of Brazil\n'
+readme += '## Top ' + str(qtdeMonitored) + ' deadliest states of Brazil\n'
 readme += df_top_deaths.to_markdown()
 # readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top 10 most transmissible states of Brazil\n'
+readme += '\n\n\n ## Top ' + str(qtdeMonitored) + ' most transmissible states of Brazil\n'
 readme += df_top_cases.to_markdown()
 #tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
 
@@ -254,13 +306,13 @@ readme += '\n----------------------\n'
 readme += '## Cases and deaths\n'
 readme += '![](brazilian_states_cases_deaths.png)'
 
-readme += '\n\n [Comparison of Brazil and among some other contries around the world can be found here.](README_WORLD_EN.md#brazils-analysis)'
+readme += '\n\n [Comparison of Brazil among other contries around the world can be found here.](README_WORLD_EN.md#brazils-analysis)'
 f.write(readme)
 f.close()
 print('Brazilian analysis done!')
 
 
-# In[27]:
+# In[ ]:
 
 
 # df[df['state']=='SP'][['date','death_day']]

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[13]:
 
 
 #https://population.un.org/wpp/Download/Standard/CSV/
@@ -15,7 +15,7 @@ import requests
 # ## World - Countries aggretation
 # ### Fetching countries geo-data from corona.lmao.ninja's API
 
-# In[2]:
+# In[14]:
 
 
 url = "https://corona.lmao.ninja/v2/countries?sort=country"
@@ -46,7 +46,7 @@ df.tail()
 # ### Fecthing countries data from UN's API
 # #### 2019 data
 
-# In[3]:
+# In[15]:
 
 
 df_un= pd.read_csv('../data/WPP2019_TotalPopulationBySex.csv')
@@ -54,7 +54,7 @@ df_un = df_un[df_un['Time']==2019]
 df_un.tail()
 
 
-# In[4]:
+# In[16]:
 
 
 # normalizing unmatchables country names
@@ -68,7 +68,7 @@ df_un.loc[df_un['Location']=='France']
 
 # #### Merging both dataframes and saving to csv
 
-# In[5]:
+# In[17]:
 
 
 df_countries = pd.merge(df, df_un, how='inner', on=None, left_on='country', 
@@ -90,10 +90,9 @@ df_countries.to_csv('../data/world_countries_2019.csv',  index = False)
 df_un['Location'].unique()
 
 
-# ## Brazil - States aggretation
-# ### Fetching states geo-data from IBGE's API
+# ### Fetching São Paulo cities geo-data from IBGE's API
 
-# In[8]:
+# In[12]:
 
 
 #https://servicodados.ibge.gov.br/api/docs/localidades
@@ -105,28 +104,27 @@ headers = {
     'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
     'Connection': 'keep-alive',
 }
-estado_jsons = requests.get("https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&resolucao=2",
+estado_jsons = requests.get("https://servicodados.ibge.gov.br/api/v2/malhas/35/?formato=application/vnd.geo+json&resolucao=5",
                            headers=headers)
 estado_json = estado_jsons.json()
 
-f = open('../data/brasil-estados.json', 'w')
+f = open('../data/saoPaulo-cidades.json', 'w')
 json.dump(estado_json, f)
 f.close()
 
-estados = requests.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados/",
+cidades = requests.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios",
                        headers=headers).json()
 dic = []
-for estado in estados:
-    linha = {'id_estado':estado['id'], 'nome_estado': estado['nome'], 'sigla_estado': estado['sigla'],
-              'id_regiao':estado['regiao']['id'],  'nome_regiao':estado['regiao']['nome'], 'sigla_regiao':estado['regiao']['sigla']}
+for cidade in cidades:
+    linha = {'id':cidade['id'], 'nome': cidade['nome']}
     dic.append(linha)
-        
-df_estados = pd.DataFrame.from_dict(dic)
-df_estados.head()
-df_estados.to_csv('../data/brazilian_states.csv',  index = False)
+
+df_cidades = pd.DataFrame.from_dict(dic)
+df_cidades.head()
+df_cidades.to_csv('../data/saoPaulo_cities.csv',  index = False)
 
 
-# In[9]:
+# In[10]:
 
 
 print('Countries aggregation done!')

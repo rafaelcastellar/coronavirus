@@ -77,18 +77,18 @@ monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France
 # In[7]:
 
 
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
+fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
 fig.tight_layout(pad=5.0)
 
 ax1.set_title("Cumulatative cases")
 ax1.set_xlabel("days from the first case")
 ax1.grid(color='gray', alpha = 0.4)
 
-ax2.set_title("Cumulative deaths")
+ax2.set_title("Cases - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
 
-ax3.set_title("Cases - moving average (last 7 days)")
+ax3.set_title("Cumulative deaths")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
@@ -96,41 +96,49 @@ ax4.set_title("Deaths - moving average (last 7 days)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
+ax5.set_title("Cumulative recoveries")
+ax5.set_xlabel("days from the first case")
+ax5.grid(color='gray', alpha = 0.4)
+
+ax6.set_title("Recoveries - moving average (last 7 days)")
+ax6.set_xlabel("days from the first case")
+ax6.grid(color='gray', alpha = 0.4)
+
 for country in monitoredCountries:
     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
-    ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
-    ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
+    ax2.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
+    ax3.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
-#     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
-#     ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
-#     ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
-#     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
+    ax5.plot(df[df['country'] == country].day, df[df['country'] == country].recoveries, label = country)
+    ax6.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_recoveries, label = country)
 
 ax1.legend()
 ax2.legend()
 ax3.legend()
 ax4.legend()
+ax5.legend()
+ax6.legend()
 fig.savefig('../analysis/world_cases_deaths.png')
 
 
-# #### Cases and deaths per million 
+# #### Cases, deaths and recoveries per million 
 # (million of population - normalizes per country population)
 
 # In[8]:
 
 
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
+fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
 fig.tight_layout(pad=5.0)
 
 ax1.set_title("Cases per million")
 ax1.set_xlabel("days from the first case")
 ax1.grid(color='gray', alpha = 0.4)
 
-ax2.set_title("Deaths per million")
+ax2.set_title("Cases per million - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
 
-ax3.set_title("Cases per million - moving average (last 7 days)")
+ax3.set_title("Deaths per million")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
@@ -138,16 +146,28 @@ ax4.set_title("Deaths per miliion - moving average (last 7 days)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
+ax5.set_title("Recoveries per million")
+ax5.set_xlabel("days from the first case")
+ax5.grid(color='gray', alpha = 0.4)
+
+ax6.set_title("Recoveries per miliion - moving average (last 7 days)")
+ax6.set_xlabel("days from the first case")
+ax6.grid(color='gray', alpha = 0.4)
+
 for country in monitoredCountries:
     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases_million, label = country)
-    ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths_million, label = country)
-    ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases_million, label = country)
+    ax2.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases_million, label = country)
+    ax3.plot(df[df['country'] == country].day, df[df['country'] == country].deaths_million, label = country)
     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths_million, label = country)
+    ax5.plot(df[df['country'] == country].day, df[df['country'] == country].recoveries_million, label = country)
+    ax6.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_recoveries_million, label = country)
 
 ax1.legend()
 ax2.legend()
 ax3.legend()
 ax4.legend()
+ax5.legend()
+ax6.legend()
 
 fig.savefig('../analysis/world_cases_deaths_million.png')
 
@@ -314,7 +334,7 @@ readme += '## Análises mundiais\n'
 readme += '### Casos e mortes\n'
 readme += '![](world_cases_deaths.png)'
 
-readme += '\n\n ### Casos e mortes por milhão\n'
+readme += '\n\n ### Casos, mortes e recuperações por milhão\n'
 readme += 'Milhão de população noramilza os números de modo que a comparação entre países fica mais adequada. Como podemos ver, os primeiros gráficos nos mostram quão agressivo é a pandemia na Itália e Espanha.\n'
 readme += '![](world_cases_deaths_million.png)'
 
@@ -352,10 +372,10 @@ readme += df_top_cases.to_markdown()
 
 readme += '\n----------------------\n'
 readme += '## World\' analysis\n'
-readme += '### Cases and deaths\n'
+readme += '### Cases, deaths and recoveries\n'
 readme += '![](world_cases_deaths.png)'
 
-readme += '\n\n ### Cases and deaths per million\n'
+readme += '\n\n ### Cases, deaths and recoveries per million\n'
 readme += 'Million of population normalizes the features so they can me better comparable among the selected countries. As we can see, the first charts shows us how aggressive the pandemic is in Italy, Spain and somehow in France.\n'
 readme += '![](world_cases_deaths_million.png)'
 

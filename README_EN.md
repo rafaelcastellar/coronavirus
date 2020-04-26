@@ -1,7 +1,6 @@
 # **Coronavirus analysis from a brazilian perspective**
 
-[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="40"  />
-Versão em português](README.md)
+[<img src="data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
 
 Since the virus had arrived here in Brazil, I started some analysis over the contamination, death and recoveries data of the pandemic around the world, in order to understand, compare and even predict the its behaviour here in Brazil.
 
@@ -9,19 +8,29 @@ As this content content may be useful for someone else than me and my friends, I
 I will update it in a daily base around 7am in Brazil (or 4am UTC).
 
 ------------------
-
-## Brasil's analysis
-[<img src="analysis/BrazilMap.png" width="80"  /> <br>Click here for updated map](analysis/BrazilMap.html)
-
+## Analysis
+### <img src="data/bandeiras/BR.png" width="40"  />  Brazil
 [The analysis over pandemic data Brazil can be found here](analysis/README_EN.md).
 
-## World's analysis
+[<img src="analysis/maps/brazilMapDeaths.png" width="240"  /> <br>Click for real size map](analysis/maps/brazilMapDeaths.png)
+
+### <img src="data/bandeiras/SP.png" width="40"  />  San Paulo
+[The analysis over pandemic data state of San Paulo in Brazil can be found here](analysis/README_SP_EN.md).
+
+[<img src="analysis/maps/saoPauloMapDeaths.png" width="240"  /> <br>Click for real size map](analysis/maps/saoPauloDeaths.png)
+
+### <img src="data/bandeiras/WD.png" width="40"  />  World
+
 [The analysis over pandemic data over some countries and Brazil can be found here](analysis/README_WORLD_EN.md).
 
-## Brazil's prediction
+------------------
+## Predictions
+### <img src="data/bandeiras/BR.png" width="40"  />  Brazil
 [The detailed pandemic prediction for the states of Brazil can be found here](predictions/README_EN.md).
 
-## World's prediction
+### State of San Paulo (under construction)
+
+### <img src="data/bandeiras/WD.png" width="40"  />  World
 [The detailed pandemic prediction for Brazil and overall of some countries can be found here](predictions/README_WORLD_EN.md).
 
 ------------------------------------

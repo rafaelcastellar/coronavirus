@@ -9,8 +9,10 @@ python countries_data_aggregator.py
 python data_engineering.py
 python analysis.py
 python brazilian_analysis.py
+python saoPaulo_analysis.py
 python prediction.py
-# python brazlian_prediction.py
+python brazilian_prediction.py
+# python saoPaulo_prediction.py
 
 cd ..
 git add .

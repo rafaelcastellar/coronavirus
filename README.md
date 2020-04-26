@@ -1,6 +1,6 @@
 # **Análises do Coronavirus de uma perspectiva brasileira**
 
-<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="30"  />
+[<img src="data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)
 
 Desde que o vírus chegou aqui no Brasil, iniciei algumas análises sobre dados de contaminações, mortes e recuperações da pandemia pelo mundo, a fim de entender, comparar e até prever seu comportamento aqui no Brasil.
 
@@ -8,19 +8,32 @@ Como esse conteúdo pode ser útil para outras pessoas, além de mim e meus amig
 Eu o atualizo diariamente por volta das 07h da manhã (horário de Brasília)
 
 -----------------
-
-## Análises do Brasil
-
-<!-- [<img src="analysis/BrazilMap.png" width="80"  /> <br>Click here for updated map](analysis/brazilMap.html) -->
+## Análises
+### <img src="data/bandeiras/BR.png" width="40"  /> Brasil
 [As análises detalhadas sobre a pandemia no Brasil encontram-se aqui](analysis/README.md).
 
-## Análises do Mundo
+[<img src="analysis/maps/brazilMapDeaths.png" width="240"  /> <br>Clique aqui para tamanho real](analysis/maps/brazilMapDeaths.png)
+
+
+### <img src="data/bandeiras/SP.png" width="40"  /> Estado de São Paulo - Brasil
+[As análises detalhadas sobre a pandemia no estado de São encontram-se aqui](analysis/README_SP.md).
+
+[<img src="analysis/maps/saoPauloMapDeaths.png" width="240"  /> <br>Clique aqui para tamanho real](analysis/maps/saoPauloDeaths.png)
+
+
+### <img src="data/bandeiras/WD.png" width="40"  />  Mundo
+
 [Análises da pandemia pelo mundo comparando com o Brasil encontram-se aqui.](analysis/README_WORLD.md).
 
-## Predições do Brasil
+-----------------
+## Predições
+### <img src="data/bandeiras/BR.png" width="40"  /> Brasil
 [Aqui estão detalhes das predições para os próximos dias dos estados do Brasil](predictions/README.md).
 
-## Predições do Mundo
+### <img src="data/bandeiras/SP.png" width="40"  /> Estado de São Paulo (em construção)
+<!-- [Aqui estão detalhes das predições para os próximos dias dos estados do Brasil](predictions/README.md). -->
+
+### <img src="data/bandeiras/WD.png" width="40"  />  Mundo
 [Aqui estão detalhes das predições para os próximos dias para alguns países do mundo e Brasil](predictions/README_WORLD.md).
 
 ------------------
