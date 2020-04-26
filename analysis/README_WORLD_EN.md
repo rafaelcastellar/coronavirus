@@ -1,4 +1,4 @@
-[<img src="../data/bandeiras/PT.png" width="30"   />Versão em português](README_WORLD.md)
+[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em português](README_WORLD.md)
 
 # **Analysis and monitoring**
 These analysis are related to the Covid19 pandemic data up to **2020-04-25**.

@@ -231,18 +231,21 @@ fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 # ### Generating the markdown file
 
-# In[10]:
+# In[16]:
 
 
-f = open('../analysis/README.md', 'w')
+f = open('../analysis/README_SP.md', 'w')
 
-readme = '[<img src="data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)'
+readme = '[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_SP_EN.md)'
 readme += '\n\n# **Análises e monitoramento**\n'
 
-readme += '\n### Letalidade das cidades do estado de São Paulo\n'
-readme += 'O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada cidade.\n'
-readme += '<img src="brazilMap.png" width="100%"  />'
-# readme += '[![Clique aqui para o mapa atualizado](brazilMap.png)](brazilMap.html)'
+readme += '\n### Letalidade dos estados brasileiros\n'
+readme += 'O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.\n'
+readme += '<img src="maps/saoPauloMapDeaths.png" width="100%"  />'
+
+readme += '\n### Transmissão das cidades do estado de São Paulo\n'
+readme += 'O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada cidade do estado.\n\n'
+readme += '<img src="maps/saoPauloMapCases.png" width="100%"  />'
 
 readme += '\n\nEstas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de **' + today + '**.\n\n'
 readme += 'Como existem muitas cidades, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionadas as ' + str(qtdeMonitored) + ' mais mortais:'
@@ -259,26 +262,26 @@ readme += '\n----------------------\n'
 readme += '## Casos e mortes\n'
 readme += '![](saoPaulo_cities_cases_deaths.png)'
 
-readme += '\n\n [Comparativos do estado de São Paulo com outros estados do Brasil podem ser encontratos aqui.](README.md#an%C3%A1lises-do-brasil)'
+readme += '\n\n [Comparativos do estado de São Paulo com outros estados do Brasil podem ser encontratos aqui.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README.md#casos-e-mortes)'
 
 f.write(readme)
 f.close()
 
 ###########################################
 
-f = open('../analysis/README_EN.md', 'w')
+f = open('../analysis/README_SP_EN.md', 'w')
 
-readme = '[<img src="data/bandeiras/PT.png" width="30"   />Versão em português](README.md)'
+readme = '[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em português](README_SP.md)'
 
 readme += '\n\n# **Analysis and monitoring**\n'
 
 readme += '\n### Lethality of the San Paulo\'s cities\n'
 readme += 'The lethality level shown in this map is defined from the moving average of the last 7 days of each city lethality of the San Paulo state.\n'
-readme += '<img src="saoPauloMapDeaths.png" width="100%"  />'
+readme += '<img src="maps/saoPauloMapDeaths.png" width="80%"  />'
 
 readme += '\n### Transmission of the San Paulo\'s cities\n'
 readme += 'The tranmission level shown in this map is defined from the moving average of the last 7 days of each city\'s cumulative cases.\n'
-readme += '<img src="saoPauloMapCases.png" width="100%"  />'
+readme += '<img src="maps/saoPauloMapCases.png" width="80%"  />'
 
 readme += '\n\nThese analysis are related to state of San Paulo Convid19 pandemic data up to **' + today + '**.\n\n'
 readme += 'As there are too many cities to have their data plotted together, were selected the ' + str(qtdeMonitored) + ' deadliest:'
@@ -295,7 +298,7 @@ readme += '\n----------------------\n'
 readme += '## Cases and deaths\n'
 readme += '![](saoPaulo_cities_cases_deaths.png)'
 
-readme += '\n\n [Comparison of San Paulo among other Brazilian states can be found here.](README_EN.md#brazils-analysis)'
+readme += '\n\n [Comparison of San Paulo among other Brazilian states can be found here.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_EN.md#cases-and-deaths)'
 f.write(readme)
 f.close()
 print('São Paulo\'s analysis done!')

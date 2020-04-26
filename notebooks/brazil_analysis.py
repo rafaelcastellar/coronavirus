@@ -236,21 +236,21 @@ fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 # ### Generating the markdown file
 
-# In[13]:
+# In[17]:
 
 
 f = open('../analysis/README.md', 'w')
 
-readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/gb.png" width="30"  /> English version](README_EN.md)'
+readme = '[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)'
 readme += '\n\n# **Análises e monitoramento**\n'
 
 readme += '\n### Letalidade dos estados brasileiros\n'
 readme += 'O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.\n'
-readme += '<img src="maps/brazilMapDeaths.png" width="100%"  />'
+readme += '<img src="maps/brazilMapDeaths.png" width="80%"  />'
 
 readme += '\n### Transmissão dos estados brasileiros\n'
-readme += 'O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada estado.\n'
-readme += '<img src="maps/brazilMapCases.png" width="100%"  />'
+readme += 'O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada estado.\n\n'
+readme += '<img src="maps/brazilMapCases.png" width="80%"  />'
 # readme += '[![Clique aqui para o mapa atualizado](brazilMap.png)](brazilMap.html)'
 
 readme += '\n\nEstas análises são relativas aos dados da pandemia Covid19 no Brasil até a data de **' + today + '**.\n\n'
@@ -268,7 +268,7 @@ readme += '\n----------------------\n'
 readme += '## Casos e mortes\n'
 readme += '![](brazilian_states_cases_deaths.png)'
 
-readme += '\n\n [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](README_WORLD.md#an%C3%A1lises-do-brasil)'
+readme += '\n\n [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_WORLD.md#an%C3%A1lises-do-brasil)'
 
 
 f.write(readme)
@@ -277,18 +277,18 @@ f.close()
 ###########################################
 
 f = open('../analysis/README_EN.md', 'w')
-readme = '[<img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/br.png" width="30"  /> Versão em português](README_WORLD.md)'
+readme = '[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em português](README.md)'
 
 readme += '\n\n# **Analysis and monitoring**\n'
 
 readme += '\n### Lethality of the brazilian states\n'
 readme += 'The lethality level shown in this map is defined from the moving average of the last 7 days of each state lethality.\n'
-readme += '<img src="brazilMapDeaths.png" width="100%"  />'
+readme += '<img src="maps/brazilMapDeaths.png" width="80%"  />'
 # readme += '[![Click here for updated map](brazilMap.png)](brazilMap.html)'
 
 readme += '\n### Transmission of the brazilian states\n'
 readme += 'O level of transmission on the map is defined from the moving average of the last 7 days of the cumulative cases of each state.\n'
-readme += '<img src="maps/brazilMapCases.png" width="100%"  />'
+readme += '<img src="maps/brazilMapCases.png" width="80%"  />'
 # readme += '[![Clique aqui para o mapa atualizado](brazilMap.png)](brazilMap.html)'
 
 readme += '\n\nThese analysis are related to Brazil Convid19 pandemic data up to **' + today + '**.\n\n'
@@ -306,7 +306,7 @@ readme += '\n----------------------\n'
 readme += '## Cases and deaths\n'
 readme += '![](brazilian_states_cases_deaths.png)'
 
-readme += '\n\n [Comparison of Brazil among other contries around the world can be found here.](README_WORLD_EN.md#brazils-analysis)'
+readme += '\n\n [Comparison of Brazil among other contries around the world can be found here.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_WORLD_EN.md#brazils-analysis)'
 f.write(readme)
 f.close()
 print('Brazilian analysis done!')
