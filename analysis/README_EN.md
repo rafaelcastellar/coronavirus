@@ -1,13 +1,13 @@
-[<img src="../data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
+[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em português](README.md)
 
 # **Analysis and monitoring**
 
 ### Lethality of the brazilian states
 The lethality level shown in this map is defined from the moving average of the last 7 days of each state lethality.
-<img src="brazilMapDeaths.png" width="100%"  />
+<img src="maps/brazilMapDeaths.png" width="80%"  />
 ### Transmission of the brazilian states
 O level of transmission on the map is defined from the moving average of the last 7 days of the cumulative cases of each state.
-<img src="maps/brazilMapCases.png" width="100%"  />
+<img src="maps/brazilMapCases.png" width="80%"  />
 
 These analysis are related to Brazil Convid19 pandemic data up to **2020-04-25**.
 

@@ -1,13 +1,13 @@
-[<img src="../data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
+[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em português](README_SP.md)
 
 # **Analysis and monitoring**
 
 ### Lethality of the San Paulo's cities
 The lethality level shown in this map is defined from the moving average of the last 7 days of each city lethality of the San Paulo state.
-<img src="saoPauloMapDeaths.png" width="100%"  />
+<img src="maps/saoPauloMapDeaths.png" width="100%"  />
 ### Transmission of the San Paulo's cities
 The tranmission level shown in this map is defined from the moving average of the last 7 days of each city's cumulative cases.
-<img src="saoPauloMapCases.png" width="100%"  />
+<img src="maps/saoPauloMapCases.png" width="100%"  />
 
 These analysis are related to state of San Paulo Convid19 pandemic data up to **2020-04-24**.
 

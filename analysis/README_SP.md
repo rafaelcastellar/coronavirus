@@ -1,10 +1,14 @@
-[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)
+[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_SP_EN.md)
 
 # **Análises e monitoramento**
 
-### Letalidade das cidades do estado de São Paulo
-O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada cidade.
-<img src="brazilMap.png" width="100%"  />
+### Letalidade dos estados brasileiros
+O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.
+<img src="maps/saoPauloMapDeaths.png" width="100%"  />
+### Transmissão das cidades do estado de São Paulo
+O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada cidade do estado.
+
+<img src="maps/saoPauloMapCases.png" width="100%"  />
 
 Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de **2020-04-24**.
 

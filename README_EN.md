@@ -1,6 +1,6 @@
 # **Coronavirus analysis from a brazilian perspective**
 
-[<img src="data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
+[<img src="data/bandeiras/PT.png" width="30"   /> Versão em português](README.md)
 
 Since the virus had arrived here in Brazil, I started some analysis over the contamination, death and recoveries data of the pandemic around the world, in order to understand, compare and even predict the its behaviour here in Brazil.
 
