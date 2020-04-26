@@ -49,9 +49,11 @@ Estes são os dados obtidos externamente para produção dos *datasets* (conjunt
 * JSON do [Pomber](https://github.com/pomber/covid19): dados da pandemia convid-19 por todos os países do mundo.
 * [API](https://github.com/novelcovid/api) do  ebwinter: dados de geográficos de todos os países
 * [dataset](#https://population.un.org/wpp/Download/Standard/CSV/) da ONU com dados demográficos de (quase) todos os países.
-* [brasil-estados.json](data/brasil-estados.json): um arquivo JSON contendo todos os dados geográficos dos estatos brasileiros obtido a partir da [API do IBGE](https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&resolucao=2). Estes dados são usados para desenhar o os estados sobre o mapa o Brasil.
+* [brasil-estados.json](data/brasil-estados.json): um arquivo JSON contendo todos os dados geográficos dos estatos brasileiros obtido a partir da [API do IBGE](https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&resolucao=2). Estes dados são usados para desenhar os estados sobre o mapa o Brasil.
 * [brazilian_states.csv](data/brazilian_states.csv): dados descritivos de todos os estados brasileiros, também obtidos a partir da [API do IBGE](https://servicodados.ibge.gov.br/api/v1/localidades/estados/)
-* [gov_brazil_corona19_data.csv](data/gov_brazil_corona19_data.csv): dados atualizados da pandemia no Brasil provido pelo [Ministério da Saúde]Pomber(https://covid.saude.gov.br/).
+* [gov_brazil_corona19_data.csv](data/gov_brazil_corona19_data.csv): dados atualizados da pandemia no Brasil providos pelo [Ministério da Saúde](https://covid.saude.gov.br/).
+* [dados_covid_sp.csv](https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv): dados atualizados da pandemia no estado de São Paulo providos pela [SEADE](https://www.seade.gov.br/coronavirus/).
+* [saoPaulo-cidades.json](data/saoPaulo-cidades.json): um arquivo JSON contendo todos os dados geográficos das cidades do estado de São Paulo a partir da [API do IBGE](https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&resolucao=2). Estes dados são usados para desenhar as cidades sobre o mapa do estado de São Paulo.
 
 ### Dataset
 * **[world_countries_2019.csv](data/world_countries_2019.csv)**: um *dataset* consolidado a partir dos dados do ebinters e da ONU, o qual é usado para normalizar alguns indicadores da pandemia a partir das populações de cada país.
@@ -65,6 +67,7 @@ Estes são os dados obtidos externamente para produção dos *datasets* (conjunt
     * *avg7_cases_million*: média móvel de casos por milhão dos últimos 7 dias 
     * *perc_death*: percentual de mortes sobre a quantidade de casos de contaminação de um país
 * **[brazil_corona19_data.csv](data/brazil_corona19_data.csv)**: um *dataset* quase idêntico ao anterior, mas com os dados da pandemia pelos estados do Brasil. 
+* **[saoPaulo_corona19_data.csv](data/saoPaulo_corona19_data.csv)**: um *dataset* quase idêntico ao anterior, mas com os dados da pandemia pelas cidades do estado de São Paulo. 
 
 ### Notebooks
 Aqui estão os jupyter-notebooks que usei para criar este estudo:
@@ -76,6 +79,8 @@ Aqui estão os jupyter-notebooks que usei para criar este estudo:
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/analysis.ipynb) *[analysis.ipynb](notebooks/analysis.ipynb)*: todas as análises e gráficos feitos sobre a pandemia no mundo e no Brasil.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazil_analysis.ipynb) *[brazil_analysis.ipynb](notebooks/brazil_analysis.ipynb)*: todas as análises e gráficos sobre a pandemia no Brasil.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/saoPaulo_analysis.ipynb) *[brazil_analysis.ipynb](notebooks/saoPaulo_analysis.ipynb)*: todas as análises e gráficos sobre a pandemia no estado de São Paulo.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/prediction.ipynb) *[prediction.ipynb](notebooks/prediction.ipynb)*: todas as predições da pandemia no mudo e no Brasil usando [Facebook-Prophet](https://facebook.github.io/prophet/docs/quick_start.html).
 

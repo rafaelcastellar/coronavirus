@@ -2,42 +2,50 @@
 
 # **Análises e monitoramento**
 
-### Letalidade das cidades do estado de São Paulo
-O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada cidade.
-<img src="brazilMap.png" width="100%"  />
+### Letalidade dos estados brasileiros
+O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.
+<img src="maps/brazilMapDeaths.png" width="100%"  />
+### Transmissão dos estados brasileiros
+O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada estado.
+<img src="maps/brazilMapCases.png" width="100%"  />
 
-Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de **2020-04-24**.
+Estas análises são relativas aos dados da pandemia Covid19 no Brasil até a data de **2020-04-25**.
 
-Como existem muitas cidades, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionadas as 5 mais mortais:['osasco' 'sao bernardo do campo' 'guarulhos' 'santos' 'santa gertrudes'
- 'lucelia'].
-
-
-***Dica**: você mesmo pode alterar neste notebook quais cidades você prefere comparar.*
-
-## Top 5 cidades mais letais do estado de São Paulo (+ Santa Gertrudes e Lucélia)
-|     | city                     | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
-|----:|:-------------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | conchas                  | 2020-04-24 00:00:00 |    11 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   2 | caiabu                   | 2020-04-24 00:00:00 |    14 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   3 | santo antonio da alegria | 2020-04-24 00:00:00 |     8 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   4 | eldorado                 | 2020-04-24 00:00:00 |    16 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   5 | juquitiba                | 2020-04-24 00:00:00 |     8 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-| 144 | santa gertrudes          | 2020-04-24 00:00:00 |     9 |          0 |       1 |           0 |        0 |            0 |             0 |                 0 |         0    |
-| 232 | lucelia                  | 2020-04-24 00:00:00 |     2 |          1 |       3 |           0 |        2 |            0 |             0 |                 0 |        66.67 |
+Como existem muitos estados, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionados os 10 mais mortais:['PB' 'RJ' 'PE' 'AM' 'AL' 'SP' 'PI' 'SE' 'CE' 'PR'].
 
 
- ## Top 5 cidades mais transmissíveis do estado de São Paulo (+ Santa Gertrudes e Lucélia)
-|     | city                  | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
-|----:|:----------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | sao paulo             | 2020-04-24 00:00:00 |    28 |        575 |   11800 |          98 |     1010 |          436 |            52 |              7.58 |         8.56 |
-|   2 | osasco                | 2020-04-24 00:00:00 |    27 |         16 |     389 |           4 |       42 |           23 |             3 |              9.51 |        10.8  |
-|   3 | sao bernardo do campo | 2020-04-24 00:00:00 |    27 |         63 |     421 |           4 |       29 |           20 |             1 |              6.64 |         6.89 |
-|   4 | guarulhos             | 2020-04-24 00:00:00 |    27 |         43 |     399 |           4 |       46 |           14 |             2 |              9.63 |        11.53 |
-|   5 | santos                | 2020-04-24 00:00:00 |    25 |         35 |     367 |           0 |       19 |           13 |             0 |              5.99 |         5.18 |
-| 142 | santa gertrudes       | 2020-04-24 00:00:00 |     9 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
-| 238 | lucelia               | 2020-04-24 00:00:00 |     2 |          1 |       3 |           0 |        2 |            0 |             0 |              0    |        66.67 |
+***Dica**: você mesmo pode alterar neste notebook quais estados você prefere comparar.*
+
+## Top 10 estados mais letais do Brasil
+|    | state   | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
+|---:|:--------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
+|  1 | PB      | 2020-04-25 00:00:00 |    38 |         61 |     447 |           2 |       46 |           34 |             2 |             12.02 |        10.29 |
+|  2 | RJ      | 2020-04-25 00:00:00 |    52 |        546 |    6828 |          45 |      615 |          326 |            32 |              8.75 |         9.01 |
+|  3 | PE      | 2020-04-25 00:00:00 |    45 |        508 |    4507 |          29 |      381 |          330 |            25 |              8.73 |         8.45 |
+|  4 | AM      | 2020-04-25 00:00:00 |    42 |        441 |    3635 |          32 |      287 |          248 |            18 |              8.33 |         7.9  |
+|  5 | AL      | 2020-04-25 00:00:00 |    49 |         88 |     501 |           2 |       29 |           52 |             3 |              8.05 |         5.79 |
+|  6 | SP      | 2020-04-25 00:00:00 |    60 |       2178 |   20004 |         155 |     1667 |          872 |            96 |              7.61 |         8.33 |
+|  7 | PI      | 2020-04-25 00:00:00 |    37 |         41 |     297 |           1 |       17 |           24 |             1 |              6.88 |         5.72 |
+|  8 | SE      | 2020-04-25 00:00:00 |    42 |          9 |     153 |           1 |        9 |           11 |             0 |              5.88 |         5.88 |
+|  9 | CE      | 2020-04-25 00:00:00 |    40 |        621 |    5421 |          26 |      310 |          341 |            19 |              5.8  |         5.72 |
+| 10 | PR      | 2020-04-25 00:00:00 |    45 |         21 |    1140 |           5 |       69 |           27 |             3 |              5.37 |         6.05 |
+
+
+ ## Top 10 estados mais transmissíveis do Brasil
+|    | state   | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
+|---:|:--------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
+|  1 | SP      | 2020-04-25 00:00:00 |    60 |       2178 |   20004 |         155 |     1667 |          872 |            96 |              7.61 |         8.33 |
+|  2 | CE      | 2020-04-25 00:00:00 |    40 |        621 |    5421 |          26 |      310 |          341 |            19 |              5.8  |         5.72 |
+|  3 | PE      | 2020-04-25 00:00:00 |    45 |        508 |    4507 |          29 |      381 |          330 |            25 |              8.73 |         8.45 |
+|  4 | RJ      | 2020-04-25 00:00:00 |    52 |        546 |    6828 |          45 |      615 |          326 |            32 |              8.75 |         9.01 |
+|  5 | AM      | 2020-04-25 00:00:00 |    42 |        441 |    3635 |          32 |      287 |          248 |            18 |              8.33 |         7.9  |
+|  6 | MA      | 2020-04-25 00:00:00 |    36 |        154 |    2105 |          12 |      100 |          152 |             8 |              4.3  |         4.75 |
+|  7 | PA      | 2020-04-25 00:00:00 |    38 |        133 |    1579 |          11 |       86 |          134 |             7 |              4.42 |         5.45 |
+|  8 | BA      | 2020-04-25 00:00:00 |    51 |        119 |    2081 |           6 |       70 |          126 |             4 |              3.32 |         3.36 |
+|  9 | ES      | 2020-04-25 00:00:00 |    51 |        214 |    1595 |           5 |       47 |           91 |             2 |              2.86 |         2.95 |
+| 10 | MG      | 2020-04-25 00:00:00 |    49 |         62 |    1481 |           4 |       58 |           57 |             2 |              3.67 |         3.92 |
 ----------------------
 ## Casos e mortes
-![](saoPaulo_cities_cases_deaths.png)
+![](brazilian_states_cases_deaths.png)
 
- [Comparativos do estado de São Paulo com outros estados do Brasil podem ser encontratos aqui.](README.md#an%C3%A1lises-do-brasil)
+ [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](README_WORLD.md#an%C3%A1lises-do-brasil)

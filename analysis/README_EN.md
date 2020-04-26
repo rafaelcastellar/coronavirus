@@ -2,45 +2,50 @@
 
 # **Analysis and monitoring**
 
-### Lethality of the San Paulo's cities
-The lethality level shown in this map is defined from the moving average of the last 7 days of each city lethality of the San Paulo state.
-<img src="saoPauloMapDeaths.png" width="100%"  />
-### Transmission of the San Paulo's cities
-The tranmission level shown in this map is defined from the moving average of the last 7 days of each city's cumulative cases.
-<img src="saoPauloMapCases.png" width="100%"  />
+### Lethality of the brazilian states
+The lethality level shown in this map is defined from the moving average of the last 7 days of each state lethality.
+<img src="brazilMapDeaths.png" width="100%"  />
+### Transmission of the brazilian states
+O level of transmission on the map is defined from the moving average of the last 7 days of the cumulative cases of each state.
+<img src="maps/brazilMapCases.png" width="100%"  />
 
-These analysis are related to state of San Paulo Convid19 pandemic data up to **2020-04-24**.
+These analysis are related to Brazil Convid19 pandemic data up to **2020-04-25**.
 
-As there are too many cities to have their data plotted together, were selected the 5 deadliest:['osasco' 'sao bernardo do campo' 'guarulhos' 'santos' 'santa gertrudes'
- 'lucelia'].
+As there are too many states to have their data plotted together, were selected the 10 deadliest:['PB' 'RJ' 'PE' 'AM' 'AL' 'SP' 'PI' 'SE' 'CE' 'PR'].
 
 
 ***Tip**: you can yourself select in this notebook which states you prefer to compare.*
 
-## Top 5 deadliest cities of the state of San Paulo (+ Santa Gertrudes and Lucelia cities) of Brazil
-|     | city                     | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
-|----:|:-------------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | conchas                  | 2020-04-24 00:00:00 |    11 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   2 | caiabu                   | 2020-04-24 00:00:00 |    14 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   3 | santo antonio da alegria | 2020-04-24 00:00:00 |     8 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   4 | eldorado                 | 2020-04-24 00:00:00 |    16 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   5 | juquitiba                | 2020-04-24 00:00:00 |     8 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-| 144 | santa gertrudes          | 2020-04-24 00:00:00 |     9 |          0 |       1 |           0 |        0 |            0 |             0 |                 0 |         0    |
-| 232 | lucelia                  | 2020-04-24 00:00:00 |     2 |          1 |       3 |           0 |        2 |            0 |             0 |                 0 |        66.67 |
+## Top 10 deadliest states of Brazil
+|    | state   | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
+|---:|:--------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
+|  1 | PB      | 2020-04-25 00:00:00 |    38 |         61 |     447 |           2 |       46 |           34 |             2 |             12.02 |        10.29 |
+|  2 | RJ      | 2020-04-25 00:00:00 |    52 |        546 |    6828 |          45 |      615 |          326 |            32 |              8.75 |         9.01 |
+|  3 | PE      | 2020-04-25 00:00:00 |    45 |        508 |    4507 |          29 |      381 |          330 |            25 |              8.73 |         8.45 |
+|  4 | AM      | 2020-04-25 00:00:00 |    42 |        441 |    3635 |          32 |      287 |          248 |            18 |              8.33 |         7.9  |
+|  5 | AL      | 2020-04-25 00:00:00 |    49 |         88 |     501 |           2 |       29 |           52 |             3 |              8.05 |         5.79 |
+|  6 | SP      | 2020-04-25 00:00:00 |    60 |       2178 |   20004 |         155 |     1667 |          872 |            96 |              7.61 |         8.33 |
+|  7 | PI      | 2020-04-25 00:00:00 |    37 |         41 |     297 |           1 |       17 |           24 |             1 |              6.88 |         5.72 |
+|  8 | SE      | 2020-04-25 00:00:00 |    42 |          9 |     153 |           1 |        9 |           11 |             0 |              5.88 |         5.88 |
+|  9 | CE      | 2020-04-25 00:00:00 |    40 |        621 |    5421 |          26 |      310 |          341 |            19 |              5.8  |         5.72 |
+| 10 | PR      | 2020-04-25 00:00:00 |    45 |         21 |    1140 |           5 |       69 |           27 |             3 |              5.37 |         6.05 |
 
 
- ## Top 5 most transmissible cities of state of San Paulo (+ Santa Gertrudes and Lucelia cities)
-|     | city                  | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
-|----:|:----------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | sao paulo             | 2020-04-24 00:00:00 |    28 |        575 |   11800 |          98 |     1010 |          436 |            52 |              7.58 |         8.56 |
-|   2 | osasco                | 2020-04-24 00:00:00 |    27 |         16 |     389 |           4 |       42 |           23 |             3 |              9.51 |        10.8  |
-|   3 | sao bernardo do campo | 2020-04-24 00:00:00 |    27 |         63 |     421 |           4 |       29 |           20 |             1 |              6.64 |         6.89 |
-|   4 | guarulhos             | 2020-04-24 00:00:00 |    27 |         43 |     399 |           4 |       46 |           14 |             2 |              9.63 |        11.53 |
-|   5 | santos                | 2020-04-24 00:00:00 |    25 |         35 |     367 |           0 |       19 |           13 |             0 |              5.99 |         5.18 |
-| 142 | santa gertrudes       | 2020-04-24 00:00:00 |     9 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
-| 238 | lucelia               | 2020-04-24 00:00:00 |     2 |          1 |       3 |           0 |        2 |            0 |             0 |              0    |        66.67 |
+ ## Top 10 most transmissible states of Brazil
+|    | state   | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
+|---:|:--------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
+|  1 | SP      | 2020-04-25 00:00:00 |    60 |       2178 |   20004 |         155 |     1667 |          872 |            96 |              7.61 |         8.33 |
+|  2 | CE      | 2020-04-25 00:00:00 |    40 |        621 |    5421 |          26 |      310 |          341 |            19 |              5.8  |         5.72 |
+|  3 | PE      | 2020-04-25 00:00:00 |    45 |        508 |    4507 |          29 |      381 |          330 |            25 |              8.73 |         8.45 |
+|  4 | RJ      | 2020-04-25 00:00:00 |    52 |        546 |    6828 |          45 |      615 |          326 |            32 |              8.75 |         9.01 |
+|  5 | AM      | 2020-04-25 00:00:00 |    42 |        441 |    3635 |          32 |      287 |          248 |            18 |              8.33 |         7.9  |
+|  6 | MA      | 2020-04-25 00:00:00 |    36 |        154 |    2105 |          12 |      100 |          152 |             8 |              4.3  |         4.75 |
+|  7 | PA      | 2020-04-25 00:00:00 |    38 |        133 |    1579 |          11 |       86 |          134 |             7 |              4.42 |         5.45 |
+|  8 | BA      | 2020-04-25 00:00:00 |    51 |        119 |    2081 |           6 |       70 |          126 |             4 |              3.32 |         3.36 |
+|  9 | ES      | 2020-04-25 00:00:00 |    51 |        214 |    1595 |           5 |       47 |           91 |             2 |              2.86 |         2.95 |
+| 10 | MG      | 2020-04-25 00:00:00 |    49 |         62 |    1481 |           4 |       58 |           57 |             2 |              3.67 |         3.92 |
 ----------------------
 ## Cases and deaths
-![](saoPaulo_cities_cases_deaths.png)
+![](brazilian_states_cases_deaths.png)
 
- [Comparison of San Paulo among other Brazilian states can be found here.](README_EN.md#brazils-analysis)
+ [Comparison of Brazil among other contries around the world can be found here.](README_WORLD_EN.md#brazils-analysis)
