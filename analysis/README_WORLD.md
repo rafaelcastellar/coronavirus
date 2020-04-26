@@ -1,4 +1,4 @@
-[<img src="data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)
+[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_WORLD_EN.md)
 
 # **Análises e monitoramento**
 Estas análises são relativas aos dados da pandemia Covid19 até a data de **2020-04-25**.

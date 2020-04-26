@@ -1,4 +1,4 @@
-[<img src="data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
+[<img src="../data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
 
 # **Analysis and monitoring**
 
@@ -42,4 +42,4 @@ As there are too many cities to have their data plotted together, were selected 
 ## Cases and deaths
 ![](saoPaulo_cities_cases_deaths.png)
 
- [Comparison of San Paulo among other Brazilian states can be found here.](README_EN.md#brazils-analysis)
+ [Comparison of San Paulo among other Brazilian states can be found here.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_EN.md#cases-and-deaths)

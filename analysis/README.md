@@ -1,13 +1,13 @@
-[<img src="data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)
+[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)
 
 # **Análises e monitoramento**
 
 ### Letalidade dos estados brasileiros
 O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.
-<img src="maps/brazilMapDeaths.png" width="100%"  />
+<img src="maps/brazilMapDeaths.png" width="80%"  />
 ### Transmissão dos estados brasileiros
 O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada estado.
-<img src="maps/brazilMapCases.png" width="100%"  />
+<img src="maps/brazilMapCases.png" width="80%"  />
 
 Estas análises são relativas aos dados da pandemia Covid19 no Brasil até a data de **2020-04-25**.
 
@@ -48,4 +48,4 @@ Como existem muitos estados, colocar em um único gráfico todos seus dados torn
 ## Casos e mortes
 ![](brazilian_states_cases_deaths.png)
 
- [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](README_WORLD.md#an%C3%A1lises-do-brasil)
+ [Comparativos do Brasil com outro países do mundo podem ser encontratos aqui.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_WORLD.md#an%C3%A1lises-do-brasil)

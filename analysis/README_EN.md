@@ -1,4 +1,4 @@
-[<img src="data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
+[<img src="../data/bandeiras/PT.png" width="30"   />Versão em português](README.md)
 
 # **Analysis and monitoring**
 
@@ -48,4 +48,4 @@ As there are too many states to have their data plotted together, were selected 
 ## Cases and deaths
 ![](brazilian_states_cases_deaths.png)
 
- [Comparison of Brazil among other contries around the world can be found here.](README_WORLD_EN.md#brazils-analysis)
+ [Comparison of Brazil among other contries around the world can be found here.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_WORLD_EN.md#brazils-analysis)

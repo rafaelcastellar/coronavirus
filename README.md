@@ -80,7 +80,7 @@ Aqui estão os jupyter-notebooks que usei para criar este estudo:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazil_analysis.ipynb) *[brazil_analysis.ipynb](notebooks/brazil_analysis.ipynb)*: todas as análises e gráficos sobre a pandemia no Brasil.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/saoPaulo_analysis.ipynb) *[brazil_analysis.ipynb](notebooks/saoPaulo_analysis.ipynb)*: todas as análises e gráficos sobre a pandemia no estado de São Paulo.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/saoPaulo_analysis.ipynb) *[saoPaulo_analysis.ipynb](notebooks/saoPaulo_analysis.ipynb)*: todas as análises e gráficos sobre a pandemia no estado de São Paulo.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/prediction.ipynb) *[prediction.ipynb](notebooks/prediction.ipynb)*: todas as predições da pandemia no mudo e no Brasil usando [Facebook-Prophet](https://facebook.github.io/prophet/docs/quick_start.html).
 

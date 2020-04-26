@@ -1,4 +1,4 @@
-[<img src="data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)
+[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_EN.md)
 
 # **Análises e monitoramento**
 
@@ -39,4 +39,4 @@ Como existem muitas cidades, colocar em um único gráfico todos seus dados torn
 ## Casos e mortes
 ![](saoPaulo_cities_cases_deaths.png)
 
- [Comparativos do estado de São Paulo com outros estados do Brasil podem ser encontratos aqui.](README.md#an%C3%A1lises-do-brasil)
+ [Comparativos do estado de São Paulo com outros estados do Brasil podem ser encontratos aqui.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README.md#casos-e-mortes)
