@@ -9,9 +9,9 @@ The lethality level shown in this map is defined from the moving average of the 
 The tranmission level shown in this map is defined from the moving average of the last 7 days of each city's cumulative cases.
 <img src="maps/saoPauloMapCases.png" width="80%"  />
 
-These analysis are related to state of San Paulo Convid19 pandemic data up to **2020-04-26**.
+These analysis are related to state of San Paulo Convid19 pandemic data up to **2020-04-27**.
 
-As there are too many cities to have their data plotted together, were selected the 5 deadliest:['osasco' 'guarulhos' 'sao bernardo do campo' 'santos' 'santa gertrudes'
+As there are too many cities to have their data plotted together, were selected the 5 deadliest:['osasco' 'sao bernardo do campo' 'guarulhos' 'santos' 'santa gertrudes'
  'lucelia'].
 
 
@@ -20,25 +20,25 @@ As there are too many cities to have their data plotted together, were selected 
 ## Top 5 deadliest cities of the state of San Paulo (+ Santa Gertrudes and Lucelia cities) of Brazil
 |     | city                     | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |----:|:-------------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | santo antonio da alegria | 2020-04-26 00:00:00 |    10 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   2 | juquitiba                | 2020-04-26 00:00:00 |    10 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   3 | eldorado                 | 2020-04-26 00:00:00 |    18 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   4 | conchas                  | 2020-04-26 00:00:00 |    13 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-|   5 | caiabu                   | 2020-04-26 00:00:00 |    16 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |       100    |
-| 174 | santa gertrudes          | 2020-04-26 00:00:00 |    11 |          0 |       1 |           0 |        0 |            0 |             0 |                 0 |         0    |
-| 245 | lucelia                  | 2020-04-26 00:00:00 |     4 |          0 |       3 |           0 |        2 |            0 |             0 |                 0 |        66.67 |
+|   1 | juquitiba                | 2020-04-27 00:00:00 |    11 |          2 |       3 |           2 |        3 |            0 |             0 |               100 |          100 |
+|   2 | caiabu                   | 2020-04-27 00:00:00 |    17 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
+|   3 | santo antonio da alegria | 2020-04-27 00:00:00 |    11 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
+|   4 | conchas                  | 2020-04-27 00:00:00 |    14 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
+|   5 | iepe                     | 2020-04-27 00:00:00 |     9 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
+| 160 | santa gertrudes          | 2020-04-27 00:00:00 |    12 |          0 |       1 |           0 |        0 |            0 |             0 |                 0 |            0 |
+| 248 | lucelia                  | 2020-04-27 00:00:00 |     5 |          1 |       4 |           0 |        2 |            0 |             0 |                 0 |           50 |
 
 
  ## Top 5 most transmissible cities of state of San Paulo (+ Santa Gertrudes and Lucelia cities)
 |     | city                  | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |----:|:----------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | sao paulo             | 2020-04-26 00:00:00 |    29 |        415 |   13513 |          15 |     1114 |          549 |            59 |              7.88 |         8.24 |
-|   2 | osasco                | 2020-04-26 00:00:00 |    29 |         71 |     541 |           7 |       55 |           38 |             4 |              9.69 |        10.17 |
-|   3 | guarulhos             | 2020-04-26 00:00:00 |    29 |         40 |     495 |           0 |       51 |           26 |             3 |             10.09 |        10.3  |
-|   4 | sao bernardo do campo | 2020-04-26 00:00:00 |    29 |         12 |     475 |           0 |       31 |           25 |             1 |              6.59 |         6.53 |
-|   5 | santos                | 2020-04-26 00:00:00 |    27 |          7 |     426 |           0 |       25 |           19 |             0 |              5.81 |         5.87 |
-| 110 | santa gertrudes       | 2020-04-26 00:00:00 |    11 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
-| 250 | lucelia               | 2020-04-26 00:00:00 |     4 |          0 |       3 |           0 |        2 |            0 |             0 |              0    |        66.67 |
+|   1 | sao paulo             | 2020-04-27 00:00:00 |    30 |        476 |   13989 |          58 |     1172 |          596 |            65 |              8.04 |         8.38 |
+|   2 | osasco                | 2020-04-27 00:00:00 |    30 |         57 |     598 |           7 |       62 |           42 |             5 |              9.89 |        10.37 |
+|   3 | sao bernardo do campo | 2020-04-27 00:00:00 |    30 |         36 |     511 |           4 |       35 |           30 |             2 |              6.61 |         6.85 |
+|   4 | guarulhos             | 2020-04-27 00:00:00 |    30 |          3 |     498 |           1 |       52 |           26 |             3 |             10.32 |        10.44 |
+|   5 | santos                | 2020-04-27 00:00:00 |    28 |         37 |     463 |           2 |       27 |           21 |             1 |              5.76 |         5.83 |
+| 133 | santa gertrudes       | 2020-04-27 00:00:00 |    12 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
+| 251 | lucelia               | 2020-04-27 00:00:00 |     5 |          1 |       4 |           0 |        2 |            0 |             0 |              0    |        50    |
 ----------------------
 ## Cases and deaths
 ![](saoPaulo_cities_cases_deaths.png)

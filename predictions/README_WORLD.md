@@ -1,7 +1,7 @@
 # **Predições**
 Para experiência, estou fazendo predições simples sobre a quantidade de casos e mortes diárias. Como são séries temporais (*time-series*), estou usando [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) que também é desenhado para este tipo de predição de uma maneira bem mais simples. Isso funciona muito bem na maioria das vezes; porém, algumas vezes há um grande salto entre os números que impactam no desempenho do modelo e leva um tempo (medições) para ser absorvido e compreendidos.
 
-Essas predições foram feitas com os dados mundiais da pandemia Covid19 até **2020-04-26**.
+Essas predições foram feitas com os dados mundiais da pandemia Covid19 até **2020-04-27**.
 
 Como há muitos paises para terem seus dados submetidos ao modelo de predição de uma só vez, selecionei alguns mais o Brasil:
 ['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'Belgium', 'France'].
@@ -16,21 +16,21 @@ Ao ffim, é gerado o arquivo CSV contendo todas as previsões.
 *predicted? = True* significa que são dados de predição; *=False* significa que são dados reais.
 |    | country   | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:----------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 56 | Brazil    | 2020-04-22 00:00:00 |       2678 |         165 |   45757 |     2906 | False        |
 | 57 | Brazil    | 2020-04-23 00:00:00 |       4279 |         425 |   50036 |     3331 | False        |
 | 58 | Brazil    | 2020-04-24 00:00:00 |       4007 |         373 |   54043 |     3704 | False        |
 | 59 | Brazil    | 2020-04-25 00:00:00 |       5281 |         353 |   59324 |     4057 | False        |
 | 60 | Brazil    | 2020-04-26 00:00:00 |       3776 |         229 |   63100 |     4286 | False        |
-| 61 | Brazil    | 2020-04-27 00:00:00 |       3214 |         231 |   66314 |     4517 | True         |
-| 62 | Brazil    | 2020-04-28 00:00:00 |       3563 |         258 |   69877 |     4775 | True         |
-| 63 | Brazil    | 2020-04-29 00:00:00 |       3846 |         267 |   73723 |     5042 | True         |
-| 64 | Brazil    | 2020-04-30 00:00:00 |       3978 |         302 |   77701 |     5344 | True         |
-| 65 | Brazil    | 2020-05-01 00:00:00 |       4051 |         294 |   81752 |     5638 | True         |
-| 66 | Brazil    | 2020-05-02 00:00:00 |       4181 |         296 |   85933 |     5934 | True         |
-| 67 | Brazil    | 2020-05-03 00:00:00 |       3945 |         273 |   89878 |     6207 | True         |
-| 68 | Brazil    | 2020-05-04 00:00:00 |       3909 |         282 |   93787 |     6489 | True         |
-| 69 | Brazil    | 2020-05-05 00:00:00 |       4259 |         308 |   98046 |     6797 | True         |
-| 70 | Brazil    | 2020-05-06 00:00:00 |       4542 |         318 |  102588 |     7115 | True         |
+| 61 | Brazil    | 2020-04-27 00:00:00 |       4346 |         317 |   67446 |     4603 | False        |
+| 62 | Brazil    | 2020-04-28 00:00:00 |       3669 |         264 |   71115 |     4867 | True         |
+| 63 | Brazil    | 2020-04-29 00:00:00 |       3957 |         274 |   75072 |     5141 | True         |
+| 64 | Brazil    | 2020-04-30 00:00:00 |       4094 |         309 |   79166 |     5450 | True         |
+| 65 | Brazil    | 2020-05-01 00:00:00 |       4172 |         302 |   83338 |     5752 | True         |
+| 66 | Brazil    | 2020-05-02 00:00:00 |       4307 |         303 |   87645 |     6055 | True         |
+| 67 | Brazil    | 2020-05-03 00:00:00 |       4067 |         280 |   91712 |     6335 | True         |
+| 68 | Brazil    | 2020-05-04 00:00:00 |       4162 |         299 |   95874 |     6634 | True         |
+| 69 | Brazil    | 2020-05-05 00:00:00 |       4401 |         317 |  100275 |     6951 | True         |
+| 70 | Brazil    | 2020-05-06 00:00:00 |       4689 |         327 |  104964 |     7278 | True         |
+| 71 | Brazil    | 2020-05-07 00:00:00 |       4826 |         362 |  109790 |     7640 | True         |
 
  #### As curvas acumuladas previstas para o Brasil
 ![](brazil_predictions.png)
@@ -45,21 +45,21 @@ Ao ffim, é gerado o arquivo CSV contendo todas as previsões.
 **Para amanhã**
 |    | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 61 | Brazil         | 2020-04-27 00:00:00 |       3214 |         231 |   66314 |     4517 | True         |
-| 87 | Italy          | 2020-04-27 00:00:00 |       4729 |         728 |  202404 |    27372 | True         |
-| 87 | United Kingdom | 2020-04-27 00:00:00 |       5929 |         786 |  159966 |    21580 | True         |
-| 86 | Spain          | 2020-04-27 00:00:00 |       6209 |         693 |  232838 |    23883 | True         |
-| 96 | US             | 2020-04-27 00:00:00 |      35332 |        2419 | 1001117 |    57300 | True         |
-| 83 | Belgium        | 2020-04-27 00:00:00 |       1387 |         264 |   47521 |     7358 | True         |
-| 94 | France         | 2020-04-27 00:00:00 |       4581 |         678 |  166801 |    23568 | True         |
+| 62 | Brazil         | 2020-04-28 00:00:00 |       3669 |         264 |   71115 |     4867 | True         |
+| 88 | Italy          | 2020-04-28 00:00:00 |       4623 |         742 |  204037 |    27719 | True         |
+| 88 | United Kingdom | 2020-04-28 00:00:00 |       5925 |         814 |  164273 |    21971 | True         |
+| 87 | Spain          | 2020-04-28 00:00:00 |       6097 |         657 |  235519 |    24178 | True         |
+| 97 | US             | 2020-04-28 00:00:00 |      35975 |        2597 | 1024172 |    58856 | True         |
+| 84 | Belgium        | 2020-04-28 00:00:00 |       1339 |         282 |   48026 |     7489 | True         |
+| 95 | France         | 2020-04-28 00:00:00 |       4744 |         737 |  170707 |    24064 | True         |
 
  **Para depois e amanhã** 
 |    | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 62 | Brazil         | 2020-04-28 00:00:00 |       3563 |         258 |   69877 |     4775 | True         |
-| 88 | Italy          | 2020-04-28 00:00:00 |       4713 |         755 |  207117 |    28127 | True         |
-| 88 | United Kingdom | 2020-04-28 00:00:00 |       6074 |         874 |  166040 |    22454 | True         |
-| 87 | Spain          | 2020-04-28 00:00:00 |       6229 |         670 |  239067 |    24553 | True         |
-| 97 | US             | 2020-04-28 00:00:00 |      36421 |        2675 | 1037538 |    59975 | True         |
-| 84 | Belgium        | 2020-04-28 00:00:00 |       1369 |         299 |   48890 |     7657 | True         |
-| 95 | France         | 2020-04-28 00:00:00 |       4790 |         744 |  171591 |    24312 | True         |
+| 63 | Brazil         | 2020-04-29 00:00:00 |       3957 |         274 |   75072 |     5141 | True         |
+| 89 | Italy          | 2020-04-29 00:00:00 |       4957 |         726 |  208994 |    28445 | True         |
+| 89 | United Kingdom | 2020-04-29 00:00:00 |       6217 |         837 |  170490 |    22808 | True         |
+| 88 | Spain          | 2020-04-29 00:00:00 |       6877 |         726 |  242396 |    24904 | True         |
+| 98 | US             | 2020-04-29 00:00:00 |      36745 |        2634 | 1060917 |    61490 | True         |
+| 85 | Belgium        | 2020-04-29 00:00:00 |       1526 |         272 |   49552 |     7761 | True         |
+| 96 | France         | 2020-04-29 00:00:00 |       4089 |         751 |  174796 |    24815 | True         |
