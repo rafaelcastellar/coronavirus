@@ -39,14 +39,14 @@ Eu o atualizo diariamente por volta das 07h da manhã (horário de Brasília)
 ------------------
 ## Sobre este estudo
 
-Gostaria de agradecer ao [Pomber](https://github.com/pomber/covid19) que provê um JSON com os dados mundiais do covid-19 a partir do [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19), o qual é o principal conjunto de dados para este conteúdo. Também agradeco ao [ebwinters](https://github.com/NovelCOVID/API/commits?author=ebwinters) e ao pessoal do projeto [https://github.com/novelcovid/api](https://github.com/novelcovid/api), que provêm dados de geolocalização de todos os países.
+Gostaria de agradecer ao [Rodrigo Pomber](https://github.com/pomber/covid19) que provê um JSON com os dados mundiais do covid-19 a partir do [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19), o qual é o principal conjunto de dados para este conteúdo. Também agradeco ao [ebwinters](https://github.com/NovelCOVID/API/commits?author=ebwinters) e ao pessoal do projeto [https://github.com/novelcovid/api](https://github.com/novelcovid/api), que provêm dados de geolocalização de todos os países.
 Fica a dica para visitare estes projetos e conhecer um pouco mais sobre estes dados.
 
 A seguir estão todas as informações detalhadas sobre este estudo, assim como os jupyter-notebooks utilizados:
 
 #### Dados de entrada
 Estes são os dados obtidos externamente para produção dos *datasets* (conjuntos de dados) usados nesta análise:
-* JSON do [Pomber](https://github.com/pomber/covid19): dados da pandemia convid-19 por todos os países do mundo.
+* JSON do [Rodrigo Pomber](https://github.com/pomber/covid19): dados da pandemia convid-19 por todos os países do mundo.
 * [API](https://github.com/novelcovid/api) do  ebwinter: dados de geográficos de todos os países
 * [dataset](#https://population.un.org/wpp/Download/Standard/CSV/) da ONU com dados demográficos de (quase) todos os países.
 * [brasil-estados.json](data/brasil-estados.json): um arquivo JSON contendo todos os dados geográficos dos estatos brasileiros obtido a partir da [API do IBGE](https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&resolucao=2). Estes dados são usados para desenhar os estados sobre o mapa o Brasil.

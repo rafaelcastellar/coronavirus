@@ -37,14 +37,14 @@ I will update it in a daily base around 7am in Brazil (or 4am UTC).
 
 ## About this study
 
-I would like to thank Pomber [https://github.com/pomber/covid19](https://github.com/pomber/covid1) who provides an updated JSON with worldwide covid-19 data from [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19), which is the principal incoming data for this content from. I also would like to thank the [ebwinters](https://github.com/NovelCOVID/API/commits?author=ebwinters) and the guys from [https://github.com/novelcovid/api](https://github.com/novelcovid/api) project, which provides GEO-data from all the contries.
+I would like to thank Rodrigo Pomber [https://github.com/pomber/covid19](https://github.com/pomber/covid1) who provides an updated JSON with worldwide covid-19 data from [CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19), which is the principal incoming data for this content from. I also would like to thank the [ebwinters](https://github.com/NovelCOVID/API/commits?author=ebwinters) and the guys from [https://github.com/novelcovid/api](https://github.com/novelcovid/api) project, which provides GEO-data from all the contries.
 I encourge you to visit his project to get known about this data.
 
 Bellow are the detailed information about this study as well as its jupyter-notebooks:
 
 #### Incoming data
 These are data fetched to produce the datasets used by this analisys:
-* Pomber's JSON [Pomber](https://github.com/pomber/covid19): worldwide whole convid-19 pandemic data by contries
+* Rodrigo Pomber's JSON [Pomber](https://github.com/pomber/covid19): worldwide whole convid-19 pandemic data by contries
 * ebwinter's [API] (https://github.com/novelcovid/api): contries geo-data
 * UN Population [dataset](#https://population.un.org/wpp/Download/Standard/CSV/): total population of each country (not all) provided by United Nations
 * [brasil-estados.json](data/brasil-estados.json): a JSON file cotaining all geographic data from all brazilian states from [IBGE's API](https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&resolucao=2). These data are used to draw the states over the map of Brazil.

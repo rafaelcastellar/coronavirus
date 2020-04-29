@@ -5,7 +5,7 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 cd notebooks
-python countries_data_aggregator.py
+#python countries_data_aggregator.py
 python data_engineering.py
 python analysis.py
 python brazilian_analysis.py
