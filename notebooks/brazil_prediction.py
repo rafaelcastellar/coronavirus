@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[10]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[11]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv', sep=',')
@@ -27,7 +27,7 @@ yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
 df[df['state']=='SP'].tail()
 
 
-# In[3]:
+# In[12]:
 
 
 states = df['state'].unique()
@@ -37,14 +37,14 @@ states
 # ----------------------------
 # ### Predicting cases and deaths for a selected stated
 
-# In[4]:
+# In[13]:
 
 
 #inform the states for predictions
-predictedStates = ['PI', 'CE', 'MG', 'RJ', 'SP', 'PR',]
+predictedStates = ['PI', 'CE', 'AM', 'RJ', 'SP', 'PR',]
 
 
-# In[5]:
+# In[14]:
 
 
 df_prediction = pd.DataFrame(columns=['state','ds', 'case_day', 'death_day', 'cases', 'deaths'])
@@ -99,19 +99,19 @@ df_prediction.to_csv('../predictions/brazilPrediction_' + today + '.csv', index 
 df_prediction.tail(15)
 
 
-# In[6]:
+# In[15]:
 
 
 df_prediction.loc[df_prediction['ds']==tomorrow]
 
 
-# In[7]:
+# In[16]:
 
 
 df_prediction.loc[df_prediction['ds']==dayAfterTomorrow]
 
 
-# In[8]:
+# In[17]:
 
 
 df_br = df_prediction.loc[df_prediction['state']=='SP']
@@ -152,7 +152,7 @@ plt.savefig('../predictions/saoPaulo_predictions.png')
 
 # ### Generating the markdown file
 
-# In[9]:
+# In[18]:
 
 
 f = open('../predictions/README.md', 'w')
