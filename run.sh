@@ -8,7 +8,7 @@ cd notebooks
 #python countries_data_aggregator.py
 python data_engineering.py
 python analysis.py
-python brazilian_analysis.py
+python brazil_analysis.py
 python saoPaulo_analysis.py
 python prediction.py
 python brazilian_prediction.py

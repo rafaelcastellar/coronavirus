@@ -9,7 +9,7 @@ Alguns países não estão no *dataset* da ONU, então não conseguimos analisá
 
 ***Dica**: você pode alterar você mesmo neste notebook quais países você prefere comparar.*
 
-## Top 5 países mais letais + Brasil
+## Top 5 países mais mortais + Brasil
 |    | country        |   day | date                |   cases |   case_day |   deaths |   death_day |   cases_million |   deaths_million |   avg7_cases_million |   avg7_deaths_million |   avg7_recoveries_million |
 |---:|:---------------|------:|:--------------------|--------:|-----------:|---------:|------------:|----------------:|-----------------:|---------------------:|----------------------:|--------------------------:|
 |  1 | United Kingdom |    90 | 2020-04-29 00:00:00 |  166441 |       4091 |    26166 |        4421 |            60.6 |             65.5 |                   67 |                    16 |                         0 |
@@ -38,7 +38,7 @@ Alguns países não estão no *dataset* da ONU, então não conseguimos analisá
 Milhão de população noramilza os números de modo que a comparação entre países fica mais adequada. Como podemos ver, os primeiros gráficos nos mostram quão agressivo é a pandemia na Itália e Espanha.
 ![](world_cases_deaths_million.png)
 
- ### Casos ativos, uma visão mundial, % de recuperações e letalidade
+ ### Casos ativos, uma visão mundial, % de recuperações e mortalidade
 ![](world_active_cases_percentages.png)
 ----------------------
 ## Análises do Brasil

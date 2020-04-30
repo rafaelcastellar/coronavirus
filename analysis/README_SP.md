@@ -2,8 +2,8 @@
 
 # **Análises e monitoramento**
 
-### Letalidade dos estados brasileiros
-O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.
+### Mortalidade dos estados brasileiros
+O nível de mortalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da mortalidade de cada estado.
 <img src="maps/saoPauloMapDeaths.png" width="100%"  />
 ### Transmissão das cidades do estado de São Paulo
 O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada cidade do estado.
@@ -13,24 +13,25 @@ O nível de transmissão no mapa é definido a partir da média móvel dos últi
 Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de **2020-04-29**.
 
 Como existem muitas cidades, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionadas as 5 mais mortais:['osasco' 'guarulhos' 'sao bernardo do campo' 'santos' 'santa gertrudes'
- 'lucelia'].
+ 'lucelia' 'rio claro'].
 
 
 ***Dica**: você mesmo pode alterar neste notebook quais cidades você prefere comparar.*
 
-## Top 5 cidades mais letais do estado de São Paulo (+ Santa Gertrudes e Lucélia)
+## Top 5 cidades mais mortais do estado de São Paulo (+ Santa Gertrudes e Lucélia)
 |     | city                       | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |----:|:---------------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | juquitiba                  | 2020-04-29 00:00:00 |    13 |          0 |       3 |           0 |        3 |            0 |             0 |            100    |          100 |
-|   2 | pitangueiras               | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
-|   3 | conchas                    | 2020-04-29 00:00:00 |    16 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
-|   4 | santo antonio da alegria   | 2020-04-29 00:00:00 |    13 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
-|   5 | santa rita do passa quatro | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
-| 197 | santa gertrudes            | 2020-04-29 00:00:00 |    14 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |            0 |
-|  12 | lucelia                    | 2020-04-29 00:00:00 |     7 |          0 |       4 |           0 |        2 |            0 |             0 |             64.29 |           50 |
+|   1 | juquitiba                  | 2020-04-29 00:00:00 |    13 |          0 |       3 |           0 |        3 |            0 |             0 |            100    |       100    |
+|   2 | pitangueiras               | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|   3 | conchas                    | 2020-04-29 00:00:00 |    16 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|   4 | santo antonio da alegria   | 2020-04-29 00:00:00 |    13 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|   5 | santa rita do passa quatro | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|  12 | lucelia                    | 2020-04-29 00:00:00 |     7 |          0 |       4 |           0 |        2 |            0 |             0 |             64.29 |        50    |
+|  25 | rio claro                  | 2020-04-29 00:00:00 |    31 |          1 |      17 |           0 |        7 |            0 |             0 |             40.07 |        41.18 |
+| 197 | santa gertrudes            | 2020-04-29 00:00:00 |    14 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
 
 
- ## Top 5 cidades mais transmissíveis do estado de São Paulo (+ Santa Gertrudes e Lucélia)
+ ## Top 5 cidades mais transmissíveis do estado de São Paulo (+ Santa Gertrudes, Rio Claro e Lucélia)
 |     | city                  | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |----:|:----------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
 |   1 | sao paulo             | 2020-04-29 00:00:00 |    32 |       1241 |   16638 |         118 |     1439 |          849 |            94 |              8.42 |         8.65 |
@@ -38,6 +39,7 @@ Como existem muitas cidades, colocar em um único gráfico todos seus dados torn
 |   3 | guarulhos             | 2020-04-29 00:00:00 |    32 |        104 |     666 |          12 |       64 |           47 |             5 |             10.59 |         9.61 |
 |   4 | sao bernardo do campo | 2020-04-29 00:00:00 |    32 |         50 |     616 |           4 |       40 |           39 |             2 |              6.69 |         6.49 |
 |   5 | santos                | 2020-04-29 00:00:00 |    30 |         39 |     534 |           5 |       46 |           30 |             3 |              6.49 |         8.61 |
+| 167 | rio claro             | 2020-04-29 00:00:00 |    31 |          1 |      17 |           0 |        7 |            0 |             0 |             40.07 |        41.18 |
 | 179 | santa gertrudes       | 2020-04-29 00:00:00 |    14 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
 | 268 | lucelia               | 2020-04-29 00:00:00 |     7 |          0 |       4 |           0 |        2 |            0 |             0 |             64.29 |        50    |
 ----------------------

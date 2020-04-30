@@ -37,7 +37,7 @@ m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
 
 folium.Choropleth(
     geo_data=state_geo,
-    name='Letalidade',
+    name='Mortalidade',
     data=df,
     columns=['codigo_ibge','avg7_perc_death'],
     key_on='feature.properties.codarea',
@@ -48,29 +48,29 @@ folium.Choropleth(
     line_opacity=0.3,
     nan_fill_color = 'white',
     nan_fill_opacity = 0.1,
-    legend_name= '% letalidade (media movel 7 ultimos dias)'
+    legend_name= '% mortalidade (media movel 7 ultimos dias)'
 ).add_to(m)
 
-# for key,estado in df.iterrows():
-#     dados = df[df['codigo_ibge']==estado.codigo_ibge]
-#     detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
-#     detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
-#     detalhes += ', letalidade: ' + str(dados.perc_death.values[0]) + '%'
-# #     detalhes = udetalhes
+for key,estado in df.iterrows():
+    dados = df[df['codigo_ibge']==estado.codigo_ibge]
+    detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
+    detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
+    detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
+#     detalhes = udetalhes
     
-#     folium.CircleMarker(
-#         location=[estado.latitude,estado.longitude],
-#         radius=2,
-# #         popup=detalhes,
-#         color='#727b7d',
-#         fill=True,
-#         fill_color='#ffff',
-#         tooltip=detalhes,
-#         icon=folium.Icon(color='blue',
-#              icon_color='black',
-#              icon='info-sign',
-#              prefix='es')
-#     ).add_to(m)
+    folium.CircleMarker(
+        location=[estado.latitude,estado.longitude],
+        radius=2,
+#         popup=detalhes,
+        color='#727b7d',
+        fill=True,
+        fill_color='#ffff',
+        tooltip=detalhes,
+        icon=folium.Icon(color='blue',
+             icon_color='black',
+             icon='info-sign',
+             prefix='es')
+    ).add_to(m)
 
 folium.LayerControl().add_to(m)
 
@@ -98,26 +98,26 @@ folium.Choropleth(
     legend_name='media movel de casos (7 ultimos dias)'
 ).add_to(m)
 
-# for key,estado in df.iterrows():
-#     dados = df[df['codigo_ibge']==estado.codigo_ibge]
-#     detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
-#     detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
-#     detalhes += ', letalidade: ' + str(dados.perc_death.values[0]) + '%'
-# #     detalhes = udetalhes
+for key,estado in df.iterrows():
+    dados = df[df['codigo_ibge']==estado.codigo_ibge]
+    detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
+    detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
+    detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
+#     detalhes = udetalhes
     
-#     folium.CircleMarker(
-#         location=[estado.latitude,estado.longitude],
-#         radius=2,
-# #         popup=detalhes,
-#         color='#727b7d',
-#         fill=True,
-#         fill_color='#ffff',
-#         tooltip=detalhes,
-#         icon=folium.Icon(color='blue',
-#              icon_color='black',
-#              icon='info-sign',
-#              prefix='es')
-#     ).add_to(m)
+    folium.CircleMarker(
+        location=[estado.latitude,estado.longitude],
+        radius=2,
+#         popup=detalhes,
+        color='#727b7d',
+        fill=True,
+        fill_color='#ffff',
+        tooltip=detalhes,
+        icon=folium.Icon(color='blue',
+             icon_color='black',
+             icon='info-sign',
+             prefix='es')
+    ).add_to(m)
 
 folium.LayerControl().add_to(m)
 
@@ -150,30 +150,40 @@ imgkit.from_file('../analysis/maps/saoPauloMapCasesContainer.html', '../analysis
 # ----------------------------
 # ### São Paulo - Analysis and monitoring
 
-# #### Top 10 cities  + Santa Gertrudes
+# #### Top death cities  + Santa Gertrudes + Lucelia + Rio Claro
 
-# In[6]:
+# In[19]:
 
 
 cols = ['city', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
+addCity = ['santa gertrudes', 'lucelia', 'rio claro']
+
 df_top_deaths = df[df['date']==today].sort_values('avg7_perc_death', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
-df_top_deaths = df_top_deaths[cols].head(qtdeMonitored).append(df_top_deaths[df_top_deaths['city']=='santa gertrudes'][cols]).append(df_top_deaths[df_top_deaths['city']=='lucelia'][cols])
+df_top_deaths = df_top_deaths[cols].head(qtdeMonitored).append(df_top_deaths[df_top_deaths['city'].isin(addCity)][cols])
+
 df_top_deaths
 
 
-# #### Top 10 most transmissible countries + Santa Gertrude + Lucélia - São Paulo
+# In[12]:
 
-# In[7]:
+
+df_top_deaths[(df_top_deaths['city']=='santa gertrudes') | (df_top_deaths['city']=='lucelia') | (df_top_deaths['city']=='rio claro')][cols]
+
+
+# #### Top 10 most transmissible countries + Santa Gertrude + Lucélia + Rio Claro - São Paulo
+
+# In[21]:
 
 
 df_top_cases = df[df['date']==today].sort_values('avg7_cases', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
-df_top_cases = df_top_cases[cols].head(qtdeMonitored).append(df_top_cases[df_top_cases['city']=='santa gertrudes'][cols]).append(df_top_cases[df_top_cases['city']=='lucelia'][cols])
+df_top_cases = df_top_cases[cols].head(qtdeMonitored).append(df_top_cases[df_top_cases['city'].isin(addCity)][cols])
+
 df_top_cases
 
 
@@ -181,16 +191,16 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[8]:
+# In[22]:
 
 
 #inform the countries you want to analise
 monitoredCities = df_top_cases['city'].head(qtdeMonitored).to_numpy()
 monitoredCities = np.delete(monitoredCities,np.where([monitoredCities == 'sao paulo'] or [monitoredCities == 'total geral']))
-monitoredCities = np.append(monitoredCities,['santa gertrudes','lucelia'])
+monitoredCities = np.append(monitoredCities,[addCity])
 
 
-# In[9]:
+# In[23]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -239,8 +249,8 @@ f = open('../analysis/README_SP.md', 'w')
 readme = '[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_SP_EN.md)'
 readme += '\n\n# **Análises e monitoramento**\n'
 
-readme += '\n### Letalidade dos estados brasileiros\n'
-readme += 'O nível de letalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da letalidade de cada estado.\n'
+readme += '\n### Mortalidade dos estados brasileiros\n'
+readme += 'O nível de mortalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da mortalidade de cada estado.\n'
 readme += '<img src="maps/saoPauloMapDeaths.png" width="100%"  />'
 
 readme += '\n### Transmissão das cidades do estado de São Paulo\n'
@@ -251,10 +261,10 @@ readme += '\n\nEstas análises são relativas aos dados da pandemia Covid19 no e
 readme += 'Como existem muitas cidades, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionadas as ' + str(qtdeMonitored) + ' mais mortais:'
 readme += str(monitoredCities) + '.\n\n'
 readme += '\n***Dica**: você mesmo pode alterar neste notebook quais cidades você prefere comparar.*\n\n'
-readme += '## Top ' + str(qtdeMonitored) + ' cidades mais letais do estado de São Paulo (+ Santa Gertrudes e Lucélia)\n'
+readme += '## Top ' + str(qtdeMonitored) + ' cidades mais mortais do estado de São Paulo (+ Santa Gertrudes e Lucélia)\n'
 readme += df_top_deaths.to_markdown()
 # readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top ' + str(qtdeMonitored) + ' cidades mais transmissíveis do estado de São Paulo (+ Santa Gertrudes e Lucélia)\n'
+readme += '\n\n\n ## Top ' + str(qtdeMonitored) + ' cidades mais transmissíveis do estado de São Paulo (+ Santa Gertrudes, Rio Claro e Lucélia)\n'
 readme += df_top_cases.to_markdown()
 #tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
 
@@ -275,8 +285,8 @@ readme = '[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em portug
 
 readme += '\n\n# **Analysis and monitoring**\n'
 
-readme += '\n### Lethality of the San Paulo\'s cities\n'
-readme += 'The lethality level shown in this map is defined from the moving average of the last 7 days of each city lethality of the San Paulo state.\n'
+readme += '\n### Mortality of the San Paulo\'s cities\n'
+readme += 'The mortality level shown in this map is defined from the moving average of the last 7 days of each city mortality of the San Paulo state.\n'
 readme += '<img src="maps/saoPauloMapDeaths.png" width="80%"  />'
 
 readme += '\n### Transmission of the San Paulo\'s cities\n'
@@ -287,7 +297,7 @@ readme += '\n\nThese analysis are related to state of San Paulo Convid19 pandemi
 readme += 'As there are too many cities to have their data plotted together, were selected the ' + str(qtdeMonitored) + ' deadliest:'
 readme += str(monitoredCities) + '.\n\n'
 readme += '\n***Tip**: you can yourself select in this notebook which states you prefer to compare.*\n\n'
-readme += '## Top ' + str(qtdeMonitored) + ' deadliest cities of the state of San Paulo (+ Santa Gertrudes and Lucelia cities) of Brazil\n'
+readme += '## Top ' + str(qtdeMonitored) + ' deadliest cities of the state of San Paulo (+ Santa Gertrudes, Rio Claro and Lucelia cities) of Brazil\n'
 readme += df_top_deaths.to_markdown()
 # readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
 readme += '\n\n\n ## Top ' + str(qtdeMonitored) + ' most transmissible cities of state of San Paulo (+ Santa Gertrudes and Lucelia cities)\n'

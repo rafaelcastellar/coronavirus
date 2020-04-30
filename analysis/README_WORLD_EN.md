@@ -38,7 +38,7 @@ Some countries are not in UN dataset, so we can not analyse them by population. 
 Million of population normalizes the features so they can me better comparable among the selected countries. As we can see, the first charts shows us how aggressive the pandemic is in Italy, Spain and somehow in France.
 ![](world_cases_deaths_million.png)
 
- ### Active cases, world overview, % recoveries and lethality
+ ### Active cases, world overview, % recoveries and mortality
 ![](world_active_cases_percentages.png)
 ----------------------
 ## Brazil's analysis

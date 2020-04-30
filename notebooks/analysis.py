@@ -172,7 +172,7 @@ ax6.legend()
 fig.savefig('../analysis/world_cases_deaths_million.png')
 
 
-# #### Active cases, world overview, % recoveries and lethality
+# #### Active cases, world overview, % recoveries and mortality
 
 # In[9]:
 
@@ -184,7 +184,7 @@ ax3.set_title("% recovery/cases")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
-ax4.set_title("lethality (% death/cases)")
+ax4.set_title("mortality (% death/cases)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
@@ -247,10 +247,10 @@ ax2.plot(df_br.day, df_br.deaths_million, label = 'deaths')
 ax2.plot(df_br.day, df_br.recoveries_million, label = 'recoveries')
 
 
-ax3.set_title("% recovery/cases and lethality (% death/cases)")
+ax3.set_title("% recovery/cases and mortality (% death/cases)")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
-ax3.plot(df_br.day, df_br.perc_death, label = 'lethality')
+ax3.plot(df_br.day, df_br.perc_death, label = 'mortality')
 ax3.plot(df_br.day, df_br.perc_recovery, label = '% recovery')
 
 ax4.set_title("% daily variation - Brazil")
@@ -322,7 +322,7 @@ readme += 'Como existem muitos países, colocar em um gráfico todos seus dados 
 readme += str(monitoredCountries) + '.\n\n'
 readme += 'Alguns países não estão no *dataset* da ONU, então não conseguimos analisá-los por sua populações. Estes podem ser encontrados fim do notebook *[data_engineering.ipynb](../data_engineering.ipynb)*.\n'
 readme += '\n***Dica**: você pode alterar você mesmo neste notebook quais países você prefere comparar.*\n\n'
-readme += '## Top 5 países mais letais + Brasil\n'
+readme += '## Top 5 países mais mortais + Brasil\n'
 readme += df_top_deaths.to_markdown()
 # readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
 readme += '\n\n\n ## Top 5 países mais transmissíveis + Brasil\n'
@@ -338,7 +338,7 @@ readme += '\n\n ### Casos, mortes e recuperações por milhão\n'
 readme += 'Milhão de população noramilza os números de modo que a comparação entre países fica mais adequada. Como podemos ver, os primeiros gráficos nos mostram quão agressivo é a pandemia na Itália e Espanha.\n'
 readme += '![](world_cases_deaths_million.png)'
 
-readme += '\n\n ### Casos ativos, uma visão mundial, % de recuperações e letalidade\n'
+readme += '\n\n ### Casos ativos, uma visão mundial, % de recuperações e mortalidade\n'
 readme += '![](world_active_cases_percentages.png)'
 
 readme += '\n----------------------\n'
@@ -379,7 +379,7 @@ readme += '\n\n ### Cases, deaths and recoveries per million\n'
 readme += 'Million of population normalizes the features so they can me better comparable among the selected countries. As we can see, the first charts shows us how aggressive the pandemic is in Italy, Spain and somehow in France.\n'
 readme += '![](world_cases_deaths_million.png)'
 
-readme += '\n\n ### Active cases, world overview, % recoveries and lethality\n'
+readme += '\n\n ### Active cases, world overview, % recoveries and mortality\n'
 readme += '![](world_active_cases_percentages.png)'
 
 readme += '\n----------------------\n'
