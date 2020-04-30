@@ -10,36 +10,36 @@ O nível de transmissão no mapa é definido a partir da média móvel dos últi
 
 <img src="maps/saoPauloMapCases.png" width="100%"  />
 
-Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de **2020-04-28**.
+Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de **2020-04-29**.
 
-Como existem muitas cidades, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionadas as 5 mais mortais:['osasco' 'sao bernardo do campo' 'guarulhos' 'santos' 'santa gertrudes'
+Como existem muitas cidades, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionadas as 5 mais mortais:['osasco' 'guarulhos' 'sao bernardo do campo' 'santos' 'santa gertrudes'
  'lucelia'].
 
 
 ***Dica**: você mesmo pode alterar neste notebook quais cidades você prefere comparar.*
 
 ## Top 5 cidades mais letais do estado de São Paulo (+ Santa Gertrudes e Lucélia)
-|     | city                     | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
-|----:|:-------------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | juquitiba                | 2020-04-28 00:00:00 |    12 |          0 |       3 |           0 |        3 |            0 |             0 |               100 |          100 |
-|   2 | caiabu                   | 2020-04-28 00:00:00 |    18 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
-|   3 | santo antonio da alegria | 2020-04-28 00:00:00 |    12 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
-|   4 | conchas                  | 2020-04-28 00:00:00 |    15 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
-|   5 | iepe                     | 2020-04-28 00:00:00 |    10 |          0 |       1 |           0 |        1 |            0 |             0 |               100 |          100 |
-| 176 | santa gertrudes          | 2020-04-28 00:00:00 |    13 |          0 |       1 |           0 |        0 |            0 |             0 |                 0 |            0 |
-| 262 | lucelia                  | 2020-04-28 00:00:00 |     6 |          0 |       4 |           0 |        2 |            0 |             0 |                 0 |           50 |
+|     | city                       | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
+|----:|:---------------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
+|   1 | juquitiba                  | 2020-04-29 00:00:00 |    13 |          0 |       3 |           0 |        3 |            0 |             0 |            100    |          100 |
+|   2 | pitangueiras               | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
+|   3 | conchas                    | 2020-04-29 00:00:00 |    16 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
+|   4 | santo antonio da alegria   | 2020-04-29 00:00:00 |    13 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
+|   5 | santa rita do passa quatro | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |          100 |
+| 197 | santa gertrudes            | 2020-04-29 00:00:00 |    14 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |            0 |
+|  12 | lucelia                    | 2020-04-29 00:00:00 |     7 |          0 |       4 |           0 |        2 |            0 |             0 |             64.29 |           50 |
 
 
  ## Top 5 cidades mais transmissíveis do estado de São Paulo (+ Santa Gertrudes e Lucélia)
 |     | city                  | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |----:|:----------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | sao paulo             | 2020-04-28 00:00:00 |    31 |       1408 |   15397 |         149 |     1321 |          722 |            81 |              8.22 |         8.58 |
-|   2 | osasco                | 2020-04-28 00:00:00 |    31 |         48 |     646 |           4 |       66 |           46 |             5 |             10.15 |        10.22 |
-|   3 | sao bernardo do campo | 2020-04-28 00:00:00 |    31 |         55 |     566 |           1 |       36 |           36 |             2 |              6.6  |         6.36 |
-|   4 | guarulhos             | 2020-04-28 00:00:00 |    31 |         64 |     562 |           0 |       52 |           33 |             3 |             10.43 |         9.25 |
-|   5 | santos                | 2020-04-28 00:00:00 |    29 |         32 |     495 |          14 |       41 |           24 |             3 |              6.1  |         8.28 |
-| 172 | santa gertrudes       | 2020-04-28 00:00:00 |    13 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
-| 265 | lucelia               | 2020-04-28 00:00:00 |     6 |          0 |       4 |           0 |        2 |            0 |             0 |              0    |        50    |
+|   1 | sao paulo             | 2020-04-29 00:00:00 |    32 |       1241 |   16638 |         118 |     1439 |          849 |            94 |              8.42 |         8.65 |
+|   2 | osasco                | 2020-04-29 00:00:00 |    32 |         55 |     701 |           5 |       71 |           49 |             5 |             10.3  |        10.13 |
+|   3 | guarulhos             | 2020-04-29 00:00:00 |    32 |        104 |     666 |          12 |       64 |           47 |             5 |             10.59 |         9.61 |
+|   4 | sao bernardo do campo | 2020-04-29 00:00:00 |    32 |         50 |     616 |           4 |       40 |           39 |             2 |              6.69 |         6.49 |
+|   5 | santos                | 2020-04-29 00:00:00 |    30 |         39 |     534 |           5 |       46 |           30 |             3 |              6.49 |         8.61 |
+| 179 | santa gertrudes       | 2020-04-29 00:00:00 |    14 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
+| 268 | lucelia               | 2020-04-29 00:00:00 |     7 |          0 |       4 |           0 |        2 |            0 |             0 |             64.29 |        50    |
 ----------------------
 ## Casos e mortes
 ![](saoPaulo_cities_cases_deaths.png)
