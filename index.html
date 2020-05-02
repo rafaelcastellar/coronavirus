@@ -1,68 +1,13 @@
-<html>
-<h1 id="-an-lises-do-coronavirus-de-uma-perspectiva-brasileira-"><strong>Análises do Coronavirus de uma perspectiva brasileira</strong></h1>
-<p><a href="README_EN.md"><img src="data/bandeiras/UK.png" width="30"  /> English version</a></p>
-<p>Desde que o vírus chegou aqui no Brasil, iniciei algumas análises sobre dados de contaminações, mortes e recuperações da pandemia pelo mundo, a fim de entender, comparar e até prever seu comportamento aqui no Brasil.</p>
-<p>Como esse conteúdo pode ser útil para outras pessoas, além de mim e meus amigos, decidi compartilhá-lo aqui. Se for útil para você, ficarei feliz em ajudar.
-Eu o atualizo diariamente por volta das 07h da manhã (horário de Brasília)</p>
-<hr>
-<h2 id="an-lises">Análises</h2>
-<h3 id="-img-src-data-bandeiras-br-png-width-40-brasil"><img src="data/bandeiras/BR.png" width="40"  /> Brasil</h3>
-<p><a href="analysis/README.md">As análises detalhadas sobre a pandemia no Brasil encontram-se aqui</a>.</p>
-<p><a href="analysis/maps/brazilMapDeaths.png"><img src="analysis/maps/brazilMapDeaths.png" width="240"  /> <br>Clique aqui para tamanho real</a></p>
-<h3 id="-img-src-data-bandeiras-sp-png-width-40-estado-de-s-o-paulo-brasil"><img src="data/bandeiras/SP.png" width="40"  /> Estado de São Paulo - Brasil</h3>
-<p><a href="analysis/README_SP.md">As análises detalhadas sobre a pandemia no estado de São encontram-se aqui</a>.</p>
-<p><a href="analysis/maps/saoPauloDeaths.png"><img src="analysis/maps/saoPauloMapDeaths.png" width="240"  /> <br>Clique aqui para tamanho real</a></p>
-<h3 id="-img-src-data-bandeiras-wd-png-width-40-mundo"><img src="data/bandeiras/WD.png" width="40"  />  Mundo</h3>
-<p><a href="analysis/README_WORLD.md">Análises da pandemia pelo mundo comparando com o Brasil encontram-se aqui.</a>.</p>
-<hr>
-<h2 id="predi-es">Predições</h2>
-<h3 id="-img-src-data-bandeiras-br-png-width-40-brasil"><img src="data/bandeiras/BR.png" width="40"  /> Brasil</h3>
-<p><a href="predictions/README.md">Aqui estão detalhes das predições para os próximos dias dos estados do Brasil</a>.</p>
-<h3 id="-img-src-data-bandeiras-sp-png-width-40-estado-de-s-o-paulo-em-constru-o-"><img src="data/bandeiras/SP.png" width="40"  /> Estado de São Paulo (em construção)</h3>
-<!-- [Aqui estão detalhes das predições para os próximos dias dos estados do Brasil](predictions/README.md). -->
-<h3 id="-img-src-data-bandeiras-wd-png-width-40-mundo"><img src="data/bandeiras/WD.png" width="40"  />  Mundo</h3>
-<p><a href="predictions/README_WORLD.md">Aqui estão detalhes das predições para os próximos dias para alguns países do mundo e Brasil</a>.</p>
-<hr>
-<h2 id="sobre-este-estudo">Sobre este estudo</h2>
-<p>Gostaria de agradecer ao <a href="https://github.com/pomber/covid19">Rodrigo Pomber</a> que provê um JSON com os dados mundiais do covid-19 a partir do <a href="https://github.com/CSSEGISandData/COVID-19">CSSEGISandData/COVID-19</a>, o qual é o principal conjunto de dados para este conteúdo. Também agradeco ao <a href="https://github.com/NovelCOVID/API/commits?author=ebwinters">ebwinters</a> e ao pessoal do projeto <a href="https://github.com/novelcovid/api">https://github.com/novelcovid/api</a>, que provêm dados de geolocalização de todos os países.
-Fica a dica para visitare estes projetos e conhecer um pouco mais sobre estes dados.</p>
-<p>A seguir estão todas as informações detalhadas sobre este estudo, assim como os jupyter-notebooks utilizados:</p>
-<h4 id="dados-de-entrada">Dados de entrada</h4>
-<p>Estes são os dados obtidos externamente para produção dos <em>datasets</em> (conjuntos de dados) usados nesta análise:</p>
-<ul>
-<li>JSON do <a href="https://github.com/pomber/covid19">Rodrigo Pomber</a>: dados da pandemia convid-19 por todos os países do mundo.</li>
-<li><a href="https://github.com/novelcovid/api">API</a> do  ebwinter: dados de geográficos de todos os países</li>
-<li><a href="#https://population.un.org/wpp/Download/Standard/CSV/">dataset</a> da ONU com dados demográficos de (quase) todos os países.</li>
-<li><a href="data/brasil-estados.json">brasil-estados.json</a>: um arquivo JSON contendo todos os dados geográficos dos estatos brasileiros obtido a partir da <a href="https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&amp;resolucao=2">API do IBGE</a>. Estes dados são usados para desenhar os estados sobre o mapa o Brasil.</li>
-<li><a href="data/brazilian_states.csv">brazilian_states.csv</a>: dados descritivos de todos os estados brasileiros, também obtidos a partir da <a href="https://servicodados.ibge.gov.br/api/v1/localidades/estados/">API do IBGE</a></li>
-<li><a href="data/gov_brazil_corona19_data.csv">gov_brazil_corona19_data.csv</a>: dados atualizados da pandemia no Brasil providos pelo <a href="https://covid.saude.gov.br/">Ministério da Saúde</a>.</li>
-<li><a href="https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv">dados_covid_sp.csv</a>: dados atualizados da pandemia no estado de São Paulo providos pela <a href="https://www.seade.gov.br/coronavirus/">SEADE</a>.</li>
-<li><a href="data/saoPaulo-cidades.json">saoPaulo-cidades.json</a>: um arquivo JSON contendo todos os dados geográficos das cidades do estado de São Paulo a partir da <a href="https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&amp;resolucao=2">API do IBGE</a>. Estes dados são usados para desenhar as cidades sobre o mapa do estado de São Paulo.</li>
-</ul>
-<h3 id="dataset">Dataset</h3>
-<ul>
-<li><strong><a href="data/world_countries_2019.csv">world_countries_2019.csv</a></strong>: um <em>dataset</em> consolidado a partir dos dados do ebinters e da ONU, o qual é usado para normalizar alguns indicadores da pandemia a partir das populações de cada país.</li>
-<li><strong><a href="data/world_corona19_data.csv">world_corona19_data.csv</a></strong>: o <em>dataset</em> principal usado por este estuddo. É composto a partir do JSON do Pomber e enriquecido com as seguintes <em>features</em>, que são derivadas para <strong>casos</strong>, <strong>mortes</strong> e <strong>recuperações</strong>, porém, para simplificar, apresento-as para <strong>caso</strong> (estão em inglês para facilitar o compartilhamento de conteúdo):<ul>
-<li><em>day</em>: número de dias a partir do primeiro caso de contaminação no país</li>
-<li><em>cases</em>: número acumulado de casos desde o dia (<em>day</em>) 0</li>
-<li><em>case_day</em>: número de casos registrados em um determinado dia</li>
-<li><em>%var_case_day</em>: variação diária de casos em relação ao dia anterior (em percentual)</li>
-<li><em>cases_million</em>: número de casos diário por milhão de habitantes de um país. É o que permite uma melhor comparação mais adequada dos dados entre países</li>
-<li><em>avg7_cases</em>: média móvel de casos diários dos últimos 7 dias</li>
-<li><em>avg7_cases_million</em>: média móvel de casos por milhão dos últimos 7 dias </li>
-<li><em>perc_death</em>: percentual de mortes sobre a quantidade de casos de contaminação de um país</li>
-</ul>
-</li>
-<li><strong><a href="data/brazil_corona19_data.csv">brazil_corona19_data.csv</a></strong>: um <em>dataset</em> quase idêntico ao anterior, mas com os dados da pandemia pelos estados do Brasil. </li>
-<li><strong><a href="data/saoPaulo_corona19_data.csv">saoPaulo_corona19_data.csv</a></strong>: um <em>dataset</em> quase idêntico ao anterior, mas com os dados da pandemia pelas cidades do estado de São Paulo. </li>
-</ul>
-<h3 id="notebooks">Notebooks</h3>
-<p>Aqui estão os jupyter-notebooks que usei para criar este estudo:</p>
-<p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/countries_data_aggregator.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/countries_data_aggregator.ipynb">countries_data_aggregator.ipynb</a></em>: o agregador de todos os dados de todos os países e estados do Brasil.</p>
-<p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/data_engineering.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/data_engineering.ipynb">data_engineering.ipynb</a></em>: engenharia de dados e de <em>features</em> para composição do <em>dataset</em> principal.</p>
-<p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/analysis.ipynb">analysis.ipynb</a></em>: todas as análises e gráficos feitos sobre a pandemia no mundo e no Brasil.</p>
-<p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazil_analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/brazil_analysis.ipynb">brazil_analysis.ipynb</a></em>: todas as análises e gráficos sobre a pandemia no Brasil.</p>
-<p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/saoPaulo_analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/saoPaulo_analysis.ipynb">saoPaulo_analysis.ipynb</a></em>: todas as análises e gráficos sobre a pandemia no estado de São Paulo.</p>
-<p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/prediction.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/prediction.ipynb">prediction.ipynb</a></em>: todas as predições da pandemia no mudo e no Brasil usando <a href="https://facebook.github.io/prophet/docs/quick_start.html">Facebook-Prophet</a>.</p>
-<p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazilian_prediction.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/brazilian_prediction.ipynb">brazilian_prediction.ipynb</a></em>: todas as predições da pandemia pelos estados do Brasil usando <a href="https://facebook.github.io/prophet/docs/quick_start.html">Facebook-Prophet</a>.</p>
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <META http-equiv="refresh" content="1;URL=https://corona19br.netlify.app/">   
+    </head>
+
+    <script language="JavaScript"> 
+    window.location="html/index.html"; 
+</script> 
+
 </html>

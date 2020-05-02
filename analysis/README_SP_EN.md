@@ -9,10 +9,10 @@ The mortality level shown in this map is defined from the moving average of the 
 The tranmission level shown in this map is defined from the moving average of the last 7 days of each city's cumulative cases.
 <img src="maps/saoPauloMapCases.png" width="80%"  />
 
-These analysis are related to state of San Paulo Convid19 pandemic data up to **2020-04-29**.
+These analysis are related to state of San Paulo Convid19 pandemic data up to **2020-05-01**.
 
-As there are too many cities to have their data plotted together, were selected the 5 deadliest:['osasco' 'guarulhos' 'sao bernardo do campo' 'santos' 'santa gertrudes'
- 'lucelia' 'rio claro'].
+As there are too many cities to have their data plotted together, were selected the 5 deadliest:['osasco' 'guarulhos' 'sao bernardo do campo' 'santo andre'
+ 'santa gertrudes' 'lucelia' 'rio claro'].
 
 
 ***Tip**: you can yourself select in this notebook which states you prefer to compare.*
@@ -20,27 +20,27 @@ As there are too many cities to have their data plotted together, were selected 
 ## Top 5 deadliest cities of the state of San Paulo (+ Santa Gertrudes, Rio Claro and Lucelia cities) of Brazil
 |     | city                       | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |----:|:---------------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | juquitiba                  | 2020-04-29 00:00:00 |    13 |          0 |       3 |           0 |        3 |            0 |             0 |            100    |       100    |
-|   2 | pitangueiras               | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
-|   3 | conchas                    | 2020-04-29 00:00:00 |    16 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
-|   4 | santo antonio da alegria   | 2020-04-29 00:00:00 |    13 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
-|   5 | santa rita do passa quatro | 2020-04-29 00:00:00 |     7 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
-|  12 | lucelia                    | 2020-04-29 00:00:00 |     7 |          0 |       4 |           0 |        2 |            0 |             0 |             64.29 |        50    |
-|  25 | rio claro                  | 2020-04-29 00:00:00 |    31 |          1 |      17 |           0 |        7 |            0 |             0 |             40.07 |        41.18 |
-| 197 | santa gertrudes            | 2020-04-29 00:00:00 |    14 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
+|   1 | rincao                     | 2020-05-01 00:00:00 |    18 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|   2 | jarinu                     | 2020-05-01 00:00:00 |     8 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|   3 | conchas                    | 2020-05-01 00:00:00 |    18 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|   4 | santo antonio da alegria   | 2020-05-01 00:00:00 |    15 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|   5 | santa rita do passa quatro | 2020-05-01 00:00:00 |     9 |          0 |       1 |           0 |        1 |            0 |             0 |            100    |       100    |
+|  17 | lucelia                    | 2020-05-01 00:00:00 |     9 |          3 |       7 |           0 |        2 |            0 |             0 |             51.7  |        28.57 |
+|  22 | rio claro                  | 2020-05-01 00:00:00 |    33 |          0 |      18 |           0 |        8 |            0 |             0 |             43.58 |        44.44 |
+| 212 | santa gertrudes            | 2020-05-01 00:00:00 |    16 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
 
 
  ## Top 5 most transmissible cities of state of San Paulo (+ Santa Gertrudes and Lucelia cities)
 |     | city                  | date                |   day |   case_day |   cases |   death_day |   deaths |   avg7_cases |   avg7_deaths |   avg7_perc_death |   perc_death |
 |----:|:----------------------|:--------------------|------:|-----------:|--------:|------------:|---------:|-------------:|--------------:|------------------:|-------------:|
-|   1 | sao paulo             | 2020-04-29 00:00:00 |    32 |       1241 |   16638 |         118 |     1439 |          849 |            94 |              8.42 |         8.65 |
-|   2 | osasco                | 2020-04-29 00:00:00 |    32 |         55 |     701 |           5 |       71 |           49 |             5 |             10.3  |        10.13 |
-|   3 | guarulhos             | 2020-04-29 00:00:00 |    32 |        104 |     666 |          12 |       64 |           47 |             5 |             10.59 |         9.61 |
-|   4 | sao bernardo do campo | 2020-04-29 00:00:00 |    32 |         50 |     616 |           4 |       40 |           39 |             2 |              6.69 |         6.49 |
-|   5 | santos                | 2020-04-29 00:00:00 |    30 |         39 |     534 |           5 |       46 |           30 |             3 |              6.49 |         8.61 |
-| 167 | rio claro             | 2020-04-29 00:00:00 |    31 |          1 |      17 |           0 |        7 |            0 |             0 |             40.07 |        41.18 |
-| 179 | santa gertrudes       | 2020-04-29 00:00:00 |    14 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
-| 268 | lucelia               | 2020-04-29 00:00:00 |     7 |          0 |       4 |           0 |        2 |            0 |             0 |             64.29 |        50    |
+|   1 | sao paulo             | 2020-05-01 00:00:00 |    34 |        938 |   19087 |          85 |     1607 |         1041 |            85 |              8.44 |         8.42 |
+|   2 | osasco                | 2020-05-01 00:00:00 |    34 |         66 |     828 |          11 |       85 |           62 |             6 |             10.15 |        10.27 |
+|   3 | guarulhos             | 2020-05-01 00:00:00 |    34 |         67 |     804 |           5 |       75 |           57 |             4 |              9.95 |         9.33 |
+|   4 | sao bernardo do campo | 2020-05-01 00:00:00 |    34 |         23 |     705 |           0 |       45 |           40 |             2 |              6.56 |         6.38 |
+|   5 | santo andre           | 2020-05-01 00:00:00 |    34 |         46 |     565 |           5 |       34 |           38 |             2 |              5.59 |         6.02 |
+| 176 | rio claro             | 2020-05-01 00:00:00 |    33 |          0 |      18 |           0 |        8 |            0 |             0 |             43.58 |        44.44 |
+| 187 | santa gertrudes       | 2020-05-01 00:00:00 |    16 |          0 |       1 |           0 |        0 |            0 |             0 |              0    |         0    |
+| 264 | lucelia               | 2020-05-01 00:00:00 |     9 |          3 |       7 |           0 |        2 |            0 |             0 |             51.7  |        28.57 |
 ----------------------
 ## Cases and deaths
 ![](saoPaulo_cities_cases_deaths.png)

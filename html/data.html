@@ -1,0 +1,165 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author_template" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Rafael Castellar das Neves">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Album example · Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <!-- Favicons -->
+    <!-- <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml"> -->
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="album.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="#" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="../index.html" class="navbar-brand d-flex align-items-center">
+        <svg class="mr-2" width="1em" height="1em" viewBox="0 0 16 16"  focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h1v16H0V0zm1 15h15v1H1v-1z"/>
+            <path fill-rule="evenodd" d="M14.39 4.312L10.041 9.75 7 6.707l-3.646 3.647-.708-.708L7 5.293 9.959 8.25l3.65-4.563.781.624z" clip-rule="evenodd"/>
+            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V4h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+          </svg>
+        <strong>Home</strong>
+      </a>
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <svg class="mr-2" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.502 1.94a.5.5 0 010 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 01.707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 00-.121.196l-.805 2.414a.25.25 0 00.316.316l2.414-.805a.5.5 0 00.196-.12l6.813-6.814z"/>
+          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 002.5 15h11a1.5 1.5 0 001.5-1.5v-6a.5.5 0 00-1 0v6a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5H9a.5.5 0 000-1H2.5A1.5 1.5 0 001 2.5v11z" clip-rule="evenodd"/>
+        </svg>
+        <strong>Dados e scripts</strong>
+      </a>
+      <a href="thanks.html" class="navbar-brand d-flex align-items-center">
+        <svg class="mr-2" width="1em" height="1em" viewBox="0 0 16 16"  focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M14 1H2a1 1 0 00-1 1v8a1 1 0 001 1h2.5a2 2 0 011.6.8L8 14.333 9.9 11.8a2 2 0 011.6-.8H14a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v8a2 2 0 002 2h2.5a1 1 0 01.8.4l1.9 2.533a1 1 0 001.6 0l1.9-2.533a1 1 0 01.8-.4H14a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
+          <path d="M5 6a1 1 0 11-2 0 1 1 0 012 0zm4 0a1 1 0 11-2 0 1 1 0 012 0zm4 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+        </svg>
+        <strong>Agradecimentos</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main role="main">
+  <p class="float-right" style="padding: 10px 10px";>
+    <a href="#"><img src='imagens/UK.png' width="30" /> English version</a>
+  </p>
+  <div class="album py-5 bg-light" >
+    <div class="container">
+      <h2 id="sobre-este-estudo">Dados e scripts</h2>
+      <p>A seguir estão todos os dados utilizados e produzidos para este estudo, assim como os jupyter-notebooks utilizados. Todos são públicos e disponíveis a quem interessar</p>
+      <hr>
+      <h3 id="dados-de-entrada">Dados de entrada</h3>
+      <p>Estes são os dados obtidos externamente para produção dos <em>datasets</em> (conjuntos de dados) usados nesta análise:</p>
+      <ul>
+      <li>JSON do <a href="https://github.com/pomber/covid19">Rodrigo Pomber</a>: dados da pandemia convid-19 por todos os países do mundo.</li>
+      <li><a href="https://github.com/novelcovid/api">API</a> do  ebwinter: dados de geográficos de todos os países</li>
+      <li><a href="#https://population.un.org/wpp/Download/Standard/CSV/">dataset</a> da ONU com dados demográficos de (quase) todos os países.</li>
+      <li><a href="data/brasil-estados.json">brasil-estados.json</a>: um arquivo JSON contendo todos os dados geográficos dos estatos brasileiros obtido a partir da <a href="https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&amp;resolucao=2">API do IBGE</a>. Estes dados são usados para desenhar os estados sobre o mapa o Brasil.</li>
+      <li><a href="data/brazilian_states.csv">brazilian_states.csv</a>: dados descritivos de todos os estados brasileiros, também obtidos a partir da <a href="https://servicodados.ibge.gov.br/api/v1/localidades/estados/">API do IBGE</a></li>
+      <li><a href="data/gov_brazil_corona19_data.csv">gov_brazil_corona19_data.csv</a>: dados atualizados da pandemia no Brasil providos pelo <a href="https://covid.saude.gov.br/">Ministério da Saúde</a>.</li>
+      <li><a href="https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv">dados_covid_sp.csv</a>: dados atualizados da pandemia no estado de São Paulo providos pela <a href="https://www.seade.gov.br/coronavirus/">SEADE</a>.</li>
+      <li><a href="data/saoPaulo-cidades.json">saoPaulo-cidades.json</a>: um arquivo JSON contendo todos os dados geográficos das cidades do estado de São Paulo a partir da <a href="https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&amp;resolucao=2">API do IBGE</a>. Estes dados são usados para desenhar as cidades sobre o mapa do estado de São Paulo.</li>
+      </ul>
+      <hr>
+      <h3 id="dataset">Datasets</h3>
+      <ul>
+      <li><strong><a href="data/world_countries_2019.csv">world_countries_2019.csv</a></strong>: um <em>dataset</em> consolidado a partir dos dados do ebinters e da ONU, o qual é usado para normalizar alguns indicadores da pandemia a partir das populações de cada país.</li>
+      <li><strong><a href="data/world_corona19_data.csv">world_corona19_data.csv</a></strong>: o <em>dataset</em> principal usado por este estuddo. É composto a partir do JSON do Pomber e enriquecido com as seguintes <em>features</em>, que são derivadas para <strong>casos</strong>, <strong>mortes</strong> e <strong>recuperações</strong>, porém, para simplificar, apresento-as para <strong>caso</strong> (estão em inglês para facilitar o compartilhamento de conteúdo):<ul>
+      <li><em>day</em>: número de dias a partir do primeiro caso de contaminação no país</li>
+      <li><em>cases</em>: número acumulado de casos desde o dia (<em>day</em>) 0</li>
+      <li><em>case_day</em>: número de casos registrados em um determinado dia</li>
+      <li><em>%var_case_day</em>: variação diária de casos em relação ao dia anterior (em percentual)</li>
+      <li><em>cases_million</em>: número de casos diário por milhão de habitantes de um país. É o que permite uma melhor comparação mais adequada dos dados entre países</li>
+      <li><em>avg7_cases</em>: média móvel de casos diários dos últimos 7 dias</li>
+      <li><em>avg7_cases_million</em>: média móvel de casos por milhão dos últimos 7 dias </li>
+      <li><em>perc_death</em>: percentual de mortes sobre a quantidade de casos de contaminação de um país</li>
+      </ul>
+      </li>
+      <li><strong><a href="data/brazil_corona19_data.csv">brazil_corona19_data.csv</a></strong>: um <em>dataset</em> quase idêntico ao anterior, mas com os dados da pandemia pelos estados do Brasil. </li>
+      <li><strong><a href="data/saoPaulo_corona19_data.csv">saoPaulo_corona19_data.csv</a></strong>: um <em>dataset</em> quase idêntico ao anterior, mas com os dados da pandemia pelas cidades do estado de São Paulo. </li>
+      </ul>
+      <hr>
+      <h3 id="notebooks">Notebooks</h3>
+      <p>Aqui estão os jupyter-notebooks que usei para criar este estudo:</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/countries_data_aggregator.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/countries_data_aggregator.ipynb">countries_data_aggregator.ipynb</a></em>: o agregador de todos os dados de todos os países e estados do Brasil.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/data_engineering.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/data_engineering.ipynb">data_engineering.ipynb</a></em>: engenharia de dados e de <em>features</em> para composição do <em>dataset</em> principal.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/analysis.ipynb">analysis.ipynb</a></em>: todas as análises e gráficos feitos sobre a pandemia no mundo e no Brasil.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazil_analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/brazil_analysis.ipynb">brazil_analysis.ipynb</a></em>: todas as análises e gráficos sobre a pandemia no Brasil.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/saoPaulo_analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/saoPaulo_analysis.ipynb">saoPaulo_analysis.ipynb</a></em>: todas as análises e gráficos sobre a pandemia no estado de São Paulo.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/prediction.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/prediction.ipynb">prediction.ipynb</a></em>: todas as predições da pandemia no mudo e no Brasil usando <a href="https://facebook.github.io/prophet/docs/quick_start.html">Facebook-Prophet</a>.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazilian_prediction.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/brazilian_prediction.ipynb">brazilian_prediction.ipynb</a></em>: todas as predições da pandemia pelos estados do Brasil usando <a href="https://facebook.github.io/prophet/docs/quick_start.html">Facebook-Prophet</a>.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Voltar para cima</a>
+    </p>
+    <p>Baseado no exemplo Bootstrap <a href="https://getbootstrap.com/docs/4.4/examples/album/">'Album'</a>.</p>
+  </div>
+</footer>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+    </body>
+</html>
