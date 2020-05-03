@@ -1,0 +1,303 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author_template" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Rafael Castellar das Neves">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Covid19 BR - Indicadores Mundiais</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="theme-color" content="#563d7c">
+
+    <script src="jquery.js"></script>
+    <script>
+        $(function(){
+            $("#externalHeader").load("header.html");
+            $("#externalFooter").load("footer.html");
+        });
+    </script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="album.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div id="externalHeader"></div>
+    <main role="main"></main>
+      <p class="float-right" style="padding: 10px 10px";>
+        <a href="analysis_EN.html"><img src='imagens/UK.png' width="30" /> English version</a>
+      </p>
+      <div class="album py-5 bg-light"  >
+        <div class="container">
+          <h2>Convid-19 pelo mundo</h2>
+<p>Estas análises são relativas aos dados da pandemia Covid19 no pelo mundoaté a data de <strong>2020-05-02</strong>.</p><p>Para não prejudicar a visualização dos dados, selecionei os seguintes países mais o Brasil para serem comparados entre si: ['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'France', 'Belgium']</p><br></div>        <div class="container">          <h3>Top 5 países mais mortais + Brasil</h3>          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada país.</p><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: justify;">
+      <th></th>
+      <th>country</th>
+      <th>day</th>
+      <th>date</th>
+      <th>cases</th>
+      <th>case_day</th>
+      <th>deaths</th>
+      <th>death_day</th>
+      <th>cases_million</th>
+      <th>deaths_million</th>
+      <th>avg7_cases_million</th>
+      <th>avg7_deaths_million</th>
+      <th>avg7_recoveries_million</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Belgium</td>
+      <td>89</td>
+      <td>2020-05-02</td>
+      <td>49517</td>
+      <td>485</td>
+      <td>7765</td>
+      <td>62</td>
+      <td>42,0</td>
+      <td>5,4</td>
+      <td>51,</td>
+      <td>10,</td>
+      <td>22,</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>United Kingdom</td>
+      <td>93</td>
+      <td>2020-05-02</td>
+      <td>183500</td>
+      <td>4815</td>
+      <td>28205</td>
+      <td>622</td>
+      <td>71,3</td>
+      <td>9,2</td>
+      <td>71,</td>
+      <td>9,</td>
+      <td>0,</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Andorra</td>
+      <td>62</td>
+      <td>2020-05-02</td>
+      <td>747</td>
+      <td>2</td>
+      <td>44</td>
+      <td>1</td>
+      <td>25,9</td>
+      <td>13,0</td>
+      <td>16,</td>
+      <td>7,</td>
+      <td>237,</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ireland</td>
+      <td>64</td>
+      <td>2020-05-02</td>
+      <td>21176</td>
+      <td>343</td>
+      <td>1286</td>
+      <td>21</td>
+      <td>70,3</td>
+      <td>4,3</td>
+      <td>76,</td>
+      <td>6,</td>
+      <td>121,</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sweden</td>
+      <td>93</td>
+      <td>2020-05-02</td>
+      <td>22082</td>
+      <td>562</td>
+      <td>2669</td>
+      <td>16</td>
+      <td>56,0</td>
+      <td>1,6</td>
+      <td>55,</td>
+      <td>6,</td>
+      <td>0,</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Brazil</td>
+      <td>67</td>
+      <td>2020-05-02</td>
+      <td>97100</td>
+      <td>4898</td>
+      <td>6761</td>
+      <td>349</td>
+      <td>23,2</td>
+      <td>1,7</td>
+      <td>25,</td>
+      <td>1,</td>
+      <td>7,</td>
+    </tr>
+  </tbody>
+</table>        </div>        <br>        <div class="container">          <h3>Top 5 países mais transmissíveis + Brasil</h3>          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada país.</p><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: justify;">
+      <th></th>
+      <th>country</th>
+      <th>day</th>
+      <th>date</th>
+      <th>cases</th>
+      <th>case_day</th>
+      <th>deaths</th>
+      <th>death_day</th>
+      <th>cases_million</th>
+      <th>deaths_million</th>
+      <th>avg7_cases_million</th>
+      <th>avg7_deaths_million</th>
+      <th>avg7_recoveries_million</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>San Marino</td>
+      <td>66</td>
+      <td>2020-05-02</td>
+      <td>580</td>
+      <td>0</td>
+      <td>41</td>
+      <td>0</td>
+      <td>0,0</td>
+      <td>0,0</td>
+      <td>282,</td>
+      <td>4,</td>
+      <td>80,</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Qatar</td>
+      <td>64</td>
+      <td>2020-05-02</td>
+      <td>14872</td>
+      <td>776</td>
+      <td>12</td>
+      <td>0</td>
+      <td>274,0</td>
+      <td>0,0</td>
+      <td>278,</td>
+      <td>0,</td>
+      <td>30,</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Singapore</td>
+      <td>101</td>
+      <td>2020-05-02</td>
+      <td>17548</td>
+      <td>447</td>
+      <td>17</td>
+      <td>1</td>
+      <td>77,0</td>
+      <td>0,2</td>
+      <td>119,</td>
+      <td>0,</td>
+      <td>8,</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Belarus</td>
+      <td>65</td>
+      <td>2020-05-02</td>
+      <td>15828</td>
+      <td>911</td>
+      <td>97</td>
+      <td>4</td>
+      <td>96,4</td>
+      <td>0,4</td>
+      <td>94,</td>
+      <td>0,</td>
+      <td>23,</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Maldives</td>
+      <td>56</td>
+      <td>2020-05-02</td>
+      <td>519</td>
+      <td>28</td>
+      <td>1</td>
+      <td>0</td>
+      <td>52,7</td>
+      <td>0,0</td>
+      <td>92,</td>
+      <td>0,</td>
+      <td>0,</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Brazil</td>
+      <td>67</td>
+      <td>2020-05-02</td>
+      <td>97100</td>
+      <td>4898</td>
+      <td>6761</td>
+      <td>349</td>
+      <td>23,2</td>
+      <td>1,7</td>
+      <td>25,</td>
+      <td>1,</td>
+      <td>7,</td>
+    </tr>
+  </tbody>
+</table>        </div>        <br>         <p>Alguns países não estão no *dataset* da ONU, então não conseguimos analisá-los por sua populações. Estes podem ser encontrados fim do notebook <a href="../notebooks/data_engineering.ipynb"><i>data_engineering.ipynb</i></a>.</p>
+       </div>
+      </div>
+        <div class="container">
+          <h3>Casos e mortes</h3>
+          <p><img src="../analysis/world_cases_deaths.png" alt=""></p>
+        </div>
+        <br>
+        <div class="container">
+          <h3>Casos, mortes e recuperações por milhão</h3>
+          <p>Milhão de população normaliza os números de modo que a comparação entre países fique mais adequada. A média móvel nos permite ver descidas nas curvas, ou seja, quando a situação começa diminuir (ou melhorar) em um país.</p>
+          <p>É possível observar a agressividade da pandemia na Italia, Espanha e principalmente a da Bélgica, cujo líder se negou a fechar o país.</p>
+          <p><img src="../analysis/world_cases_deaths_million.png" alt=""></p>
+        </div>
+        <br>
+        <div class="container">
+          <h3>Casos ativos, uma visão mundial, % de recuperações e mortalidade</h3>
+          <p><img src="../analysis/world_active_cases_percentages.png" alt=""></p>
+        </div>
+      <!-- </div> -->
+    </main>
+
+    <div id="externalFooter"></div>
+    
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="   crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

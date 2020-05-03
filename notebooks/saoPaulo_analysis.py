@@ -128,23 +128,23 @@ m
 # In[5]:
 
 
-#https://www.mankier.com/1/wkhtmltoimage#--width
-import imgkit
-print('Gerando imagens dos mapas de São Paulo')
-options = {
-    'format': 'png',
-#     'crop-h': '3',
-#     'crop-w': '3',
-#     'crop-x': '3',
-#     'crop-y': '3',
-    'width':'300',
-    'encoding': "UTF-8",
-    'custom-header' : [
-        ('Accept-Encoding', 'gzip')
-    ],
-}
-imgkit.from_file('../analysis/maps/saoPauloMapDeathsContainer.html', '../analysis/maps/saoPauloMapDeaths.png', options=options)
-imgkit.from_file('../analysis/maps/saoPauloMapCasesContainer.html', '../analysis/maps/saoPauloMapCases.png', options=options)
+# #https://www.mankier.com/1/wkhtmltoimage#--width
+# import imgkit
+# print('Gerando imagens dos mapas de São Paulo')
+# options = {
+#     'format': 'png',
+# #     'crop-h': '3',
+# #     'crop-w': '3',
+# #     'crop-x': '3',
+# #     'crop-y': '3',
+#     'width':'300',
+#     'encoding': "UTF-8",
+#     'custom-header' : [
+#         ('Accept-Encoding', 'gzip')
+#     ],
+# }
+# imgkit.from_file('../analysis/maps/saoPauloMapDeathsContainer.html', '../analysis/maps/saoPauloMapDeaths.png', options=options)
+# imgkit.from_file('../analysis/maps/saoPauloMapCasesContainer.html', '../analysis/maps/saoPauloMapCases.png', options=options)
 
 
 # ----------------------------
@@ -239,79 +239,68 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
-# ### Generating the markdown file
+# ### Generating the html file
 
-# In[16]:
+# In[28]:
 
 
-f = open('../analysis/README_SP.md', 'w')
+f = open('../html/saoPaulo_analysis.html', 'w')
+f1 = open('../html/templates/saoPaulo_analysis_01.html', 'r').read()
+f2 = open('../html/templates/saoPaulo_analysis_02.html', 'r').read()
+f3 = open('../html/templates/saoPaulo_analysis_03.html', 'r').read()
 
-readme = '[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_SP_EN.md)'
-readme += '\n\n# **Análises e monitoramento**\n'
-
-readme += '\n### Mortalidade dos estados brasileiros\n'
-readme += 'O nível de mortalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da mortalidade de cada estado.\n'
-readme += '<img src="maps/saoPauloMapDeaths.png" width="100%"  />'
-
-readme += '\n### Transmissão das cidades do estado de São Paulo\n'
-readme += 'O nível de transmissão no mapa é definido a partir da média móvel dos últimos 7 dias da quantidade de casos acumulados de cada cidade do estado.\n\n'
-readme += '<img src="maps/saoPauloMapCases.png" width="100%"  />'
-
-readme += '\n\nEstas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de **' + today + '**.\n\n'
-readme += 'Como existem muitas cidades, colocar em um único gráfico todos seus dados tornaria a leitura e compreensão inviáveis, desta forma, foram selecionadas as ' + str(qtdeMonitored) + ' mais mortais:'
-readme += str(monitoredCities) + '.\n\n'
-readme += '\n***Dica**: você mesmo pode alterar neste notebook quais cidades você prefere comparar.*\n\n'
-readme += '## Top ' + str(qtdeMonitored) + ' cidades mais mortais do estado de São Paulo (+ Santa Gertrudes e Lucélia)\n'
-readme += df_top_deaths.to_markdown()
-# readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top ' + str(qtdeMonitored) + ' cidades mais transmissíveis do estado de São Paulo (+ Santa Gertrudes, Rio Claro e Lucélia)\n'
-readme += df_top_cases.to_markdown()
-#tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
-
-readme += '\n----------------------\n'
-readme += '## Casos e mortes\n'
-readme += '![](saoPaulo_cities_cases_deaths.png)'
-
-readme += '\n\n [Comparativos do estado de São Paulo com outros estados do Brasil podem ser encontratos aqui.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README.md#casos-e-mortes)'
+readme = f1
+readme += '<p>Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de <strong>' + today + '</strong>.</p>'
+readme += f2
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais mortais do estado de São Paulo</h3>'
+readme += '          <p><i>mais Santa Gertrudes, Rio Claro e Lucélia</i></p>'
+readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada cidade.</p>'
+readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais transmissíveis do estado de São Paulo</h3>'
+readme += '          <p><i>mais Santa Gertrudes, Rio Claro e Lucélia</i></p>'
+readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada cidade.</p>'
+readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += f3
 
 f.write(readme)
 f.close()
 
 ###########################################
 
-f = open('../analysis/README_SP_EN.md', 'w')
+f = open('../html/saoPaulo_analysis_EN.html', 'w')
+f1 = open('../html/templates/saoPaulo_analysis_EN_01.html', 'r').read()
+f2 = open('../html/templates/saoPaulo_analysis_EN_02.html', 'r').read()
+f3 = open('../html/templates/saoPaulo_analysis_EN_03.html', 'r').read()
 
-readme = '[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em português](README_SP.md)'
+readme = f1
+readme += '<p>These analysis are related to state of San Paulo Convid19 pandemic data up to <strong>' + today + '</strong>.</p>'
+readme += f2
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest cities of Sao Paulo</h3>'
+readme += '          <p><i>plus Santa Gertrudes, Rio Claro and Lucélia</i></p>'
+readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the mortality percentage of each city.</p>'
+readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' most transmissible cities of Sao Paulo</h3>'
+readme += '          <p><i>plus Santa Gertrudes, Rio Claro and Lucélia</i></p>'
+readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the cumulative cases of each city.</p>'
+readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += f3
 
-readme += '\n\n# **Analysis and monitoring**\n'
-
-readme += '\n### Mortality of the San Paulo\'s cities\n'
-readme += 'The mortality level shown in this map is defined from the moving average of the last 7 days of each city mortality of the San Paulo state.\n'
-readme += '<img src="maps/saoPauloMapDeaths.png" width="80%"  />'
-
-readme += '\n### Transmission of the San Paulo\'s cities\n'
-readme += 'The tranmission level shown in this map is defined from the moving average of the last 7 days of each city\'s cumulative cases.\n'
-readme += '<img src="maps/saoPauloMapCases.png" width="80%"  />'
-
-readme += '\n\nThese analysis are related to state of San Paulo Convid19 pandemic data up to **' + today + '**.\n\n'
-readme += 'As there are too many cities to have their data plotted together, were selected the ' + str(qtdeMonitored) + ' deadliest:'
-readme += str(monitoredCities) + '.\n\n'
-readme += '\n***Tip**: you can yourself select in this notebook which states you prefer to compare.*\n\n'
-readme += '## Top ' + str(qtdeMonitored) + ' deadliest cities of the state of San Paulo (+ Santa Gertrudes, Rio Claro and Lucelia cities) of Brazil\n'
-readme += df_top_deaths.to_markdown()
-# readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top ' + str(qtdeMonitored) + ' most transmissible cities of state of San Paulo (+ Santa Gertrudes and Lucelia cities)\n'
-readme += df_top_cases.to_markdown()
-#tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
-
-readme += '\n----------------------\n'
-readme += '## Cases and deaths\n'
-readme += '![](saoPaulo_cities_cases_deaths.png)'
-
-readme += '\n\n [Comparison of San Paulo among other Brazilian states can be found here.](https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_EN.md#cases-and-deaths)'
 f.write(readme)
 f.close()
-print('São Paulo\'s analysis done!')
+
+print('Sao Paulo\'s analysis done!')
 
 
 # In[11]:

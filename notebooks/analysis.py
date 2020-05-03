@@ -22,7 +22,7 @@ df['date'] = df['date'].astype('datetime64[ns]')
 today = str(df.date.max().date())
 tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
 yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
-
+qtdeMonitored = 5
 df.tail()
 
 
@@ -46,7 +46,7 @@ df_top_deaths = df[df['date']==today].sort_values('avg7_deaths_million', ascendi
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
-df_top_deaths = df_top_deaths[cols].head(5).append(df_top_deaths[df_top_deaths['country']=='Brazil'][cols])
+df_top_deaths = df_top_deaths[cols].head(qtdeMonitored).append(df_top_deaths[df_top_deaths['country']=='Brazil'][cols])
 df_top_deaths
 
 
@@ -59,7 +59,7 @@ df_top_cases = df[df['date']==today].sort_values('avg7_cases_million', ascending
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
-df_top_cases = df_top_cases[cols].head(5).append(df_top_cases[df_top_cases['country']=='Brazil'][cols])
+df_top_cases = df_top_cases[cols].head(qtdeMonitored).append(df_top_cases[df_top_cases['country']=='Brazil'][cols])
 df_top_cases
 
 
@@ -308,91 +308,79 @@ ax2.legend()
 fig.savefig('../analysis/brazil_movingAvg.png')
 
 
-# ### Generating the markdown file
+# ### Generating the html file
 
-# In[15]:
+# In[29]:
 
 
-f = open('../analysis/README_WORLD.md', 'w')
+f = open('../html/analysis.html', 'w')
+f1 = open('../html/templates/analysis_01.html', 'r').read()
+# f2 = open('../html/templates/analysis_02.html', 'r').read()
+f3 = open('../html/templates/analysis_03.html', 'r').read()
 
-readme = '[<img src="../data/bandeiras/UK.png" width="30"  /> English version](README_WORLD_EN.md)'
-readme += '\n\n# **Análises e monitoramento**\n'
-readme += 'Estas análises são relativas aos dados da pandemia Covid19 até a data de **' + today + '**.\n\n'
-readme += 'Como existem muitos países, colocar em um gráfico todos seus dados tornaria a leitura e compreensão inviáveis, selecionei os seguintes países mais o Brasil para serem comparados entre si:'
-readme += str(monitoredCountries) + '.\n\n'
-readme += 'Alguns países não estão no *dataset* da ONU, então não conseguimos analisá-los por sua populações. Estes podem ser encontrados fim do notebook *[data_engineering.ipynb](../data_engineering.ipynb)*.\n'
-readme += '\n***Dica**: você pode alterar você mesmo neste notebook quais países você prefere comparar.*\n\n'
-readme += '## Top 5 países mais mortais + Brasil\n'
-readme += df_top_deaths.to_markdown()
-# readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top 5 países mais transmissíveis + Brasil\n'
-readme += df_top_cases.to_markdown()
-#tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
-
-readme += '\n----------------------\n'
-readme += '## Análises mundiais\n'
-readme += '### Casos e mortes\n'
-readme += '![](world_cases_deaths.png)'
-
-readme += '\n\n ### Casos, mortes e recuperações por milhão\n'
-readme += 'Milhão de população noramilza os números de modo que a comparação entre países fica mais adequada. Como podemos ver, os primeiros gráficos nos mostram quão agressivo é a pandemia na Itália e Espanha.\n'
-readme += '![](world_cases_deaths_million.png)'
-
-readme += '\n\n ### Casos ativos, uma visão mundial, % de recuperações e mortalidade\n'
-readme += '![](world_active_cases_percentages.png)'
-
-readme += '\n----------------------\n'
-readme += '## Análises do Brasil\n'
-readme += '\n\n ### Casos, mortes e recuperações\n'
-readme += '![](brazil_number_million_variation.png)'
-
-readme += '\n\n ### Médias móveis dos últimos 7 dias\n'
-readme += '![](brazil_movingAvg.png)'
+readme = f1
+readme += '<p>Estas análises são relativas aos dados da pandemia Covid19 no pelo mundoaté a data de <strong>' + today + '</strong>.</p>'
+readme += '<p>Para não prejudicar a visualização dos dados, selecionei os seguintes países mais o Brasil para serem comparados entre si: ' + str(monitoredCountries) + '</p>'
+readme += '<br></div>'
+# readme += f2
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' países mais mortais + Brasil</h3>'
+readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada país.</p>'
+readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' países mais transmissíveis + Brasil</h3>'
+readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada país.</p>'
+readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += f3
 
 f.write(readme)
 f.close()
 
 ###########################################
 
-f = open('../analysis/README_WORLD_EN.md', 'w')
-readme = '[<img src="../data/bandeiras/PT.png" width="30"   /> Versão em português](README_WORLD.md)'
+f = open('../html/analysis_EN.html', 'w')
+f1 = open('../html/templates/analysis_EN_01.html', 'r').read()
+# f2 = open('../html/templates/analysis_EN_02.html', 'r').read()
+f3 = open('../html/templates/analysis_EN_03.html', 'r').read()
 
-readme += '\n\n# **Analysis and monitoring**\n'
-readme += 'These analysis are related to the Covid19 pandemic data up to **' + today + '**.\n\n'
-readme += 'As there are many countries to have all of their data plotted together, I selected a few of them plus Brazil to be compared with:'
-readme += str(monitoredCountries) + '.\n\n'
-readme += 'Some countries are not in UN dataset, so we can not analyse them by population. They can be found at the end of the *[data_engineering.ipynb](../data_engineering.ipynb)*.\n'
-readme += '\n*Tip: you can set yourself at the analysis notebook which countries you prefer to compare*\n\n'
-readme += '## Top 5 deadliest countries + Brazil\n'
-readme += df_top_deaths.to_markdown()
-# readme += tabulate(df_top_deaths.values,df_top_deaths.columns, tablefmt="pipe")
-readme += '\n\n\n ## Top 5 most transmissible countries + Brazil\n'
-readme += df_top_cases.to_markdown()
-#tabulate(df_top_cases.values,df_top_cases.columns, tablefmt="pipe")
-
-readme += '\n----------------------\n'
-readme += '## World\' analysis\n'
-readme += '### Cases, deaths and recoveries\n'
-readme += '![](world_cases_deaths.png)'
-
-readme += '\n\n ### Cases, deaths and recoveries per million\n'
-readme += 'Million of population normalizes the features so they can me better comparable among the selected countries. As we can see, the first charts shows us how aggressive the pandemic is in Italy, Spain and somehow in France.\n'
-readme += '![](world_cases_deaths_million.png)'
-
-readme += '\n\n ### Active cases, world overview, % recoveries and mortality\n'
-readme += '![](world_active_cases_percentages.png)'
-
-readme += '\n----------------------\n'
-readme += '## Brazil\'s analysis\n'
-readme += '\n\n ### Cases, deaths and recoveries\n'
-readme += '![](brazil_number_million_variation.png)'
-
-readme += '\n\n ### Moving averages (last 7 days)\n'
-readme += '![](brazil_movingAvg.png)'
+readme = f1
+readme += '<p>These analysis are related to the Covid19 pandemic data up to <strong>' + today + '</strong>.</p>'
+readme += '<p>To permit a better vizualization, I selected the follow countryies plus Brazil to be compared with each other: ' + str(monitoredCountries) + '</p>'
+readme += '<br></div>'
+# readme += f2
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest countries + Brazil</h3>'
+readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the mortality percentage of each country.</p>'
+readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += '        <div class="container">'
+readme += '          <h3>Top ' + str(qtdeMonitored) + ' most transmissible countries + Brazil</h3>'
+readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the cumulative cases of each country.</p>'
+readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
+readme += '        </div>'
+readme += '        <br>'
+readme += f3
 
 f.write(readme)
 f.close()
 print('World analysis done!')
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:

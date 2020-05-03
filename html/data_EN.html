@@ -1,0 +1,97 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author_template" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Rafael Castellar das Neves">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Covid19 BR - Datasets and scripts</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <meta name="theme-color" content="#563d7c">
+    
+    <script src="jquery.js"></script>
+    <script>
+        $(function(){
+            $("#externalHeader").load("header_EN.html");
+            $("#externalFooter").load("footer_EN.html");
+        });
+    </script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="album.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div id="externalHeader"></div>
+
+<main role="main">
+  <p class="float-right" style="padding: 10px 10px";>
+    <a href="data.html"><img src='imagens/PT.png' width="30" /> Versão em português</a>
+  </p>
+  <div class="album py-5 bg-light" >
+    <div class="container">
+      <h2 id="sobre-este-estudo">Dataset and scripts</h2>
+      <p>Here are all the date used and produced for this study, as well as jupyter notebooks. All of them are public and available to anyone who might be interested in.</p>
+      <hr>
+
+      <h3 id="dataset">Dataset</h3>
+      <ul>
+      <li><strong><a href="data/world_countries_2019.csv">world_countries_2019.csv</a></strong>: a consolidated dataset from ebinters and UN data, which is used to normalize some pandemic indicadors by countries total population</li>
+      <li><strong><a href="data/world_corona19_data.csv">world_corona19_data.csv</a></strong>: the main dataset used by this study. It is made from Pomber&#39;s JSON and enriched with the following features which are derivate to cases, deaths and recoveries, although, to simplify I will use just <em>case&#39;s</em> :<ul>
+      <li><em>day</em>: number of the day since the first case of contamination</li>
+      <li><em>cases</em>: cumulative number of cases since day 0</li>
+      <li><em>case_day</em>: number of the cases recorded in a specific day</li>
+      <li><em>%var_case_day</em>: daily variation of cases from the previous day (in percent)</li>
+      <li><em>cases_million</em>: number of daily cases per one million of population of a coumtry. It is better comparable along the countries</li>
+      <li><em>avg7_cases</em>: moving average of the daily cases among the last 7 days </li>
+      <li><em>avg7_cases_million</em>: moving average of the daily cases per one million among the last 7 days </li>
+      <li><em>perc_death</em>: percentage of deaths over the cases of the country</li>
+      </ul>
+      </li>
+      <li><strong><a href="data/brazil_corona19_data.csv">brazil_corona19_data.csv</a></strong>: a previous-like dataset, but with brazilian pandemic data over its states. </li>
+      </ul>
+
+      <h3 id="notebooks">Notebooks</h3>
+      <p>Here are my jupyter-notebooks used to build this study:</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/countries_data_aggregator.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/countries_data_aggregator.ipynb">countries_data_aggregator.ipynb</a></em>: the aggregator of all countries data.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/data_engineering.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/data_engineering.ipynb">data_engineering.ipynb</a></em>: data and feature engineering for the main dataset.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/analysis.ipynb">analysis.ipynb</a></em>: all the analises and charts about the world and brazilian pandemic.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazil_analysis.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/brazil_analysis.ipynb">brazil_analysis.ipynb</a></em>: all the analises and charts about the brazilian pandemic.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/prediction.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/prediction.ipynb">prediction.ipynb</a></em>: all prediction of world and brazilian pandemic using <a href="https://facebook.github.io/prophet/docs/quick_start.html">Facebook-Prophet</a>.</p>
+      <p><a href="https://colab.research.google.com/github/rafaelcastellar/coronavirus/blob/master/notebooks/brazilian_prediction.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a> <em><a href="notebooks/brazilian_prediction.ipynb">brazilian_prediction.ipynb</a></em>: all prediction of brazilian pandemic among its states using <a href="https://facebook.github.io/prophet/docs/quick_start.html">Facebook-Prophet</a>.</p>
+    </div>
+  </div>
+
+</main>
+
+<div id="externalFooter"></div>
+
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+    </body>
+</html>
+

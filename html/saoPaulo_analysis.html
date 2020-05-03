@@ -1,0 +1,355 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author_template" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Rafael Castellar das Neves">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Covid19 BR - Indicadores de São Paulo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="theme-color" content="#563d7c">
+
+    <script src="jquery.js"></script>
+    <script>
+        $(function(){
+            $("#externalHeader").load("header.html");
+            $("#externalFooter").load("footer.html");
+        });
+    </script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="album.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div id="externalHeader"></div>
+    <main role="main"></main>
+      <p class="float-right" style="padding: 10px 10px";>
+        <a href="saoPaulo_analysis_EN.html"><img src='imagens/UK.png' width="30" /> English version</a>
+      </p>
+      <div class="album py-5 bg-light"  >
+        <div class="container">
+          <h2>Convid-19 pelas cidades de São Paulo</h2>
+<p>Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de <strong>2020-05-01</strong>.</p>        </div>
+      </div>
+        <div class="container">
+          <br>
+          <h3 id="mortalidade-dos-estados-brasileiros">Mortalidade das cidades de São Paulo</h3>
+          <p>O nível de mortalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da mortalidade de cada cidade.</p>
+          <p style="font-size: 12px; font-style: italic;">Mova o mouse pelo mapa para detalhes de cada região.</p>
+          <iframe src="../analysis/maps/saoPauloMapDeaths.html" width=900px height=550px>
+            <p>Your browser does not support iframes.</p>
+          </iframe>
+        </div>
+          <br>
+        <div class="container">
+          <h3>Trasmissibilidade das cidades de São Paulo</h3>
+          <p>O nível de transmissão demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias do acumulado de casos de cada cidade.</p>
+          <p style="font-size: 12px; font-style: italic;">Mova o mouse pelo mapa para detalhes de cada região.</p>
+          <iframe src="../analysis/maps/saoPauloMapCases.html" width=900px height=550px>
+            <p>Your browser does not support iframes.</p>
+          </iframe>
+        </div>
+          <br>
+        <div class="container">          <h3>Top 5 cidades mais mortais do estado de São Paulo</h3>          <p><i>mais Santa Gertrudes, Rio Claro e Lucélia</i></p>          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada cidade.</p><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: justify;">
+      <th></th>
+      <th>city</th>
+      <th>date</th>
+      <th>day</th>
+      <th>case_day</th>
+      <th>cases</th>
+      <th>death_day</th>
+      <th>deaths</th>
+      <th>avg7_cases</th>
+      <th>avg7_deaths</th>
+      <th>avg7_perc_death</th>
+      <th>perc_death</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>rincao</td>
+      <td>2020-05-01</td>
+      <td>18</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>jarinu</td>
+      <td>2020-05-01</td>
+      <td>8</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>conchas</td>
+      <td>2020-05-01</td>
+      <td>18</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>santo antonio da alegria</td>
+      <td>2020-05-01</td>
+      <td>15</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>santa rita do passa quatro</td>
+      <td>2020-05-01</td>
+      <td>9</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>lucelia</td>
+      <td>2020-05-01</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7,</td>
+      <td>0</td>
+      <td>2,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>51,70</td>
+      <td>28,57</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>rio claro</td>
+      <td>2020-05-01</td>
+      <td>33</td>
+      <td>0</td>
+      <td>18,</td>
+      <td>0</td>
+      <td>8,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>43,58</td>
+      <td>44,44</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>santa gertrudes</td>
+      <td>2020-05-01</td>
+      <td>16</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+  </tbody>
+</table>        </div>        <br>        <div class="container">          <h3>Top 5 cidades mais transmissíveis do estado de São Paulo</h3>          <p><i>mais Santa Gertrudes, Rio Claro e Lucélia</i></p>          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada cidade.</p><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: justify;">
+      <th></th>
+      <th>city</th>
+      <th>date</th>
+      <th>day</th>
+      <th>case_day</th>
+      <th>cases</th>
+      <th>death_day</th>
+      <th>deaths</th>
+      <th>avg7_cases</th>
+      <th>avg7_deaths</th>
+      <th>avg7_perc_death</th>
+      <th>perc_death</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>sao paulo</td>
+      <td>2020-05-01</td>
+      <td>34</td>
+      <td>938</td>
+      <td>19087,</td>
+      <td>85</td>
+      <td>1607,</td>
+      <td>1041,</td>
+      <td>85,</td>
+      <td>8,44</td>
+      <td>8,42</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>osasco</td>
+      <td>2020-05-01</td>
+      <td>34</td>
+      <td>66</td>
+      <td>828,</td>
+      <td>11</td>
+      <td>85,</td>
+      <td>62,</td>
+      <td>6,</td>
+      <td>10,15</td>
+      <td>10,27</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>guarulhos</td>
+      <td>2020-05-01</td>
+      <td>34</td>
+      <td>67</td>
+      <td>804,</td>
+      <td>5</td>
+      <td>75,</td>
+      <td>57,</td>
+      <td>4,</td>
+      <td>9,95</td>
+      <td>9,33</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sao bernardo do campo</td>
+      <td>2020-05-01</td>
+      <td>34</td>
+      <td>23</td>
+      <td>705,</td>
+      <td>0</td>
+      <td>45,</td>
+      <td>40,</td>
+      <td>2,</td>
+      <td>6,56</td>
+      <td>6,38</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>santo andre</td>
+      <td>2020-05-01</td>
+      <td>34</td>
+      <td>46</td>
+      <td>565,</td>
+      <td>5</td>
+      <td>34,</td>
+      <td>38,</td>
+      <td>2,</td>
+      <td>5,59</td>
+      <td>6,02</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>rio claro</td>
+      <td>2020-05-01</td>
+      <td>33</td>
+      <td>0</td>
+      <td>18,</td>
+      <td>0</td>
+      <td>8,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>43,58</td>
+      <td>44,44</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>santa gertrudes</td>
+      <td>2020-05-01</td>
+      <td>16</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+    <tr>
+      <th>264</th>
+      <td>lucelia</td>
+      <td>2020-05-01</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7,</td>
+      <td>0</td>
+      <td>2,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>51,70</td>
+      <td>28,57</td>
+    </tr>
+  </tbody>
+</table>        </div>        <br>        <div class="container">
+          <h3>Casos e mortes</h3>
+          <p><img src="../analysis/saoPaulo_cities_cases_deaths.png" alt=""></p>
+        </div>
+        <br>
+        <div class="container">
+          <a href="https://github.com/rafaelcastellar/coronavirus/blob/master/analysis/README_WORLD.md#an%C3%A1lises-do-brasil">Comparativos de São Paulo com outros estados do Brasil podem ser encontratos aqui.</a></p>
+        </div>
+      <!-- </div> -->
+    </main>
+
+    <div id="externalFooter"></div>
+    
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="   crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
