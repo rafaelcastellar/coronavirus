@@ -320,6 +320,8 @@ f3 = open('../html/templates/analysis_03.html', 'r').read()
 
 readme = f1
 readme += '<p>Estas análises são relativas aos dados da pandemia Covid19 no pelo mundoaté a data de <strong>' + today + '</strong>.</p>'
+readme += '<p style="font-size:14px"><i>Estas informações são para uso próprio e não devem ser utilizadas para direcionamentos médicos e/ou políticas públicas.</i></p>'
+
 readme += '<p>Para não prejudicar a visualização dos dados, selecionei os seguintes países mais o Brasil para serem comparados entre si: ' + str(monitoredCountries) + '</p>'
 readme += '<br></div>'
 # readme += f2
@@ -349,6 +351,7 @@ f3 = open('../html/templates/analysis_EN_03.html', 'r').read()
 
 readme = f1
 readme += '<p>These analysis are related to the Covid19 pandemic data up to <strong>' + today + '</strong>.</p>'
+readme += '<p style="font-size:14px"><i>This information is for own use only and shall NOT be used for medical and public policy guidances.</i></p>'
 readme += '<p>To permit a better vizualization, I selected the follow countryies plus Brazil to be compared with each other: ' + str(monitoredCountries) + '</p>'
 readme += '<br></div>'
 # readme += f2
