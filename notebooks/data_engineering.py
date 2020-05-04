@@ -57,7 +57,7 @@ for country in countries:
         dic.append(row)
         i += 1 
 df = pd.DataFrame.from_dict(dic)
-df[df['country']=='France'].tail()
+df[df['country']=='Brazil'].tail()
 
 
 # #### Feature engineering
@@ -134,7 +134,7 @@ df.to_csv('../data/world_corona19_data.csv', index = False)
 # In[6]:
 
 
-df[df['country']=='France'].tail()
+df[df['country']=='Brazil'].tail()
 
 
 # #### countries not located in UN dataset
@@ -151,8 +151,27 @@ for country in countries:
 
 # ### Brazil data engineering
 
-# In[8]:
+# In[12]:
 
+
+import requests
+
+headers = {
+    'Content-Type': 'application/json;charset=UTF-8',
+    'Accept': 'application/json, text/plain, */*',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+    'Connection': 'keep-alive',
+    'x-parse-application-id':'unAFkcaNDeXajurGB7LChj8SgQYS2ptm',
+}
+req = requests.get("https://xx9p7hp1p7.execute-api.us-east-1.amazonaws.com/prod/PortalGeral",
+                           headers=headers)
+req_json = req.json()
+url = req_json['results'][0]['arquivo']['url']
+response = requests.get(url)
+
+with open('../data/gov_brazil_corona19_data.csv', 'wb') as f:
+    f.write(response.content)
 
 df = pd.read_csv('../data/gov_brazil_corona19_data.csv', sep=';')
 df.rename(columns={'regiao': 'region', 'estado':'state', 'data':'date','casosNovos': 'case_day', 'casosAcumulados':'cases', 'obitosNovos':'death_day','obitosAcumulados':'deaths'}, inplace= True)
@@ -215,7 +234,7 @@ df.to_csv('../data/brazil_corona19_data.csv', index = False)
 
 # ### São Paulo data engineering
 
-# In[15]:
+# In[11]:
 
 
 df = pd.read_csv('https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv', sep=';')
@@ -286,6 +305,18 @@ df.to_csv('../data/saoPaulo_corona19_data.csv', index = False)
 
 # df[df['country']=='Belgium']
 print('Data engineering done!')
+
+
+# In[11]:
+
+
+
+
+
+# In[9]:
+
+
+
 
 
 # In[ ]:
