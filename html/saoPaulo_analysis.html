@@ -1,0 +1,465 @@
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author_template" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Rafael Castellar das Neves">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Covid19 BR - Indicadores de São Paulo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="theme-color" content="#563d7c">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $("#externalHeader").load("header.html");
+            $("#externalFooter").load("footer.html");
+        });
+    </script>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="imagens/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="imagens/favicon24.png" sizes="24x24" type="image/x-icon">
+    <link rel="icon" href="imagens/favicon32.png" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="imagens/favicon16.png" sizes="16x16" type="image/x-icon">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <!-- <link href="album.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div id="externalHeader"></div>
+    <main role="main"></main>
+      <p class="float-right" style="padding: 10px 10px";>
+        <a href="saoPaulo_analysis_EN.html"><img src='imagens/UK.png' width="30" /> English version</a>
+      </p>
+      <div class="album py-5 bg-light"  >
+        <div class="container">
+          <h2>Convid-19 pelas cidades de São Paulo</h2>
+          <p>Indicadores relativos aos dados da pandemia Covid19 no estado de São Paulo até a data de <strong>03/05/2020</strong>.</p>          <p style="font-size:14px"><i>Estas informações são para uso próprio e não devem ser utilizadas para direcionamentos médicos e/ou políticas públicas.</i></p></div></div><div class="container"> <h3>Análise semanal</h3><br><table border="1" class="dataframe " width="60%">  <thead>    <tr>      <th style="text-align: center;" width="25%"></th>      <th style="text-align: center;">26/04/2020</th>      <th style="text-align: center;">03/05/2020</th>      <th style="text-align: center;"> variação </th>    </tr>  </thead>  <tbody>    <tr style="text-align: right;">      <td style="font-weight: bold; text-align: right;" width="25%">casos</td>      <td>20715.0</td>      <td>31772.0</td>      <td>53%</td>    </tr>    <tr style="text-align: right;">      <td style="font-weight: bold; text-align: right;" width="25%">mortes</td>      <td>1700.0</td>      <td>2627.0</td>      <td>54%</td>    </tr>    <tr style="text-align: right;">      <td style="font-weight: bold; text-align: center;" width="25%">cidades contaminadas</td>      <td>285 (44%)</td>      <td>337 (52%)</td>      <td>18%</td>    </tr>  </tbody></table> </div><br>      </div>
+        <div class="container">
+          <br>
+          <h3 id="mortalidade-dos-estados-brasileiros">Mortalidade das cidades de São Paulo</h3>
+          <p>O nível de mortalidade demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias da mortalidade de cada cidade.</p>
+          <p style="font-size: 12px; font-style: italic;">Mova o mouse pelo mapa para detalhes de cada região.</p>
+          <iframe src="../analysis/maps/saoPauloMapDeaths.html" width='100%' height=550px>
+            <p>Your browser does not support iframes.</p>
+          </iframe>
+        </div>
+          <br>
+        <div class="container">
+          <h3>Trasmissibilidade das cidades de São Paulo</h3>
+          <p>O nível de transmissão demonstrado no mapa é definido a partir da média móvel dos últimos 7 dias do acumulado de casos de cada cidade.</p>
+          <p style="font-size: 12px; font-style: italic;">Mova o mouse pelo mapa para detalhes de cada região.</p>
+          <iframe src="../analysis/maps/saoPauloMapCases.html" width='100%' height=550px>
+            <p>Your browser does not support iframes.</p>
+          </iframe>
+        </div>
+          <br>
+        <div class="container">          <h3>Top 5 cidades mais mortais do estado de São Paulo</h3>          <p><i>Mais: Santa Gertrudes, Rio Claro, Cordeiropolis, Limeira, Lucelia, Adamantina</i></p>          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada cidade.</p><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: justify;">
+      <th></th>
+      <th>city</th>
+      <th>date</th>
+      <th>day</th>
+      <th>case_day</th>
+      <th>cases</th>
+      <th>death_day</th>
+      <th>deaths</th>
+      <th>avg7_cases</th>
+      <th>avg7_deaths</th>
+      <th>avg7_perc_death</th>
+      <th>perc_death</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>caiabu</td>
+      <td>2020-05-03</td>
+      <td>23</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>jarinu</td>
+      <td>2020-05-03</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>rincao</td>
+      <td>2020-05-03</td>
+      <td>20</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>pitangueiras</td>
+      <td>2020-05-03</td>
+      <td>11</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>santa rita do passa quatro</td>
+      <td>2020-05-03</td>
+      <td>11</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>100,00</td>
+      <td>100,00</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>rio claro</td>
+      <td>2020-05-03</td>
+      <td>35</td>
+      <td>0</td>
+      <td>18,</td>
+      <td>0</td>
+      <td>8,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>43,78</td>
+      <td>44,44</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>lucelia</td>
+      <td>2020-05-03</td>
+      <td>11</td>
+      <td>0</td>
+      <td>7,</td>
+      <td>0</td>
+      <td>2,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>40,82</td>
+      <td>28,57</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>limeira</td>
+      <td>2020-05-03</td>
+      <td>32</td>
+      <td>0</td>
+      <td>35,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>2,</td>
+      <td>0,</td>
+      <td>3,33</td>
+      <td>2,86</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>santa gertrudes</td>
+      <td>2020-05-03</td>
+      <td>18</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>adamantina</td>
+      <td>2020-05-03</td>
+      <td>20</td>
+      <td>0</td>
+      <td>6,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>cordeiropolis</td>
+      <td>2020-05-03</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+  </tbody>
+</table>        </div>        <br>        <div class="container">          <h3>Top 5 cidades mais transmissíveis do estado de São Paulo</h3>          <p><i>Mais: Santa Gertrudes, Rio Claro, Cordeiropolis, Limeira, Lucelia, Adamantina</i></p>          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada cidade.</p><table border="1" class="dataframe table">
+  <thead>
+    <tr style="text-align: justify;">
+      <th></th>
+      <th>city</th>
+      <th>date</th>
+      <th>day</th>
+      <th>case_day</th>
+      <th>cases</th>
+      <th>death_day</th>
+      <th>deaths</th>
+      <th>avg7_cases</th>
+      <th>avg7_deaths</th>
+      <th>avg7_perc_death</th>
+      <th>perc_death</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>sao paulo</td>
+      <td>2020-05-03</td>
+      <td>36</td>
+      <td>328</td>
+      <td>19822,</td>
+      <td>12</td>
+      <td>1673,</td>
+      <td>901,</td>
+      <td>79,</td>
+      <td>8,48</td>
+      <td>8,44</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>osasco</td>
+      <td>2020-05-03</td>
+      <td>36</td>
+      <td>27</td>
+      <td>914,</td>
+      <td>1</td>
+      <td>93,</td>
+      <td>53,</td>
+      <td>5,</td>
+      <td>10,18</td>
+      <td>10,18</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>guarulhos</td>
+      <td>2020-05-03</td>
+      <td>36</td>
+      <td>17</td>
+      <td>833,</td>
+      <td>1</td>
+      <td>76,</td>
+      <td>48,</td>
+      <td>3,</td>
+      <td>9,49</td>
+      <td>9,12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sao bernardo do campo</td>
+      <td>2020-05-03</td>
+      <td>36</td>
+      <td>11</td>
+      <td>731,</td>
+      <td>7</td>
+      <td>52,</td>
+      <td>36,</td>
+      <td>3,</td>
+      <td>6,58</td>
+      <td>7,11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>santo andre</td>
+      <td>2020-05-03</td>
+      <td>36</td>
+      <td>2</td>
+      <td>580,</td>
+      <td>0</td>
+      <td>35,</td>
+      <td>33,</td>
+      <td>2,</td>
+      <td>5,81</td>
+      <td>6,03</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>santos</td>
+      <td>2020-05-03</td>
+      <td>34</td>
+      <td>3</td>
+      <td>609,</td>
+      <td>0</td>
+      <td>47,</td>
+      <td>26,</td>
+      <td>3,</td>
+      <td>7,76</td>
+      <td>7,72</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>limeira</td>
+      <td>2020-05-03</td>
+      <td>32</td>
+      <td>0</td>
+      <td>35,</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>2,</td>
+      <td>0,</td>
+      <td>3,33</td>
+      <td>2,86</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>rio claro</td>
+      <td>2020-05-03</td>
+      <td>35</td>
+      <td>0</td>
+      <td>18,</td>
+      <td>0</td>
+      <td>8,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>43,78</td>
+      <td>44,44</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>santa gertrudes</td>
+      <td>2020-05-03</td>
+      <td>18</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>adamantina</td>
+      <td>2020-05-03</td>
+      <td>20</td>
+      <td>0</td>
+      <td>6,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>cordeiropolis</td>
+      <td>2020-05-03</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1,</td>
+      <td>0</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+    <tr>
+      <th>281</th>
+      <td>lucelia</td>
+      <td>2020-05-03</td>
+      <td>11</td>
+      <td>0</td>
+      <td>7,</td>
+      <td>0</td>
+      <td>2,</td>
+      <td>0,</td>
+      <td>0,</td>
+      <td>40,82</td>
+      <td>28,57</td>
+    </tr>
+  </tbody>
+</table>        </div>        <br>        <div class="container">
+          <h3>Casos e mortes na cidade de São Paulo</h3>
+          <p>Os dados da cidade de São Paulo destoa das demais cidades o que prejudica a comparação em um mesmo gráfico, por isso os apresento separadamente.</p>
+          <p><img src="../analysis/saoPaulo_cases_deaths.png" alt="" width='100%'></p>
+        </div>
+        <br>
+        <div class="container">
+          <h3>Casos e mortes das cidades com mais transimissão</h3>
+          <p>Excluída a cidade de São Paulo</p>
+          <p><img src="../analysis/saoPaulo_cities_cases_deaths.png" alt="" width='100%'></p>
+        </div>
+        <br>
+        <div class="container">
+          <h3>Casos e mortes de cidades do interior selecionadas</h3>
+          <p><img src="../analysis/saoPaulo_selectedCities_cases_deaths.png" alt="" width='100%'></p>
+        </div>
+        <br>
+        <div class="container">
+          <a href="brazil_analysis.html#spComparativo">Comparativos de São Paulo com outros estados do Brasil podem ser encontratos aqui.</a></p>
+        </div>
+      <!-- </div> -->
+    </main>
+
+    <div id="externalFooter"></div>
+    
+</body>
+</html>

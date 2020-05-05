@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[24]:
+# In[2]:
 
 
 df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
@@ -29,7 +29,7 @@ qtdeMonitored = 5
 df.head()
 
 
-# In[25]:
+# In[3]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
@@ -78,7 +78,7 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[26]:
+# In[4]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
@@ -150,7 +150,7 @@ m
 # ----------------------------
 # ### São Paulo - Analysis and monitoring
 
-# In[118]:
+# In[6]:
 
 
 #week variation
@@ -175,7 +175,7 @@ varDeaths = int((todayDeaths / lastWeekDeaths - 1) *100)
 
 # #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
 
-# In[114]:
+# In[7]:
 
 
 cols = ['city', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
@@ -192,7 +192,7 @@ df_top_deaths
 
 # #### Top most transmissible countries + Santa Gertrude + Lucélia + Adamantina + Rio Claro + Cordeirópolis + Limeira - São Paulo
 
-# In[95]:
+# In[8]:
 
 
 df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases', ascending = False)
@@ -208,7 +208,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[96]:
+# In[9]:
 
 
 #inform the countries you want to analise
@@ -217,7 +217,7 @@ monitoredCities = np.delete(monitoredCities,np.where([monitoredCities == 'sao pa
 # monitoredCities = np.append(monitoredCities,[addedCity])
 
 
-# In[137]:
+# In[10]:
 
 
 ## Only São Paulo
@@ -244,7 +244,7 @@ ax2.legend()
 fig.savefig('../analysis/saoPaulo_cases_deaths.png')
 
 
-# In[138]:
+# In[11]:
 
 
 # Top most transmissible - SP
@@ -284,7 +284,7 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
-# In[139]:
+# In[12]:
 
 
 # Selected cities
@@ -326,7 +326,7 @@ fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
 
 # ### Generating the html file
 
-# In[146]:
+# In[14]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')
@@ -373,7 +373,7 @@ readme += '</table> </div><br>'
 readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais mortais do estado de São Paulo</h3>'
-readme += '          <p><i>Mais: ' + str(', '.join(addedCity)).title() + '</i></p>'
+readme += '          <p><i>Mais: ' + str(', '.join(addedCities)).title() + '</i></p>'
 readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada cidade.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 # readme += df_top_deaths.style.set_properties(**{'font-size': '12pt','border-collapse': 'collapse','border': '1px solid black'}).render()
@@ -381,7 +381,7 @@ readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais transmissíveis do estado de São Paulo</h3>'
-readme += '          <p><i>Mais: ' + str(', '.join(addedCity)).title() + '</i></p>'
+readme += '          <p><i>Mais: ' + str(', '.join(addedCities)).title() + '</i></p>'
 readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada cidade.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
@@ -437,14 +437,14 @@ readme += '</table> </div><br>'
 readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest cities of Sao Paulo</h3>'
-readme += '          <p><i>Plus: ' + str(', '.join(addedCity)).title() + '</i></p>'
+readme += '          <p><i>Plus: ' + str(', '.join(addedCities)).title() + '</i></p>'
 readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the mortality percentage of each city.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' most transmissible cities of Sao Paulo</h3>'
-readme += '          <p><i>Plus: ' + str(', '.join(addedCity)).title() + '</i></p>'
+readme += '          <p><i>Plus: ' + str(', '.join(addedCities)).title() + '</i></p>'
 readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the cumulative cases of each city.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
@@ -457,7 +457,7 @@ f.close()
 print('Sao Paulo\'s analysis done!')
 
 
-# In[11]:
+# In[ ]:
 
 
 # df[df['state']=='SP'][['date','death_day']]
