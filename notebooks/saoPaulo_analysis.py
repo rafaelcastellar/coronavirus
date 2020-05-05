@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[24]:
 
 
 df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
@@ -21,15 +21,15 @@ df['date'] = df['date'].astype('datetime64[ns]')
 df['codigo_ibge'] = df['codigo_ibge'].astype('int') # para tirar o .0
 df['codigo_ibge'] = df['codigo_ibge'].astype('str')
 
-today = str(df.date.max().date())
-tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
-yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
+today = df.date.max().date()
+tomorrow = today + datetime.timedelta(days=1)
+yesterday = today - datetime.timedelta(days=1)
 qtdeMonitored = 5
 
 df.head()
 
 
-# In[3]:
+# In[25]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
@@ -78,7 +78,7 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[4]:
+# In[26]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
@@ -150,39 +150,56 @@ m
 # ----------------------------
 # ### São Paulo - Analysis and monitoring
 
-# #### Top death cities  + Santa Gertrudes + Lucelia + Rio Claro
+# In[118]:
 
-# In[19]:
+
+#week variation
+lastWeek = today - datetime.timedelta(days=7)
+saoPauloCities = 645
+
+#contaminated cities
+lastWeekCities = len(df.loc[df['date']==str(lastWeek), 'city'].unique())
+lastWeekPercCities = int(lastWeekCities / saoPauloCities * 100)
+todayCities = len(df.city.unique())
+todayPercCities = int((todayCities / saoPauloCities * 100))
+varCities = int((todayCities / lastWeekCities - 1) *100)
+
+# cases and deaths
+lastWeekCases = df.loc[df['date']==str(lastWeek), 'cases'].sum()
+lastWeekDeaths = df.loc[df['date']==str(lastWeek), 'deaths'].sum()
+todayCases = df.loc[df['date']==str(today), 'cases'].sum()
+todayDeaths = df.loc[df['date']==str(today), 'deaths'].sum()
+varCases = int((todayCases / lastWeekCases - 1) *100)
+varDeaths = int((todayDeaths / lastWeekDeaths - 1) *100)
+
+
+# #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
+
+# In[114]:
 
 
 cols = ['city', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
-addCity = ['santa gertrudes', 'lucelia', 'rio claro']
+addedCities = ['santa gertrudes', 'rio claro','cordeiropolis', 'limeira','lucelia','adamantina']
 
-df_top_deaths = df[df['date']==today].sort_values('avg7_perc_death', ascending = False)
+df_top_deaths = df[df['date']==str(today)].sort_values('avg7_perc_death', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
-df_top_deaths = df_top_deaths[cols].head(qtdeMonitored).append(df_top_deaths[df_top_deaths['city'].isin(addCity)][cols])
+df_top_deaths = df_top_deaths[cols].head(qtdeMonitored).append(df_top_deaths[df_top_deaths['city'].isin(addedCities)][cols])
 
 df_top_deaths
 
 
-# In[12]:
+# #### Top most transmissible countries + Santa Gertrude + Lucélia + Adamantina + Rio Claro + Cordeirópolis + Limeira - São Paulo
+
+# In[95]:
 
 
-df_top_deaths[(df_top_deaths['city']=='santa gertrudes') | (df_top_deaths['city']=='lucelia') | (df_top_deaths['city']=='rio claro')][cols]
-
-
-# #### Top 10 most transmissible countries + Santa Gertrude + Lucélia + Rio Claro - São Paulo
-
-# In[21]:
-
-
-df_top_cases = df[df['date']==today].sort_values('avg7_cases', ascending = False)
+df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
-df_top_cases = df_top_cases[cols].head(qtdeMonitored).append(df_top_cases[df_top_cases['city'].isin(addCity)][cols])
+df_top_cases = df_top_cases[cols].head(qtdeMonitored+1).append(df_top_cases[df_top_cases['city'].isin(addedCities)][cols])
 
 df_top_cases
 
@@ -191,18 +208,46 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[22]:
+# In[96]:
 
 
 #inform the countries you want to analise
-monitoredCities = df_top_cases['city'].head(qtdeMonitored).to_numpy()
+monitoredCities = df_top_cases['city'].head(qtdeMonitored+1).to_numpy()
 monitoredCities = np.delete(monitoredCities,np.where([monitoredCities == 'sao paulo'] or [monitoredCities == 'total geral']))
-monitoredCities = np.append(monitoredCities,[addCity])
+# monitoredCities = np.append(monitoredCities,[addedCity])
 
 
-# In[23]:
+# In[137]:
 
 
+## Only São Paulo
+city ='sao paulo'
+
+fig, ((ax1, ax2)) = plt.subplots(1,2, figsize=(20, 8))
+fig.tight_layout(pad=5.0)
+
+ax1.set_title("Cumulatative cases and deaths")
+ax1.set_xlabel("days from the first case")
+ax1.grid(color='gray', alpha = 0.4)
+
+ax2.set_title("Cases and deaths - moving average (last 7 days)")
+ax2.set_xlabel("days from the first case")
+ax2.grid(color='gray', alpha = 0.4)
+
+ax1.plot(df[df['city'] == city].day, df[df['city'] == city].cases, label = 'cases')
+ax1.plot(df[df['city'] == city].day, df[df['city'] == city].deaths, label = 'deaths')
+ax2.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_cases, label = 'cases')
+ax2.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_deaths, label = 'deaths')
+
+ax1.legend()
+ax2.legend()
+fig.savefig('../analysis/saoPaulo_cases_deaths.png')
+
+
+# In[138]:
+
+
+# Top most transmissible - SP
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
 fig.tight_layout(pad=5.0)
 
@@ -239,9 +284,49 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
+# In[139]:
+
+
+# Selected cities
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
+fig.tight_layout(pad=5.0)
+
+ax1.set_title("Cumulatative cases")
+ax1.set_xlabel("days from the first case")
+ax1.grid(color='gray', alpha = 0.4)
+
+ax2.set_title("Cumulative deaths")
+ax2.set_xlabel("days from the first case")
+ax2.grid(color='gray', alpha = 0.4)
+
+ax3.set_title("Cases - moving average (last 7 days)")
+ax3.set_xlabel("days from the first case")
+ax3.grid(color='gray', alpha = 0.4)
+
+ax4.set_title("Deaths - moving average (last 7 days)")
+ax4.set_xlabel("days from the first case")
+ax4.grid(color='gray', alpha = 0.4)
+
+for city in addedCities:
+    ax1.plot(df[df['city'] == city].day, df[df['city'] == city].cases, label = city)
+    ax2.plot(df[df['city'] == city].day, df[df['city'] == city].deaths, label = city)
+    ax3.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_cases, label = city)
+    ax4.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_deaths, label = city)
+#     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
+#     ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
+#     ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
+#     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
+
+ax1.legend()
+ax2.legend()
+ax3.legend()
+ax4.legend()
+fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
+
+
 # ### Generating the html file
 
-# In[28]:
+# In[146]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')
@@ -250,18 +335,53 @@ f2 = open('../html/templates/saoPaulo_analysis_02.html', 'r').read()
 f3 = open('../html/templates/saoPaulo_analysis_03.html', 'r').read()
 
 readme = f1
-readme += '<p>Estas análises são relativas aos dados da pandemia Covid19 no estado de São Paulo até a data de <strong>' + today + '</strong>.</p>'
+readme += '          <p>Indicadores relativos aos dados da pandemia Covid19 no estado de São Paulo até a data de <strong>' + today.strftime("%d/%m/%Y") + '</strong>.</p>'
+readme += '          <p style="font-size:14px"><i>Estas informações são para uso próprio e não devem ser utilizadas para direcionamentos médicos e/ou políticas públicas.</i></p>'
+readme += '</div></div>'
+readme += '<div class="container"> '
+readme += '<h3>Análise semanal</h3><br>'
+readme += '<table border="1" class="dataframe " width="60%">'
+readme += '  <thead>'
+readme += '    <tr>'
+readme += '      <th style="text-align: center;" width="25%"></th>'
+readme += '      <th style="text-align: center;">'+ lastWeek.strftime("%d/%m/%Y")+ '</th>'
+readme += '      <th style="text-align: center;">'+ today.strftime("%d/%m/%Y") +'</th>'
+readme += '      <th style="text-align: center;"> variação </th>'
+readme += '    </tr>'
+readme += '  </thead>'
+readme += '  <tbody>'
+readme += '    <tr style="text-align: right;">'
+readme += '      <td style="font-weight: bold; text-align: right;" width="25%">casos</td>'
+readme += '      <td>'+str(lastWeekCases)+'</td>'
+readme += '      <td>'+str(todayCases)+'</td>'
+readme += '      <td>'+str(varCases)+'%</td>'
+readme += '    </tr>'
+readme += '    <tr style="text-align: right;">'
+readme += '      <td style="font-weight: bold; text-align: right;" width="25%">mortes</td>'
+readme += '      <td>'+str(lastWeekDeaths)+'</td>'
+readme += '      <td>'+str(todayDeaths)+'</td>'
+readme += '      <td>'+str(varDeaths)+'%</td>'
+readme += '    </tr>'
+readme += '    <tr style="text-align: right;">'
+readme += '      <td style="font-weight: bold; text-align: center;" width="25%">cidades contaminadas</td>'
+readme += '      <td>'+str(lastWeekCities)+' ('+str(lastWeekPercCities)+'%)</td>'
+readme += '      <td>'+str(todayCities)+' ('+str(todayPercCities)+'%)</td>'
+readme += '      <td>'+str(varCities)+'%</td>'
+readme += '    </tr>'
+readme += '  </tbody>'
+readme += '</table> </div><br>' 
 readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais mortais do estado de São Paulo</h3>'
-readme += '          <p><i>mais Santa Gertrudes, Rio Claro e Lucélia</i></p>'
+readme += '          <p><i>Mais: ' + str(', '.join(addedCity)).title() + '</i></p>'
 readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada cidade.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
+# readme += df_top_deaths.style.set_properties(**{'font-size': '12pt','border-collapse': 'collapse','border': '1px solid black'}).render()
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais transmissíveis do estado de São Paulo</h3>'
-readme += '          <p><i>mais Santa Gertrudes, Rio Claro e Lucélia</i></p>'
+readme += '          <p><i>Mais: ' + str(', '.join(addedCity)).title() + '</i></p>'
 readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada cidade.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
@@ -279,18 +399,52 @@ f2 = open('../html/templates/saoPaulo_analysis_EN_02.html', 'r').read()
 f3 = open('../html/templates/saoPaulo_analysis_EN_03.html', 'r').read()
 
 readme = f1
-readme += '<p>These analysis are related to state of San Paulo Convid19 pandemic data up to <strong>' + today + '</strong>.</p>'
+readme += '<p>These indicators are related to state of San Paulo Convid19 pandemic data up to <strong>' + today.strftime("%d/%m/%Y") + '</strong>.</p>'
+readme += '             <p style="font-size:14px"><i>This information is for own use only and shall NOT be used for medical and public policy guidances.</i></p>'
+readme += '</div></div>'
+readme += '<div class="container"> '
+readme += '<h3>Weekly analysis</h3><br>'
+readme += '<table border="1" class="dataframe " width="60%">'
+readme += '  <thead>'
+readme += '    <tr>'
+readme += '      <th style="text-align: center;" width="25%"></th>'
+readme += '      <th style="text-align: center;">'+ lastWeek.strftime("%d/%m/%Y")+ '</th>'
+readme += '      <th style="text-align: center;">'+ today.strftime("%d/%m/%Y") +'</th>'
+readme += '      <th style="text-align: center;"> variations </th>'
+readme += '    </tr>'
+readme += '  </thead>'
+readme += '  <tbody>'
+readme += '    <tr style="text-align: right;">'
+readme += '      <td style="font-weight: bold; text-align: right;" width="25%">cases</td>'
+readme += '      <td>'+str(lastWeekCases)+'</td>'
+readme += '      <td>'+str(todayCases)+'</td>'
+readme += '      <td>'+str(varCases)+'%</td>'
+readme += '    </tr>'
+readme += '    <tr style="text-align: right;">'
+readme += '      <td style="font-weight: bold; text-align: right;" width="25%">deaths</td>'
+readme += '      <td>'+str(lastWeekDeaths)+'</td>'
+readme += '      <td>'+str(todayDeaths)+'</td>'
+readme += '      <td>'+str(varDeaths)+'%</td>'
+readme += '    </tr>'
+readme += '    <tr style="text-align: right;">'
+readme += '      <td style="font-weight: bold; text-align: center;" width="25%">contaminated cities</td>'
+readme += '      <td>'+str(lastWeekCities)+' ('+str(lastWeekPercCities)+'%)</td>'
+readme += '      <td>'+str(todayCities)+' ('+str(todayPercCities)+'%)</td>'
+readme += '      <td>'+str(varCities)+'%</td>'
+readme += '    </tr>'
+readme += '  </tbody>'
+readme += '</table> </div><br>' 
 readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest cities of Sao Paulo</h3>'
-readme += '          <p><i>plus Santa Gertrudes, Rio Claro and Lucélia</i></p>'
+readme += '          <p><i>Plus: ' + str(', '.join(addedCity)).title() + '</i></p>'
 readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the mortality percentage of each city.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' most transmissible cities of Sao Paulo</h3>'
-readme += '          <p><i>plus Santa Gertrudes, Rio Claro and Lucélia</i></p>'
+readme += '          <p><i>Plus: ' + str(', '.join(addedCity)).title() + '</i></p>'
 readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the cumulative cases of each city.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
@@ -307,10 +461,4 @@ print('Sao Paulo\'s analysis done!')
 
 
 # df[df['state']=='SP'][['date','death_day']]
-
-
-# In[ ]:
-
-
-
 
