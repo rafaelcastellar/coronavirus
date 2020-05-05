@@ -326,7 +326,7 @@ fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
 
 # ### Generating the html file
 
-# In[14]:
+# In[13]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')
@@ -457,7 +457,7 @@ f.close()
 print('Sao Paulo\'s analysis done!')
 
 
-# In[ ]:
+# In[14]:
 
 
 # df[df['state']=='SP'][['date','death_day']]
