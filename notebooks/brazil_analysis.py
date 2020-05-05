@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[26]:
+# In[6]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[27]:
+# In[7]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -28,7 +28,7 @@ qtdeMonitored = 10
 df.tail()
 
 
-# In[28]:
+# In[8]:
 
 
 df_brasil = pd.merge(df[df['date']==str(today)], df_estados, how='inner', on=None, left_on='state', 
@@ -40,7 +40,7 @@ df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_
 df_brasil.tail()
 
 
-# In[29]:
+# In[9]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -53,7 +53,7 @@ for state in state_geo['features']:
 df_estados.tail()
 
 
-# In[30]:
+# In[10]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
@@ -110,7 +110,7 @@ m.save('../analysis/maps/brazilMapDeaths.html')
 m
 
 
-# In[31]:
+# In[11]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)

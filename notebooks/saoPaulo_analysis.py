@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[15]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[25]:
 
 
 df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
@@ -25,11 +25,12 @@ today = df.date.max().date()
 tomorrow = today + datetime.timedelta(days=1)
 yesterday = today - datetime.timedelta(days=1)
 qtdeMonitored = 5
+cities = df['city'].unique()
 
 df.head()
 
 
-# In[3]:
+# In[34]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
@@ -51,15 +52,17 @@ folium.Choropleth(
     legend_name= '% mortalidade (media movel 7 ultimos dias)'
 ).add_to(m)
 
-for key,estado in df.iterrows():
-    dados = df[df['codigo_ibge']==estado.codigo_ibge]
+for city in cities:
+    dados = df[(df['city']==city) & (df['date']==str(today))]
+    if dados.empty:
+        print('cidade vazia:', city)
+        continue
     detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
-    detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
+    detalhes += 'casos: ' + str(dados.cases.sum()) + ', mortes: ' + str(dados.deaths.sum())
     detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
-#     detalhes = udetalhes
     
     folium.CircleMarker(
-        location=[estado.latitude,estado.longitude],
+        location=[dados.latitude,dados.longitude],
         radius=2,
 #         popup=detalhes,
         color='#727b7d',
@@ -78,7 +81,7 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[4]:
+# In[35]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
@@ -98,15 +101,17 @@ folium.Choropleth(
     legend_name='media movel de casos (7 ultimos dias)'
 ).add_to(m)
 
-for key,estado in df.iterrows():
-    dados = df[df['codigo_ibge']==estado.codigo_ibge]
+for city in cities:
+    dados = df[(df['city']==city) & (df['date']==str(today))]
+    if dados.empty:
+        print('cidade vazia:', city)
+        continue
     detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
-    detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
+    detalhes += 'casos: ' + str(dados.cases.sum()) + ', mortes: ' + str(dados.deaths.sum())
     detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
-#     detalhes = udetalhes
     
     folium.CircleMarker(
-        location=[estado.latitude,estado.longitude],
+        location=[dados.latitude,dados.longitude],
         radius=2,
 #         popup=detalhes,
         color='#727b7d',
