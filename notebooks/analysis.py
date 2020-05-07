@@ -310,7 +310,7 @@ fig.savefig('../analysis/brazil_movingAvg.png')
 
 # ### Generating the html file
 
-# In[29]:
+# In[12]:
 
 
 f = open('../html/analysis.html', 'w')
@@ -335,8 +335,6 @@ readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' países mais transmissíveis + Brasil</h3>'
 readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada país.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
-readme += '        </div>'
-readme += '        <br>'
 readme += f3
 
 f.write(readme)
@@ -374,10 +372,69 @@ f.close()
 print('World analysis done!')
 
 
-# In[ ]:
+# In[13]:
 
 
+from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
+                               AutoMinorLocator)
 
+df_br = df[df['country']=='Brazil']
+
+df_br.reset_index(0, inplace=True)
+
+x = df_br.index
+gripinha = df_br.loc[df_br.date == '2020-03-24'].index[0]+1
+reuniao = df_br.loc[df_br.date == '2020-04-06'].index[0]+1
+demissao = df_br.loc[df_br.date == '2020-04-16'].index[0]+1
+
+fig, (ax1, ax2, ax3) = plt.subplots(3, figsize=(10,15))
+# fig.suptitle('Predicted for ' + df_br.country[0] + ' on ' + today + ' day('+ str(corte) +') ' + ' for the next ' + str(daysToPredict) + ' days')
+fig.subplots_adjust(hspace = 0.5)
+ax1.set_title('cumulative')
+ax1.plot(x, df_br['cases'], label = 'cases')#, linewidths = 0.01)
+ax1.plot(x, df_br['deaths'], label = 'deaths')
+ax1.grid()
+ax1.axvline(x=gripinha, ymin=0, ymax=0.9, color = 'red', label = 'gripinha')
+ax1.axvline(x=gripinha, ymin=0, ymax=0.9, color = 'red', label = 'gripinha')
+ax1.axvline(x=reuniao, ymin=0, ymax=0.9, color = 'blue', label = 'reunião')
+ax1.axvline(x=demissao, ymin=0, ymax=0.9, color = 'green', label = 'queda mandetta')
+ax1.axvline(x=gripinha+7, ymin=0, ymax=0.9, color = 'red', linestyle = '--',label = 'gripinha+7')
+ax1.axvline(x=reuniao+7, ymin=0, ymax=0.9, color = 'blue', linestyle = '--', label = 'reunião+7')
+ax1.axvline(x=demissao+7, ymin=0, ymax=0.9, color = 'green', linestyle = '--', label = 'queda mandetta+7')
+ax1.xaxis.set_minor_locator(MultipleLocator(1))
+ax1.legend()
+
+ax2.set_title('# daily (absolute numbers)')
+ax2.plot(x, df_br['case_day'], label = 'cases')
+ax2.plot(x, df_br['death_day'], label = 'deaths')
+ax2.grid()
+ax2.axvline(x=gripinha, ymin=0, ymax=0.9, color = 'red', label = 'gripinha')
+ax2.axvline(x=reuniao, ymin=0, ymax=0.9, color = 'blue', label = 'reunião')
+ax2.axvline(x=demissao, ymin=0, ymax=0.9, color = 'green', label = 'queda mandetta')
+ax2.axvline(x=gripinha+7, ymin=0, ymax=0.9, color = 'red', linestyle = '--',label = 'gripinha+7')
+ax2.axvline(x=reuniao+7, ymin=0, ymax=0.9, color = 'blue', linestyle = '--', label = 'reunião+7')
+ax2.axvline(x=demissao+7, ymin=0, ymax=0.9, color = 'green', linestyle = '--', label = 'queda mandetta+7')
+ax2.xaxis.set_minor_locator(MultipleLocator(1))
+ax2.legend()
+
+avg7_cases_million = df_br['case_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+avg7_death_million = df_br['death_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+
+ax3.set_title('# moving average (last 7 days)')
+ax3.plot(x, avg7_cases_million, label = 'cases')
+ax3.plot(x, avg7_death_million, label = 'deaths')
+ax3.grid()
+
+ax3.axvline(x=gripinha, ymin=0, ymax=0.9, color = 'red', label = 'gripinha')
+ax3.axvline(x=reuniao, ymin=0, ymax=0.9, color = 'blue', label = 'reunião')
+ax3.axvline(x=demissao, ymin=0, ymax=0.9, color = 'green', label = 'queda mandetta')
+ax3.axvline(x=gripinha+7, ymin=0, ymax=0.9, color = 'red', linestyle = '--',label = 'gripinha+7')
+ax3.axvline(x=reuniao+7, ymin=0, ymax=0.9, color = 'blue', linestyle = '--', label = 'reunião+7')
+ax3.axvline(x=demissao+7, ymin=0, ymax=0.9, color = 'green', linestyle = '--', label = 'queda mandetta+7')
+ax3.xaxis.set_minor_locator(MultipleLocator(1))
+ax3.legend()
+
+# plt.savefig('../predictions/brazil_predictions.png')
 
 
 # In[ ]:

@@ -33,7 +33,7 @@ j = json.loads(req.text)
 
 # #### Fetching countries's pandemic data from Pomber's JSON to a dataframe 
 
-# In[3]:
+# In[17]:
 
 
 # Loading countries names to dict
@@ -62,7 +62,7 @@ df[df['country']=='Brazil'].tail()
 
 # #### Feature engineering
 
-# In[4]:
+# In[18]:
 
 
 for country in countries:
@@ -94,7 +94,7 @@ for country in countries:
         cases_million = 0
         deaths_million = 0
         recoveries_million = 0
-        
+    
     df.loc[df.country == country, 'cases_million'] = cases_million
     df.loc[df.country == country, 'deaths_million'] = deaths_million
     df.loc[df.country == country, 'recoveries_million'] = recoveries_million
@@ -123,15 +123,30 @@ df['recovery_day'] = df['recovery_day'].astype('int')
 df.tail()
 
 
+# In[25]:
+
+
+#Adjusting wrong negative variations (wrong number from the source)
+# df.loc[df.case_day < 0, ['cases']] = df[df.case_day < 0].shift().cases#, ['cases']]
+df.loc[df.case_day < 0, ['case_day']] = df[df.case_day < 0].shift().case_day#, ['cases']]
+df.loc[df.cases_million < 0, ['cases_million']] = df[df.cases_million < 0].cases_million.shift()#, ['cases']]
+# country = 'Spain'
+
+# df.case_day.min()
+# df[df.cases_million < 0].cases_million.shift()
+# df.loc[df.index == df[df['country']=='Spain'].cases.min()]
+# plt.plot(df[df['country']=='Spain'].case_day)
+
+
 # #### Saving CSV
 
-# In[5]:
+# In[6]:
 
 
 df.to_csv('../data/world_corona19_data.csv', index = False)
 
 
-# In[6]:
+# In[7]:
 
 
 df[df['country']=='Brazil'].tail()
@@ -139,7 +154,7 @@ df[df['country']=='Brazil'].tail()
 
 # #### countries not located in UN dataset
 
-# In[7]:
+# In[8]:
 
 
 for country in countries:
@@ -151,7 +166,7 @@ for country in countries:
 
 # ### Brazil data engineering
 
-# In[12]:
+# In[9]:
 
 
 import requests
@@ -182,7 +197,7 @@ df.tail()
 
 # #### Feature engineering
 
-# In[9]:
+# In[10]:
 
 
 states = df.state.unique()
@@ -226,7 +241,7 @@ df['death_day'] = df['death_day'].astype('int')
 df.tail()
 
 
-# In[10]:
+# In[11]:
 
 
 df.to_csv('../data/brazil_corona19_data.csv', index = False)
@@ -234,7 +249,7 @@ df.to_csv('../data/brazil_corona19_data.csv', index = False)
 
 # ### São Paulo data engineering
 
-# In[11]:
+# In[12]:
 
 
 df = pd.read_csv('https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv', sep=';')
@@ -250,7 +265,7 @@ df.tail()
 
 # #### Feature engineering
 
-# In[12]:
+# In[13]:
 
 
 cities = df.city.unique()
@@ -294,26 +309,20 @@ df['death_day'] = df['death_day'].astype('int')
 df.tail()
 
 
-# In[13]:
+# In[14]:
 
 
 df.to_csv('../data/saoPaulo_corona19_data.csv', index = False)
 
 
-# In[14]:
+# In[15]:
 
 
 # df[df['country']=='Belgium']
 print('Data engineering done!')
 
 
-# In[11]:
-
-
-
-
-
-# In[9]:
+# In[ ]:
 
 
 
