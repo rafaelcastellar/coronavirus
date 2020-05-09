@@ -33,7 +33,7 @@ j = json.loads(req.text)
 
 # #### Fetching countries's pandemic data from Pomber's JSON to a dataframe 
 
-# In[17]:
+# In[3]:
 
 
 # Loading countries names to dict
@@ -62,7 +62,7 @@ df[df['country']=='Brazil'].tail()
 
 # #### Feature engineering
 
-# In[18]:
+# In[4]:
 
 
 for country in countries:
@@ -123,13 +123,13 @@ df['recovery_day'] = df['recovery_day'].astype('int')
 df.tail()
 
 
-# In[25]:
+# In[5]:
 
 
 #Adjusting wrong negative variations (wrong number from the source)
 # df.loc[df.case_day < 0, ['cases']] = df[df.case_day < 0].shift().cases#, ['cases']]
 df.loc[df.case_day < 0, ['case_day']] = df[df.case_day < 0].shift().case_day#, ['cases']]
-df.loc[df.cases_million < 0, ['cases_million']] = df[df.cases_million < 0].cases_million.shift()#, ['cases']]
+df.loc[df.cases_million < 0, ['cases_million']] = 0#df[df.cases_million < 0].cases_million.shift()#, ['cases']]
 # country = 'Spain'
 
 # df.case_day.min()

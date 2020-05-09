@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[15]:
+# In[1]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[25]:
+# In[2]:
 
 
 df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
@@ -30,7 +30,7 @@ cities = df['city'].unique()
 df.head()
 
 
-# In[34]:
+# In[3]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
@@ -81,7 +81,7 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[35]:
+# In[4]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
@@ -176,6 +176,8 @@ todayCases = df.loc[df['date']==str(today), 'cases'].sum()
 todayDeaths = df.loc[df['date']==str(today), 'deaths'].sum()
 varCases = int((todayCases / lastWeekCases - 1) *100)
 varDeaths = int((todayDeaths / lastWeekDeaths - 1) *100)
+diffCases = todayCases - lastWeekCases
+diffDeaths = todayDeaths - lastWeekDeaths
 
 
 # #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
@@ -360,12 +362,14 @@ readme += '      <td style="font-weight: bold; text-align: right;" width="25%">c
 readme += '      <td>'+str(lastWeekCases)+'</td>'
 readme += '      <td>'+str(todayCases)+'</td>'
 readme += '      <td>'+str(varCases)+'%</td>'
+readme += '      <td>'+str(diffCases)+ ' ('+str(varCases)+'%)</td>'
 readme += '    </tr>'
 readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: right;" width="25%">mortes</td>'
 readme += '      <td>'+str(lastWeekDeaths)+'</td>'
 readme += '      <td>'+str(todayDeaths)+'</td>'
 readme += '      <td>'+str(varDeaths)+'%</td>'
+readme += '      <td>'+str(diffDeaths)+ ' ('+str(varDeaths)+'%)</td>'
 readme += '    </tr>'
 readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: center;" width="25%">cidades contaminadas</td>'
@@ -423,13 +427,13 @@ readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: right;" width="25%">cases</td>'
 readme += '      <td>'+str(lastWeekCases)+'</td>'
 readme += '      <td>'+str(todayCases)+'</td>'
-readme += '      <td>'+str(varCases)+'%</td>'
+readme += '      <td>'+str(diffCases)+ ' ('+str(varCases)+'%)</td>'
 readme += '    </tr>'
 readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: right;" width="25%">deaths</td>'
 readme += '      <td>'+str(lastWeekDeaths)+'</td>'
 readme += '      <td>'+str(todayDeaths)+'</td>'
-readme += '      <td>'+str(varDeaths)+'%</td>'
+readme += '      <td>'+str(diffDeaths)+ ' ('+str(varDeaths)+'%)</td>'
 readme += '    </tr>'
 readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: center;" width="25%">contaminated cities</td>'

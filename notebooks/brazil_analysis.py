@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[6]:
+# In[1]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[7]:
+# In[2]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -28,7 +28,7 @@ qtdeMonitored = 10
 df.tail()
 
 
-# In[8]:
+# In[3]:
 
 
 df_brasil = pd.merge(df[df['date']==str(today)], df_estados, how='inner', on=None, left_on='state', 
@@ -40,7 +40,7 @@ df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_
 df_brasil.tail()
 
 
-# In[9]:
+# In[4]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -53,7 +53,7 @@ for state in state_geo['features']:
 df_estados.tail()
 
 
-# In[10]:
+# In[5]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
@@ -110,7 +110,7 @@ m.save('../analysis/maps/brazilMapDeaths.html')
 m
 
 
-# In[11]:
+# In[6]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
@@ -153,7 +153,7 @@ m.save('../analysis/maps/brazilMapCases.html')
 m
 
 
-# In[32]:
+# In[7]:
 
 
 # import imgkit
@@ -177,7 +177,7 @@ m
 # ----------------------------
 # ### Brasil - Analysis and monitoring
 
-# In[33]:
+# In[8]:
 
 
 #week variation
@@ -190,11 +190,13 @@ todayCases = df[df['date']==str(today)].cases.sum()
 todayDeaths = df[df['date']==str(today)].deaths.sum()
 varCases = int((todayCases / lastWeekCases - 1) *100)
 varDeaths = int((todayDeaths / lastWeekDeaths - 1) *100)
+diffCases = todayCases - lastWeekCases
+diffDeaths = todayDeaths - lastWeekDeaths
 
 
 # #### Top 5 deadliest states 
 
-# In[36]:
+# In[9]:
 
 
 cols = ['state', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
@@ -208,7 +210,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[37]:
+# In[10]:
 
 
 df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases', ascending = False)
@@ -223,7 +225,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[38]:
+# In[11]:
 
 
 #inform the countries you want to analise
@@ -231,7 +233,7 @@ monitoredStates = df_top_deaths['state'].head(qtdeMonitored).to_numpy()
 monitoredStates
 
 
-# In[39]:
+# In[12]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -272,7 +274,7 @@ fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 # ### Generating the HTML file
 
-# In[40]:
+# In[13]:
 
 
 f = open('../html/brazil_analysis.html', 'w')
@@ -300,13 +302,13 @@ readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: right;" width="25%">casos</td>'
 readme += '      <td>'+str(lastWeekCases)+'</td>'
 readme += '      <td>'+str(todayCases)+'</td>'
-readme += '      <td>'+str(varCases)+'%</td>'
+readme += '      <td>'+str(diffCases)+ ' (' +str(varCases)+'%)</td>'
 readme += '    </tr>'
 readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: right;" width="25%">mortes</td>'
 readme += '      <td>'+str(lastWeekDeaths)+'</td>'
 readme += '      <td>'+str(todayDeaths)+'</td>'
-readme += '      <td>'+str(varDeaths)+'%</td>'
+readme += '      <td>'+str(diffDeaths)+ ' ('+str(varDeaths)+'%)</td>'
 readme += '    </tr>'
 readme += '  </tbody>'
 readme += '</table> </div><br>' 
@@ -336,7 +338,7 @@ f2 = open('../html/templates/brazil_analysis_EN_02.html', 'r').read()
 f3 = open('../html/templates/brazil_analysis_EN_03.html', 'r').read()
 
 readme = f1
-readme += '<p>These analysis are related to Brazil Convid19 pandemic data up to <strong>' + today.strftime("%d/%m/%Y") + '</strong>.</p>'
+readme += '<p>These analysis are related to Brazil Convid19 pandemic data up to <strong>' + today.strftime("%m/%d/%Y") + '</strong>.</p>'
 readme += '             <p style="font-size:14px"><i>This information is for own use only and shall NOT be used for medical and public policy guidances.</i></p>'
 readme += '</div></div>'
 readme += '<div class="container"> '
@@ -355,13 +357,13 @@ readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: right;" width="25%">cases</td>'
 readme += '      <td>'+str(lastWeekCases)+'</td>'
 readme += '      <td>'+str(todayCases)+'</td>'
-readme += '      <td>'+str(varCases)+'%</td>'
+readme += '      <td>'+str(diffCases)+ ' (' +str(varCases)+'%)</td>'
 readme += '    </tr>'
 readme += '    <tr style="text-align: right;">'
 readme += '      <td style="font-weight: bold; text-align: right;" width="25%">deaths</td>'
 readme += '      <td>'+str(lastWeekDeaths)+'</td>'
 readme += '      <td>'+str(todayDeaths)+'</td>'
-readme += '      <td>'+str(varDeaths)+'%</td>'
+readme += '      <td>'+str(diffDeaths)+ ' ('+str(varDeaths)+'%)</td>'
 readme += '    </tr>'
 readme += '  </tbody>'
 readme += '</table> </div><br>' 
@@ -386,7 +388,7 @@ f.close()
 print('Brazilian analysis done!')
 
 
-# In[47]:
+# In[14]:
 
 
 # df[df['state']=='SP'][['date','death_day']]

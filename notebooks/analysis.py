@@ -19,9 +19,9 @@ import datetime
 df = pd.read_csv('../data/world_corona19_data.csv', sep=',')
 df['date'] = df['date'].astype('datetime64[ns]')
 
-today = str(df.date.max().date())
-tomorrow = str(df.date.max().date() + datetime.timedelta(days=1))
-yesterday = str(df.date.max().date() - datetime.timedelta(days=1))
+today = df.date.max().date()
+tomorrow = today + datetime.timedelta(days=1)
+yesterday = today - datetime.timedelta(days=1)
 qtdeMonitored = 5
 df.tail()
 
@@ -42,7 +42,7 @@ countries
 
 
 cols = ['country','day','date','cases','case_day','deaths','death_day', 'cases_million',  'deaths_million', 'avg7_cases_million', 'avg7_deaths_million', 'avg7_recoveries_million']
-df_top_deaths = df[df['date']==today].sort_values('avg7_deaths_million', ascending = False)
+df_top_deaths = df[df['date']==str(today)].sort_values('avg7_deaths_million', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
@@ -55,7 +55,7 @@ df_top_deaths
 # In[5]:
 
 
-df_top_cases = df[df['date']==today].sort_values('avg7_cases_million', ascending = False)
+df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases_million', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -319,7 +319,7 @@ f1 = open('../html/templates/analysis_01.html', 'r').read()
 f3 = open('../html/templates/analysis_03.html', 'r').read()
 
 readme = f1
-readme += '<p>Estas análises são relativas aos dados da pandemia Covid19 no pelo mundoaté a data de <strong>' + today + '</strong>.</p>'
+readme += '<p>Estas análises são relativas aos dados da pandemia Covid19 no pelo mundoaté a data de <strong>' + today.strftime("%d/%m/%Y") + '</strong>.</p>'
 readme += '<p style="font-size:14px"><i>Estas informações são para uso próprio e não devem ser utilizadas para direcionamentos médicos e/ou políticas públicas.</i></p>'
 
 readme += '<p>Para não prejudicar a visualização dos dados, selecionei os seguintes países mais o Brasil para serem comparados entre si: ' + str(monitoredCountries) + '</p>'
@@ -348,7 +348,7 @@ f1 = open('../html/templates/analysis_EN_01.html', 'r').read()
 f3 = open('../html/templates/analysis_EN_03.html', 'r').read()
 
 readme = f1
-readme += '<p>These analysis are related to the Covid19 pandemic data up to <strong>' + today + '</strong>.</p>'
+readme += '<p>These analysis are related to the Covid19 pandemic data up to <strong>' + today.strftime("%m/%d/%Y") + '</strong>.</p>'
 readme += '<p style="font-size:14px"><i>This information is for own use only and shall NOT be used for medical and public policy guidances.</i></p>'
 readme += '<p>To permit a better vizualization, I selected the follow countryies plus Brazil to be compared with each other: ' + str(monitoredCountries) + '</p>'
 readme += '<br></div>'
