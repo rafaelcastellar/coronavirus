@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[3]:
 
 
 df = pd.read_csv('../data/world_corona19_data.csv', sep=',')
@@ -26,7 +26,7 @@ qtdeMonitored = 5
 df.tail()
 
 
-# In[3]:
+# In[4]:
 
 
 countries = df['country'].unique()
@@ -38,10 +38,10 @@ countries
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[4]:
+# In[7]:
 
 
-cols = ['country','day','date','cases','case_day','deaths','death_day', 'cases_million',  'deaths_million', 'avg7_cases_million', 'avg7_deaths_million', 'avg7_recoveries_million']
+cols = ['country','day','date','cases','case_day','deaths','death_day', 'perc_death', 'cases_million',  'deaths_million', 'avg7_cases_million', 'avg7_deaths_million', 'avg7_recoveries_million']
 df_top_deaths = df[df['date']==str(today)].sort_values('avg7_deaths_million', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
@@ -52,7 +52,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[5]:
+# In[6]:
 
 
 df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases_million', ascending = False)
@@ -65,7 +65,7 @@ df_top_cases
 
 # #### Countries to be analised
 
-# In[6]:
+# In[7]:
 
 
 #inform the countries you want to analise
@@ -74,7 +74,7 @@ monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France
 
 # #### Cases and deaths 
 
-# In[7]:
+# In[8]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -322,18 +322,18 @@ readme = f1
 readme += '<p>Estas análises são relativas aos dados da pandemia Covid19 no pelo mundoaté a data de <strong>' + today.strftime("%d/%m/%Y") + '</strong>.</p>'
 readme += '<p style="font-size:14px"><i>Estas informações são para uso próprio e não devem ser utilizadas para direcionamentos médicos e/ou políticas públicas.</i></p>'
 
-readme += '<p>Para não prejudicar a visualização dos dados, selecionei os seguintes países mais o Brasil para serem comparados entre si: ' + str(monitoredCountries) + '</p>'
-readme += '<br></div>'
+readme += '<p>Para não prejudicar a visualização dos dados, selecionei os seguintes países mais o Brasil para serem comparados entre si: ' + str(', '.join(monitoredCountries)).title() + '</p>'
+readme += '<br></div></div>'
 # readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' países mais mortais + Brasil</h3>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada país.</p>'
+readme += '          <p>O ranking é feito a partir da média móvel de 7 dias da quantidade de morte por milhão de população de cada país.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' países mais transmissíveis + Brasil</h3>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos acumulados de cada país.</p>'
+readme += '          <p>O ranking é feito a partir da média móvel de 7 dias de casos acumulados de cada país.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += f3
 
@@ -350,12 +350,12 @@ f3 = open('../html/templates/analysis_EN_03.html', 'r').read()
 readme = f1
 readme += '<p>These analysis are related to the Covid19 pandemic data up to <strong>' + today.strftime("%m/%d/%Y") + '</strong>.</p>'
 readme += '<p style="font-size:14px"><i>This information is for own use only and shall NOT be used for medical and public policy guidances.</i></p>'
-readme += '<p>To permit a better vizualization, I selected the follow countryies plus Brazil to be compared with each other: ' + str(monitoredCountries) + '</p>'
-readme += '<br></div>'
+readme += '<p>To permit a better vizualization, I selected the follow countryies plus Brazil to be compared with each other: ' + str(', '.join(monitoredCountries)).title() + '</p>'
+readme += '<br></div></div>'
 # readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest countries + Brazil</h3>'
-readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the mortality percentage of each country.</p>'
+readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the deaths per million of population of each country.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
