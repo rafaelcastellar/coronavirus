@@ -128,5 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-Adriano/*
+Adriano
 .ipnynb_checkpoints
+
+COVID19_mobility
+COVID19_mobility/*
