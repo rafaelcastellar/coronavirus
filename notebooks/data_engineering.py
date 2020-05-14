@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[178]:
 
 
 print('Initializing data engineering!')
@@ -15,7 +15,7 @@ import json, requests
 # ### World data engineering
 # #### Fetching worldwide data
 
-# In[2]:
+# In[191]:
 
 
 # df = pd.read_json('https://pomber.github.io/covid19/timeseries.json')
@@ -33,7 +33,7 @@ j = json.loads(req.text)
 
 # #### Fetching countries's pandemic data from Pomber's JSON to a dataframe 
 
-# In[3]:
+# In[192]:
 
 
 # Loading countries names to dict
@@ -62,7 +62,7 @@ df[df['country']=='Brazil'].tail()
 
 # #### Feature engineering
 
-# In[4]:
+# In[193]:
 
 
 for country in countries:
@@ -87,26 +87,36 @@ for country in countries:
     # Buscando a população do país e calculado os indicador per milhão
     if not df_countries[df_countries['country']==country].empty:
         million = df_countries[df_countries['country']==country]['PopTotal'].values[0] / 1000
-        cases_million = (df[df.country == country]['case_day'] / million).round(1)
-        deaths_million = (df[df.country == country]['death_day'] / million).round(1)
-        recoveries_million = (df[df.country == country]['recovery_day'] / million).round(1)
+        cases_million = (df[df.country == country]['cases'] / million).round(1)
+        deaths_million = (df[df.country == country]['deaths'] / million).round(1)
+        recoveries_million = (df[df.country == country]['recoveries'] / million).round(1)
+        case_day_million = (df[df.country == country]['case_day'] / million).round(1)
+        death_day_million = (df[df.country == country]['death_day'] / million).round(1)
+        recovery_day_million = (df[df.country == country]['recovery_day'] / million).round(1)
+        
     else:
         cases_million = 0
         deaths_million = 0
         recoveries_million = 0
+        case_day_million = 0
+        death_day_million = 0
+        recovery_day_million = 0
     
     df.loc[df.country == country, 'cases_million'] = cases_million
     df.loc[df.country == country, 'deaths_million'] = deaths_million
     df.loc[df.country == country, 'recoveries_million'] = recoveries_million
+    df.loc[df.country == country, 'case_day_million'] = case_day_million
+    df.loc[df.country == country, 'death_day_million'] = death_day_million
+    df.loc[df.country == country, 'recovery_day_million'] = recovery_day_million
     
     # moving averages (from last 7 days)
     df.loc[df.country == country, 'avg7_cases'] = df[df.country == country]['case_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
     df.loc[df.country == country, 'avg7_deaths'] = df[df.country == country]['death_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
     df.loc[df.country == country, 'avg7_recoveries'] = df[df.country == country]['recovery_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
     
-    df.loc[df.country == country, 'avg7_cases_million'] = df[df.country == country]['cases_million'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
-    df.loc[df.country == country, 'avg7_deaths_million'] = df[df.country == country]['deaths_million'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
-    df.loc[df.country == country, 'avg7_recoveries_million'] = df[df.country == country]['recoveries_million'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+    df.loc[df.country == country, 'avg7_case_day_million'] = df[df.country == country]['case_day_million'].rolling(window=7).mean().replace([np.nan], 0).round(3)
+    df.loc[df.country == country, 'avg7_death_day_million'] = df[df.country == country]['death_day_million'].rolling(window=7).mean().replace([np.nan], 0).round(3)
+    df.loc[df.country == country, 'avg7_recovery_day_million'] = df[df.country == country]['recovery_day_million'].rolling(window=7).mean().replace([np.nan], 0).round(3)
     
 
 df['perc_death'] = (df['deaths']/df['cases'] * 100).round(2)
@@ -123,38 +133,24 @@ df['recovery_day'] = df['recovery_day'].astype('int')
 df.tail()
 
 
-# In[5]:
+# In[183]:
 
 
 #Adjusting wrong negative variations (wrong number from the source)
 # df.loc[df.case_day < 0, ['cases']] = df[df.case_day < 0].shift().cases#, ['cases']]
 df.loc[df.case_day < 0, ['case_day']] = df[df.case_day < 0].shift().case_day#, ['cases']]
 df.loc[df.cases_million < 0, ['cases_million']] = 0#df[df.cases_million < 0].cases_million.shift()#, ['cases']]
-# country = 'Spain'
-
-# df.case_day.min()
-# df[df.cases_million < 0].cases_million.shift()
-# df.loc[df.index == df[df['country']=='Spain'].cases.min()]
-# plt.plot(df[df['country']=='Spain'].case_day)
 
 
-# #### Saving CSV
-
-# In[6]:
+# In[184]:
 
 
 df.to_csv('../data/world_corona19_data.csv', index = False)
 
 
-# In[7]:
-
-
-df[df['country']=='Brazil'].tail()
-
-
 # #### countries not located in UN dataset
 
-# In[8]:
+# In[185]:
 
 
 for country in countries:
@@ -166,7 +162,7 @@ for country in countries:
 
 # ### Brazil data engineering
 
-# In[9]:
+# In[186]:
 
 
 import requests
@@ -184,138 +180,127 @@ req = requests.get("https://xx9p7hp1p7.execute-api.us-east-1.amazonaws.com/prod/
 req_json = req.json()
 url = req_json['results'][0]['arquivo']['url']
 response = requests.get(url)
-
-with open('../data/gov_brazil_corona19_data.csv', 'wb') as f:
+# response.content
+with open('../data/gov_brazil_corona19_data.xlsx', 'wb') as f:
     f.write(response.content)
 
-df = pd.read_csv('../data/gov_brazil_corona19_data.csv', sep=';')
-df.rename(columns={'regiao': 'region', 'estado':'state', 'data':'date','casosNovos': 'case_day', 'casosAcumulados':'cases', 'obitosNovos':'death_day','obitosAcumulados':'deaths'}, inplace= True)
+df = pd.read_excel('../data/gov_brazil_corona19_data.xlsx')
+df.rename(columns={'regiao': 'region', 'estado':'state', 'data':'date', 'municipio':'city', 'casosAcumulado': 'cases', 'populacaoTCU2019':'population', 'obitosNovos':'death_day','obitosAcumulado':'deaths', 'Recuperadosnovos':'recovery_day'}, inplace= True)
 df['date'] = df['date'].astype('datetime64[ns]')
 
+df.recovery_day.fillna(0, inplace=True)
+df.population.fillna(0, inplace=True)
+df.codRegiaoSaude.fillna(0, inplace=True)
+df.codmun.fillna(0, inplace=True)
+
+df.drop(columns=['emAcompanhamentoNovos'], inplace=True)
+df.fillna('-', inplace=True)
 df.tail()
 
 
 # #### Feature engineering
 
-# In[10]:
+# In[187]:
 
+
+print('Iniciando feature engieering Brasil')
+inicio = datetime.datetime.now()
 
 states = df.state.unique()
+# states = ['PE']
 df.drop(df[df['cases'] == 0 ].index, axis=0, inplace= True)
 
 for state in states:
-    qtdeDays = len(df[df.state == state])+1
-    df.loc[df.state == state, 'day'] = (np.arange(1,qtdeDays,1))
-#     df.drop(df[case].index, inplace=True)
-    # valores diários
-    df.loc[df.state == state, 'case_day'] = df[df.state == state]['cases'].diff()    
-    df.loc[df.state == state, 'death_day'] = df[df.state == state]['deaths'].diff()
-#     df.loc[df.state == state, 'recovery_day'] = df[df.state == state]['recoveries'].diff()
+    cities = df[df['state']==state].city.unique()
+#     cities = ['-']
+    for city in cities:
+        indexes = (df['state']==state) & (df.city == city)
+        qtdeDays = len(df[indexes])+1
+        df.loc[indexes, 'day'] = (np.arange(1,qtdeDays,1))
+    #     df.drop(df[case].index, inplace=True)
+        # valores diários
+        df.loc[indexes, 'case_day'] = df[indexes]['cases'].diff()    
+        df.loc[indexes, 'death_day'] = df[indexes]['deaths'].diff()
+        #acumulado
+        df.loc[indexes, 'recoveries'] = df[indexes]['recovery_day'].sum()
 
-    # % daily variations
-    df.loc[df.state == state, '%var_case_day'] = ((df[df.state == state]['case_day'] - df[df.state == state]['case_day'].shift()) / df[df.state == state]['case_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
-    df.loc[df.state == state, '%var_death_day'] = ((df[df.state == state]['death_day'] - df[df.state == state]['death_day'].shift()) / df[df.state == state]['death_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
-#     df.loc[df.state == state, '%var_recovery_day'] = ((df[df.state == state]['recovery_day'] - df[df.state == state]['recovery_day'].shift()) / df[df.state == state]['recovery_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+        # % daily variations
+        df.loc[indexes, '%var_case_day'] = ((df[indexes]['case_day'] - df[indexes]['case_day'].shift()) / df[indexes]['case_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+        df.loc[indexes, '%var_death_day'] = ((df[indexes]['death_day'] - df[indexes]['death_day'].shift()) / df[indexes]['death_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+        df.loc[indexes, '%var_recovery_day'] = ((df[indexes]['recovery_day'] - df[indexes]['recovery_day'].shift()) / df[indexes]['recovery_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+
+        # Igualo o valor da primeira linha igual ao primeiro número do acumulado, pois se o acumulado começa em 1 o primeiro diff fica igual a 0
+        df.loc[(indexes) & (df.day == 1), 'case_day']= df.loc[(indexes) & (df.day==1), 'cases']
+        df.loc[(indexes) & (df.day == 1), 'death_day']= df.loc[(indexes) & (df.day==1), 'deaths']
+
+        # Buscando a população do estado/cidade e calculado os indicador per milhar
+        if not df[indexes].population.empty:
+            thousand = df[indexes]['population'] / 1000
+            cases_thousand = (df[indexes]['cases'] / thousand).round(3)
+            deaths_thousand = (df[indexes]['deaths'] / thousand).round(3)
+            recoveries_thousand = (df[indexes]['recoveries'] / thousand).round(3)
+            case_day_thousand = (df[indexes]['case_day'] / thousand).round(3)
+            death_day_thousand = (df[indexes]['death_day'] / thousand).round(3)
+            recovery_day_thousand = (df[indexes]['recovery_day'] / thousand).round(3)
+        else:
+            cases_thousand = 0
+            deaths_thousand = 0
+            recoveries_thousand = 0
+            case_day_thousand = 0
+            death_day_thousand = 0
+            recovery_day_thousand = 0
     
-    # Igualo o valor da primeira linha igual ao primeiro número do acumulado, pois se o acumulado começa em 1 o primeiro diff fica igual a 0
-    df.loc[(df.state == state) & (df.day == 1), 'case_day']= df.loc[(df.state == state) & (df.day==1), 'cases']
-    df.loc[(df.state == state) & (df.day == 1), 'death_day']= df.loc[(df.state == state) & (df.day==1), 'deaths']
+        df.loc[indexes, 'cases_thousand'] = cases_thousand
+        df.loc[indexes, 'deaths_thousand'] = deaths_thousand
+        df.loc[indexes, 'recoveries_thousand'] = recoveries_thousand
+        df.loc[indexes, 'case_day_thousand'] = case_day_thousand
+        df.loc[indexes, 'death_day_thousand'] = death_day_thousand
+        df.loc[indexes, 'recovery_day_thousand'] = recovery_day_thousand
+        
+        # moving averages (from last 7 days)
+        df.loc[indexes, 'avg7_cases'] = df[indexes]['case_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+        df.loc[indexes, 'avg7_deaths'] = df[indexes]['death_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+        df.loc[indexes, 'avg7_recoveries'] = df[indexes]['recovery_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
+        df.loc[indexes, 'perc_death'] = (df[indexes]['deaths']/df[indexes]['cases']*100).round(2) 
+        df.loc[indexes, 'avg7_perc_death'] = df[indexes]['perc_death'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+
+        df.loc[indexes, 'avg7_case_day_thousand'] = df[indexes]['case_day_thousand'].rolling(window=7).mean().replace([np.nan], 0).round(3)
+        df.loc[indexes, 'avg7_death_day_thousand'] = df[indexes]['death_day_thousand'].rolling(window=7).mean().replace([np.nan], 0).round(3)
+        df.loc[indexes, 'avg7_recovery_day_thousand'] = df[indexes]['recovery_day_thousand'].rolling(window=7).mean().replace([np.nan], 0).round(3)
     
-    # moving averages (from last 7 days)
-    df.loc[df.state == state, 'avg7_cases'] = df[df.state == state]['case_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
-    df.loc[df.state == state, 'avg7_deaths'] = df[df.state == state]['death_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
-    df.loc[df.state == state, 'perc_death'] = (df[df.state == state]['deaths']/df[df.state == state]['cases']*100).round(2) 
-    df.loc[df.state == state, 'avg7_perc_death'] = df[df.state == state]['perc_death'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+#         df.loc[indexes, 'perc_death'] = (df[indexes]['deaths']/df[indexes]['cases'] * 100).round(2)
+#         df.loc[indexes, 'perc_recovery'] = (df[indexes]['recoveries']/df[indexes]['cases'] * 100).round(2)
+#         df.loc[indexes, 'active_cases'] = df[indexes]['cases'] - df[indexes]['recoveries'] - df[indexes]['deaths']
 
 df['perc_death'] = (df['deaths']/df['cases'] * 100).round(2)
-# df['perc_recovery'] = (df['recoveries']/df['cases'] * 100).round(2)
-# df['active_cases'] = df['cases'] - df['recoveries'] - df['deaths']
+df['perc_recovery'] = (df['recoveries']/df['cases'] * 100).round(2)
+df['active_cases'] = df['cases'] - df['recoveries'] - df['deaths']
 
 df.fillna(0, inplace=True)
 
 df['day'] = df['day'].astype('int')
 df['case_day'] = df['case_day'].astype('int')
 df['death_day'] = df['death_day'].astype('int')
-# df['recovery_day'] = df['recovery_day'].astype('int')
+df['recovery_day'] = df['recovery_day'].astype('int')
 
-df.tail()
+termino = datetime.datetime.now()
+print('finalizado em ', termino-inicio)
+df[indexes].tail()
 
 
-# In[11]:
+# In[188]:
 
 
 df.to_csv('../data/brazil_corona19_data.csv', index = False)
 
 
-# ### São Paulo data engineering
-
-# In[12]:
+# In[189]:
 
 
-df = pd.read_csv('https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv', sep=';')
-df.rename(columns={'munic': 'city', 'casos': 'cases','obitos':'deaths'}, inplace= True)
-df['date'] = pd.to_datetime(dict(year=2020, month=df.mes, day=df.dia))
-df.fillna(0, inplace = True)
-df.drop(['dia','mes'], inplace=True, axis=1)
-
-df = df[~df['city'].isin(['ignorado','outro estado', 'total geral', 'outro pais'])] 
-
-df.tail()
+# df[df.city=='Rio Claro'][['population','case_day','death_day','cases_thousand','deaths_thousand','active_cases']]
 
 
-# #### Feature engineering
-
-# In[13]:
-
-
-cities = df.city.unique()
-df.drop(df[df['cases'] == 0 ].index, axis=0, inplace= True)
-
-for city in cities:
-    qtdeDays = len(df[df.city == city])+1
-    df.loc[df.city == city, 'day'] = (np.arange(1,qtdeDays,1))
-#     df.drop(df[case].index, inplace=True)
-    # valores diários
-    df.loc[df.city == city, 'case_day'] = df[df.city == city]['cases'].diff()    
-    df.loc[df.city == city, 'death_day'] = df[df.city == city]['deaths'].diff()
-#     df.loc[df.city == city, 'recovery_day'] = df[df.city == city]['recoveries'].diff()
-
-    # % daily variations
-    df.loc[df.city == city, '%var_case_day'] = ((df[df.city == city]['case_day'] - df[df.city == city]['case_day'].shift()) / df[df.city == city]['case_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
-    df.loc[df.city == city, '%var_death_day'] = ((df[df.city == city]['death_day'] - df[df.city == city]['death_day'].shift()) / df[df.city == city]['death_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
-#     df.loc[df.city == city, '%var_recovery_day'] = ((df[df.city == city]['recovery_day'] - df[df.city == city]['recovery_day'].shift()) / df[df.city == city]['recovery_day'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
-    
-    # Igualo o valor da primeira linha igual ao primeiro número do acumulado, pois se o acumulado começa em 1 o primeiro diff fica igual a 0
-    df.loc[(df.city == city) & (df.day == 1), 'case_day']= df.loc[(df.city == city) & (df.day==1), 'cases']
-    df.loc[(df.city == city) & (df.day == 1), 'death_day']= df.loc[(df.city == city) & (df.day==1), 'deaths']
-    
-    # moving averages (from last 7 days)
-    df.loc[df.city == city, 'avg7_cases'] = df[df.city == city]['case_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
-    df.loc[df.city == city, 'avg7_deaths'] = df[df.city == city]['death_day'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).astype('int')
-    df.loc[df.city == city, 'perc_death'] = (df[df.city == city]['deaths']/df[df.city == city]['cases']*100).round(2) 
-    df.loc[df.city == city, 'avg7_perc_death'] = df[df.city == city]['perc_death'].rolling(window=7).mean().replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
-
-df['perc_death'] = (df['deaths']/df['cases'] * 100).round(2)
-# df['perc_recovery'] = (df['recoveries']/df['cases'] * 100).round(2)
-# df['active_cases'] = df['cases'] - df['recoveries'] - df['deaths']
-
-df.fillna(0, inplace=True)
-
-df['day'] = df['day'].astype('int')
-df['case_day'] = df['case_day'].astype('int')
-df['death_day'] = df['death_day'].astype('int')
-# df['recovery_day'] = df['recovery_day'].astype('int')
-
-df.tail()
-
-
-# In[14]:
-
-
-df.to_csv('../data/saoPaulo_corona19_data.csv', index = False)
-
-
-# In[15]:
+# In[190]:
 
 
 # df[df['country']=='Belgium']

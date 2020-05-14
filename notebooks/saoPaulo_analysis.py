@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[256]:
 
 
 #https://github.com/pomber/covid19
@@ -13,34 +13,55 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[257]:
 
 
-df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
+# df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
+df = pd.read_csv('../data/brazil_corona19_data.csv')
 df['date'] = df['date'].astype('datetime64[ns]')
-df['codigo_ibge'] = df['codigo_ibge'].astype('int') # para tirar o .0
-df['codigo_ibge'] = df['codigo_ibge'].astype('str')
+df['codmun'] = df['codmun'].astype('int')
 
 today = df.date.max().date()
 tomorrow = today + datetime.timedelta(days=1)
 yesterday = today - datetime.timedelta(days=1)
 qtdeMonitored = 5
-cities = df['city'].unique()
 
-df.head()
+df = df[(df['state']=='SP') & (df['codmun']!=0) & (df['city']!='-')]
+
+df.tail()
 
 
-# In[3]:
+# In[258]:
+
+
+city_geo = json.load(open('../data/saoPaulo-cidades.json'))
+df_mapa = df[df['date']==str(today)].copy()
+cities = df_mapa.city.unique()
+
+for cidade in state_geo['features']:
+    latLon =  cidade['properties']['centroide']
+    codarea = int(cidade['properties']['codarea'])
+
+    #codmun não tem o último número do codarea, tenho que tirar para igualar
+    df_mapa.loc[df_mapa['codmun']==(int(codarea/10)), 'codmun'] = codarea
+    df_mapa.loc[df_mapa['codmun']==codarea,'lat'] = latLon[1]
+    df_mapa.loc[df_mapa['codmun']==codarea,'long'] = latLon[0]
+
+df_mapa.tail()
+
+
+# In[259]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
+df_mapa.codmun = df_mapa.codmun.astype('str')
 
 folium.Choropleth(
     geo_data=state_geo,
-    name='Mortalidade',
-    data=df,
-    columns=['codigo_ibge','avg7_perc_death'],
+    name='Mortes por mil habitantes',
+    data=df_mapa,
+    columns=['codmun','deaths_thousand'],
     key_on='feature.properties.codarea',
     highlight=True,
     fill_color='YlOrRd',#'YlGn',
@@ -49,20 +70,20 @@ folium.Choropleth(
     line_opacity=0.3,
     nan_fill_color = 'white',
     nan_fill_opacity = 0.1,
-    legend_name= '% mortalidade (media movel 7 ultimos dias)'
+    legend_name= 'mortes por mil habitades'
 ).add_to(m)
 
 for city in cities:
-    dados = df[(df['city']==city) & (df['date']==str(today))]
+    dados = df_mapa[(df_mapa['city']==city)]# & (df['date']==str(today))]
     if dados.empty:
         print('cidade vazia:', city)
         continue
     detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
     detalhes += 'casos: ' + str(dados.cases.sum()) + ', mortes: ' + str(dados.deaths.sum())
-    detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
+    detalhes += ', mortes/1k hab.: ' + str(dados.deaths_thousand.values[0].round(3))
     
     folium.CircleMarker(
-        location=[dados.latitude,dados.longitude],
+        location=[dados.lat,dados.long],
         radius=2,
 #         popup=detalhes,
         color='#727b7d',
@@ -81,16 +102,17 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[4]:
+# In[260]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
+df_mapa.codmun = df_mapa.codmun.astype('str')
 
 folium.Choropleth(
     geo_data=state_geo,
-    name='Contaminações',
-    data=df,
-    columns=['codigo_ibge', 'avg7_cases'],
+    name='Contaminações por 100 mil habitantes',
+    data=df_mapa,
+    columns=['codmun', 'cases_thousand'],
     key_on='feature.properties.codarea',
     fill_color='PuRd',#'YlGn',
     #     ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
@@ -98,20 +120,20 @@ folium.Choropleth(
     line_opacity=0.3,
     nan_fill_color = 'white',
     nan_fill_opacity = 0.1,
-    legend_name='media movel de casos (7 ultimos dias)'
+    legend_name='casos por 100mil habitantes'
 ).add_to(m)
 
 for city in cities:
-    dados = df[(df['city']==city) & (df['date']==str(today))]
+    dados = df_mapa[(df_mapa['city']==city)]# & (df['date']==str(today))]
     if dados.empty:
         print('cidade vazia:', city)
         continue
     detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
     detalhes += 'casos: ' + str(dados.cases.sum()) + ', mortes: ' + str(dados.deaths.sum())
-    detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
+    detalhes += ', casos/100k hab.: ' + str(dados.cases_thousand.values[0].round(3))
     
     folium.CircleMarker(
-        location=[dados.latitude,dados.longitude],
+        location=[dados.lat,dados.long],
         radius=2,
 #         popup=detalhes,
         color='#727b7d',
@@ -130,7 +152,7 @@ m.save('../analysis/maps/saoPauloMapCases.html')
 m
 
 
-# In[5]:
+# In[261]:
 
 
 # #https://www.mankier.com/1/wkhtmltoimage#--width
@@ -155,7 +177,7 @@ m
 # ----------------------------
 # ### São Paulo - Analysis and monitoring
 
-# In[6]:
+# In[262]:
 
 
 #week variation
@@ -183,13 +205,13 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
 
-# In[7]:
+# In[263]:
 
 
-cols = ['city', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
-addedCities = ['santa gertrudes', 'rio claro','cordeiropolis', 'limeira','lucelia','adamantina']
+cols = ['city', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand', 'deaths_thousand', 'perc_death']
+addedCities = ['Santa Gertrudes', 'Rio Claro','Cordeirópolis', 'Limeira','Lucélia','Adamantina']
 
-df_top_deaths = df[df['date']==str(today)].sort_values('avg7_perc_death', ascending = False)
+df_top_deaths = df[df['date']==str(today)].sort_values('deaths_thousand', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
@@ -200,10 +222,10 @@ df_top_deaths
 
 # #### Top most transmissible countries + Santa Gertrude + Lucélia + Adamantina + Rio Claro + Cordeirópolis + Limeira - São Paulo
 
-# In[8]:
+# In[289]:
 
 
-df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases', ascending = False)
+df_top_cases = df[(df['date']==str(today)) & (df['population']>10000)].sort_values('cases_thousand', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -216,110 +238,95 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[9]:
+# In[296]:
 
 
 #inform the countries you want to analise
 monitoredCities = df_top_cases['city'].head(qtdeMonitored+1).to_numpy()
-monitoredCities = np.delete(monitoredCities,np.where([monitoredCities == 'sao paulo'] or [monitoredCities == 'total geral']))
+# monitoredCities = df[(df['date']==str(today)) & (df['population']>10000)].sort_values('cases_thousand', ascending = False).head(qtdeMonitored+1).city.to_numpy()
+# monitoredCities = np.delete(monitoredCities,np.where([monitoredCities == 'São Paulo'] or [monitoredCities == 'total geral']))
 # monitoredCities = np.append(monitoredCities,[addedCity])
 
 
-# In[10]:
-
-
-## Only São Paulo
-city ='sao paulo'
-
-fig, ((ax1, ax2)) = plt.subplots(1,2, figsize=(20, 8))
-fig.tight_layout(pad=5.0)
-
-ax1.set_title("Cumulatative cases and deaths")
-ax1.set_xlabel("days from the first case")
-ax1.grid(color='gray', alpha = 0.4)
-
-ax2.set_title("Cases and deaths - moving average (last 7 days)")
-ax2.set_xlabel("days from the first case")
-ax2.grid(color='gray', alpha = 0.4)
-
-ax1.plot(df[df['city'] == city].day, df[df['city'] == city].cases, label = 'cases')
-ax1.plot(df[df['city'] == city].day, df[df['city'] == city].deaths, label = 'deaths')
-ax2.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_cases, label = 'cases')
-ax2.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_deaths, label = 'deaths')
-
-ax1.legend()
-ax2.legend()
-fig.savefig('../analysis/saoPaulo_cases_deaths.png')
-
-
-# In[11]:
+# In[297]:
 
 
 # Top most transmissible - SP
+# fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
 fig.tight_layout(pad=5.0)
 
-ax1.set_title("Cumulatative cases")
+ax1.set_title("Cumulatative cases per thousand")
 ax1.set_xlabel("days from the first case")
 ax1.grid(color='gray', alpha = 0.4)
 
-ax2.set_title("Cumulative deaths")
+ax2.set_title("Daily cases per thousand  - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
 
-ax3.set_title("Cases - moving average (last 7 days)")
+ax3.set_title("Cumulative deaths per thousand")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
-ax4.set_title("Deaths - moving average (last 7 days)")
+ax4.set_title("Daily deaths per thousand  - moving average (last 7 days)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
+# ax5.set_title("Cumulative recoveries")
+# ax5.set_xlabel("days from the first case")
+# ax5.grid(color='gray', alpha = 0.4)
+
+# ax6.set_title("Recoveries - moving average (last 7 days)")
+# ax6.set_xlabel("days from the first case")
+# ax6.grid(color='gray', alpha = 0.4)
+
 for city in monitoredCities:
-    ax1.plot(df[df['city'] == city].day, df[df['city'] == city].cases, label = city)
-    ax2.plot(df[df['city'] == city].day, df[df['city'] == city].deaths, label = city)
-    ax3.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_cases, label = city)
-    ax4.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_deaths, label = city)
-#     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
-#     ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
-#     ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
-#     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
+    dados = df[(df['city'] == city)]
+    ax1.plot(dados.day, dados.cases_thousand, label = city)
+    ax2.plot(dados.day, dados.avg7_case_day_thousand, label = city)
+    ax3.plot(dados.day, dados.deaths_thousand, label = city)
+    ax4.plot(dados.day, dados.avg7_death_day_thousand, label = city)
+#     ax5.plot(df[indexes].day, df[indexes].recoveries, label = state)
+#     ax6.plot(df[indexes].day, df[indexes].avg7_recoveries, label = state)
 
 ax1.legend()
 ax2.legend()
 ax3.legend()
 ax4.legend()
+# ax5.legend()
+# ax6.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
-# In[12]:
+# In[298]:
 
 
 # Selected cities
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
 fig.tight_layout(pad=5.0)
 
-ax1.set_title("Cumulatative cases")
+ax1.set_title("Cumulatative cases per thousand")
 ax1.set_xlabel("days from the first case")
 ax1.grid(color='gray', alpha = 0.4)
 
-ax2.set_title("Cumulative deaths")
+ax2.set_title("Daily cases per thousand  - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
 
-ax3.set_title("Cases - moving average (last 7 days)")
+ax3.set_title("Cumulative deaths per thousand")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
-ax4.set_title("Deaths - moving average (last 7 days)")
+ax4.set_title("Daily deaths per thousand  - moving average (last 7 days)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
 for city in addedCities:
-    ax1.plot(df[df['city'] == city].day, df[df['city'] == city].cases, label = city)
-    ax2.plot(df[df['city'] == city].day, df[df['city'] == city].deaths, label = city)
-    ax3.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_cases, label = city)
-    ax4.plot(df[df['city'] == city].day, df[df['city'] == city].avg7_deaths, label = city)
+    dados = df[(df['city'] == city)]
+    ax1.plot(dados.day, dados.cases_thousand, label = city)
+    ax2.plot(dados.day, dados.avg7_case_day_thousand, label = city)
+    ax3.plot(dados.day, dados.deaths_thousand, label = city)
+    ax4.plot(dados.day, dados.avg7_death_day_thousand, label = city)
 #     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
 #     ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
 #     ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
@@ -334,7 +341,7 @@ fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
 
 # ### Generating the html file
 
-# In[13]:
+# In[274]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')

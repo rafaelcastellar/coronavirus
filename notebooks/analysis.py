@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[5]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[3]:
+# In[6]:
 
 
 df = pd.read_csv('../data/world_corona19_data.csv', sep=',')
@@ -26,11 +26,11 @@ qtdeMonitored = 5
 df.tail()
 
 
-# In[4]:
+# In[7]:
 
 
 countries = df['country'].unique()
-countries
+# countries
 
 
 # ----------------------------
@@ -38,11 +38,11 @@ countries
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[7]:
+# In[14]:
 
 
-cols = ['country','day','date','cases','case_day','deaths','death_day', 'perc_death', 'cases_million',  'deaths_million', 'avg7_cases_million', 'avg7_deaths_million', 'avg7_recoveries_million']
-df_top_deaths = df[df['date']==str(today)].sort_values('avg7_deaths_million', ascending = False)
+cols = ['country','day','date','cases','case_day','deaths','death_day', 'perc_death', 'cases_million',  'deaths_million', 'avg7_case_day_million', 'avg7_death_day_million', 'avg7_recovery_day_million']
+df_top_deaths = df[df['date']==str(today)].sort_values('case_day_million', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
@@ -52,10 +52,10 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[6]:
+# In[24]:
 
 
-df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases_million', ascending = False)
+df_top_cases = df[df['date']==str(today)].sort_values('death_day_million', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -65,7 +65,7 @@ df_top_cases
 
 # #### Countries to be analised
 
-# In[7]:
+# In[25]:
 
 
 #inform the countries you want to analise
@@ -74,7 +74,7 @@ monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France
 
 # #### Cases and deaths 
 
-# In[8]:
+# In[26]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -84,7 +84,7 @@ ax1.set_title("Cumulatative cases")
 ax1.set_xlabel("days from the first case")
 ax1.grid(color='gray', alpha = 0.4)
 
-ax2.set_title("Cases - moving average (last 7 days)")
+ax2.set_title("Daily cases - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
 
@@ -92,7 +92,7 @@ ax3.set_title("Cumulative deaths")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
-ax4.set_title("Deaths - moving average (last 7 days)")
+ax4.set_title("Daily deaths - moving average (last 7 days)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
@@ -100,17 +100,18 @@ ax5.set_title("Cumulative recoveries")
 ax5.set_xlabel("days from the first case")
 ax5.grid(color='gray', alpha = 0.4)
 
-ax6.set_title("Recoveries - moving average (last 7 days)")
+ax6.set_title("Daily recoveries - moving average (last 7 days)")
 ax6.set_xlabel("days from the first case")
 ax6.grid(color='gray', alpha = 0.4)
 
 for country in monitoredCountries:
-    ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
-    ax2.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
-    ax3.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
-    ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
-    ax5.plot(df[df['country'] == country].day, df[df['country'] == country].recoveries, label = country)
-    ax6.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_recoveries, label = country)
+    data = df[df['country'] == country]
+    ax1.plot(data.day, data.cases, label = country)
+    ax2.plot(data.day, data.avg7_cases, label = country)
+    ax3.plot(data.day, data.deaths, label = country)
+    ax4.plot(data.day, data.avg7_deaths, label = country)
+    ax5.plot(data.day, data.recoveries, label = country)
+    ax6.plot(data.day, data.avg7_recoveries, label = country)
 
 ax1.legend()
 ax2.legend()
@@ -124,43 +125,44 @@ fig.savefig('../analysis/world_cases_deaths.png')
 # #### Cases, deaths and recoveries per million 
 # (million of population - normalizes per country population)
 
-# In[8]:
+# In[30]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
 fig.tight_layout(pad=5.0)
 
-ax1.set_title("Cases per million")
+ax1.set_title("Cumulative cases per million")
 ax1.set_xlabel("days from the first case")
 ax1.grid(color='gray', alpha = 0.4)
 
-ax2.set_title("Cases per million - moving average (last 7 days)")
+ax2.set_title("Daily cases per million - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
 
-ax3.set_title("Deaths per million")
+ax3.set_title("Cumulative deaths per million")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
-ax4.set_title("Deaths per miliion - moving average (last 7 days)")
+ax4.set_title("Daily deaths per million - moving average (last 7 days)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
-ax5.set_title("Recoveries per million")
+ax5.set_title("Cumulative recoveries per million")
 ax5.set_xlabel("days from the first case")
 ax5.grid(color='gray', alpha = 0.4)
 
-ax6.set_title("Recoveries per miliion - moving average (last 7 days)")
+ax6.set_title("Daily recoveries per million - moving average (last 7 days)")
 ax6.set_xlabel("days from the first case")
 ax6.grid(color='gray', alpha = 0.4)
 
 for country in monitoredCountries:
-    ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases_million, label = country)
-    ax2.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases_million, label = country)
-    ax3.plot(df[df['country'] == country].day, df[df['country'] == country].deaths_million, label = country)
-    ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths_million, label = country)
-    ax5.plot(df[df['country'] == country].day, df[df['country'] == country].recoveries_million, label = country)
-    ax6.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_recoveries_million, label = country)
+    data = df[df['country'] == country]
+    ax1.plot(data.day, data.cases_million, label = country)
+    ax2.plot(data.day, data.avg7_case_day_million, label = country)
+    ax3.plot(data.day, data.deaths_million, label = country)
+    ax4.plot(data.day, data.avg7_death_day_million, label = country)
+    ax5.plot(data.day, data.recoveries_million, label = country)
+    ax6.plot(data.day, data.avg7_recovery_day_million, label = country)
 
 ax1.legend()
 ax2.legend()
@@ -174,7 +176,7 @@ fig.savefig('../analysis/world_cases_deaths_million.png')
 
 # #### Active cases, world overview, % recoveries and mortality
 
-# In[9]:
+# In[31]:
 
 
 fig, ((ax1, ax2), (ax3, ax4),) = plt.subplots(2,2, figsize=(20, 15))
@@ -224,7 +226,7 @@ fig.savefig('../analysis/world_active_cases_percentages.png')
 # ### Brazil
 # #### Cases, deaths, recoveries
 
-# In[10]:
+# In[32]:
 
 
 df_br = df[df['country'] == 'Brazil']
@@ -267,12 +269,12 @@ ax2.legend()
 ax3.legend()
 ax4.legend()
 
-fig.savefig('../analysis/brazil_number_million_variation.png')
+fig.savefig('../analysis/brazil_number_variation.png')
 
 
 # #### Moving averages (last 7 days)
 
-# In[11]:
+# In[34]:
 
 
 fig, ((ax1, ax2)) = plt.subplots(1,2, figsize=(20, 8))
@@ -288,9 +290,9 @@ ax1.plot(df_br.day, df_br.avg7_recoveries, label = 'recoveries')
 ax2.set_title("Cases, deaths and recoveries per million - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
-ax2.plot(df_br.day, df_br.avg7_cases_million, label = 'cases')
-ax2.plot(df_br.day, df_br.avg7_deaths_million, label = 'deaths')
-ax2.plot(df_br.day, df_br.avg7_recoveries_million, label = 'recoveries')
+ax2.plot(df_br.day, df_br.avg7_case_day_million, label = 'cases')
+ax2.plot(df_br.day, df_br.avg7_death_day_million, label = 'deaths')
+ax2.plot(df_br.day, df_br.avg7_recovery_day_million, label = 'recoveries')
 
 
 # ax4.set_title("# daily quantity - Brazil (absolute numbers)")
@@ -310,7 +312,7 @@ fig.savefig('../analysis/brazil_movingAvg.png')
 
 # ### Generating the html file
 
-# In[12]:
+# In[35]:
 
 
 f = open('../html/analysis.html', 'w')
@@ -372,7 +374,7 @@ f.close()
 print('World analysis done!')
 
 
-# In[13]:
+# In[36]:
 
 
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,

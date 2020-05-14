@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[130]:
 
 
 #https://github.com/pomber/covid19
@@ -13,11 +13,10 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[161]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
-df_estados = pd.read_csv('../data/brazilian_states.csv')
 df['date'] = df['date'].astype('datetime64[ns]')
 
 today = df.date.max().date()
@@ -25,38 +24,32 @@ tomorrow = today + datetime.timedelta(days=1)
 yesterday = today - datetime.timedelta(days=1)
 qtdeMonitored = 10
 
+df = df[(df['state']!='-') & (df['codmun']==0)]
+
 df.tail()
 
 
-# In[3]:
-
-
-df_brasil = pd.merge(df[df['date']==str(today)], df_estados, how='inner', on=None, left_on='state', 
-                 right_on='sigla_estado', left_index=False, right_index=False, sort=False)   
-
-df_brasil = df_brasil[df_brasil['date']==str(today)][['id_estado','avg7_perc_death','avg7_cases','sigla_estado','nome_estado','cases','deaths','perc_death']]
-df_brasil['id_estado'] = df_brasil['id_estado'].astype('str')# para fazer o key_on no folium
-
-df_brasil.tail()
-
-
-# In[4]:
+# In[162]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
+df_mapa = df[(df['date']==str(today)) & (df['codmun']==0) & (df['state']!='-')].copy()
+states = df_mapa.state.unique()
+
 for state in state_geo['features']: 
     latLon =  state['properties']['centroide']
     codarea = state['properties']['codarea']
-    df_estados.loc[df_estados['id_estado']==int(codarea),'lat'] = latLon[1]
-    df_estados.loc[df_estados['id_estado']==int(codarea),'lon'] = latLon[0]
+    df_mapa.loc[df_mapa['coduf']==int(codarea),'lat'] = latLon[1]
+    df_mapa.loc[df_mapa['coduf']==int(codarea),'lon'] = latLon[0]
 
-df_estados.tail()
+df_mapa.tail()
 
 
-# In[5]:
+# In[163]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
+df_mapa.coduf = df_mapa.coduf.astype('str') # para o mappgin
 
 # folium.Choropleth(
 #     geo_data=state_geo,
@@ -72,26 +65,25 @@ m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
 
 folium.Choropleth(
     geo_data=state_geo,
-    name='Mortalidade',
-    data=df_brasil,
-    columns=['id_estado', 'avg7_perc_death'],
+    name='Mortes por mil habitantes',
+    data=df_mapa,
+    columns=['coduf', 'deaths_thousand'],
     key_on='feature.properties.codarea',
     fill_color='YlOrRd',#'YlGn',
 #     ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
     fill_opacity=0.7,
     line_opacity=0.3,
-    legend_name= '% mortalidade (media movel 7 ultimos dias)'
+    legend_name= 'mortes por mil habitandes'
 ).add_to(m)
 
-for key,estado in df_estados.iterrows():
-    dados = df_brasil[df_brasil['sigla_estado']==estado.sigla_estado]
-    detalhes = '<center><b>'+dados.nome_estado.values[0] + ' (' + dados.sigla_estado.values[0] + ')</b></center>\n'
-    detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
-    detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
-#     detalhes = udetalhes
+for state in states:
+    dados = df_mapa[df_mapa['state']==state]
+    detalhes = '<center><b>'+dados.state.values[0] +'</b></center>\n'
+    detalhes += 'casos: ' + str(dados.cases.sum()) + ', mortes: ' + str(dados.deaths.sum())
+    detalhes += ', mortes/1k hab: ' + str(dados.deaths_thousand.values[0])
     
     folium.CircleMarker(
-        location=[estado.lat,estado.lon],
+        location=[dados.lat,dados.lon],
         radius=5,
 #         popup=detalhes,
         color='#727b7d',
@@ -110,33 +102,33 @@ m.save('../analysis/maps/brazilMapDeaths.html')
 m
 
 
-# In[6]:
+# In[164]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
 folium.Choropleth(
     geo_data=state_geo,
-    name='Contaminações',
-    data=df_brasil,
-    columns=['id_estado', 'avg7_cases'],
+    name='Contaminações por mil habitantes',
+    data=df_mapa,
+    columns=['coduf', 'cases_thousand'],
     key_on='feature.properties.codarea',
     fill_color='RdPu',#'YlGn',
     fill_opacity=0.7,
     line_opacity=0.3,
-    legend_name='media movel de casos (7 ultimos dias)'
+    legend_name= 'casos por mil habitantes',
 ).add_to(m)
 folium.LayerControl().add_to(m)
 
-
-for key,estado in df_estados.iterrows():
-    dados = df_brasil[df_brasil['sigla_estado']==estado.sigla_estado]
-    detalhes = '<center><b>'+dados.nome_estado.values[0] + ' (' + dados.sigla_estado.values[0] + ')</b></center>\n'
-    detalhes += 'casos: ' + str(dados.cases.values[0]) + ', mortes: ' + str(dados.deaths.values[0])
-    detalhes += ', mortalidade: ' + str(dados.perc_death.values[0]) + '%'
+for state in states:
+    dados = df_mapa[df_mapa['state']==state]
+    detalhes = '<center><b>'+dados.state.values[0] +'</b></center>\n'
+    detalhes += 'casos: ' + str(dados.cases.sum()) + ', mortes: ' + str(dados.deaths.sum())
+    detalhes += ', casos/1k hab: ' + str(dados.cases_thousand.values[0])
+    
 #     detalhes = udetalhes
     
     folium.CircleMarker(
-        location=[estado.lat,estado.lon],
+        location=[dados.lat,dados.lon],
         radius=5,
 #         popup=detalhes,
         color='#727b7d',
@@ -153,7 +145,7 @@ m.save('../analysis/maps/brazilMapCases.html')
 m
 
 
-# In[7]:
+# In[135]:
 
 
 # import imgkit
@@ -177,7 +169,7 @@ m
 # ----------------------------
 # ### Brasil - Analysis and monitoring
 
-# In[8]:
+# In[136]:
 
 
 #week variation
@@ -196,12 +188,12 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top 5 deadliest states 
 
-# In[9]:
+# In[165]:
 
 
-cols = ['state', 'date', 'day','case_day', 'cases', 'death_day', 'deaths', 'avg7_cases', 'avg7_deaths','avg7_perc_death', 'perc_death']
-df_top_deaths = df[df['date']==str(today)].sort_values('avg7_perc_death', ascending = False)
+cols = ['state', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand','deaths_thousand', 'perc_death']
 
+df_top_deaths = df[(df['date']==str(today))].sort_values('deaths_thousand', ascending = False)
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
 df_top_deaths = df_top_deaths[cols].head(qtdeMonitored)
@@ -210,10 +202,10 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[10]:
+# In[166]:
 
 
-df_top_cases = df[df['date']==str(today)].sort_values('avg7_cases', ascending = False)
+df_top_cases = df[(df['date']==str(today))].sort_values('cases_thousand', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -225,7 +217,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[11]:
+# In[167]:
 
 
 #inform the countries you want to analise
@@ -233,9 +225,10 @@ monitoredStates = df_top_deaths['state'].head(qtdeMonitored).to_numpy()
 monitoredStates
 
 
-# In[12]:
+# In[168]:
 
 
+# fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
 fig.tight_layout(pad=5.0)
 
@@ -243,38 +236,96 @@ ax1.set_title("Cumulatative cases")
 ax1.set_xlabel("days from the first case")
 ax1.grid(color='gray', alpha = 0.4)
 
-ax2.set_title("Cumulative deaths")
+ax2.set_title("Daily cases - moving average (last 7 days)")
 ax2.set_xlabel("days from the first case")
 ax2.grid(color='gray', alpha = 0.4)
 
-ax3.set_title("Cases - moving average (last 7 days)")
+ax3.set_title("Cumulative deaths")
 ax3.set_xlabel("days from the first case")
 ax3.grid(color='gray', alpha = 0.4)
 
-ax4.set_title("Deaths - moving average (last 7 days)")
+ax4.set_title("Daily deaths - moving average (last 7 days)")
 ax4.set_xlabel("days from the first case")
 ax4.grid(color='gray', alpha = 0.4)
 
+# ax5.set_title("Cumulative recoveries")
+# ax5.set_xlabel("days from the first case")
+# ax5.grid(color='gray', alpha = 0.4)
+
+# ax6.set_title("Recoveries - moving average (last 7 days)")
+# ax6.set_xlabel("days from the first case")
+# ax6.grid(color='gray', alpha = 0.4)
+
 for state in monitoredStates:
-    ax1.plot(df[df['state'] == state].day, df[df['state'] == state].cases, label = state)
-    ax2.plot(df[df['state'] == state].day, df[df['state'] == state].deaths, label = state)
-    ax3.plot(df[df['state'] == state].day, df[df['state'] == state].avg7_cases, label = state)
-    ax4.plot(df[df['state'] == state].day, df[df['state'] == state].avg7_deaths, label = state)
-#     ax1.plot(df[df['country'] == country].day, df[df['country'] == country].cases, label = country)
-#     ax2.plot(df[df['country'] == country].day, df[df['country'] == country].deaths, label = country)
-#     ax3.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_cases, label = country)
-#     ax4.plot(df[df['country'] == country].day, df[df['country'] == country].avg7_deaths, label = country)
+    dados = df[(df['state'] == state) & (df['codmun']==0)]
+    ax1.plot(dados.day, dados.cases, label = state)
+    ax2.plot(dados.day, dados.avg7_cases, label = state)
+    ax3.plot(dados.day, dados.deaths, label = state)
+    ax4.plot(dados.day, dados.avg7_deaths, label = state)
+#     ax5.plot(df[indexes].day, df[indexes].recoveries, label = state)
+#     ax6.plot(df[indexes].day, df[indexes].avg7_recoveries, label = state)
 
 ax1.legend()
 ax2.legend()
 ax3.legend()
 ax4.legend()
+# ax5.legend()
+# ax6.legend()
 fig.savefig('../analysis/brazilian_states_cases_deaths.png')
+
+
+# In[169]:
+
+
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
+fig.tight_layout(pad=5.0)
+
+ax1.set_title("Cumulative cases per thousand")
+ax1.set_xlabel("days from the first case")
+ax1.grid(color='gray', alpha = 0.4)
+
+ax2.set_title("Daily cases per thousand - moving average (last 7 days)")
+ax2.set_xlabel("days from the first case")
+ax2.grid(color='gray', alpha = 0.4)
+
+ax3.set_title("Cumulative deaths per thousand")
+ax3.set_xlabel("days from the first case")
+ax3.grid(color='gray', alpha = 0.4)
+
+ax4.set_title("Daily deaths per thousand - moving average (last 7 days)")
+ax4.set_xlabel("days from the first case")
+ax4.grid(color='gray', alpha = 0.4)
+
+# ax5.set_title("Recoveries per thousand")
+# ax5.set_xlabel("days from the first case")
+# ax5.grid(color='gray', alpha = 0.4)
+
+# ax6.set_title("Recoveries per thousand - moving average (last 7 days)")
+# ax6.set_xlabel("days from the first case")
+# ax6.grid(color='gray', alpha = 0.4)
+
+for state in monitoredStates:
+    dados = df[(df['state'] == state) & (df['codmun']==0)]
+    ax1.plot(dados.day, dados.cases_thousand, label = state)
+    ax2.plot(dados.day, dados.avg7_case_day_thousand, label = state)
+    ax3.plot(dados.day, dados.deaths_thousand, label = state)
+    ax4.plot(dados.day, dados.avg7_death_day_thousand, label = state)
+#     ax5.plot(df[indexes].day, df[indexes].recoveries_thousand, label = state)
+#     ax6.plot(df[indexes].day, df[indexes].avg7_recoveries_thousand, label = state)
+
+ax1.legend()
+ax2.legend()
+ax3.legend()
+ax4.legend()
+# ax5.legend()
+# ax6.legend()
+
+fig.savefig('../analysis/brazil_cases_deaths_thousand.png')
 
 
 # ### Generating the HTML file
 
-# In[13]:
+# In[174]:
 
 
 f = open('../html/brazil_analysis.html', 'w')
@@ -315,13 +366,13 @@ readme += '</table> </div><br>'
 readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' estados mais mortais do Brasil</h3>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada estado.</p>'
+readme += '          <p>O ranking é feito a partir da quantidade total de mortes por cada mil habitantes de cada estado.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' estados mais transmissíveis do Brasil</h3>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de casos diários de cada estado.</p>'
+readme += '          <p>O ranking é feito a partir da quantidade total de casos por cada mil habitantes de cada estado.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
@@ -370,13 +421,13 @@ readme += '</table> </div><br>'
 readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest states of Brazil</h3>'
-readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the mortality percentage of each state.</p>'
+readme += '          <p>This ranking is made from the total of deaths per each thousand of population of each state.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' most transmissible states of Brazil</h3>'
-readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the daily cases of each state.</p>'
+readme += '          <p>This ranking is made from the total of cases per each thousand of population of each state.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'

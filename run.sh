@@ -4,6 +4,8 @@ if [[ $# -eq 0 ]] ; then
     exit 1
 fi
 
+# git clone https://github.com/ActiveConclusion/COVID19_mobility.git
+
 cd notebooks
 #python countries_data_aggregator.py
 python data_engineering.py
