@@ -38,10 +38,10 @@ countries = df['country'].unique()
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[8]:
+# In[4]:
 
 
-cols = ['country','day','date','cases','case_day','deaths','death_day', 'perc_death', 'cases_million',  'deaths_million', 'avg7_case_day_million', 'avg7_death_day_million', 'avg7_recovery_day_million']
+cols = ['country','day','date','cases','case_day','deaths','death_day', 'perc_death', 'case_day_million',  'death_day_million', 'avg7_case_day_million', 'avg7_death_day_million', 'avg7_recovery_day_million']
 df_top_deaths = df[df['date']==str(today)].sort_values('death_day_million', ascending = False)
 
 df_top_deaths.reset_index(0, inplace=True)
@@ -52,7 +52,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[9]:
+# In[5]:
 
 
 df_top_cases = df[df['date']==str(today)].sort_values('case_day_million', ascending = False)
@@ -65,7 +65,7 @@ df_top_cases
 
 # #### Countries to be analised
 
-# In[10]:
+# In[6]:
 
 
 #inform the countries you want to analise
@@ -74,7 +74,7 @@ monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France
 
 # #### Cases and deaths 
 
-# In[11]:
+# In[7]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -125,7 +125,7 @@ fig.savefig('../analysis/world_cases_deaths.png')
 # #### Cases, deaths and recoveries per million 
 # (million of population - normalizes per country population)
 
-# In[12]:
+# In[8]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -176,7 +176,7 @@ fig.savefig('../analysis/world_cases_deaths_million.png')
 
 # #### Active cases, world overview, % recoveries and mortality
 
-# In[13]:
+# In[9]:
 
 
 fig, ((ax1, ax2), (ax3, ax4),) = plt.subplots(2,2, figsize=(20, 15))
@@ -226,7 +226,7 @@ fig.savefig('../analysis/world_active_cases_percentages.png')
 # ### Brazil
 # #### Cases, deaths, recoveries
 
-# In[14]:
+# In[10]:
 
 
 df_br = df[df['country'] == 'Brazil']
@@ -274,7 +274,7 @@ fig.savefig('../analysis/brazil_number_variation.png')
 
 # #### Moving averages (last 7 days)
 
-# In[15]:
+# In[11]:
 
 
 fig, ((ax1, ax2)) = plt.subplots(1,2, figsize=(20, 8))
@@ -312,7 +312,7 @@ fig.savefig('../analysis/brazil_movingAvg.png')
 
 # ### Generating the html file
 
-# In[16]:
+# In[12]:
 
 
 f = open('../html/analysis.html', 'w')
@@ -374,7 +374,7 @@ f.close()
 print('World analysis done!')
 
 
-# In[17]:
+# In[13]:
 
 
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
