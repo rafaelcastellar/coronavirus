@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[256]:
+# In[8]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[257]:
+# In[9]:
 
 
 # df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
@@ -31,14 +31,14 @@ df = df[(df['state']=='SP') & (df['codmun']!=0) & (df['city']!='-')]
 df.tail()
 
 
-# In[258]:
+# In[10]:
 
 
 city_geo = json.load(open('../data/saoPaulo-cidades.json'))
 df_mapa = df[df['date']==str(today)].copy()
 cities = df_mapa.city.unique()
 
-for cidade in state_geo['features']:
+for cidade in city_geo['features']:
     latLon =  cidade['properties']['centroide']
     codarea = int(cidade['properties']['codarea'])
 
@@ -50,7 +50,7 @@ for cidade in state_geo['features']:
 df_mapa.tail()
 
 
-# In[259]:
+# In[13]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
@@ -61,7 +61,7 @@ folium.Choropleth(
     geo_data=state_geo,
     name='Mortes por mil habitantes',
     data=df_mapa,
-    columns=['codmun','deaths_thousand'],
+    columns=['codmun','death_day_thousand'],
     key_on='feature.properties.codarea',
     highlight=True,
     fill_color='YlOrRd',#'YlGn',
@@ -102,7 +102,7 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[260]:
+# In[14]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
@@ -112,7 +112,7 @@ folium.Choropleth(
     geo_data=state_geo,
     name='Contaminações por 100 mil habitantes',
     data=df_mapa,
-    columns=['codmun', 'cases_thousand'],
+    columns=['codmun', 'case_day_thousand'],
     key_on='feature.properties.codarea',
     fill_color='PuRd',#'YlGn',
     #     ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
@@ -120,7 +120,7 @@ folium.Choropleth(
     line_opacity=0.3,
     nan_fill_color = 'white',
     nan_fill_opacity = 0.1,
-    legend_name='casos por 100mil habitantes'
+    legend_name='casos por mil habitantes'
 ).add_to(m)
 
 for city in cities:
@@ -130,7 +130,7 @@ for city in cities:
         continue
     detalhes = '<center><b>'+dados.city.values[0] +'</b></center>\n'
     detalhes += 'casos: ' + str(dados.cases.sum()) + ', mortes: ' + str(dados.deaths.sum())
-    detalhes += ', casos/100k hab.: ' + str(dados.cases_thousand.values[0].round(3))
+    detalhes += ', casos/mil hab.: ' + str(dados.cases_thousand.values[0].round(3))
     
     folium.CircleMarker(
         location=[dados.lat,dados.long],
@@ -152,7 +152,7 @@ m.save('../analysis/maps/saoPauloMapCases.html')
 m
 
 
-# In[261]:
+# In[15]:
 
 
 # #https://www.mankier.com/1/wkhtmltoimage#--width
@@ -177,7 +177,7 @@ m
 # ----------------------------
 # ### São Paulo - Analysis and monitoring
 
-# In[262]:
+# In[16]:
 
 
 #week variation
@@ -205,7 +205,7 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
 
-# In[263]:
+# In[19]:
 
 
 cols = ['city', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand', 'deaths_thousand', 'perc_death']
@@ -222,10 +222,10 @@ df_top_deaths
 
 # #### Top most transmissible countries + Santa Gertrude + Lucélia + Adamantina + Rio Claro + Cordeirópolis + Limeira - São Paulo
 
-# In[289]:
+# In[18]:
 
 
-df_top_cases = df[(df['date']==str(today)) & (df['population']>10000)].sort_values('cases_thousand', ascending = False)
+df_top_cases = df[(df['date']==str(today)) & (df['population']>10000)].sort_values('case_day_thousand', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -238,7 +238,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[296]:
+# In[10]:
 
 
 #inform the countries you want to analise
@@ -248,7 +248,7 @@ monitoredCities = df_top_cases['city'].head(qtdeMonitored+1).to_numpy()
 # monitoredCities = np.append(monitoredCities,[addedCity])
 
 
-# In[297]:
+# In[11]:
 
 
 # Top most transmissible - SP
@@ -298,7 +298,7 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
-# In[298]:
+# In[12]:
 
 
 # Selected cities
@@ -341,7 +341,7 @@ fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
 
 # ### Generating the html file
 
-# In[274]:
+# In[13]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')
@@ -389,7 +389,7 @@ readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais mortais do estado de São Paulo</h3>'
 readme += '          <p><i>Mais: ' + str(', '.join(addedCities)).title() + '</i></p>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias do percentual de mortalidade de cada cidade.</p>'
+readme += '          <p>O ranking é feito a partir da quantidade total de mortes por cada mil habitantes de cada cidade do estado.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 # readme += df_top_deaths.style.set_properties(**{'font-size': '12pt','border-collapse': 'collapse','border': '1px solid black'}).render()
 readme += '        </div>'
@@ -397,7 +397,7 @@ readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' cidades mais transmissíveis do estado de São Paulo</h3>'
 readme += '          <p><i>Mais: ' + str(', '.join(addedCities)).title() + '</i></p>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias de casos diários de cada cidade.</p>'
+readme += '          <p>O ranking é feito a partir da quantidade total de casos por cada mil habitantes de cada cidade do estado.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
@@ -453,14 +453,14 @@ readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest cities of Sao Paulo</h3>'
 readme += '          <p><i>Plus: ' + str(', '.join(addedCities)).title() + '</i></p>'
-readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the mortality percentage of each city.</p>'
+readme += '          <p>This ranking is made from the total of deaths per each thousand of population of each city of the state.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' most transmissible cities of Sao Paulo</h3>'
 readme += '          <p><i>Plus: ' + str(', '.join(addedCities)).title() + '</i></p>'
-readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the daily cases of each city.</p>'
+readme += '          <p>This ranking is made from the total of cases per each thousand of population of each city of the state.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'

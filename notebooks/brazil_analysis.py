@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[130]:
+# In[1]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[161]:
+# In[2]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -29,7 +29,7 @@ df = df[(df['state']!='-') & (df['codmun']==0)]
 df.tail()
 
 
-# In[162]:
+# In[3]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -45,7 +45,7 @@ for state in state_geo['features']:
 df_mapa.tail()
 
 
-# In[163]:
+# In[4]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
@@ -67,13 +67,13 @@ folium.Choropleth(
     geo_data=state_geo,
     name='Mortes por mil habitantes',
     data=df_mapa,
-    columns=['coduf', 'deaths_thousand'],
+    columns=['coduf', 'death_day_thousand'],
     key_on='feature.properties.codarea',
     fill_color='YlOrRd',#'YlGn',
 #     ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
     fill_opacity=0.7,
     line_opacity=0.3,
-    legend_name= 'mortes por mil habitandes'
+    legend_name= 'mortes em ' + today.strftime("%d/%m/%Y") + ' por mil habitandes'
 ).add_to(m)
 
 for state in states:
@@ -102,7 +102,7 @@ m.save('../analysis/maps/brazilMapDeaths.html')
 m
 
 
-# In[164]:
+# In[5]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
@@ -110,12 +110,12 @@ folium.Choropleth(
     geo_data=state_geo,
     name='Contaminações por mil habitantes',
     data=df_mapa,
-    columns=['coduf', 'cases_thousand'],
+    columns=['coduf', 'case_day_thousand'],
     key_on='feature.properties.codarea',
     fill_color='RdPu',#'YlGn',
     fill_opacity=0.7,
     line_opacity=0.3,
-    legend_name= 'casos por mil habitantes',
+    legend_name= 'casos em ' + today.strftime("%d/%m/%Y") + ' por mil habitantes',
 ).add_to(m)
 folium.LayerControl().add_to(m)
 
@@ -145,7 +145,7 @@ m.save('../analysis/maps/brazilMapCases.html')
 m
 
 
-# In[135]:
+# In[6]:
 
 
 # import imgkit
@@ -169,7 +169,7 @@ m
 # ----------------------------
 # ### Brasil - Analysis and monitoring
 
-# In[136]:
+# In[7]:
 
 
 #week variation
@@ -188,7 +188,7 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top 5 deadliest states 
 
-# In[165]:
+# In[8]:
 
 
 cols = ['state', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand','deaths_thousand', 'perc_death']
@@ -202,7 +202,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[166]:
+# In[9]:
 
 
 df_top_cases = df[(df['date']==str(today))].sort_values('cases_thousand', ascending = False)
@@ -217,7 +217,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[167]:
+# In[10]:
 
 
 #inform the countries you want to analise
@@ -225,7 +225,7 @@ monitoredStates = df_top_deaths['state'].head(qtdeMonitored).to_numpy()
 monitoredStates
 
 
-# In[168]:
+# In[11]:
 
 
 # fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -274,7 +274,7 @@ ax4.legend()
 fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 
-# In[169]:
+# In[12]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -325,7 +325,7 @@ fig.savefig('../analysis/brazil_cases_deaths_thousand.png')
 
 # ### Generating the HTML file
 
-# In[174]:
+# In[13]:
 
 
 f = open('../html/brazil_analysis.html', 'w')
