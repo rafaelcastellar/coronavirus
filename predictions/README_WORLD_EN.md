@@ -1,7 +1,7 @@
 # **Predictions**
 For experience, I'm running simple predictions over the cases and deaths per day. As they are time-series, I'm using [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) that is also designed for this kind of prediction in a very simpler way. It works well for most of the time; sometimes there is a huge leap and it takes more time and more data to be understood.
 
-These predictions were made with Covid19 pandemic data from **2020-05-19**.
+These predictions were made with Covid19 pandemic data from **2020-05-20**.
 
 As there are many countries to have their data predicted in a row, I selected a few of them plus Brazil to be predicted:
 ['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'Belgium', 'France'].
@@ -16,21 +16,21 @@ By the end, a CSV file containing all the predicted data is generated.
 *predicted? = True* means the line is a prediction; *=False* means they are real numbers.
 |    | country   | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |---:|:----------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 79 | Brazil    | 2020-05-15 00:00:00 |      17126 |         963 |  220291 |    14962 | False        |
 | 80 | Brazil    | 2020-05-16 00:00:00 |      13220 |         700 |  233511 |    15662 | False        |
 | 81 | Brazil    | 2020-05-17 00:00:00 |       7569 |         456 |  241080 |    16118 | False        |
 | 82 | Brazil    | 2020-05-18 00:00:00 |      14288 |         735 |  255368 |    16853 | False        |
 | 83 | Brazil    | 2020-05-19 00:00:00 |      16517 |        1130 |  271885 |    17983 | False        |
-| 84 | Brazil    | 2020-05-20 00:00:00 |      13549 |         838 |  285434 |    18821 | True         |
-| 85 | Brazil    | 2020-05-21 00:00:00 |      13814 |         872 |  299248 |    19693 | True         |
-| 86 | Brazil    | 2020-05-22 00:00:00 |      14320 |         903 |  313568 |    20596 | True         |
-| 87 | Brazil    | 2020-05-23 00:00:00 |      14072 |         869 |  327640 |    21465 | True         |
-| 88 | Brazil    | 2020-05-24 00:00:00 |      13352 |         819 |  340992 |    22284 | True         |
-| 89 | Brazil    | 2020-05-25 00:00:00 |      14315 |         871 |  355307 |    23155 | True         |
-| 90 | Brazil    | 2020-05-26 00:00:00 |      15142 |         987 |  370449 |    24142 | True         |
-| 91 | Brazil    | 2020-05-27 00:00:00 |      15917 |         976 |  386366 |    25118 | True         |
-| 92 | Brazil    | 2020-05-28 00:00:00 |      16183 |        1010 |  402549 |    26128 | True         |
-| 93 | Brazil    | 2020-05-29 00:00:00 |      16688 |        1040 |  419237 |    27168 | True         |
+| 84 | Brazil    | 2020-05-20 00:00:00 |      19694 |         876 |  291579 |    18859 | False        |
+| 85 | Brazil    | 2020-05-21 00:00:00 |      14636 |         868 |  306215 |    19727 | True         |
+| 86 | Brazil    | 2020-05-22 00:00:00 |      15171 |         897 |  321386 |    20624 | True         |
+| 87 | Brazil    | 2020-05-23 00:00:00 |      14953 |         863 |  336339 |    21487 | True         |
+| 88 | Brazil    | 2020-05-24 00:00:00 |      14262 |         813 |  350601 |    22300 | True         |
+| 89 | Brazil    | 2020-05-25 00:00:00 |      15265 |         865 |  365866 |    23165 | True         |
+| 90 | Brazil    | 2020-05-26 00:00:00 |      16130 |         981 |  381996 |    24146 | True         |
+| 91 | Brazil    | 2020-05-27 00:00:00 |      17429 |         972 |  399425 |    25118 | True         |
+| 92 | Brazil    | 2020-05-28 00:00:00 |      17312 |        1002 |  416737 |    26120 | True         |
+| 93 | Brazil    | 2020-05-29 00:00:00 |      17847 |        1031 |  434584 |    27151 | True         |
+| 94 | Brazil    | 2020-05-30 00:00:00 |      17628 |         997 |  452212 |    28148 | True         |
 
  #### The predicted Brazil's cumulative curves
 ![](brazil_predictions.png)
@@ -45,21 +45,21 @@ Facebook's Prophet automatically generates charts about the behaviour of the ana
 **Tomorrow**
 |     | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |----:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-|  84 | Brazil         | 2020-05-20 00:00:00 |      13549 |         838 |  285434 |    18821 | True         |
-| 110 | Italy          | 2020-05-20 00:00:00 |       2939 |         494 |  229638 |    32663 | True         |
-| 110 | United Kingdom | 2020-05-20 00:00:00 |       5354 |         816 |  255492 |    36238 | True         |
-| 109 | Spain          | 2020-05-20 00:00:00 |       3948 |         524 |  246010 |    28302 | True         |
-| 119 | US             | 2020-05-20 00:00:00 |      32283 |        2220 | 1560851 |    94141 | True         |
-| 106 | Belgium        | 2020-05-20 00:00:00 |        515 |         202 |   56306 |     9310 | True         |
-| 117 | France         | 2020-05-20 00:00:00 |        599 |         535 |  181647 |    28560 | True         |
+|  85 | Brazil         | 2020-05-21 00:00:00 |      14636 |         868 |  306215 |    19727 | True         |
+| 111 | Italy          | 2020-05-21 00:00:00 |        849 |         236 |  228213 |    32566 | True         |
+| 111 | United Kingdom | 2020-05-21 00:00:00 |       5245 |         792 |  255382 |    36578 | True         |
+| 110 | Spain          | 2020-05-21 00:00:00 |       3552 |         485 |  246132 |    28373 | True         |
+| 120 | US             | 2020-05-21 00:00:00 |      34115 |        2161 | 1585968 |    95600 | True         |
+| 107 | Belgium        | 2020-05-21 00:00:00 |        498 |         186 |   56481 |     9336 | True         |
+| 118 | France         | 2020-05-21 00:00:00 |       1445 |         551 |  183260 |    28686 | True         |
 
  **The day after tomorrow** 
 |     | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |----:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-|  85 | Brazil         | 2020-05-21 00:00:00 |      13814 |         872 |  299248 |    19693 | True         |
-| 111 | Italy          | 2020-05-21 00:00:00 |       2976 |         481 |  232614 |    33144 | True         |
-| 111 | United Kingdom | 2020-05-21 00:00:00 |       5387 |         804 |  260879 |    37042 | True         |
-| 110 | Spain          | 2020-05-21 00:00:00 |       3924 |         505 |  249934 |    28807 | True         |
-| 120 | US             | 2020-05-21 00:00:00 |      34207 |        2174 | 1595058 |    96315 | True         |
-| 107 | Belgium        | 2020-05-21 00:00:00 |        534 |         193 |   56840 |     9503 | True         |
-| 118 | France         | 2020-05-21 00:00:00 |       1387 |         562 |  183034 |    29122 | True         |
+|  86 | Brazil         | 2020-05-22 00:00:00 |      15171 |         897 |  321386 |    20624 | True         |
+| 112 | Italy          | 2020-05-22 00:00:00 |       1147 |         282 |  229360 |    32848 | True         |
+| 112 | United Kingdom | 2020-05-22 00:00:00 |       5790 |         830 |  261172 |    37408 | True         |
+| 111 | Spain          | 2020-05-22 00:00:00 |       3262 |         464 |  249394 |    28837 | True         |
+| 121 | US             | 2020-05-22 00:00:00 |      34678 |        2109 | 1620646 |    97709 | True         |
+| 108 | Belgium        | 2020-05-22 00:00:00 |        533 |         192 |   57014 |     9528 | True         |
+| 119 | France         | 2020-05-22 00:00:00 |       1002 |         518 |  184262 |    29204 | True         |
