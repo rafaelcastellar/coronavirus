@@ -65,7 +65,7 @@ df_top_cases
 
 # #### Countries to be analised
 
-# In[10]:
+# In[6]:
 
 
 #inform the countries you want to analise
@@ -74,7 +74,7 @@ monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France
 
 # #### Cases and deaths 
 
-# In[11]:
+# In[7]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -125,7 +125,7 @@ fig.savefig('../analysis/world_cases_deaths.png')
 # #### Cases, deaths and recoveries per million 
 # (million of population - normalizes per country population)
 
-# In[12]:
+# In[8]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -176,7 +176,7 @@ fig.savefig('../analysis/world_cases_deaths_million.png')
 
 # #### Active cases, world overview, % recoveries and mortality
 
-# In[13]:
+# In[9]:
 
 
 fig, ((ax1, ax2), (ax3, ax4),) = plt.subplots(2,2, figsize=(20, 15))
@@ -226,7 +226,7 @@ fig.savefig('../analysis/world_active_cases_percentages.png')
 # ### Brazil
 # #### Cases, deaths, recoveries
 
-# In[14]:
+# In[10]:
 
 
 df_br = df[df['country'] == 'Brazil']
@@ -274,7 +274,7 @@ fig.savefig('../analysis/brazil_number_variation.png')
 
 # #### Moving averages (last 7 days)
 
-# In[15]:
+# In[11]:
 
 
 fig, ((ax1, ax2)) = plt.subplots(1,2, figsize=(20, 8))
@@ -312,7 +312,7 @@ fig.savefig('../analysis/brazil_movingAvg.png')
 
 # ### Generating the html file
 
-# In[16]:
+# In[12]:
 
 
 f = open('../html/analysis.html', 'w')
@@ -329,13 +329,13 @@ readme += '<br></div></div>'
 # readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' países mais mortais + Brasil</h3>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias da quantidade de morte por milhão de população de cada país.</p>'
+readme += '          <p>O ranking é feito a partir da quantidade total de mortes por cada mil habitantes de cada país.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' países mais transmissíveis + Brasil</h3>'
-readme += '          <p>O ranking é feito a partir da média móvel de 7 dias de casos acumulados de cada país.</p>'
+readme += '          <p>O ranking é feito a partir da quantidade total de casos por cada mil habitantes de cada país.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += f3
 
@@ -357,13 +357,13 @@ readme += '<br></div></div>'
 # readme += f2
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' deadliest countries + Brazil</h3>'
-readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the deaths per million of population of each country.</p>'
+readme += '          <p>This ranking is made from the total of deaths per each thousand of population of each country.</p>'
 readme += df_top_deaths.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
 readme += '        <div class="container">'
 readme += '          <h3>Top ' + str(qtdeMonitored) + ' most transmissible countries + Brazil</h3>'
-readme += '          <p>This ranking is done from the moving avarege of the last 7 days over the cumulative cases of each country.</p>'
+readme += '          <p>This ranking is made from the total of cases per each thousand of population of each country.</p>'
 readme += df_top_cases.to_html(classes='table', decimal=',', justify='justify')
 readme += '        </div>'
 readme += '        <br>'
