@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[178]:
+# In[1]:
 
 
 print('Initializing data engineering!')
@@ -15,7 +15,7 @@ import json, requests
 # ### World data engineering
 # #### Fetching worldwide data
 
-# In[191]:
+# In[2]:
 
 
 # df = pd.read_json('https://pomber.github.io/covid19/timeseries.json')
@@ -33,7 +33,7 @@ j = json.loads(req.text)
 
 # #### Fetching countries's pandemic data from Pomber's JSON to a dataframe 
 
-# In[192]:
+# In[3]:
 
 
 # Loading countries names to dict
@@ -62,7 +62,7 @@ df[df['country']=='Brazil'].tail()
 
 # #### Feature engineering
 
-# In[193]:
+# In[4]:
 
 
 for country in countries:
@@ -133,7 +133,7 @@ df['recovery_day'] = df['recovery_day'].astype('int')
 df.tail()
 
 
-# In[183]:
+# In[5]:
 
 
 #Adjusting wrong negative variations (wrong number from the source)
@@ -142,7 +142,7 @@ df.loc[df.case_day < 0, ['case_day']] = df[df.case_day < 0].shift().case_day#, [
 df.loc[df.cases_million < 0, ['cases_million']] = 0#df[df.cases_million < 0].cases_million.shift()#, ['cases']]
 
 
-# In[184]:
+# In[6]:
 
 
 df.to_csv('../data/world_corona19_data.csv', index = False)
@@ -150,19 +150,17 @@ df.to_csv('../data/world_corona19_data.csv', index = False)
 
 # #### countries not located in UN dataset
 
-# In[185]:
+# In[7]:
 
 
-for country in countries:
-    if df_countries[df_countries['country']==country]['PopTotal'].empty:
-        print(country)
-# df[df['pais'] == pais].tail()
-# df_countries[df_countries['Location']==pais]['PopTotal']
+# for country in countries:
+#     if df_countries[df_countries['country']==country]['PopTotal'].empty:
+#         print(country)
 
 
 # ### Brazil data engineering
 
-# In[186]:
+# In[ ]:
 
 
 import requests
@@ -200,7 +198,7 @@ df.tail()
 
 # #### Feature engineering
 
-# In[187]:
+# In[ ]:
 
 
 print('Iniciando feature engieering Brasil')
@@ -288,19 +286,19 @@ print('finalizado em ', termino-inicio)
 df[indexes].tail()
 
 
-# In[188]:
+# In[ ]:
 
 
 df.to_csv('../data/brazil_corona19_data.csv', index = False)
 
 
-# In[189]:
+# In[ ]:
 
 
 # df[df.city=='Rio Claro'][['population','case_day','death_day','cases_thousand','deaths_thousand','active_cases']]
 
 
-# In[190]:
+# In[ ]:
 
 
 # df[df['country']=='Belgium']
