@@ -160,7 +160,7 @@ df.to_csv('../data/world_corona19_data.csv', index = False)
 
 # ### Brazil data engineering
 
-# In[ ]:
+# In[8]:
 
 
 import requests
@@ -196,6 +196,21 @@ df.fillna('-', inplace=True)
 df.tail()
 
 
+# In[9]:
+
+
+# a partir de 02/06 passaram a incluir "(x)" nos números de população, tornando o campo não numérico. então, removo
+def removerString(x):
+    res = str(x).find('(')
+    if res > -1:
+        x = x[:res]
+    
+    return float(x)
+
+df.population = df.population.apply(removerString)
+df.population = df.population.astype('int')
+
+
 # #### Feature engineering
 
 # In[ ]:
@@ -207,6 +222,7 @@ inicio = datetime.datetime.now()
 states = df.state.unique()
 # states = ['PE']
 df.drop(df[df['cases'] == 0 ].index, axis=0, inplace= True)
+
 
 for state in states:
     cities = df[df['state']==state].city.unique()
