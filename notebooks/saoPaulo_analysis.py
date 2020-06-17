@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[3]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -29,7 +29,7 @@ df = df[(df['state']=='SP') & (df['place_type']=='city') & (df['city']!='Importa
 df.tail()
 
 
-# In[3]:
+# In[4]:
 
 
 city_geo = json.load(open('../data/saoPaulo-cidades.json'))
@@ -45,7 +45,7 @@ for cidade in city_geo['features']:
 df_mapa.tail()
 
 
-# In[4]:
+# In[5]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
@@ -97,7 +97,7 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[5]:
+# In[6]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
@@ -147,7 +147,7 @@ m.save('../analysis/maps/saoPauloMapCases.html')
 m
 
 
-# In[6]:
+# In[7]:
 
 
 # #https://www.mankier.com/1/wkhtmltoimage#--width
@@ -172,7 +172,7 @@ m
 # ----------------------------
 # ### São Paulo - Analysis and monitoring
 
-# In[15]:
+# In[8]:
 
 
 #week variation
@@ -200,7 +200,7 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
 
-# In[16]:
+# In[9]:
 
 
 cols = ['city', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand', 'deaths_thousand', 'perc_death']
@@ -217,10 +217,10 @@ df_top_deaths
 
 # #### Top most transmissible countries + Santa Gertrude + Lucélia + Adamantina + Rio Claro + Cordeirópolis + Limeira - São Paulo
 
-# In[17]:
+# In[10]:
 
 
-df_top_cases = df[(df['date']==str(today)) & (df['population']>10000)].sort_values('case_day_thousand', ascending = False)
+df_top_cases = df[(df['date']==str(today)) & (df['population']>10000)].sort_values('cases_thousand', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -233,7 +233,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[18]:
+# In[11]:
 
 
 #inform the countries you want to analise
@@ -243,7 +243,7 @@ monitoredCities = df_top_cases['city'].head(qtdeMonitored+1).to_numpy()
 # monitoredCities = np.append(monitoredCities,[addedCity])
 
 
-# In[19]:
+# In[12]:
 
 
 # Top most transmissible - SP
@@ -293,7 +293,7 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
-# In[20]:
+# In[13]:
 
 
 # Selected cities
@@ -336,7 +336,7 @@ fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
 
 # ### Generating the html file
 
-# In[21]:
+# In[14]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')
@@ -467,8 +467,20 @@ f.close()
 print('Sao Paulo\'s analysis done!')
 
 
-# In[14]:
+# In[15]:
 
 
 # df[df['state']=='SP'][['date','death_day']]
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
