@@ -24,7 +24,9 @@ tomorrow = today + datetime.timedelta(days=1)
 yesterday = today - datetime.timedelta(days=1)
 qtdeMonitored = 10
 
-df = df[(df['state']!='-') & (df['codmun']==0)]
+# df.city_ibge_code = df.city_ibge_code.ast}ype('str')
+
+df = df[(df['place_type']=='state')]
 
 df.tail()
 
@@ -32,24 +34,31 @@ df.tail()
 # In[3]:
 
 
-state_geo = json.load(open('../data/brasil-estados.json'))
-df_mapa = df[(df['date']==str(today)) & (df['codmun']==0) & (df['state']!='-')].copy()
-states = df_mapa.state.unique()
-
-for state in state_geo['features']: 
-    latLon =  state['properties']['centroide']
-    codarea = state['properties']['codarea']
-    df_mapa.loc[df_mapa['coduf']==int(codarea),'lat'] = latLon[1]
-    df_mapa.loc[df_mapa['coduf']==int(codarea),'lon'] = latLon[0]
-
-df_mapa.tail()
+# df_mapa[['date','state','city_ibge_code','death_day_thousand']]
+df.state.unique()
 
 
 # In[4]:
 
 
+state_geo = json.load(open('../data/brasil-estados.json'))
+df_mapa = df[df.is_last == True].copy()#df[(df['date']==str(today))].copy()
+states = df_mapa.state.unique()
+
+for state in state_geo['features']: 
+    latLon =  state['properties']['centroide']
+    codarea = state['properties']['codarea']
+    df_mapa.loc[df_mapa['city_ibge_code']==int(codarea),'lat'] = latLon[1]
+    df_mapa.loc[df_mapa['city_ibge_code']==int(codarea),'lon'] = latLon[0]
+
+df_mapa.tail()
+
+
+# In[8]:
+
+
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
-df_mapa.coduf = df_mapa.coduf.astype('str') # para o mappgin
+df_mapa.city_ibge_code = df_mapa.city_ibge_code.astype('str') # para o mappgin
 
 # folium.Choropleth(
 #     geo_data=state_geo,
@@ -65,15 +74,15 @@ df_mapa.coduf = df_mapa.coduf.astype('str') # para o mappgin
 
 folium.Choropleth(
     geo_data=state_geo,
-    name='Mortes por mil habitantes',
+    name='Mortes por mil habitantes (média móvel 7 dias)',
     data=df_mapa,
-    columns=['coduf', 'death_day_thousand'],
+    columns=['city_ibge_code', 'avg7_death_day_thousand'],
     key_on='feature.properties.codarea',
     fill_color='YlOrRd',#'YlGn',
 #     ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
     fill_opacity=0.7,
     line_opacity=0.3,
-    legend_name= 'mortes em ' + today.strftime("%d/%m/%Y") + ' por mil habitandes'
+    legend_name= 'mortes em por mil habitandes (média móvel 7 dias < ' + today.strftime("%d/%m/%Y") + ')',
 ).add_to(m)
 
 for state in states:
@@ -102,20 +111,20 @@ m.save('../analysis/maps/brazilMapDeaths.html')
 m
 
 
-# In[5]:
+# In[10]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
 folium.Choropleth(
     geo_data=state_geo,
-    name='Contaminações por mil habitantes',
+    name='Contaminações por mil habitantes (média móvel 7 dias)',
     data=df_mapa,
-    columns=['coduf', 'case_day_thousand'],
+    columns=['city_ibge_code', 'avg7_case_day_thousand'],
     key_on='feature.properties.codarea',
     fill_color='RdPu',#'YlGn',
     fill_opacity=0.7,
     line_opacity=0.3,
-    legend_name= 'casos em ' + today.strftime("%d/%m/%Y") + ' por mil habitantes',
+    legend_name= 'casos por mil habitantes (média móvel 7 dias < ' + today.strftime("%d/%m/%Y") + ')',
 ).add_to(m)
 folium.LayerControl().add_to(m)
 
@@ -145,7 +154,7 @@ m.save('../analysis/maps/brazilMapCases.html')
 m
 
 
-# In[6]:
+# In[11]:
 
 
 # import imgkit
@@ -169,7 +178,7 @@ m
 # ----------------------------
 # ### Brasil - Analysis and monitoring
 
-# In[7]:
+# In[12]:
 
 
 #week variation
@@ -178,8 +187,8 @@ lastWeek = today - datetime.timedelta(days=7)
 # cases and deaths
 lastWeekCases = df[df['date']==str(lastWeek)].cases.sum()
 lastWeekDeaths = df[df['date']==str(lastWeek)].deaths.sum()
-todayCases = df[df['date']==str(today)].cases.sum()
-todayDeaths = df[df['date']==str(today)].deaths.sum()
+todayCases = df[df['is_last']==True].cases.sum()
+todayDeaths = df[df['is_last']==True].deaths.sum()
 varCases = int((todayCases / lastWeekCases - 1) *100)
 varDeaths = int((todayDeaths / lastWeekDeaths - 1) *100)
 diffCases = todayCases - lastWeekCases
@@ -188,12 +197,12 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top 5 deadliest states 
 
-# In[8]:
+# In[13]:
 
 
 cols = ['state', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand','deaths_thousand', 'perc_death']
 
-df_top_deaths = df[(df['date']==str(today))].sort_values('deaths_thousand', ascending = False)
+df_top_deaths = df[(df['is_last']==True)].sort_values('deaths_thousand', ascending = False)
 df_top_deaths.reset_index(0, inplace=True)
 df_top_deaths.index = df_top_deaths.index + 1
 df_top_deaths = df_top_deaths[cols].head(qtdeMonitored)
@@ -202,10 +211,10 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[9]:
+# In[14]:
 
 
-df_top_cases = df[(df['date']==str(today))].sort_values('cases_thousand', ascending = False)
+df_top_cases = df[(df['is_last']==True)].sort_values('cases_thousand', ascending = False)
 
 df_top_cases.reset_index(0, inplace=True)
 df_top_cases.index = df_top_cases.index + 1
@@ -217,7 +226,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[10]:
+# In[15]:
 
 
 #inform the countries you want to analise
@@ -225,7 +234,7 @@ monitoredStates = df_top_deaths['state'].head(qtdeMonitored).to_numpy()
 monitoredStates
 
 
-# In[11]:
+# In[16]:
 
 
 # fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -257,7 +266,7 @@ ax4.grid(color='gray', alpha = 0.4)
 # ax6.grid(color='gray', alpha = 0.4)
 
 for state in monitoredStates:
-    dados = df[(df['state'] == state) & (df['codmun']==0)]
+    dados = df[(df['state'] == state)]
     ax1.plot(dados.day, dados.cases, label = state)
     ax2.plot(dados.day, dados.avg7_cases, label = state)
     ax3.plot(dados.day, dados.deaths, label = state)
@@ -274,7 +283,7 @@ ax4.legend()
 fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 
-# In[12]:
+# In[17]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -305,7 +314,7 @@ ax4.grid(color='gray', alpha = 0.4)
 # ax6.grid(color='gray', alpha = 0.4)
 
 for state in monitoredStates:
-    dados = df[(df['state'] == state) & (df['codmun']==0)]
+    dados = df[(df['state'] == state)]# & (df['codmun']==0)]
     ax1.plot(dados.day, dados.cases_thousand, label = state)
     ax2.plot(dados.day, dados.avg7_case_day_thousand, label = state)
     ax3.plot(dados.day, dados.deaths_thousand, label = state)
@@ -325,7 +334,7 @@ fig.savefig('../analysis/brazil_cases_deaths_thousand.png')
 
 # ### Generating the HTML file
 
-# In[13]:
+# In[18]:
 
 
 f = open('../html/brazil_analysis.html', 'w')
@@ -439,7 +448,7 @@ f.close()
 print('Brazilian analysis done!')
 
 
-# In[14]:
+# In[ ]:
 
 
 # df[df['state']=='SP'][['date','death_day']]

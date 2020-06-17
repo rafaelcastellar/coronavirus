@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[8]:
+# In[1]:
 
 
 #https://github.com/pomber/covid19
@@ -13,55 +13,50 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[9]:
+# In[2]:
 
 
-# df = pd.read_csv('../data/saoPaulo_corona19_data.csv')
 df = pd.read_csv('../data/brazil_corona19_data.csv')
 df['date'] = df['date'].astype('datetime64[ns]')
-df['codmun'] = df['codmun'].astype('int')
 
 today = df.date.max().date()
 tomorrow = today + datetime.timedelta(days=1)
 yesterday = today - datetime.timedelta(days=1)
 qtdeMonitored = 5
 
-df = df[(df['state']=='SP') & (df['codmun']!=0) & (df['city']!='-')]
+df = df[(df['state']=='SP') & (df['place_type']=='city') & (df['city']!='Importados/Indefinidos')]
 
 df.tail()
 
 
-# In[10]:
+# In[3]:
 
 
 city_geo = json.load(open('../data/saoPaulo-cidades.json'))
-df_mapa = df[df['date']==str(today)].copy()
+df_mapa = df[df['is_last']==True].copy()
 cities = df_mapa.city.unique()
 
 for cidade in city_geo['features']:
     latLon =  cidade['properties']['centroide']
     codarea = int(cidade['properties']['codarea'])
-
-    #codmun não tem o último número do codarea, tenho que tirar para igualar
-    df_mapa.loc[df_mapa['codmun']==(int(codarea/10)), 'codmun'] = codarea
-    df_mapa.loc[df_mapa['codmun']==codarea,'lat'] = latLon[1]
-    df_mapa.loc[df_mapa['codmun']==codarea,'long'] = latLon[0]
+    df_mapa.loc[df_mapa['city_ibge_code']==codarea,'lat'] = latLon[1]
+    df_mapa.loc[df_mapa['city_ibge_code']==codarea,'long'] = latLon[0]
 
 df_mapa.tail()
 
 
-# In[13]:
+# In[4]:
 
 
 state_geo = json.load(open('../data/saoPaulo-cidades.json'))
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
-df_mapa.codmun = df_mapa.codmun.astype('str')
+df_mapa.city_ibge_code = df_mapa.city_ibge_code.astype('str')
 
 folium.Choropleth(
     geo_data=state_geo,
     name='Mortes por mil habitantes',
     data=df_mapa,
-    columns=['codmun','death_day_thousand'],
+    columns=['city_ibge_code','avg7_death_day_thousand'],
     key_on='feature.properties.codarea',
     highlight=True,
     fill_color='YlOrRd',#'YlGn',
@@ -102,17 +97,17 @@ m.save('../analysis/maps/saoPauloMapDeaths.html')
 m
 
 
-# In[14]:
+# In[5]:
 
 
 m = folium.Map(location=[-22.60, -48.44], zoom_start=7)
-df_mapa.codmun = df_mapa.codmun.astype('str')
+df_mapa.city_ibge_code = df_mapa.city_ibge_code.astype('str')
 
 folium.Choropleth(
     geo_data=state_geo,
     name='Contaminações por 100 mil habitantes',
     data=df_mapa,
-    columns=['codmun', 'case_day_thousand'],
+    columns=['city_ibge_code', 'avg7_case_day_thousand'],
     key_on='feature.properties.codarea',
     fill_color='PuRd',#'YlGn',
     #     ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
@@ -152,7 +147,7 @@ m.save('../analysis/maps/saoPauloMapCases.html')
 m
 
 
-# In[15]:
+# In[6]:
 
 
 # #https://www.mankier.com/1/wkhtmltoimage#--width
@@ -167,7 +162,7 @@ m
 #     'width':'300',
 #     'encoding': "UTF-8",
 #     'custom-header' : [
-#         ('Accept-Encoding', 'gzip')
+#         ('Accept-Encoding', 'gzip')}
 #     ],
 # }
 # imgkit.from_file('../analysis/maps/saoPauloMapDeathsContainer.html', '../analysis/maps/saoPauloMapDeaths.png', options=options)
@@ -177,7 +172,7 @@ m
 # ----------------------------
 # ### São Paulo - Analysis and monitoring
 
-# In[16]:
+# In[15]:
 
 
 #week variation
@@ -185,7 +180,7 @@ lastWeek = today - datetime.timedelta(days=7)
 saoPauloCities = 645
 
 #contaminated cities
-lastWeekCities = len(df.loc[df['date']==str(lastWeek), 'city'].unique())
+lastWeekCities = len(df.loc[df['is_last']==True, 'city'].unique())
 lastWeekPercCities = int(lastWeekCities / saoPauloCities * 100)
 todayCities = len(df.city.unique())
 todayPercCities = int((todayCities / saoPauloCities * 100))
@@ -195,8 +190,8 @@ diffCities = todayCities - lastWeekCities
 # cases and deaths
 lastWeekCases = df.loc[df['date']==str(lastWeek), 'cases'].sum()
 lastWeekDeaths = df.loc[df['date']==str(lastWeek), 'deaths'].sum()
-todayCases = df.loc[df['date']==str(today), 'cases'].sum()
-todayDeaths = df.loc[df['date']==str(today), 'deaths'].sum()
+todayCases = df.loc[df['is_last']==True, 'cases'].sum()
+todayDeaths = df.loc[df['is_last']==True, 'deaths'].sum()
 varCases = int((todayCases / lastWeekCases - 1) *100)
 varDeaths = int((todayDeaths / lastWeekDeaths - 1) *100)
 diffCases = todayCases - lastWeekCases
@@ -205,7 +200,7 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
 
-# In[19]:
+# In[16]:
 
 
 cols = ['city', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand', 'deaths_thousand', 'perc_death']
@@ -222,7 +217,7 @@ df_top_deaths
 
 # #### Top most transmissible countries + Santa Gertrude + Lucélia + Adamantina + Rio Claro + Cordeirópolis + Limeira - São Paulo
 
-# In[18]:
+# In[17]:
 
 
 df_top_cases = df[(df['date']==str(today)) & (df['population']>10000)].sort_values('case_day_thousand', ascending = False)
@@ -238,7 +233,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[10]:
+# In[18]:
 
 
 #inform the countries you want to analise
@@ -248,7 +243,7 @@ monitoredCities = df_top_cases['city'].head(qtdeMonitored+1).to_numpy()
 # monitoredCities = np.append(monitoredCities,[addedCity])
 
 
-# In[11]:
+# In[19]:
 
 
 # Top most transmissible - SP
@@ -298,7 +293,7 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
-# In[12]:
+# In[20]:
 
 
 # Selected cities
@@ -341,7 +336,7 @@ fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
 
 # ### Generating the html file
 
-# In[13]:
+# In[21]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')

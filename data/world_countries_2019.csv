@@ -1,189 +1,190 @@
 country,iso2,iso3,lat,long,flag,LocID,VarID,Variant,Time,PopMale,PopFemale,PopTotal,PopDensity
-Zimbabwe,ZW,ZWE,-20.0,30.0,https://corona.lmao.ninja/assets/img/flags/zw.png,716,2,Medium,2019,6983.353,7662.12,14645.473,37.858000000000004
-Zambia,ZM,ZMB,-15.0,30.0,https://corona.lmao.ninja/assets/img/flags/zm.png,894,2,Medium,2019,8843.214,9017.82,17861.034,24.026
-Yemen,YE,YEM,15.0,48.0,https://corona.lmao.ninja/assets/img/flags/ye.png,887,2,Medium,2019,14692.284,14469.638,29161.922000000002,55.233999999999995
-Western Sahara,EH,ESH,24.5,-13.0,https://corona.lmao.ninja/assets/img/flags/eh.png,732,2,Medium,2019,304.755,277.703,582.4580000000001,2.19
-Uzbekistan,UZ,UZB,41.0,64.0,https://corona.lmao.ninja/assets/img/flags/uz.png,860,2,Medium,2019,16450.116,16531.599,32981.715,77.531
-Uruguay,UY,URY,-33.0,-56.0,https://corona.lmao.ninja/assets/img/flags/uy.png,858,2,Medium,2019,1671.889,1789.842,3461.7309999999998,19.779
-Ukraine,UA,UKR,49.0,32.0,https://corona.lmao.ninja/assets/img/flags/ua.png,804,2,Medium,2019,20379.023,23614.62,43993.643,75.94
-Uganda,UG,UGA,1.0,32.0,https://corona.lmao.ninja/assets/img/flags/ug.png,800,2,Medium,2019,21807.166,22462.421000000002,44269.587,221.558
-US,US,USA,38.0,-97.0,https://corona.lmao.ninja/assets/img/flags/us.png,1111,2,Medium,2019,164409.733,167972.987,332382.72,36.295
-United Kingdom,GB,GBR,54.0,-2.0,https://corona.lmao.ninja/assets/img/flags/gb.png,826,2,Medium,2019,33351.435,34178.726,67530.161,279.131
-Turks and Caicos Islands,TC,TCA,21.75,-71.5833,https://corona.lmao.ninja/assets/img/flags/tc.png,796,2,Medium,2019,,,38.194,40.204
-Turkey,TR,TUR,39.0,35.0,https://corona.lmao.ninja/assets/img/flags/tr.png,792,2,Medium,2019,41173.709,42255.898,83429.607,108.402
-Tunisia,TN,TUN,34.0,9.0,https://corona.lmao.ninja/assets/img/flags/tn.png,788,2,Medium,2019,5797.98,5896.741,11694.721000000001,75.275
-Trinidad and Tobago,TT,TTO,11.0,-61.0,https://corona.lmao.ninja/assets/img/flags/tt.png,780,2,Medium,2019,688.982,705.987,1394.969,271.92400000000004
-Togo,TG,TGO,8.0,1.1667,https://corona.lmao.ninja/assets/img/flags/tg.png,768,2,Medium,2019,4020.6459999999997,4061.7129999999997,8082.359,148.6
-Timor-Leste,TL,TLS,-8.55,125.5167,https://corona.lmao.ninja/assets/img/flags/tl.png,626,2,Medium,2019,653.507,639.613,1293.12,86.962
-Thailand,TH,THA,15.0,100.0,https://corona.lmao.ninja/assets/img/flags/th.png,764,2,Medium,2019,33904.846,35720.735,69625.58099999999,136.283
-Tajikistan,TJ,TJK,39.0,71.0,https://corona.lmao.ninja/assets/img/flags/tj.png,762,2,Medium,2019,4697.9529999999995,4623.07,9321.023000000001,66.598
-Syrian Arab Republic,SY,SYR,35.0,38.0,https://corona.lmao.ninja/assets/img/flags/sy.png,760,2,Medium,2019,8554.55,8515.582,17070.131999999998,92.959
-Switzerland,CH,CHE,47.0,8.0,https://corona.lmao.ninja/assets/img/flags/ch.png,756,2,Medium,2019,4260.661,4330.7,8591.360999999999,217.415
-Sweden,SE,SWE,62.0,15.0,https://corona.lmao.ninja/assets/img/flags/se.png,752,2,Medium,2019,5025.597,5010.794,10036.391,24.459
-Suriname,SR,SUR,4.0,-56.0,https://corona.lmao.ninja/assets/img/flags/sr.png,740,2,Medium,2019,292.255,289.108,581.363,3.727
-Sudan,SD,SDN,15.0,30.0,https://corona.lmao.ninja/assets/img/flags/sd.png,729,2,Medium,2019,21387.956000000002,21425.281000000003,42813.237,24.256
-Sri Lanka,LK,LKA,7.0,81.0,https://corona.lmao.ninja/assets/img/flags/lk.png,144,2,Medium,2019,10233.415,11090.319,21323.734,340.037
-Spain,ES,ESP,40.0,-4.0,https://corona.lmao.ninja/assets/img/flags/es.png,724,2,Medium,2019,22960.647999999997,23776.134,46736.782,93.698
-South Sudan,SS,SSD,6.8769,31.3069,https://corona.lmao.ninja/assets/img/flags/ss.png,728,2,Medium,2019,5536.53,5525.584,11062.114,18.105999999999998
-South Africa,ZA,ZAF,-29.0,24.0,https://corona.lmao.ninja/assets/img/flags/za.png,710,2,Medium,2019,28859.302000000003,29698.965,58558.267,48.272
-Somalia,SO,SOM,10.0,49.0,https://corona.lmao.ninja/assets/img/flags/so.png,706,2,Medium,2019,7700.196,7742.71,15442.906,24.616
-Slovenia,SI,SVN,46.0,15.0,https://corona.lmao.ninja/assets/img/flags/si.png,705,2,Medium,2019,1034.684,1043.97,2078.654,103.21
-Slovakia,SK,SVK,48.6667,19.5,https://corona.lmao.ninja/assets/img/flags/sk.png,703,2,Medium,2019,2656.513,2800.4990000000003,5457.012,113.48
-Singapore,SG,SGP,1.3667,103.8,https://corona.lmao.ninja/assets/img/flags/sg.png,702,2,Medium,2019,3038.2259999999997,2766.117,5804.343000000001,8291.919
-Sierra Leone,SL,SLE,8.5,-11.5,https://corona.lmao.ninja/assets/img/flags/sl.png,694,2,Medium,2019,3898.35,3914.857,7813.206999999999,108.24600000000001
-Seychelles,SC,SYC,-4.5833,55.6667,https://corona.lmao.ninja/assets/img/flags/sc.png,690,2,Medium,2019,50.167,47.574,97.741,212.48
-Serbia,RS,SRB,44.0,21.0,https://corona.lmao.ninja/assets/img/flags/rs.png,688,2,Medium,2019,4297.444,4474.784000000001,8772.228000000001,100.3
-Senegal,SN,SEN,14.0,-14.0,https://corona.lmao.ninja/assets/img/flags/sn.png,686,2,Medium,2019,7946.433000000001,8349.929,16296.362,84.64299999999999
-Saudi Arabia,SA,SAU,25.0,45.0,https://corona.lmao.ninja/assets/img/flags/sa.png,682,2,Medium,2019,19783.532,14484.997,34268.529,15.940999999999999
-Sao Tome and Principe,ST,STP,1.0,7.0,https://corona.lmao.ninja/assets/img/flags/st.png,678,2,Medium,2019,107.611,107.43700000000001,215.048,224.00799999999998
-San Marino,SM,SMR,43.7667,12.4167,https://corona.lmao.ninja/assets/img/flags/sm.png,674,2,Medium,2019,,,33.864000000000004,564.4
-Saint Vincent and the Grenadines,VC,VCT,13.25,-61.2,https://corona.lmao.ninja/assets/img/flags/vc.png,670,2,Medium,2019,56.097,54.496,110.59299999999999,283.572
-Saint Lucia,LC,LCA,13.8833,-61.1333,https://corona.lmao.ninja/assets/img/flags/lc.png,662,2,Medium,2019,90.021,92.774,182.795,299.664
-Saint Kitts and Nevis,KN,KNA,17.3333,-62.75,https://corona.lmao.ninja/assets/img/flags/kn.png,659,2,Medium,2019,,,52.833999999999996,203.208
-Réunion,RE,REU,-21.1,55.6,https://corona.lmao.ninja/assets/img/flags/re.png,638,2,Medium,2019,430.284,458.648,888.932,355.57300000000004
-Rwanda,RW,RWA,-2.0,30.0,https://corona.lmao.ninja/assets/img/flags/rw.png,646,2,Medium,2019,6206.085999999999,6420.852,12626.938,511.834
-Romania,RO,ROU,46.0,25.0,https://corona.lmao.ninja/assets/img/flags/ro.png,642,2,Medium,2019,9418.287,9946.271,19364.558,84.132
-Qatar,QA,QAT,25.5,51.25,https://corona.lmao.ninja/assets/img/flags/qa.png,634,2,Medium,2019,2133.521,698.55,2832.071,243.93400000000003
-Portugal,PT,PRT,39.5,-8.0,https://corona.lmao.ninja/assets/img/flags/pt.png,620,2,Medium,2019,4836.674,5389.504,10226.178,111.652
-Poland,PL,POL,52.0,20.0,https://corona.lmao.ninja/assets/img/flags/pl.png,616,2,Medium,2019,18360.539,19527.232,37887.771,123.723
-Philippines,PH,PHL,13.0,122.0,https://corona.lmao.ninja/assets/img/flags/ph.png,608,2,Medium,2019,54316.072,53800.55,108116.62199999999,362.601
-Peru,PE,PER,-10.0,-76.0,https://corona.lmao.ninja/assets/img/flags/pe.png,604,2,Medium,2019,16148.241000000002,16362.221000000001,32510.462000000003,25.399
-Paraguay,PY,PRY,-23.0,-58.0,https://corona.lmao.ninja/assets/img/flags/py.png,600,2,Medium,2019,3580.888,3463.7509999999997,7044.639,17.730999999999998
-Papua New Guinea,PG,PNG,-6.0,147.0,https://corona.lmao.ninja/assets/img/flags/pg.png,598,2,Medium,2019,4480.0109999999995,4296.108,8776.119,19.379
-Panama,PA,PAN,9.0,-80.0,https://corona.lmao.ninja/assets/img/flags/pa.png,591,2,Medium,2019,2126.4339999999997,2120.006,4246.44,57.122
-Pakistan,PK,PAK,30.0,70.0,https://corona.lmao.ninja/assets/img/flags/pk.png,586,2,Medium,2019,111447.58099999999,105117.73599999999,216565.31699999998,280.933
-Oman,OM,OMN,21.0,57.0,https://corona.lmao.ninja/assets/img/flags/om.png,512,2,Medium,2019,3284.448,1690.5439999999999,4974.992,16.074
-Norway,NO,NOR,62.0,10.0,https://corona.lmao.ninja/assets/img/flags/no.png,578,2,Medium,2019,2716.812,2662.047,5378.859,14.725999999999999
-Nigeria,NG,NGA,10.0,8.0,https://corona.lmao.ninja/assets/img/flags/ng.png,566,2,Medium,2019,101831.87400000001,99131.729,200963.603,220.65200000000002
-Niger,NE,NER,16.0,8.0,https://corona.lmao.ninja/assets/img/flags/ne.png,562,2,Medium,2019,11714.461000000001,11596.258,23310.718999999997,18.403
-Nicaragua,NI,NIC,13.0,-85.0,https://corona.lmao.ninja/assets/img/flags/ni.png,558,2,Medium,2019,3225.9840000000004,3319.5190000000002,6545.503000000001,54.391999999999996
-New Zealand,NZ,NZL,-41.0,174.0,https://corona.lmao.ninja/assets/img/flags/nz.png,554,2,Medium,2019,2351.1620000000003,2431.9,4783.062,18.165
-New Caledonia,NC,NCL,-21.5,165.5,https://corona.lmao.ninja/assets/img/flags/nc.png,540,2,Medium,2019,142.226,140.531,282.757,15.468
-Netherlands,NL,NLD,52.5,5.75,https://corona.lmao.ninja/assets/img/flags/nl.png,528,2,Medium,2019,8514.835,8582.288,17097.123,507.032
-Nepal,NP,NPL,28.0,84.0,https://corona.lmao.ninja/assets/img/flags/np.png,524,2,Medium,2019,13046.953000000001,15561.761999999999,28608.715,199.572
-Namibia,NA,NAM,-22.0,17.0,https://corona.lmao.ninja/assets/img/flags/na.png,516,2,Medium,2019,1208.862,1285.662,2494.524,3.03
-Myanmar,MM,MMR,22.0,98.0,https://corona.lmao.ninja/assets/img/flags/mm.png,104,2,Medium,2019,26044.666,28000.756,54045.422,82.728
-Mozambique,MZ,MOZ,-18.25,35.0,https://corona.lmao.ninja/assets/img/flags/mz.png,508,2,Medium,2019,14745.851,15620.192,30366.042999999998,38.615
-Morocco,MA,MAR,32.0,-5.0,https://corona.lmao.ninja/assets/img/flags/ma.png,504,2,Medium,2019,18093.063000000002,18378.703,36471.766,81.72
-Montserrat,MS,MSR,16.75,-62.2,https://corona.lmao.ninja/assets/img/flags/ms.png,500,2,Medium,2019,,,4.9910000000000005,49.91
-Montenegro,ME,MNE,42.0,19.0,https://corona.lmao.ninja/assets/img/flags/me.png,499,2,Medium,2019,310.506,317.482,627.988,46.691
-Mongolia,MN,MNG,46.0,105.0,https://corona.lmao.ninja/assets/img/flags/mn.png,496,2,Medium,2019,1589.932,1635.234,3225.1659999999997,2.076
-Monaco,MC,MCO,43.7333,7.4,https://corona.lmao.ninja/assets/img/flags/mc.png,492,2,Medium,2019,,,38.967,26152.349
-Mexico,MX,MEX,23.0,-102.0,https://corona.lmao.ninja/assets/img/flags/mx.png,484,2,Medium,2019,62403.393,65172.136,127575.52900000001,65.627
-Mayotte,YT,MYT,-12.8333,45.1667,https://corona.lmao.ninja/assets/img/flags/yt.png,175,2,Medium,2019,130.865,135.28799999999998,266.153,709.7410000000001
-Mauritius,MU,MUS,-20.2833,57.55,https://corona.lmao.ninja/assets/img/flags/mu.png,480,2,Medium,2019,626.971,642.6990000000001,1269.67,625.453
-Mauritania,MR,MRT,20.0,-12.0,https://corona.lmao.ninja/assets/img/flags/mr.png,478,2,Medium,2019,2271.843,2253.855,4525.698,4.391
-Martinique,MQ,MTQ,14.6667,-61.0,https://corona.lmao.ninja/assets/img/flags/mq.png,474,2,Medium,2019,172.972,202.585,375.55699999999996,354.29900000000004
-Malta,MT,MLT,35.8333,14.5833,https://corona.lmao.ninja/assets/img/flags/mt.png,470,2,Medium,2019,220.783,219.59400000000002,440.37699999999995,1376.1779999999999
-Mali,ML,MLI,17.0,-4.0,https://corona.lmao.ninja/assets/img/flags/ml.png,466,2,Medium,2019,9844.537,9813.485999999999,19658.023,16.111
-Maldives,MV,MDV,3.25,73.0,https://corona.lmao.ninja/assets/img/flags/mv.png,462,2,Medium,2019,336.07,194.887,530.957,1769.8570000000002
-Malaysia,MY,MYS,2.5,112.5,https://corona.lmao.ninja/assets/img/flags/my.png,458,2,Medium,2019,16423.164,15526.625,31949.789,97.245
-Malawi,MW,MWI,-13.5,34.0,https://corona.lmao.ninja/assets/img/flags/mw.png,454,2,Medium,2019,9185.278,9443.471,18628.749,197.59
-Madagascar,MG,MDG,-20.0,47.0,https://corona.lmao.ninja/assets/img/flags/mg.png,450,2,Medium,2019,13452.928999999998,13516.377,26969.306,46.355
-Luxembourg,LU,LUX,49.75,6.1667,https://corona.lmao.ninja/assets/img/flags/lu.png,442,2,Medium,2019,311.11,304.62,615.73,237.734
-Lithuania,LT,LTU,56.0,24.0,https://corona.lmao.ninja/assets/img/flags/lt.png,440,2,Medium,2019,1276.4769999999999,1483.154,2759.631,44.032
-Liechtenstein,LI,LIE,47.1667,9.5333,https://corona.lmao.ninja/assets/img/flags/li.png,438,2,Medium,2019,,,38.02,237.625
-Liberia,LR,LBR,6.5,-9.5,https://corona.lmao.ninja/assets/img/flags/lr.png,430,2,Medium,2019,2481.116,2456.258,4937.374,51.26
-Lebanon,LB,LBN,33.8333,35.8333,https://corona.lmao.ninja/assets/img/flags/lb.png,422,2,Medium,2019,3449.2459999999996,3406.4629999999997,6855.709,670.1569999999999
-Latvia,LV,LVA,57.0,25.0,https://corona.lmao.ninja/assets/img/flags/lv.png,428,2,Medium,2019,877.948,1028.792,1906.74,30.655
-Lao People's Democratic Republic,LA,LAO,18.0,105.0,https://corona.lmao.ninja/assets/img/flags/la.png,418,2,Medium,2019,3599.028,3570.428,7169.456,31.064
-Kyrgyzstan,KG,KGZ,41.0,75.0,https://corona.lmao.ninja/assets/img/flags/kg.png,417,2,Medium,2019,3173.902,3241.949,6415.851,33.451
-Kuwait,KW,KWT,29.3375,47.6581,https://corona.lmao.ninja/assets/img/flags/kw.png,414,2,Medium,2019,2563.055,1644.0220000000002,4207.077,236.08700000000002
-Kenya,KE,KEN,1.0,38.0,https://corona.lmao.ninja/assets/img/flags/ke.png,404,2,Medium,2019,26122.382,26451.585,52573.967000000004,92.374
-Kazakhstan,KZ,KAZ,48.0,68.0,https://corona.lmao.ninja/assets/img/flags/kz.png,398,2,Medium,2019,8999.754,9551.674,18551.428,6.872000000000001
-Jordan,JO,JOR,31.0,36.0,https://corona.lmao.ninja/assets/img/flags/jo.png,400,2,Medium,2019,5113.215,4988.482,10101.697,113.78299999999999
-Japan,JP,JPN,36.0,138.0,https://corona.lmao.ninja/assets/img/flags/jp.png,392,2,Medium,2019,61950.31,64909.989,126860.299,347.98699999999997
-Jamaica,JM,JAM,18.25,-77.5,https://corona.lmao.ninja/assets/img/flags/jm.png,388,2,Medium,2019,1463.72,1484.557,2948.277,272.232
-Italy,IT,ITA,42.8333,12.8333,https://corona.lmao.ninja/assets/img/flags/it.png,380,2,Medium,2019,29461.035,31089.057,60550.092000000004,205.855
-Israel,IL,ISR,31.5,34.75,https://corona.lmao.ninja/assets/img/flags/il.png,376,2,Medium,2019,4237.327,4282.045999999999,8519.373,393.686
-Isle of Man,IM,IMN,54.23,-4.55,https://corona.lmao.ninja/assets/img/flags/im.png,833,2,Medium,2019,,,84.589,148.40200000000002
-Ireland,IE,IRL,53.0,-8.0,https://corona.lmao.ninja/assets/img/flags/ie.png,372,2,Medium,2019,2422.4179999999997,2460.08,4882.498,70.874
-Iraq,IQ,IRQ,33.0,44.0,https://corona.lmao.ninja/assets/img/flags/iq.png,368,2,Medium,2019,19891.814,19417.975,39309.789,90.509
-Indonesia,ID,IDN,-5.0,120.0,https://corona.lmao.ninja/assets/img/flags/id.png,360,2,Medium,2019,136269.761,134355.80599999998,270625.567,149.387
-India,IN,IND,20.0,77.0,https://corona.lmao.ninja/assets/img/flags/in.png,356,2,Medium,2019,710129.572,656288.184,1366417.756,459.58
-Iceland,IS,ISL,65.0,-18.0,https://corona.lmao.ninja/assets/img/flags/is.png,352,2,Medium,2019,170.23,168.80700000000002,339.037,3.3819999999999997
-Hungary,HU,HUN,47.0,20.0,https://corona.lmao.ninja/assets/img/flags/hu.png,348,2,Medium,2019,4608.25,5076.43,9684.68,106.978
-Honduras,HN,HND,15.0,-86.5,https://corona.lmao.ninja/assets/img/flags/hn.png,340,2,Medium,2019,4868.994000000001,4877.121,9746.115,87.104
-Haiti,HT,HTI,19.0,-72.4167,https://corona.lmao.ninja/assets/img/flags/ht.png,332,2,Medium,2019,5557.596,5705.483,11263.079,408.675
-Guyana,GY,GUY,5.0,-59.0,https://corona.lmao.ninja/assets/img/flags/gy.png,328,2,Medium,2019,393.27099999999996,389.504,782.775,3.977
-Guinea-Bissau,GW,GNB,12.0,-15.0,https://corona.lmao.ninja/assets/img/flags/gw.png,624,2,Medium,2019,938.863,982.054,1920.9170000000001,68.311
-Guinea,GN,GIN,11.0,-10.0,https://corona.lmao.ninja/assets/img/flags/gn.png,324,2,Medium,2019,6166.075,6605.170999999999,12771.246000000001,51.975
-Guatemala,GT,GTM,15.5,-90.25,https://corona.lmao.ninja/assets/img/flags/gt.png,320,2,Medium,2019,8659.95,8921.526,17581.476000000002,164.06799999999998
-Guadeloupe,GP,GLP,16.25,-61.5833,https://corona.lmao.ninja/assets/img/flags/gp.png,312,2,Medium,2019,184.68599999999998,215.362,400.048,245.73
-Grenada,GD,GRD,12.1167,-61.6667,https://corona.lmao.ninja/assets/img/flags/gd.png,308,2,Medium,2019,56.426,55.576,112.00200000000001,329.418
-Greenland,GL,GRL,72.0,-40.0,https://corona.lmao.ninja/assets/img/flags/gl.png,304,2,Medium,2019,,,56.66,0.138
-Greece,GR,GRC,39.0,22.0,https://corona.lmao.ninja/assets/img/flags/gr.png,300,2,Medium,2019,5140.52,5332.932,10473.452,81.253
-Gibraltar,GI,GIB,36.1833,-5.3667,https://corona.lmao.ninja/assets/img/flags/gi.png,292,2,Medium,2019,,,33.705999999999996,3370.6
-Ghana,GH,GHA,8.0,-2.0,https://corona.lmao.ninja/assets/img/flags/gh.png,288,2,Medium,2019,15416.086000000001,15001.771999999999,30417.857999999997,133.681
-Germany,DE,DEU,51.0,9.0,https://corona.lmao.ninja/assets/img/flags/de.png,276,2,Medium,2019,41249.115,42267.931,83517.046,239.606
-Georgia,GE,GEO,42.0,43.5,https://corona.lmao.ninja/assets/img/flags/ge.png,268,2,Medium,2019,1905.743,2091.019,3996.762,57.516000000000005
-Gambia,GM,GMB,13.4667,-16.5667,https://corona.lmao.ninja/assets/img/flags/gm.png,270,2,Medium,2019,1164.364,1183.3319999999999,2347.696,231.986
-Gabon,GA,GAB,-1.0,11.75,https://corona.lmao.ninja/assets/img/flags/ga.png,266,2,Medium,2019,1106.192,1066.386,2172.578,8.432
-French Polynesia,PF,PYF,-15.0,-140.0,https://corona.lmao.ninja/assets/img/flags/pf.png,258,2,Medium,2019,141.49200000000002,137.793,279.285,76.307
-French Guiana,GF,GUF,4.0,-53.0,https://corona.lmao.ninja/assets/img/flags/gf.png,254,2,Medium,2019,143.766,147.05700000000002,290.823,3.5380000000000003
-France,FR,FRA,46.0,2.0,https://corona.lmao.ninja/assets/img/flags/fr.png,250,2,Medium,2019,31524.494,33605.237,65129.731,118.946
-Finland,FI,FIN,64.0,26.0,https://corona.lmao.ninja/assets/img/flags/fi.png,246,2,Medium,2019,2727.21,2804.949,5532.159000000001,18.204
-Fiji,FJ,FJI,-18.0,175.0,https://corona.lmao.ninja/assets/img/flags/fj.png,242,2,Medium,2019,450.959,438.996,889.955,48.711000000000006
-Faroe Islands,FO,FRO,62.0,-7.0,https://corona.lmao.ninja/assets/img/flags/fo.png,234,2,Medium,2019,,,48.677,34.869
-Falkland Islands (Malvinas),FK,FLK,-51.75,-59.0,https://corona.lmao.ninja/assets/img/flags/fk.png,238,2,Medium,2019,,,3.372,0.27699999999999997
-Ethiopia,ET,ETH,8.0,38.0,https://corona.lmao.ninja/assets/img/flags/et.png,231,2,Medium,2019,56069.008,56009.719000000005,112078.727,112.079
-Estonia,EE,EST,59.0,26.0,https://corona.lmao.ninja/assets/img/flags/ee.png,233,2,Medium,2019,626.626,699.023,1325.649,31.273000000000003
-Eritrea,ER,ERI,15.0,39.0,https://corona.lmao.ninja/assets/img/flags/er.png,232,2,Medium,2019,1752.711,1744.406,3497.117,34.625
-Equatorial Guinea,GQ,GNQ,2.0,10.0,https://corona.lmao.ninja/assets/img/flags/gq.png,226,2,Medium,2019,753.823,602.159,1355.9820000000002,48.342
-El Salvador,SV,SLV,13.8333,-88.9167,https://corona.lmao.ninja/assets/img/flags/sv.png,222,2,Medium,2019,3023.353,3430.197,6453.55,311.465
-Egypt,EG,EGY,27.0,30.0,https://corona.lmao.ninja/assets/img/flags/eg.png,818,2,Medium,2019,50722.599,49665.477,100388.076,100.84700000000001
-Ecuador,EC,ECU,-2.0,-77.5,https://corona.lmao.ninja/assets/img/flags/ec.png,218,2,Medium,2019,8690.487,8683.17,17373.657,69.954
-Dominican Republic,DO,DOM,19.0,-70.6667,https://corona.lmao.ninja/assets/img/flags/do.png,214,2,Medium,2019,5366.198,5372.759,10738.957,222.247
-Dominica,DM,DMA,15.4167,-61.3333,https://corona.lmao.ninja/assets/img/flags/dm.png,212,2,Medium,2019,,,71.808,95.744
-Djibouti,DJ,DJI,11.5,43.0,https://corona.lmao.ninja/assets/img/flags/dj.png,262,2,Medium,2019,511.94699999999995,461.61,973.557,42.0
-Denmark,DK,DNK,56.0,10.0,https://corona.lmao.ninja/assets/img/flags/dk.png,208,2,Medium,2019,2869.672,2902.205,5771.8769999999995,136.033
-Côte d'Ivoire,CI,CIV,8.0,-5.0,https://corona.lmao.ninja/assets/img/flags/ci.png,384,2,Medium,2019,12974.206,12742.348,25716.554,80.87
-Czechia,CZ,CZE,49.75,15.5,https://corona.lmao.ninja/assets/img/flags/cz.png,203,2,Medium,2019,5260.628000000001,5428.585,10689.213,138.39
-Cyprus,CY,CYP,35.0,33.0,https://corona.lmao.ninja/assets/img/flags/cy.png,196,2,Medium,2019,599.297,599.2769999999999,1198.5739999999998,129.716
-Curaçao,CW,CUW,12.15,-68.97,https://corona.lmao.ninja/assets/img/flags/cw.png,531,2,Medium,2019,75.084,88.339,163.423,368.07
-Cuba,CU,CUB,21.5,-80.0,https://corona.lmao.ninja/assets/img/flags/cu.png,192,2,Medium,2019,5627.928000000001,5705.556,11333.483999999999,106.478
-Croatia,HR,HRV,45.1667,15.5,https://corona.lmao.ninja/assets/img/flags/hr.png,191,2,Medium,2019,1990.015,2140.284,4130.299,73.808
-Costa Rica,CR,CRI,10.0,-84.0,https://corona.lmao.ninja/assets/img/flags/cr.png,188,2,Medium,2019,2522.5389999999998,2525.022,5047.561,98.855
-Congo,CG,COG,-1.0,15.0,https://corona.lmao.ninja/assets/img/flags/cg.png,178,2,Medium,2019,2687.3579999999997,2693.1459999999997,5380.504,15.755999999999998
-Comoros,KM,COM,-12.1667,44.25,https://corona.lmao.ninja/assets/img/flags/km.png,174,2,Medium,2019,429.21,421.681,850.8910000000001,457.222
-Colombia,CO,COL,4.0,-72.0,https://corona.lmao.ninja/assets/img/flags/co.png,170,2,Medium,2019,24713.193,25626.25,50339.443,45.371
-China,CN,CHN,35.0,105.0,https://corona.lmao.ninja/assets/img/flags/cn.png,156,2,Medium,2019,735624.2590000001,698159.433,1433783.6919999998,152.722
-Chile,CL,CHL,-30.0,-71.0,https://corona.lmao.ninja/assets/img/flags/cl.png,152,2,Medium,2019,9341.774,9610.261,18952.035,25.489
-Channel Islands,JE,JEY,49.21,-2.13,https://corona.lmao.ninja/assets/img/flags/je.png,830,2,Medium,2019,85.25399999999999,87.01,172.264,906.653
-Chad,TD,TCD,15.0,19.0,https://corona.lmao.ninja/assets/img/flags/td.png,148,2,Medium,2019,7960.522,7986.36,15946.882,12.664000000000001
-Central African Republic,CF,CAF,7.0,21.0,https://corona.lmao.ninja/assets/img/flags/cf.png,140,2,Medium,2019,2351.973,2393.206,4745.179,7.617000000000001
-Cayman Islands,KY,CYM,19.5,-80.5,https://corona.lmao.ninja/assets/img/flags/ky.png,136,2,Medium,2019,,,64.94800000000001,270.617
-Canada,CA,CAN,60.0,-95.0,https://corona.lmao.ninja/assets/img/flags/ca.png,124,2,Medium,2019,18563.538,18847.5,37411.038,4.114
-Cameroon,CM,CMR,6.0,12.0,https://corona.lmao.ninja/assets/img/flags/cm.png,120,2,Medium,2019,12939.928,12936.458999999999,25876.387000000002,54.74100000000001
-Cambodia,KH,KHM,13.0,105.0,https://corona.lmao.ninja/assets/img/flags/kh.png,116,2,Medium,2019,8047.3640000000005,8439.178,16486.542,93.398
-Cabo Verde,CV,CPV,16.0,-24.0,https://corona.lmao.ninja/assets/img/flags/cv.png,132,2,Medium,2019,276.036,273.9,549.936,136.461
-Burundi,BI,BDI,-3.5,30.0,https://corona.lmao.ninja/assets/img/flags/bi.png,108,2,Medium,2019,5718.988,5811.589,11530.577,449.01
-Burkina Faso,BF,BFA,13.0,-2.0,https://corona.lmao.ninja/assets/img/flags/bf.png,854,2,Medium,2019,10147.774,10173.609,20321.383,74.274
-Bulgaria,BG,BGR,43.0,25.0,https://corona.lmao.ninja/assets/img/flags/bg.png,100,2,Medium,2019,3400.054,3600.063,7000.116999999999,64.482
-British Virgin Islands,VG,VGB,18.5,-64.5,https://corona.lmao.ninja/assets/img/flags/vg.png,92,2,Medium,2019,,,30.033,200.22
-Brazil,BR,BRA,-10.0,-55.0,https://corona.lmao.ninja/assets/img/flags/br.png,76,2,Medium,2019,103733.16,107316.359,211049.51899999997,25.250999999999998
-Botswana,BW,BWA,-22.0,24.0,https://corona.lmao.ninja/assets/img/flags/bw.png,72,2,Medium,2019,1114.116,1189.587,2303.703,4.065
-Bolivia,BO,BOL,-17.0,-65.0,https://corona.lmao.ninja/assets/img/flags/bo.png,68,2,Medium,2019,5779.611,5733.491,11513.101999999999,10.628
-Bhutan,BT,BTN,27.5,90.5,https://corona.lmao.ninja/assets/img/flags/bt.png,64,2,Medium,2019,405.032,358.06199999999995,763.0939999999999,20.02
-Bermuda,BM,BMU,32.3333,-64.75,https://corona.lmao.ninja/assets/img/flags/bm.png,60,2,Medium,2019,,,62.508,1250.16
-Benin,BJ,BEN,9.5,2.25,https://corona.lmao.ninja/assets/img/flags/bj.png,204,2,Medium,2019,5891.255999999999,5909.895,11801.151000000002,104.65700000000001
-Belize,BZ,BLZ,17.25,-88.75,https://corona.lmao.ninja/assets/img/flags/bz.png,84,2,Medium,2019,194.28099999999998,196.07,390.351,17.113
-Belgium,BE,BEL,50.8333,4.0,https://corona.lmao.ninja/assets/img/flags/be.png,56,2,Medium,2019,5711.479,5827.847,11539.326000000001,381.087
-Belarus,BY,BLR,53.0,28.0,https://corona.lmao.ninja/assets/img/flags/by.png,112,2,Medium,2019,4399.913,5052.496,9452.409,46.583999999999996
-Barbados,BB,BRB,13.1667,-59.5333,https://corona.lmao.ninja/assets/img/flags/bb.png,52,2,Medium,2019,138.813,148.208,287.02099999999996,667.4910000000001
-Bangladesh,BD,BGD,24.0,90.0,https://corona.lmao.ninja/assets/img/flags/bd.png,50,2,Medium,2019,82473.791,80572.382,163046.173,1252.563
-Bahrain,BH,BHR,26.0,50.55,https://corona.lmao.ninja/assets/img/flags/bh.png,48,2,Medium,2019,1054.797,586.367,1641.164,2159.426
-Bahamas,BS,BHS,24.25,-76.0,https://corona.lmao.ninja/assets/img/flags/bs.png,44,2,Medium,2019,189.23,200.25599999999997,389.486,38.91
-Azerbaijan,AZ,AZE,40.5,47.5,https://corona.lmao.ninja/assets/img/flags/az.png,31,2,Medium,2019,5015.834,5031.885,10047.719000000001,121.55799999999999
-Austria,AT,AUT,47.3333,13.3333,https://corona.lmao.ninja/assets/img/flags/at.png,40,2,Medium,2019,4409.38,4545.728,8955.108,108.667
-Australia,AU,AUS,-27.0,133.0,https://corona.lmao.ninja/assets/img/flags/au.png,36,2,Medium,2019,12551.311000000002,12651.889,25203.2,3.281
-Aruba,AW,ABW,12.5,-69.9667,https://corona.lmao.ninja/assets/img/flags/aw.png,533,2,Medium,2019,50.443000000000005,55.867,106.31,590.611
-Armenia,AM,ARM,40.0,45.0,https://corona.lmao.ninja/assets/img/flags/am.png,51,2,Medium,2019,1391.269,1566.4589999999998,2957.728,103.889
-Argentina,AR,ARG,-34.0,-64.0,https://corona.lmao.ninja/assets/img/flags/ar.png,32,2,Medium,2019,21841.415,22939.26,44780.675,16.363
-Antigua and Barbuda,AG,ATG,17.05,-61.8,https://corona.lmao.ninja/assets/img/flags/ag.png,28,2,Medium,2019,46.851000000000006,50.263999999999996,97.115,220.71599999999998
-Anguilla,AI,AIA,18.25,-63.1667,https://corona.lmao.ninja/assets/img/flags/ai.png,660,2,Medium,2019,,,14.872,165.24400000000003
-Angola,AO,AGO,-12.5,18.5,https://corona.lmao.ninja/assets/img/flags/ao.png,24,2,Medium,2019,15744.778999999999,16080.52,31825.299,25.528000000000002
-Andorra,AD,AND,42.5,1.6,https://corona.lmao.ninja/assets/img/flags/ad.png,20,2,Medium,2019,,,77.146,164.14
-Algeria,DZ,DZA,28.0,3.0,https://corona.lmao.ninja/assets/img/flags/dz.png,12,2,Medium,2019,21749.666,21303.388,43053.054000000004,18.076
-Albania,AL,ALB,41.0,20.0,https://corona.lmao.ninja/assets/img/flags/al.png,8,2,Medium,2019,1466.785,1414.128,2880.913,105.14299999999999
-Afghanistan,AF,AFG,33.0,65.0,https://corona.lmao.ninja/assets/img/flags/af.png,4,2,Medium,2019,19529.727,18512.03,38041.757000000005,58.269
+Zimbabwe,ZW,ZWE,-20.0,30.0,https://disease.sh/assets/img/flags/zw.png,716,2,Medium,2019,6983.353,7662.12,14645.473,37.858000000000004
+Zambia,ZM,ZMB,-15.0,30.0,https://disease.sh/assets/img/flags/zm.png,894,2,Medium,2019,8843.214,9017.82,17861.034,24.026
+Yemen,YE,YEM,15.0,48.0,https://disease.sh/assets/img/flags/ye.png,887,2,Medium,2019,14692.284,14469.638,29161.922000000002,55.233999999999995
+Western Sahara,EH,ESH,24.5,-13.0,https://disease.sh/assets/img/flags/eh.png,732,2,Medium,2019,304.755,277.703,582.4580000000001,2.19
+Uzbekistan,UZ,UZB,41.0,64.0,https://disease.sh/assets/img/flags/uz.png,860,2,Medium,2019,16450.116,16531.599,32981.715,77.531
+Uruguay,UY,URY,-33.0,-56.0,https://disease.sh/assets/img/flags/uy.png,858,2,Medium,2019,1671.889,1789.842,3461.7309999999998,19.779
+Ukraine,UA,UKR,49.0,32.0,https://disease.sh/assets/img/flags/ua.png,804,2,Medium,2019,20379.023,23614.62,43993.643,75.94
+Uganda,UG,UGA,1.0,32.0,https://disease.sh/assets/img/flags/ug.png,800,2,Medium,2019,21807.166,22462.421000000002,44269.587,221.558
+US,US,USA,38.0,-97.0,https://disease.sh/assets/img/flags/us.png,1111,2,Medium,2019,164409.733,167972.987,332382.72,36.295
+United Kingdom,GB,GBR,54.0,-2.0,https://disease.sh/assets/img/flags/gb.png,826,2,Medium,2019,33351.435,34178.726,67530.161,279.131
+Turks and Caicos Islands,TC,TCA,21.75,-71.5833,https://disease.sh/assets/img/flags/tc.png,796,2,Medium,2019,,,38.194,40.204
+Turkey,TR,TUR,39.0,35.0,https://disease.sh/assets/img/flags/tr.png,792,2,Medium,2019,41173.709,42255.898,83429.607,108.402
+Tunisia,TN,TUN,34.0,9.0,https://disease.sh/assets/img/flags/tn.png,788,2,Medium,2019,5797.98,5896.741,11694.721000000001,75.275
+Trinidad and Tobago,TT,TTO,11.0,-61.0,https://disease.sh/assets/img/flags/tt.png,780,2,Medium,2019,688.982,705.987,1394.969,271.92400000000004
+Togo,TG,TGO,8.0,1.1667,https://disease.sh/assets/img/flags/tg.png,768,2,Medium,2019,4020.6459999999997,4061.7129999999997,8082.359,148.6
+Timor-Leste,TL,TLS,-8.55,125.5167,https://disease.sh/assets/img/flags/tl.png,626,2,Medium,2019,653.507,639.613,1293.12,86.962
+Thailand,TH,THA,15.0,100.0,https://disease.sh/assets/img/flags/th.png,764,2,Medium,2019,33904.846,35720.735,69625.58099999999,136.283
+Tajikistan,TJ,TJK,39.0,71.0,https://disease.sh/assets/img/flags/tj.png,762,2,Medium,2019,4697.9529999999995,4623.07,9321.023000000001,66.598
+Syrian Arab Republic,SY,SYR,35.0,38.0,https://disease.sh/assets/img/flags/sy.png,760,2,Medium,2019,8554.55,8515.582,17070.131999999998,92.959
+Switzerland,CH,CHE,47.0,8.0,https://disease.sh/assets/img/flags/ch.png,756,2,Medium,2019,4260.661,4330.7,8591.360999999999,217.415
+Sweden,SE,SWE,62.0,15.0,https://disease.sh/assets/img/flags/se.png,752,2,Medium,2019,5025.597,5010.794,10036.391,24.459
+Suriname,SR,SUR,4.0,-56.0,https://disease.sh/assets/img/flags/sr.png,740,2,Medium,2019,292.255,289.108,581.363,3.727
+Sudan,SD,SDN,15.0,30.0,https://disease.sh/assets/img/flags/sd.png,729,2,Medium,2019,21387.956000000002,21425.281000000003,42813.237,24.256
+Sri Lanka,LK,LKA,7.0,81.0,https://disease.sh/assets/img/flags/lk.png,144,2,Medium,2019,10233.415,11090.319,21323.734,340.037
+Spain,ES,ESP,40.0,-4.0,https://disease.sh/assets/img/flags/es.png,724,2,Medium,2019,22960.647999999997,23776.134,46736.782,93.698
+South Sudan,SS,SSD,6.8769,31.3069,https://disease.sh/assets/img/flags/ss.png,728,2,Medium,2019,5536.53,5525.584,11062.114,18.105999999999998
+South Africa,ZA,ZAF,-29.0,24.0,https://disease.sh/assets/img/flags/za.png,710,2,Medium,2019,28859.302000000003,29698.965,58558.267,48.272
+Somalia,SO,SOM,10.0,49.0,https://disease.sh/assets/img/flags/so.png,706,2,Medium,2019,7700.196,7742.71,15442.906,24.616
+Slovenia,SI,SVN,46.0,15.0,https://disease.sh/assets/img/flags/si.png,705,2,Medium,2019,1034.684,1043.97,2078.654,103.21
+Slovakia,SK,SVK,48.6667,19.5,https://disease.sh/assets/img/flags/sk.png,703,2,Medium,2019,2656.513,2800.4990000000003,5457.012,113.48
+Singapore,SG,SGP,1.3667,103.8,https://disease.sh/assets/img/flags/sg.png,702,2,Medium,2019,3038.2259999999997,2766.117,5804.343000000001,8291.919
+Sierra Leone,SL,SLE,8.5,-11.5,https://disease.sh/assets/img/flags/sl.png,694,2,Medium,2019,3898.35,3914.857,7813.206999999999,108.24600000000001
+Seychelles,SC,SYC,-4.5833,55.6667,https://disease.sh/assets/img/flags/sc.png,690,2,Medium,2019,50.167,47.574,97.741,212.48
+Serbia,RS,SRB,44.0,21.0,https://disease.sh/assets/img/flags/rs.png,688,2,Medium,2019,4297.444,4474.784000000001,8772.228000000001,100.3
+Senegal,SN,SEN,14.0,-14.0,https://disease.sh/assets/img/flags/sn.png,686,2,Medium,2019,7946.433000000001,8349.929,16296.362,84.64299999999999
+Saudi Arabia,SA,SAU,25.0,45.0,https://disease.sh/assets/img/flags/sa.png,682,2,Medium,2019,19783.532,14484.997,34268.529,15.940999999999999
+Sao Tome and Principe,ST,STP,1.0,7.0,https://disease.sh/assets/img/flags/st.png,678,2,Medium,2019,107.611,107.43700000000001,215.048,224.00799999999998
+San Marino,SM,SMR,43.7667,12.4167,https://disease.sh/assets/img/flags/sm.png,674,2,Medium,2019,,,33.864000000000004,564.4
+Saint Vincent and the Grenadines,VC,VCT,13.25,-61.2,https://disease.sh/assets/img/flags/vc.png,670,2,Medium,2019,56.097,54.496,110.59299999999999,283.572
+Saint Lucia,LC,LCA,13.8833,-61.1333,https://disease.sh/assets/img/flags/lc.png,662,2,Medium,2019,90.021,92.774,182.795,299.664
+Saint Kitts and Nevis,KN,KNA,17.3333,-62.75,https://disease.sh/assets/img/flags/kn.png,659,2,Medium,2019,,,52.833999999999996,203.208
+Réunion,RE,REU,-21.1,55.6,https://disease.sh/assets/img/flags/re.png,638,2,Medium,2019,430.284,458.648,888.932,355.57300000000004
+Rwanda,RW,RWA,-2.0,30.0,https://disease.sh/assets/img/flags/rw.png,646,2,Medium,2019,6206.085999999999,6420.852,12626.938,511.834
+Romania,RO,ROU,46.0,25.0,https://disease.sh/assets/img/flags/ro.png,642,2,Medium,2019,9418.287,9946.271,19364.558,84.132
+Qatar,QA,QAT,25.5,51.25,https://disease.sh/assets/img/flags/qa.png,634,2,Medium,2019,2133.521,698.55,2832.071,243.93400000000003
+Portugal,PT,PRT,39.5,-8.0,https://disease.sh/assets/img/flags/pt.png,620,2,Medium,2019,4836.674,5389.504,10226.178,111.652
+Poland,PL,POL,52.0,20.0,https://disease.sh/assets/img/flags/pl.png,616,2,Medium,2019,18360.539,19527.232,37887.771,123.723
+Philippines,PH,PHL,13.0,122.0,https://disease.sh/assets/img/flags/ph.png,608,2,Medium,2019,54316.072,53800.55,108116.62199999999,362.601
+Peru,PE,PER,-10.0,-76.0,https://disease.sh/assets/img/flags/pe.png,604,2,Medium,2019,16148.241000000002,16362.221000000001,32510.462000000003,25.399
+Paraguay,PY,PRY,-23.0,-58.0,https://disease.sh/assets/img/flags/py.png,600,2,Medium,2019,3580.888,3463.7509999999997,7044.639,17.730999999999998
+Papua New Guinea,PG,PNG,-6.0,147.0,https://disease.sh/assets/img/flags/pg.png,598,2,Medium,2019,4480.0109999999995,4296.108,8776.119,19.379
+Panama,PA,PAN,9.0,-80.0,https://disease.sh/assets/img/flags/pa.png,591,2,Medium,2019,2126.4339999999997,2120.006,4246.44,57.122
+Pakistan,PK,PAK,30.0,70.0,https://disease.sh/assets/img/flags/pk.png,586,2,Medium,2019,111447.58099999999,105117.73599999999,216565.31699999998,280.933
+Oman,OM,OMN,21.0,57.0,https://disease.sh/assets/img/flags/om.png,512,2,Medium,2019,3284.448,1690.5439999999999,4974.992,16.074
+Norway,NO,NOR,62.0,10.0,https://disease.sh/assets/img/flags/no.png,578,2,Medium,2019,2716.812,2662.047,5378.859,14.725999999999999
+Nigeria,NG,NGA,10.0,8.0,https://disease.sh/assets/img/flags/ng.png,566,2,Medium,2019,101831.87400000001,99131.729,200963.603,220.65200000000002
+Niger,NE,NER,16.0,8.0,https://disease.sh/assets/img/flags/ne.png,562,2,Medium,2019,11714.461000000001,11596.258,23310.718999999997,18.403
+Nicaragua,NI,NIC,13.0,-85.0,https://disease.sh/assets/img/flags/ni.png,558,2,Medium,2019,3225.9840000000004,3319.5190000000002,6545.503000000001,54.391999999999996
+New Zealand,NZ,NZL,-41.0,174.0,https://disease.sh/assets/img/flags/nz.png,554,2,Medium,2019,2351.1620000000003,2431.9,4783.062,18.165
+New Caledonia,NC,NCL,-21.5,165.5,https://disease.sh/assets/img/flags/nc.png,540,2,Medium,2019,142.226,140.531,282.757,15.468
+Netherlands,NL,NLD,52.5,5.75,https://disease.sh/assets/img/flags/nl.png,528,2,Medium,2019,8514.835,8582.288,17097.123,507.032
+Nepal,NP,NPL,28.0,84.0,https://disease.sh/assets/img/flags/np.png,524,2,Medium,2019,13046.953000000001,15561.761999999999,28608.715,199.572
+Namibia,NA,NAM,-22.0,17.0,https://disease.sh/assets/img/flags/na.png,516,2,Medium,2019,1208.862,1285.662,2494.524,3.03
+Myanmar,MM,MMR,22.0,98.0,https://disease.sh/assets/img/flags/mm.png,104,2,Medium,2019,26044.666,28000.756,54045.422,82.728
+Mozambique,MZ,MOZ,-18.25,35.0,https://disease.sh/assets/img/flags/mz.png,508,2,Medium,2019,14745.851,15620.192,30366.042999999998,38.615
+Morocco,MA,MAR,32.0,-5.0,https://disease.sh/assets/img/flags/ma.png,504,2,Medium,2019,18093.063000000002,18378.703,36471.766,81.72
+Montserrat,MS,MSR,16.75,-62.2,https://disease.sh/assets/img/flags/ms.png,500,2,Medium,2019,,,4.9910000000000005,49.91
+Montenegro,ME,MNE,42.0,19.0,https://disease.sh/assets/img/flags/me.png,499,2,Medium,2019,310.506,317.482,627.988,46.691
+Mongolia,MN,MNG,46.0,105.0,https://disease.sh/assets/img/flags/mn.png,496,2,Medium,2019,1589.932,1635.234,3225.1659999999997,2.076
+Monaco,MC,MCO,43.7333,7.4,https://disease.sh/assets/img/flags/mc.png,492,2,Medium,2019,,,38.967,26152.349
+Mexico,MX,MEX,23.0,-102.0,https://disease.sh/assets/img/flags/mx.png,484,2,Medium,2019,62403.393,65172.136,127575.52900000001,65.627
+Mayotte,YT,MYT,-12.8333,45.1667,https://disease.sh/assets/img/flags/yt.png,175,2,Medium,2019,130.865,135.28799999999998,266.153,709.7410000000001
+Mauritius,MU,MUS,-20.2833,57.55,https://disease.sh/assets/img/flags/mu.png,480,2,Medium,2019,626.971,642.6990000000001,1269.67,625.453
+Mauritania,MR,MRT,20.0,-12.0,https://disease.sh/assets/img/flags/mr.png,478,2,Medium,2019,2271.843,2253.855,4525.698,4.391
+Martinique,MQ,MTQ,14.6667,-61.0,https://disease.sh/assets/img/flags/mq.png,474,2,Medium,2019,172.972,202.585,375.55699999999996,354.29900000000004
+Malta,MT,MLT,35.8333,14.5833,https://disease.sh/assets/img/flags/mt.png,470,2,Medium,2019,220.783,219.59400000000002,440.37699999999995,1376.1779999999999
+Mali,ML,MLI,17.0,-4.0,https://disease.sh/assets/img/flags/ml.png,466,2,Medium,2019,9844.537,9813.485999999999,19658.023,16.111
+Maldives,MV,MDV,3.25,73.0,https://disease.sh/assets/img/flags/mv.png,462,2,Medium,2019,336.07,194.887,530.957,1769.8570000000002
+Malaysia,MY,MYS,2.5,112.5,https://disease.sh/assets/img/flags/my.png,458,2,Medium,2019,16423.164,15526.625,31949.789,97.245
+Malawi,MW,MWI,-13.5,34.0,https://disease.sh/assets/img/flags/mw.png,454,2,Medium,2019,9185.278,9443.471,18628.749,197.59
+Madagascar,MG,MDG,-20.0,47.0,https://disease.sh/assets/img/flags/mg.png,450,2,Medium,2019,13452.928999999998,13516.377,26969.306,46.355
+Luxembourg,LU,LUX,49.75,6.1667,https://disease.sh/assets/img/flags/lu.png,442,2,Medium,2019,311.11,304.62,615.73,237.734
+Lithuania,LT,LTU,56.0,24.0,https://disease.sh/assets/img/flags/lt.png,440,2,Medium,2019,1276.4769999999999,1483.154,2759.631,44.032
+Liechtenstein,LI,LIE,47.1667,9.5333,https://disease.sh/assets/img/flags/li.png,438,2,Medium,2019,,,38.02,237.625
+Liberia,LR,LBR,6.5,-9.5,https://disease.sh/assets/img/flags/lr.png,430,2,Medium,2019,2481.116,2456.258,4937.374,51.26
+Lesotho,LS,LSO,-29.5,28.5,https://disease.sh/assets/img/flags/ls.png,426,2,Medium,2019,1047.944,1077.323,2125.2670000000003,70.002
+Lebanon,LB,LBN,33.8333,35.8333,https://disease.sh/assets/img/flags/lb.png,422,2,Medium,2019,3449.2459999999996,3406.4629999999997,6855.709,670.1569999999999
+Latvia,LV,LVA,57.0,25.0,https://disease.sh/assets/img/flags/lv.png,428,2,Medium,2019,877.948,1028.792,1906.74,30.655
+Lao People's Democratic Republic,LA,LAO,18.0,105.0,https://disease.sh/assets/img/flags/la.png,418,2,Medium,2019,3599.028,3570.428,7169.456,31.064
+Kyrgyzstan,KG,KGZ,41.0,75.0,https://disease.sh/assets/img/flags/kg.png,417,2,Medium,2019,3173.902,3241.949,6415.851,33.451
+Kuwait,KW,KWT,29.3375,47.6581,https://disease.sh/assets/img/flags/kw.png,414,2,Medium,2019,2563.055,1644.0220000000002,4207.077,236.08700000000002
+Kenya,KE,KEN,1.0,38.0,https://disease.sh/assets/img/flags/ke.png,404,2,Medium,2019,26122.382,26451.585,52573.967000000004,92.374
+Kazakhstan,KZ,KAZ,48.0,68.0,https://disease.sh/assets/img/flags/kz.png,398,2,Medium,2019,8999.754,9551.674,18551.428,6.872000000000001
+Jordan,JO,JOR,31.0,36.0,https://disease.sh/assets/img/flags/jo.png,400,2,Medium,2019,5113.215,4988.482,10101.697,113.78299999999999
+Japan,JP,JPN,36.0,138.0,https://disease.sh/assets/img/flags/jp.png,392,2,Medium,2019,61950.31,64909.989,126860.299,347.98699999999997
+Jamaica,JM,JAM,18.25,-77.5,https://disease.sh/assets/img/flags/jm.png,388,2,Medium,2019,1463.72,1484.557,2948.277,272.232
+Italy,IT,ITA,42.8333,12.8333,https://disease.sh/assets/img/flags/it.png,380,2,Medium,2019,29461.035,31089.057,60550.092000000004,205.855
+Israel,IL,ISR,31.5,34.75,https://disease.sh/assets/img/flags/il.png,376,2,Medium,2019,4237.327,4282.045999999999,8519.373,393.686
+Isle of Man,IM,IMN,54.23,-4.55,https://disease.sh/assets/img/flags/im.png,833,2,Medium,2019,,,84.589,148.40200000000002
+Ireland,IE,IRL,53.0,-8.0,https://disease.sh/assets/img/flags/ie.png,372,2,Medium,2019,2422.4179999999997,2460.08,4882.498,70.874
+Iraq,IQ,IRQ,33.0,44.0,https://disease.sh/assets/img/flags/iq.png,368,2,Medium,2019,19891.814,19417.975,39309.789,90.509
+Indonesia,ID,IDN,-5.0,120.0,https://disease.sh/assets/img/flags/id.png,360,2,Medium,2019,136269.761,134355.80599999998,270625.567,149.387
+India,IN,IND,20.0,77.0,https://disease.sh/assets/img/flags/in.png,356,2,Medium,2019,710129.572,656288.184,1366417.756,459.58
+Iceland,IS,ISL,65.0,-18.0,https://disease.sh/assets/img/flags/is.png,352,2,Medium,2019,170.23,168.80700000000002,339.037,3.3819999999999997
+Hungary,HU,HUN,47.0,20.0,https://disease.sh/assets/img/flags/hu.png,348,2,Medium,2019,4608.25,5076.43,9684.68,106.978
+Honduras,HN,HND,15.0,-86.5,https://disease.sh/assets/img/flags/hn.png,340,2,Medium,2019,4868.994000000001,4877.121,9746.115,87.104
+Haiti,HT,HTI,19.0,-72.4167,https://disease.sh/assets/img/flags/ht.png,332,2,Medium,2019,5557.596,5705.483,11263.079,408.675
+Guyana,GY,GUY,5.0,-59.0,https://disease.sh/assets/img/flags/gy.png,328,2,Medium,2019,393.27099999999996,389.504,782.775,3.977
+Guinea-Bissau,GW,GNB,12.0,-15.0,https://disease.sh/assets/img/flags/gw.png,624,2,Medium,2019,938.863,982.054,1920.9170000000001,68.311
+Guinea,GN,GIN,11.0,-10.0,https://disease.sh/assets/img/flags/gn.png,324,2,Medium,2019,6166.075,6605.170999999999,12771.246000000001,51.975
+Guatemala,GT,GTM,15.5,-90.25,https://disease.sh/assets/img/flags/gt.png,320,2,Medium,2019,8659.95,8921.526,17581.476000000002,164.06799999999998
+Guadeloupe,GP,GLP,16.25,-61.5833,https://disease.sh/assets/img/flags/gp.png,312,2,Medium,2019,184.68599999999998,215.362,400.048,245.73
+Grenada,GD,GRD,12.1167,-61.6667,https://disease.sh/assets/img/flags/gd.png,308,2,Medium,2019,56.426,55.576,112.00200000000001,329.418
+Greenland,GL,GRL,72.0,-40.0,https://disease.sh/assets/img/flags/gl.png,304,2,Medium,2019,,,56.66,0.138
+Greece,GR,GRC,39.0,22.0,https://disease.sh/assets/img/flags/gr.png,300,2,Medium,2019,5140.52,5332.932,10473.452,81.253
+Gibraltar,GI,GIB,36.1833,-5.3667,https://disease.sh/assets/img/flags/gi.png,292,2,Medium,2019,,,33.705999999999996,3370.6
+Ghana,GH,GHA,8.0,-2.0,https://disease.sh/assets/img/flags/gh.png,288,2,Medium,2019,15416.086000000001,15001.771999999999,30417.857999999997,133.681
+Germany,DE,DEU,51.0,9.0,https://disease.sh/assets/img/flags/de.png,276,2,Medium,2019,41249.115,42267.931,83517.046,239.606
+Georgia,GE,GEO,42.0,43.5,https://disease.sh/assets/img/flags/ge.png,268,2,Medium,2019,1905.743,2091.019,3996.762,57.516000000000005
+Gambia,GM,GMB,13.4667,-16.5667,https://disease.sh/assets/img/flags/gm.png,270,2,Medium,2019,1164.364,1183.3319999999999,2347.696,231.986
+Gabon,GA,GAB,-1.0,11.75,https://disease.sh/assets/img/flags/ga.png,266,2,Medium,2019,1106.192,1066.386,2172.578,8.432
+French Polynesia,PF,PYF,-15.0,-140.0,https://disease.sh/assets/img/flags/pf.png,258,2,Medium,2019,141.49200000000002,137.793,279.285,76.307
+French Guiana,GF,GUF,4.0,-53.0,https://disease.sh/assets/img/flags/gf.png,254,2,Medium,2019,143.766,147.05700000000002,290.823,3.5380000000000003
+France,FR,FRA,46.0,2.0,https://disease.sh/assets/img/flags/fr.png,250,2,Medium,2019,31524.494,33605.237,65129.731,118.946
+Finland,FI,FIN,64.0,26.0,https://disease.sh/assets/img/flags/fi.png,246,2,Medium,2019,2727.21,2804.949,5532.159000000001,18.204
+Fiji,FJ,FJI,-18.0,175.0,https://disease.sh/assets/img/flags/fj.png,242,2,Medium,2019,450.959,438.996,889.955,48.711000000000006
+Faroe Islands,FO,FRO,62.0,-7.0,https://disease.sh/assets/img/flags/fo.png,234,2,Medium,2019,,,48.677,34.869
+Falkland Islands (Malvinas),FK,FLK,-51.75,-59.0,https://disease.sh/assets/img/flags/fk.png,238,2,Medium,2019,,,3.372,0.27699999999999997
+Ethiopia,ET,ETH,8.0,38.0,https://disease.sh/assets/img/flags/et.png,231,2,Medium,2019,56069.008,56009.719000000005,112078.727,112.079
+Estonia,EE,EST,59.0,26.0,https://disease.sh/assets/img/flags/ee.png,233,2,Medium,2019,626.626,699.023,1325.649,31.273000000000003
+Eritrea,ER,ERI,15.0,39.0,https://disease.sh/assets/img/flags/er.png,232,2,Medium,2019,1752.711,1744.406,3497.117,34.625
+Equatorial Guinea,GQ,GNQ,2.0,10.0,https://disease.sh/assets/img/flags/gq.png,226,2,Medium,2019,753.823,602.159,1355.9820000000002,48.342
+El Salvador,SV,SLV,13.8333,-88.9167,https://disease.sh/assets/img/flags/sv.png,222,2,Medium,2019,3023.353,3430.197,6453.55,311.465
+Egypt,EG,EGY,27.0,30.0,https://disease.sh/assets/img/flags/eg.png,818,2,Medium,2019,50722.599,49665.477,100388.076,100.84700000000001
+Ecuador,EC,ECU,-2.0,-77.5,https://disease.sh/assets/img/flags/ec.png,218,2,Medium,2019,8690.487,8683.17,17373.657,69.954
+Dominican Republic,DO,DOM,19.0,-70.6667,https://disease.sh/assets/img/flags/do.png,214,2,Medium,2019,5366.198,5372.759,10738.957,222.247
+Dominica,DM,DMA,15.4167,-61.3333,https://disease.sh/assets/img/flags/dm.png,212,2,Medium,2019,,,71.808,95.744
+Djibouti,DJ,DJI,11.5,43.0,https://disease.sh/assets/img/flags/dj.png,262,2,Medium,2019,511.94699999999995,461.61,973.557,42.0
+Denmark,DK,DNK,56.0,10.0,https://disease.sh/assets/img/flags/dk.png,208,2,Medium,2019,2869.672,2902.205,5771.8769999999995,136.033
+Côte d'Ivoire,CI,CIV,8.0,-5.0,https://disease.sh/assets/img/flags/ci.png,384,2,Medium,2019,12974.206,12742.348,25716.554,80.87
+Czechia,CZ,CZE,49.75,15.5,https://disease.sh/assets/img/flags/cz.png,203,2,Medium,2019,5260.628000000001,5428.585,10689.213,138.39
+Cyprus,CY,CYP,35.0,33.0,https://disease.sh/assets/img/flags/cy.png,196,2,Medium,2019,599.297,599.2769999999999,1198.5739999999998,129.716
+Curaçao,CW,CUW,12.15,-68.97,https://disease.sh/assets/img/flags/cw.png,531,2,Medium,2019,75.084,88.339,163.423,368.07
+Cuba,CU,CUB,21.5,-80.0,https://disease.sh/assets/img/flags/cu.png,192,2,Medium,2019,5627.928000000001,5705.556,11333.483999999999,106.478
+Croatia,HR,HRV,45.1667,15.5,https://disease.sh/assets/img/flags/hr.png,191,2,Medium,2019,1990.015,2140.284,4130.299,73.808
+Costa Rica,CR,CRI,10.0,-84.0,https://disease.sh/assets/img/flags/cr.png,188,2,Medium,2019,2522.5389999999998,2525.022,5047.561,98.855
+Congo,CG,COG,-1.0,15.0,https://disease.sh/assets/img/flags/cg.png,178,2,Medium,2019,2687.3579999999997,2693.1459999999997,5380.504,15.755999999999998
+Comoros,KM,COM,-12.1667,44.25,https://disease.sh/assets/img/flags/km.png,174,2,Medium,2019,429.21,421.681,850.8910000000001,457.222
+Colombia,CO,COL,4.0,-72.0,https://disease.sh/assets/img/flags/co.png,170,2,Medium,2019,24713.193,25626.25,50339.443,45.371
+China,CN,CHN,35.0,105.0,https://disease.sh/assets/img/flags/cn.png,156,2,Medium,2019,735624.2590000001,698159.433,1433783.6919999998,152.722
+Chile,CL,CHL,-30.0,-71.0,https://disease.sh/assets/img/flags/cl.png,152,2,Medium,2019,9341.774,9610.261,18952.035,25.489
+Channel Islands,JE,JEY,49.21,-2.13,https://disease.sh/assets/img/flags/je.png,830,2,Medium,2019,85.25399999999999,87.01,172.264,906.653
+Chad,TD,TCD,15.0,19.0,https://disease.sh/assets/img/flags/td.png,148,2,Medium,2019,7960.522,7986.36,15946.882,12.664000000000001
+Central African Republic,CF,CAF,7.0,21.0,https://disease.sh/assets/img/flags/cf.png,140,2,Medium,2019,2351.973,2393.206,4745.179,7.617000000000001
+Cayman Islands,KY,CYM,19.5,-80.5,https://disease.sh/assets/img/flags/ky.png,136,2,Medium,2019,,,64.94800000000001,270.617
+Canada,CA,CAN,60.0,-95.0,https://disease.sh/assets/img/flags/ca.png,124,2,Medium,2019,18563.538,18847.5,37411.038,4.114
+Cameroon,CM,CMR,6.0,12.0,https://disease.sh/assets/img/flags/cm.png,120,2,Medium,2019,12939.928,12936.458999999999,25876.387000000002,54.74100000000001
+Cambodia,KH,KHM,13.0,105.0,https://disease.sh/assets/img/flags/kh.png,116,2,Medium,2019,8047.3640000000005,8439.178,16486.542,93.398
+Cabo Verde,CV,CPV,16.0,-24.0,https://disease.sh/assets/img/flags/cv.png,132,2,Medium,2019,276.036,273.9,549.936,136.461
+Burundi,BI,BDI,-3.5,30.0,https://disease.sh/assets/img/flags/bi.png,108,2,Medium,2019,5718.988,5811.589,11530.577,449.01
+Burkina Faso,BF,BFA,13.0,-2.0,https://disease.sh/assets/img/flags/bf.png,854,2,Medium,2019,10147.774,10173.609,20321.383,74.274
+Bulgaria,BG,BGR,43.0,25.0,https://disease.sh/assets/img/flags/bg.png,100,2,Medium,2019,3400.054,3600.063,7000.116999999999,64.482
+British Virgin Islands,VG,VGB,18.5,-64.5,https://disease.sh/assets/img/flags/vg.png,92,2,Medium,2019,,,30.033,200.22
+Brazil,BR,BRA,-10.0,-55.0,https://disease.sh/assets/img/flags/br.png,76,2,Medium,2019,103733.16,107316.359,211049.51899999997,25.250999999999998
+Botswana,BW,BWA,-22.0,24.0,https://disease.sh/assets/img/flags/bw.png,72,2,Medium,2019,1114.116,1189.587,2303.703,4.065
+Bolivia,BO,BOL,-17.0,-65.0,https://disease.sh/assets/img/flags/bo.png,68,2,Medium,2019,5779.611,5733.491,11513.101999999999,10.628
+Bhutan,BT,BTN,27.5,90.5,https://disease.sh/assets/img/flags/bt.png,64,2,Medium,2019,405.032,358.06199999999995,763.0939999999999,20.02
+Bermuda,BM,BMU,32.3333,-64.75,https://disease.sh/assets/img/flags/bm.png,60,2,Medium,2019,,,62.508,1250.16
+Benin,BJ,BEN,9.5,2.25,https://disease.sh/assets/img/flags/bj.png,204,2,Medium,2019,5891.255999999999,5909.895,11801.151000000002,104.65700000000001
+Belize,BZ,BLZ,17.25,-88.75,https://disease.sh/assets/img/flags/bz.png,84,2,Medium,2019,194.28099999999998,196.07,390.351,17.113
+Belgium,BE,BEL,50.8333,4.0,https://disease.sh/assets/img/flags/be.png,56,2,Medium,2019,5711.479,5827.847,11539.326000000001,381.087
+Belarus,BY,BLR,53.0,28.0,https://disease.sh/assets/img/flags/by.png,112,2,Medium,2019,4399.913,5052.496,9452.409,46.583999999999996
+Barbados,BB,BRB,13.1667,-59.5333,https://disease.sh/assets/img/flags/bb.png,52,2,Medium,2019,138.813,148.208,287.02099999999996,667.4910000000001
+Bangladesh,BD,BGD,24.0,90.0,https://disease.sh/assets/img/flags/bd.png,50,2,Medium,2019,82473.791,80572.382,163046.173,1252.563
+Bahrain,BH,BHR,26.0,50.55,https://disease.sh/assets/img/flags/bh.png,48,2,Medium,2019,1054.797,586.367,1641.164,2159.426
+Bahamas,BS,BHS,24.25,-76.0,https://disease.sh/assets/img/flags/bs.png,44,2,Medium,2019,189.23,200.25599999999997,389.486,38.91
+Azerbaijan,AZ,AZE,40.5,47.5,https://disease.sh/assets/img/flags/az.png,31,2,Medium,2019,5015.834,5031.885,10047.719000000001,121.55799999999999
+Austria,AT,AUT,47.3333,13.3333,https://disease.sh/assets/img/flags/at.png,40,2,Medium,2019,4409.38,4545.728,8955.108,108.667
+Australia,AU,AUS,-27.0,133.0,https://disease.sh/assets/img/flags/au.png,36,2,Medium,2019,12551.311000000002,12651.889,25203.2,3.281
+Aruba,AW,ABW,12.5,-69.9667,https://disease.sh/assets/img/flags/aw.png,533,2,Medium,2019,50.443000000000005,55.867,106.31,590.611
+Armenia,AM,ARM,40.0,45.0,https://disease.sh/assets/img/flags/am.png,51,2,Medium,2019,1391.269,1566.4589999999998,2957.728,103.889
+Argentina,AR,ARG,-34.0,-64.0,https://disease.sh/assets/img/flags/ar.png,32,2,Medium,2019,21841.415,22939.26,44780.675,16.363
+Antigua and Barbuda,AG,ATG,17.05,-61.8,https://disease.sh/assets/img/flags/ag.png,28,2,Medium,2019,46.851000000000006,50.263999999999996,97.115,220.71599999999998
+Anguilla,AI,AIA,18.25,-63.1667,https://disease.sh/assets/img/flags/ai.png,660,2,Medium,2019,,,14.872,165.24400000000003
+Angola,AO,AGO,-12.5,18.5,https://disease.sh/assets/img/flags/ao.png,24,2,Medium,2019,15744.778999999999,16080.52,31825.299,25.528000000000002
+Andorra,AD,AND,42.5,1.6,https://disease.sh/assets/img/flags/ad.png,20,2,Medium,2019,,,77.146,164.14
+Algeria,DZ,DZA,28.0,3.0,https://disease.sh/assets/img/flags/dz.png,12,2,Medium,2019,21749.666,21303.388,43053.054000000004,18.076
+Albania,AL,ALB,41.0,20.0,https://disease.sh/assets/img/flags/al.png,8,2,Medium,2019,1466.785,1414.128,2880.913,105.14299999999999
+Afghanistan,AF,AFG,33.0,65.0,https://disease.sh/assets/img/flags/af.png,4,2,Medium,2019,19529.727,18512.03,38041.757000000005,58.269
