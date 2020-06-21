@@ -1,7 +1,7 @@
 # **Predictions**
 For experience, I'm running simple predictions over the cases and deaths per day. As they are time-series, I'm using [Facebook Prophet](https://facebook.github.io/prophet/docs/quick_start.html) that is also designed for this kind of prediction in a very simpler way. It works well for most of the time; sometimes there is a huge leap and it takes more time and more data to be understood.
 
-These predictions were made with Covid19 pandemic data from **2020-06-18**.
+These predictions were made with Covid19 pandemic data from **2020-06-20**.
 
 As there are many countries to have their data predicted in a row, I selected a few of them plus Brazil to be predicted:
 ['Brazil', 'Italy', 'United Kingdom', 'Spain', 'US', 'Belgium', 'France'].
@@ -16,21 +16,21 @@ By the end, a CSV file containing all the predicted data is generated.
 *predicted? = True* means the line is a prediction; *=False* means they are real numbers.
 |     | country   | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |----:|:----------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 109 | Brazil    | 2020-06-14 00:00:00 |      17110 |         612 |  867624 |    43332 | False        |
-| 110 | Brazil    | 2020-06-15 00:00:00 |      20647 |         627 |  888271 |    43959 | False        |
 | 111 | Brazil    | 2020-06-16 00:00:00 |      34918 |        1282 |  923189 |    45241 | False        |
 | 112 | Brazil    | 2020-06-17 00:00:00 |      32188 |        1269 |  955377 |    46510 | False        |
 | 113 | Brazil    | 2020-06-18 00:00:00 |      22765 |        1238 |  978142 |    47748 | False        |
-| 114 | Brazil    | 2020-06-19 00:00:00 |      30948 |        1232 | 1009090 |    48980 | True         |
-| 115 | Brazil    | 2020-06-20 00:00:00 |      30440 |        1182 | 1039530 |    50162 | True         |
-| 116 | Brazil    | 2020-06-21 00:00:00 |      28056 |        1051 | 1067586 |    51213 | True         |
-| 117 | Brazil    | 2020-06-22 00:00:00 |      28301 |        1115 | 1095887 |    52328 | True         |
-| 118 | Brazil    | 2020-06-23 00:00:00 |      32268 |        1331 | 1128155 |    53659 | True         |
-| 119 | Brazil    | 2020-06-24 00:00:00 |      33446 |        1331 | 1161601 |    54990 | True         |
-| 120 | Brazil    | 2020-06-25 00:00:00 |      33398 |        1377 | 1194999 |    56367 | True         |
-| 121 | Brazil    | 2020-06-26 00:00:00 |      34193 |        1335 | 1229192 |    57702 | True         |
-| 122 | Brazil    | 2020-06-27 00:00:00 |      33685 |        1285 | 1262877 |    58987 | True         |
-| 123 | Brazil    | 2020-06-28 00:00:00 |      31301 |        1154 | 1294178 |    60141 | True         |
+| 114 | Brazil    | 2020-06-19 00:00:00 |      54771 |        1206 | 1032913 |    48954 | False        |
+| 115 | Brazil    | 2020-06-20 00:00:00 |          0 |        1022 | 1032913 |    49976 | False        |
+| 116 | Brazil    | 2020-06-21 00:00:00 |      26733 |        1026 | 1059646 |    51002 | True         |
+| 117 | Brazil    | 2020-06-22 00:00:00 |      26944 |        1090 | 1086590 |    52092 | True         |
+| 118 | Brazil    | 2020-06-23 00:00:00 |      30934 |        1305 | 1117524 |    53397 | True         |
+| 119 | Brazil    | 2020-06-24 00:00:00 |      32066 |        1306 | 1149590 |    54703 | True         |
+| 120 | Brazil    | 2020-06-25 00:00:00 |      31985 |        1351 | 1181575 |    56054 | True         |
+| 121 | Brazil    | 2020-06-26 00:00:00 |      34157 |        1306 | 1215732 |    57360 | True         |
+| 122 | Brazil    | 2020-06-27 00:00:00 |      30413 |        1248 | 1246145 |    58608 | True         |
+| 123 | Brazil    | 2020-06-28 00:00:00 |      29676 |        1124 | 1275821 |    59732 | True         |
+| 124 | Brazil    | 2020-06-29 00:00:00 |      29886 |        1187 | 1305707 |    60919 | True         |
+| 125 | Brazil    | 2020-06-30 00:00:00 |      33877 |        1402 | 1339584 |    62321 | True         |
 
  #### The predicted Brazil's cumulative curves
 ![](brazil_predictions.png)
@@ -45,21 +45,21 @@ Facebook's Prophet automatically generates charts about the behaviour of the ana
 **Tomorrow**
 |     | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |----:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 114 | Brazil         | 2020-06-19 00:00:00 |      30948 |        1232 | 1009090 |    48980 | True         |
-| 140 | Italy          | 2020-06-19 00:00:00 |       -410 |         -17 |  237749 |    34497 | True         |
-| 140 | United Kingdom | 2020-06-19 00:00:00 |       1589 |         289 |  303939 |    42662 | True         |
-| 139 | Spain          | 2020-06-19 00:00:00 |       1205 |         -48 |  246836 |    27088 | True         |
-| 149 | US             | 2020-06-19 00:00:00 |      27175 |        1048 | 2218227 |   119482 | True         |
-| 136 | Belgium        | 2020-06-19 00:00:00 |         30 |          -5 |   60378 |     9678 | True         |
-| 147 | France         | 2020-06-19 00:00:00 |       -111 |          21 |  197872 |    29627 | True         |
+| 116 | Brazil         | 2020-06-21 00:00:00 |      26733 |        1026 | 1059646 |    51002 | True         |
+| 142 | Italy          | 2020-06-21 00:00:00 |       -509 |         -67 |  237894 |    34543 | True         |
+| 142 | United Kingdom | 2020-06-21 00:00:00 |       1037 |          82 |  306032 |    42756 | True         |
+| 141 | Spain          | 2020-06-21 00:00:00 |        711 |         -29 |  247012 |    28293 | True         |
+| 151 | US             | 2020-06-21 00:00:00 |      24258 |         661 | 2279377 |   120380 | True         |
+| 138 | Belgium        | 2020-06-21 00:00:00 |        -60 |         -24 |   60490 |     9672 | True         |
+| 149 | France         | 2020-06-21 00:00:00 |        557 |         -70 |  199992 |    29566 | True         |
 
  **The day after tomorrow** 
 |     | country        | ds                  |   case_day |   death_day |   cases |   deaths | predicted?   |
 |----:|:---------------|:--------------------|-----------:|------------:|--------:|---------:|:-------------|
-| 115 | Brazil         | 2020-06-20 00:00:00 |      30440 |        1182 | 1039530 |    50162 | True         |
-| 141 | Italy          | 2020-06-20 00:00:00 |       -373 |         -26 |  237376 |    34471 | True         |
-| 141 | United Kingdom | 2020-06-20 00:00:00 |       1077 |         237 |  305016 |    42899 | True         |
-| 140 | Spain          | 2020-06-20 00:00:00 |        863 |         -98 |  247699 |    26990 | True         |
-| 150 | US             | 2020-06-20 00:00:00 |      26084 |         965 | 2244311 |   120447 | True         |
-| 137 | Belgium        | 2020-06-20 00:00:00 |          4 |         -21 |   60382 |     9657 | True         |
-| 148 | France         | 2020-06-20 00:00:00 |       -305 |         -35 |  197567 |    29592 | True         |
+| 117 | Brazil         | 2020-06-22 00:00:00 |      26944 |        1090 | 1086590 |    52092 | True         |
+| 143 | Italy          | 2020-06-22 00:00:00 |       -864 |         -60 |  237030 |    34483 | True         |
+| 143 | United Kingdom | 2020-06-22 00:00:00 |        618 |          99 |  306650 |    42855 | True         |
+| 142 | Spain          | 2020-06-22 00:00:00 |        233 |        -120 |  247245 |    28173 | True         |
+| 152 | US             | 2020-06-22 00:00:00 |      23832 |         729 | 2303209 |   121109 | True         |
+| 139 | Belgium        | 2020-06-22 00:00:00 |       -190 |         -33 |   60300 |     9639 | True         |
+| 150 | France         | 2020-06-22 00:00:00 |        -92 |         -33 |  199900 |    29533 | True         |
