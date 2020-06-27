@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[3]:
 
 
 df = pd.read_csv('../data/world_corona19_data.csv', sep=',')
@@ -22,11 +22,11 @@ df['date'] = df['date'].astype('datetime64[ns]')
 today = df.date.max().date()
 tomorrow = today + datetime.timedelta(days=1)
 yesterday = today - datetime.timedelta(days=1)
-qtdeMonitored = 5
+qtdeMonitored = 10
 df.tail()
 
 
-# In[3]:
+# In[4]:
 
 
 countries = df['country'].unique()
@@ -38,7 +38,7 @@ countries = df['country'].unique()
 
 # #### Top 5 deadliest countries + Brazil
 
-# In[4]:
+# In[5]:
 
 
 cols = ['country','day','date','cases','case_day','deaths','death_day', 'perc_death', 'cases_million',  'deaths_million', 'avg7_case_day_million', 'avg7_death_day_million', 'avg7_recovery_day_million']
@@ -52,7 +52,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[5]:
+# In[6]:
 
 
 df_top_cases = df[df['date']==str(today)].sort_values('cases_million', ascending = False)
@@ -65,7 +65,7 @@ df_top_cases
 
 # #### Countries to be analised
 
-# In[6]:
+# In[17]:
 
 
 #inform the countries you want to analise
@@ -74,7 +74,7 @@ monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France
 
 # #### Cases and deaths 
 
-# In[7]:
+# In[18]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -125,7 +125,7 @@ fig.savefig('../analysis/world_cases_deaths.png')
 # #### Cases, deaths and recoveries per million 
 # (million of population - normalizes per country population)
 
-# In[8]:
+# In[19]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -176,7 +176,7 @@ fig.savefig('../analysis/world_cases_deaths_million.png')
 
 # #### Active cases, world overview, % recoveries and mortality
 
-# In[9]:
+# In[15]:
 
 
 fig, ((ax1, ax2), (ax3, ax4),) = plt.subplots(2,2, figsize=(20, 15))
@@ -226,7 +226,7 @@ fig.savefig('../analysis/world_active_cases_percentages.png')
 # ### Brazil
 # #### Cases, deaths, recoveries
 
-# In[10]:
+# In[16]:
 
 
 df_br = df[df['country'] == 'Brazil']
@@ -443,6 +443,29 @@ ax3.legend()
 
 
 
+
+
+# In[14]:
+
+
+fig, ((ax1, ax2)) = plt.subplots(2,1, figsize=(15, 15))
+fig.tight_layout(pad=5.0)
+
+ax1.set_title("daily cases")
+ax1.set_xlabel("days from the first case")
+ax1.grid(color='gray', alpha = 0.4)
+
+ax2.set_title("daily deaths")
+ax2.set_xlabel("days from the first case")
+ax2.grid(color='gray', alpha = 0.4)
+
+for country in monitoredCountries:
+    data = df[df['country'] == country]
+    ax1.plot(data.day, data.case_day, label = country)
+    ax2.plot(data.day, data.death_day, label = country)
+
+ax1.legend()
+ax2.legend()
 
 
 # In[ ]:
