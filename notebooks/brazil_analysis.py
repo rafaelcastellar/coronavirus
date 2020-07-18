@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 #https://github.com/pomber/covid19
@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 
-# In[2]:
+# In[3]:
 
 
 df = pd.read_csv('../data/brazil_corona19_data.csv')
@@ -31,14 +31,14 @@ df = df[(df['place_type']=='state')]
 df.tail()
 
 
-# In[3]:
+# In[4]:
 
 
 # df_mapa[['date','state','city_ibge_code','death_day_thousand']]
 df.state.unique()
 
 
-# In[4]:
+# In[5]:
 
 
 state_geo = json.load(open('../data/brasil-estados.json'))
@@ -54,7 +54,7 @@ for state in state_geo['features']:
 df_mapa.tail()
 
 
-# In[8]:
+# In[6]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
@@ -111,7 +111,7 @@ m.save('../analysis/maps/brazilMapDeaths.html')
 m
 
 
-# In[10]:
+# In[7]:
 
 
 m = folium.Map(location=[-15.75, -49.95], zoom_start=4)
@@ -154,7 +154,7 @@ m.save('../analysis/maps/brazilMapCases.html')
 m
 
 
-# In[11]:
+# In[8]:
 
 
 # import imgkit
@@ -178,7 +178,7 @@ m
 # ----------------------------
 # ### Brasil - Analysis and monitoring
 
-# In[12]:
+# In[9]:
 
 
 #week variation
@@ -197,10 +197,11 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top 5 deadliest states 
 
-# In[13]:
+# In[17]:
 
 
 cols = ['state', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand','deaths_thousand', 'perc_death']
+addedStates = ['SP']
 
 df_top_deaths = df[(df['is_last']==True)].sort_values('deaths_thousand', ascending = False)
 df_top_deaths.reset_index(0, inplace=True)
@@ -211,7 +212,7 @@ df_top_deaths
 
 # #### Top 5 most transmissible countries + Brazil
 
-# In[14]:
+# In[11]:
 
 
 df_top_cases = df[(df['is_last']==True)].sort_values('cases_thousand', ascending = False)
@@ -226,15 +227,16 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[15]:
+# In[36]:
 
 
 #inform the countries you want to analise
-monitoredStates = df_top_deaths['state'].head(qtdeMonitored).to_numpy()
+monitoredStates = df_top_deaths['state'].head(qtdeMonitored).to_numpy()#.append('SP')
+monitoredStates = np.append(monitoredStates, 'SP')
 monitoredStates
 
 
-# In[16]:
+# In[37]:
 
 
 # fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -283,7 +285,7 @@ ax4.legend()
 fig.savefig('../analysis/brazilian_states_cases_deaths.png')
 
 
-# In[17]:
+# In[38]:
 
 
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
@@ -334,7 +336,7 @@ fig.savefig('../analysis/brazil_cases_deaths_thousand.png')
 
 # ### Generating the HTML file
 
-# In[18]:
+# In[15]:
 
 
 f = open('../html/brazil_analysis.html', 'w')
@@ -448,10 +450,16 @@ f.close()
 print('Brazilian analysis done!')
 
 
-# In[ ]:
+# In[16]:
 
 
 # df[df['state']=='SP'][['date','death_day']]
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
