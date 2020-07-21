@@ -200,7 +200,7 @@ diffDeaths = todayDeaths - lastWeekDeaths
 
 # #### Top deadliest cities  + Santa Gertrudes + Lucelia + Rio Claro + outras
 
-# In[10]:
+# In[8]:
 
 
 cols = ['city', 'date', 'day', 'population','case_day', 'cases', 'death_day', 'deaths', 'cases_thousand', 'deaths_thousand', 'perc_death']
@@ -217,7 +217,7 @@ df_top_deaths
 
 # #### Top most transmissible countries + Santa Gertrude + Lucélia + Adamantina + Rio Claro + Cordeirópolis + Limeira - São Paulo
 
-# In[11]:
+# In[9]:
 
 
 df_top_cases = df[(df['is_last']==True) & (df['population']>10000)].sort_values('cases_thousand', ascending = False)
@@ -233,7 +233,7 @@ df_top_cases
 
 # #### Cases and deaths 
 
-# In[12]:
+# In[10]:
 
 
 #inform the countries you want to analise
@@ -243,7 +243,7 @@ monitoredCities = df_top_cases['city'].head(qtdeMonitored+1).to_numpy()
 # monitoredCities = np.append(monitoredCities,[addedCity])
 
 
-# In[13]:
+# In[11]:
 
 
 # Top most transmissible - SP
@@ -293,7 +293,7 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_cities_cases_deaths.png')
 
 
-# In[14]:
+# In[12]:
 
 
 # Selected cities
@@ -334,9 +334,58 @@ ax4.legend()
 fig.savefig('../analysis/saoPaulo_selectedCities_cases_deaths.png')
 
 
+# In[60]:
+
+
+# Selected cities
+fig, ((ax1, ax2)) = plt.subplots(1,2, figsize=(20, 8))
+fig.tight_layout(pad=5.0)
+
+ax1.set_title("São Paulo city - Cumulatative cases and deaths")
+ax1.set_xlabel("days from the first case")
+ax1.grid(color='gray', alpha = 0.4)
+
+ax2.set_title("São Paulo city - Cases and deaths - moving average (last 7 days)")
+ax2.set_xlabel("days from the first case")
+ax2.grid(color='gray', alpha = 0.4)
+
+city = 'São Paulo'
+dados = df[(df['city'] == city)]
+ax1.plot(dados.day, dados.cases, label = 'cases')
+ax1.plot(dados.day, dados.deaths, label = 'deaths')
+ax2.plot(dados.day, dados.avg7_cases, label = 'cases')
+ax2.plot(dados.day, dados.avg7_deaths, label = 'deaths')
+
+ax1.axvline(x=84, ymin=0, ymax=0.9, color = 'purple', linestyle = '-',label = 'anúncio')
+ax1.axvline(x=84+14, ymin=0, ymax=0.9, color = 'purple', linestyle = ':',label = 'anúncio + 14')
+ax1.axvline(x=89, ymin=0, ymax=0.9, color = 'orange', linestyle = '-.',label = 'reabertura')
+ax1.axvline(x=89+14, ymin=0, ymax=0.9, color = 'orange', linestyle = '--',label = 'reabertura + 14')
+
+ax2.axvline(x=84, ymin=0, ymax=0.9, color = 'purple', linestyle = '-',label = 'anúncio')
+ax2.axvline(x=84+14, ymin=0, ymax=0.9, color = 'purple', linestyle = '--',label = 'anúncio + 14')
+ax2.axvline(x=89, ymin=0, ymax=0.9, color = 'orange', linestyle = '-',label = 'reabertura')
+ax2.axvline(x=89+14, ymin=0, ymax=0.9, color = 'orange', linestyle = '--',label = 'reabertura + 14')
+
+ax1.legend()
+ax2.legend()
+fig.savefig('../analysis/saoPaulo_cases_deaths.png')
+
+
+# In[49]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
 # ### Generating the html file
 
-# In[15]:
+# In[26]:
 
 
 f = open('../html/saoPaulo_analysis.html', 'w')
@@ -467,16 +516,10 @@ f.close()
 print('Sao Paulo\'s analysis done!')
 
 
-# In[15]:
+# In[16]:
 
 
 # df[df['state']=='SP'][['date','death_day']]
-
-
-# In[ ]:
-
-
-
 
 
 # In[ ]:
