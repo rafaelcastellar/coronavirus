@@ -105,26 +105,29 @@
       <li><a href="#https://population.un.org/wpp/Download/Standard/CSV/"> UN's dataset</a> with demographic of (almost) all countries.</li>
       <li><a href="data/brasil-estados.json">brasil-estados.json</a>: a JSON file with geo-data of all brasilian states fetched from <a href="https://servicodados.ibge.gov.br/api/v2/malhas/?formato=application/vnd.geo+json&amp;resolucao=2">IBGE's API</a>. These data are used for drawing the states over the Brazil's map.</li>
       <li><s>gov_brazil_corona19_data.xlsx: updated data of the pandemic in Brazil provided by <a href="https://covid.saude.gov.br/">Ministery of Health</a>.</s></li>
-      <li><a href="data/gov_brazil_corona19_data.xlsx">Brasil.io's API</a>: updated data of the pandemic in Brazil provided by <a href="https://brasil.io/colabore/">Brasil.io</a> team that works hard to keep our public data accessible.</li>
+      <li><a href="https://brasil.io/dataset/covid19/caso/">Brasil.io's API</a>: updated data of the pandemic in Brazil provided by <a href="https://brasil.io/colabore/">Brasil.io</a> team that works hard to keep our public data accessible.</li>
       <!-- <li><a href="https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/dados_covid_sp.csv">dados_covid_sp.csv</a>: data u atualizados da pandemia no estado de São Paulo providos pela <a href="https://www.seade.gov.br/coronavirus/">SEADE</a>.</li> -->
       <li><a href="data/saoPaulo-cidades.json">saoPaulo-cidades.json</a>: a JSON file with geo-data of all the cities of San Paulo's state fetched from <a href="https://servicodados.ibge.gov.br/api/v2/malhas/35/?formato=application/vnd.geo+json&resolucao=5">IBGE's API</a>. These data are used for drawing the San Paulo's cities over its map.</li>
       </ul>
       <hr>
       <h3 id="dataset">Dataset</h3>
       <ul>
-      <li><strong><a href="data/world_countries_2019.csv">world_countries_2019.csv</a></strong>: a consolidated dataset from ebinters and UN data, which is used to normalize some pandemic indicadors by countries total population</li>
-      <li><strong><a href="data/world_corona19_data.csv">world_corona19_data.csv</a></strong>: the main dataset used by this study. It is made from Pomber&#39;s JSON and enriched with the following features which are derivate to cases, deaths and recoveries, although, to simplify I will use just <em>case&#39;s</em> :<ul>
-      <li><em>day</em>: number of the day since the first case of contamination</li>
-      <li><em>cases</em>: cumulative number of cases since day 0</li>
-      <li><em>case_day</em>: number of the cases recorded in a specific day</li>
-      <li><em>%var_case_day</em>: daily variation of cases from the previous day (in percent)</li>
-      <li><em>cases_million</em>: number of daily cases per one million of population of a coumtry. It is better comparable along the countries</li>
-      <li><em>avg7_cases</em>: moving average of the daily cases among the last 7 days </li>
-      <li><em>avg7_cases_million</em>: moving average of the daily cases per one million among the last 7 days </li>
-      <li><em>perc_death</em>: percentage of deaths over the cases of the country</li>
+        <li><strong><a href="data/world_countries_2019.csv">world_countries_2019.csv</a></strong>: a consolidated dataset from ebinters and UN data, which is used to normalize some pandemic indicadors by countries total population</li>
+        <li><strong><a href="data/incoming_data.gz">incoming_data.gz:</a></strong>compressed file within the following datasets</li>
+      <ul>
+          <li><strong>world_corona19_data.csv</strong>: the main dataset used by this study. It is made from Pomber&#39;s JSON and enriched with the following features which are derivate to cases, deaths and recoveries, although, to simplify I will use just <em>case&#39;s</em> :<ul>
+          <li><em>day</em>: number of the day since the first case of contamination</li>
+          <li><em>cases</em>: cumulative number of cases since day 0</li>
+          <li><em>case_day</em>: number of the cases recorded in a specific day</li>
+          <li><em>%var_case_day</em>: daily variation of cases from the previous day (in percent)</li>
+          <li><em>cases_million</em>: number of daily cases per one million of population of a coumtry. It is better comparable along the countries</li>
+          <li><em>avg7_cases</em>: moving average of the daily cases among the last 7 days </li>
+          <li><em>avg7_cases_million</em>: moving average of the daily cases per one million among the last 7 days </li>
+          <li><em>perc_death</em>: percentage of deaths over the cases of the country</li>
+          </ul>
+          </li>
+          <li><strong>brazil_corona19_data.csv</strong>: a previous-like dataset, but with brazilian pandemic data over its states. </li>
       </ul>
-      </li>
-      <li><strong><a href="data/brazil_corona19_data.csv">brazil_corona19_data.csv</a></strong>: a previous-like dataset, but with brazilian pandemic data over its states. </li>
       </ul>
 
       <h3 id="notebooks">Notebooks</h3>

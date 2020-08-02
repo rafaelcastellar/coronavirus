@@ -16,6 +16,9 @@ python prediction.py
 python brazilian_prediction.py
 # python saoPaulo_prediction.py
 
+tar -cvzf data/incoming_data.gz data/brazil_corona19_data.csv data/gov_brazil_corona19_data.xlsx data/world_corona19_data.csv
+rm data/brazil_corona19_data.csv 
+rm data/gov_brazil_corona19_data.xlsx data/world_corona19_data.csv
 cd ..
 git add .
 git commit -m "$1"

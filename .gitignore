@@ -135,3 +135,9 @@ COVID19_mobility
 COVID19_mobility/*
 
 *.gz
+
+brazil_corona19_data.csv
+gov_brazil_corona19_data.xlsx
+world_corona19_data.csv
+
+!incoming_data.gz
