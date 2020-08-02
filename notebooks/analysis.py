@@ -65,7 +65,7 @@ df_top_cases
 
 # #### Countries to be analised
 
-# In[17]:
+# In[7]:
 
 
 #inform the countries you want to analise
@@ -74,7 +74,7 @@ monitoredCountries = ['Brazil','Italy', 'United Kingdom', 'Spain', 'US', 'France
 
 # #### Cases and deaths 
 
-# In[18]:
+# In[8]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -125,7 +125,7 @@ fig.savefig('../analysis/world_cases_deaths.png')
 # #### Cases, deaths and recoveries per million 
 # (million of population - normalizes per country population)
 
-# In[19]:
+# In[9]:
 
 
 fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3,2, figsize=(20, 20))
@@ -176,7 +176,7 @@ fig.savefig('../analysis/world_cases_deaths_million.png')
 
 # #### Active cases, world overview, % recoveries and mortality
 
-# In[15]:
+# In[10]:
 
 
 fig, ((ax1, ax2), (ax3, ax4),) = plt.subplots(2,2, figsize=(20, 15))
@@ -226,7 +226,7 @@ fig.savefig('../analysis/world_active_cases_percentages.png')
 # ### Brazil
 # #### Cases, deaths, recoveries
 
-# In[16]:
+# In[11]:
 
 
 df_br = df[df['country'] == 'Brazil']
@@ -274,10 +274,10 @@ fig.savefig('../analysis/brazil_number_variation.png')
 
 # #### Moving averages (last 7 days)
 
-# In[11]:
+# In[16]:
 
 
-fig, ((ax1, ax2)) = plt.subplots(1,2, figsize=(20, 8))
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize=(20, 15))
 fig.tight_layout(pad=5.0)
 
 ax1.set_title("Cases, deaths and recoveries (absolute numbers) - moving average (last 7 days)")
@@ -294,7 +294,19 @@ ax2.plot(df_br.day, df_br.avg7_case_day_million, label = 'cases')
 ax2.plot(df_br.day, df_br.avg7_death_day_million, label = 'deaths')
 ax2.plot(df_br.day, df_br.avg7_recovery_day_million, label = 'recoveries')
 
+ax3.set_title("Cases in Brazil")
+ax3.set_xlabel("days from the first case")
+ax3.grid(color='gray', alpha = 0.4)
+ax3.plot(df_br.day, df_br.case_day, label = 'daily cases')
+ax3.plot(df_br.day, df_br.avg7_cases, label = 'moving average')
 
+ax4.set_title("Deaths in Brazil")
+ax4.set_xlabel("days from the first case")
+ax4.grid(color='gray', alpha = 0.4)
+ax4.plot(df_br.day, df_br.death_day, label = 'daily deaths')
+ax4.plot(df_br.day, df_br.avg7_deaths, label = 'moving average')
+
+# ax4.set
 # ax4.set_title("# daily quantity - Brazil (absolute numbers)")
 # ax4.set_xlabel("days from the first case")
 # ax4.set_ylabel('quantity')
@@ -308,6 +320,24 @@ ax2.legend()
 # ax4.legend()
 
 fig.savefig('../analysis/brazil_movingAvg.png')
+
+
+# In[ ]:
+
+
+fig, (ax1, ax2) = plt.subplots(1,2, figsize=(20, 20))
+fig.tight_layout(pad=5.0)
+
+ax1.set_title("Cases in Brazil")
+ax1.set_xlabel("days from the first case")
+ax1.grid(color='gray', alpha = 0.4)
+ax1.plot(df_br.day, df_br.avg7_cases, label = 'cases')
+ax1.plot(df_br.day, df_br.avg7_cases, label = 'cases')
+
+# ax2.set_title("Deaths in Brazil")
+# ax2.set_xlabel("days from the first case")
+# ax2.grid(color='gray', alpha = 0.4)
+# ax1.plot(df_br.day, df_br.avg7_deaths, label = 'deaths')
 
 
 # ### Generating the html file
