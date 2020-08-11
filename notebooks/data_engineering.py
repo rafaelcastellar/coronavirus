@@ -117,6 +117,9 @@ for country in countries:
     df.loc[df.country == country, 'avg7_case_day_million'] = df[df.country == country]['case_day_million'].rolling(window=7).mean().replace([np.nan], 0).round(3)
     df.loc[df.country == country, 'avg7_death_day_million'] = df[df.country == country]['death_day_million'].rolling(window=7).mean().replace([np.nan], 0).round(3)
     df.loc[df.country == country, 'avg7_recovery_day_million'] = df[df.country == country]['recovery_day_million'].rolling(window=7).mean().replace([np.nan], 0).round(3)
+
+    df.loc[df.country == country, '%var_avg7_case_day_million'] = ((df[df.country == country]['avg7_case_day_million'] - df[df.country == country]['avg7_case_day_million'].shift()) / df[df.country == country]['avg7_case_day_million'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+    df.loc[df.country == country, '%var_avg7_death_day_million'] = ((df[df.country == country]['avg7_death_day_million'] - df[df.country == country]['avg7_death_day_million'].shift()) / df[df.country == country]['avg7_death_day_million'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
     
 
 df['perc_death'] = (df['deaths']/df['cases'] * 100).round(2)
@@ -133,7 +136,7 @@ df['recovery_day'] = df['recovery_day'].astype('int')
 df.tail()
 
 
-# In[5]:
+# In[7]:
 
 
 #Adjusting wrong negative variations (wrong number from the source)
@@ -142,7 +145,7 @@ df.loc[df.case_day < 0, ['case_day']] = df[df.case_day < 0].shift().case_day#, [
 df.loc[df.cases_million < 0, ['cases_million']] = 0#df[df.cases_million < 0].cases_million.shift()#, ['cases']]
 
 
-# In[6]:
+# In[8]:
 
 
 df.to_csv('../data/world_corona19_data.csv', index = False)
@@ -150,7 +153,7 @@ df.to_csv('../data/world_corona19_data.csv', index = False)
 
 # #### countries not located in UN dataset
 
-# In[7]:
+# In[9]:
 
 
 # for country in countries:
@@ -160,7 +163,7 @@ df.to_csv('../data/world_corona19_data.csv', index = False)
 
 # ### Brazil data engineering
 
-# In[2]:
+# In[10]:
 
 
 url = 'https://data.brasil.io/dataset/covid19/caso.csv.gz'
@@ -173,7 +176,17 @@ with gzip.open('/home/rafael/tmp/caso.csv.gz') as f:
     df = pd.read_csv(f)
 
 
-# In[13]:
+# In[11]:
+
+
+# url = 'https://brasil.io/dataset/covid19/caso/?format=csv'
+# response = requests.get(url)
+# with open('/home/rafael/tmp/caso.csv', 'wb') as f:
+#     f.write(response.content)
+# df = pd.read_csv('/home/rafael/tmp/caso.csv')
+
+
+# In[12]:
 
 
 df.rename(columns={'confirmed': 'cases', 'estimated_population_2019':'population', 'order_for_place':'day'}, inplace= True)
@@ -198,7 +211,7 @@ df.tail()
 
 # #### Feature engineering
 
-# In[14]:
+# In[ ]:
 
 
 print('Iniciando feature engieering Brasil')
@@ -254,7 +267,9 @@ for state in states:
         df.loc[indexes, 'avg7_case_day_thousand'] = df[indexes]['case_day_thousand'].rolling(window=7).mean()
         df.loc[indexes, 'avg7_death_day_thousand'] = df[indexes]['death_day_thousand'].rolling(window=7).mean()
     
-
+        df.loc[indexes, '%var_avg7_case_day_thousand'] = ((df[indexes]['avg7_case_day_thousand'] - df[indexes]['avg7_case_day_thousand'].shift()) / df[indexes]['avg7_case_day_thousand'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+        df.loc[indexes, '%var_avg7_death_day_thousand'] = ((df[indexes]['avg7_death_day_thousand'] - df[indexes]['avg7_death_day_thousand'].shift()) / df[indexes]['avg7_death_day_thousand'].shift()*100).replace([np.inf, -np.inf], 0).replace([np.nan], 0).round(2)
+    
 df.fillna(0, inplace=True)
 
 df['day'] = df['day'].astype('int')
@@ -280,19 +295,19 @@ print('finalizado em ', termino-inicio)
 df[indexes].tail()
 
 
-# In[15]:
+# In[14]:
 
 
 df.to_csv('../data/brazil_corona19_data.csv', index = False)
 
 
-# In[16]:
+# In[15]:
 
 
 # df[df.city=='Rio Claro'][['population','case_day','death_day','cases_thousand','deaths_thousand','active_cases']]
 
 
-# In[17]:
+# In[16]:
 
 
 # df[df['country']=='Belgium']

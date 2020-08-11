@@ -17,8 +17,8 @@ python brazilian_prediction.py
 # python saoPaulo_prediction.py
 cd ..
 
-gzip -k data/brazil_corona19_data.csv 
-gzip -k data/world_corona19_data.csv 
+gzip -kf data/brazil_corona19_data.csv 
+gzip -kf data/world_corona19_data.csv 
 # tar -cvzf data/incoming_data.gz data/brazil_corona19_data.csv data/world_corona19_data.csv
 #cd ..
 git add .
